@@ -1,0 +1,661 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04A6BF1519DB24550000FA32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A6BF1419DB24550000FA32 /* Foundation.framework */; };
+		04A6BF1719DB24550000FA32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A6BF1619DB24550000FA32 /* CoreGraphics.framework */; };
+		04A6BF1919DB24550000FA32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A6BF1819DB24550000FA32 /* UIKit.framework */; };
+		04A6BF1F19DB24550000FA32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF1D19DB24550000FA32 /* InfoPlist.strings */; };
+		04A6BF2119DB24550000FA32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF2019DB24550000FA32 /* main.m */; };
+		04A6BF2819DB24550000FA32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF2619DB24550000FA32 /* Main.storyboard */; };
+		04A6BF2B19DB24550000FA32 /* YVHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF2A19DB24550000FA32 /* YVHViewController.m */; };
+		04A6BF2D19DB24550000FA32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF2C19DB24550000FA32 /* Images.xcassets */; };
+		04A6BF3419DB24550000FA32 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A6BF3319DB24550000FA32 /* XCTest.framework */; };
+		04A6BF3519DB24550000FA32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A6BF1419DB24550000FA32 /* Foundation.framework */; };
+		04A6BF3619DB24550000FA32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A6BF1819DB24550000FA32 /* UIKit.framework */; };
+		04A6BF3E19DB24550000FA32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF3C19DB24550000FA32 /* InfoPlist.strings */; };
+		04A6BF4019DB24550000FA32 /* PicsBook_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF3F19DB24550000FA32 /* PicsBook_iOSTests.m */; };
+		04A6BF4C19DB258F0000FA32 /* YVHCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF4B19DB258F0000FA32 /* YVHCameraVC.m */; };
+		04A6BF5F19DB2B550000FA32 /* YVHGalleryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF5E19DB2B550000FA32 /* YVHGalleryVC.m */; };
+		04A6BF6319DB2C600000FA32 /* YVHCustomButtonBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF6219DB2C600000FA32 /* YVHCustomButtonBar.m */; };
+		04A6BF6819DB2C8F0000FA32 /* Flickr.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF6519DB2C8F0000FA32 /* Flickr.m */; };
+		04A6BF6919DB2C8F0000FA32 /* FlickrPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF6719DB2C8F0000FA32 /* FlickrPhoto.m */; };
+		04A6BF6E19DB2D620000FA32 /* CVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF6C19DB2D620000FA32 /* CVCell.m */; };
+		04A6BF6F19DB2D620000FA32 /* CVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF6D19DB2D620000FA32 /* CVCell.xib */; };
+		04A6BF7219DB2DAD0000FA32 /* YVHPicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF7119DB2DAD0000FA32 /* YVHPicVC.m */; };
+		04A6BF7419DB37AE0000FA32 /* YVHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF7319DB37AE0000FA32 /* YVHAppDelegate.m */; };
+		04A6BF8319DB3F320000FA32 /* _Face.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF7C19DB3F320000FA32 /* _Face.m */; };
+		04A6BF8419DB3F320000FA32 /* _Pic.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF7E19DB3F320000FA32 /* _Pic.m */; };
+		04A6BF8519DB3F320000FA32 /* Face.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF8019DB3F320000FA32 /* Face.m */; };
+		04A6BF8619DB3F320000FA32 /* Pic.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF8219DB3F320000FA32 /* Pic.m */; };
+		04A6BF8919DB43D30000FA32 /* YVHCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF8819DB43D30000FA32 /* YVHCoreDataStack.m */; };
+		04A6BF8C19DB4C6E0000FA32 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF8A19DB4C6E0000FA32 /* Model.xcdatamodeld */; };
+		04A6BF9B19DB6B0E0000FA32 /* TabBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF8E19DB6B0E0000FA32 /* TabBar.png */; };
+		04A6BF9C19DB6B0E0000FA32 /* WorldOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF8F19DB6B0E0000FA32 /* WorldOn.png */; };
+		04A6BF9D19DB6B0E0000FA32 /* worldOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9019DB6B0E0000FA32 /* worldOff.png */; };
+		04A6BF9E19DB6B0E0000FA32 /* Galery.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9119DB6B0E0000FA32 /* Galery.png */; };
+		04A6BF9F19DB6B0E0000FA32 /* mapOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9219DB6B0E0000FA32 /* mapOn.png */; };
+		04A6BFA019DB6B0E0000FA32 /* mapOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9319DB6B0E0000FA32 /* mapOff.png */; };
+		04A6BFA119DB6B0E0000FA32 /* Galery_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9419DB6B0E0000FA32 /* Galery_s.png */; };
+		04A6BFA219DB6B0E0000FA32 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9519DB6B0E0000FA32 /* menu.png */; };
+		04A6BFA319DB6B0E0000FA32 /* bg_cork.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9619DB6B0E0000FA32 /* bg_cork.png */; };
+		04A6BFA419DB6B0E0000FA32 /* bg_cork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9719DB6B0E0000FA32 /* bg_cork@2x.png */; };
+		04A6BFA519DB6B0E0000FA32 /* cameraOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9819DB6B0E0000FA32 /* cameraOff.png */; };
+		04A6BFA619DB6B0E0000FA32 /* pushpin.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9919DB6B0E0000FA32 /* pushpin.png */; };
+		04A6BFA719DB6B0E0000FA32 /* pushpin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9A19DB6B0E0000FA32 /* pushpin@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04A6BF3719DB24550000FA32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04A6BF0919DB24550000FA32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04A6BF1019DB24550000FA32;
+			remoteInfo = "PicsBook iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04A6BF1119DB24550000FA32 /* PicsBook iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PicsBook iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04A6BF1419DB24550000FA32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		04A6BF1619DB24550000FA32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		04A6BF1819DB24550000FA32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		04A6BF1C19DB24550000FA32 /* PicsBook iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PicsBook iOS-Info.plist"; sourceTree = "<group>"; };
+		04A6BF1E19DB24550000FA32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		04A6BF2019DB24550000FA32 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		04A6BF2219DB24550000FA32 /* PicsBook iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PicsBook iOS-Prefix.pch"; sourceTree = "<group>"; };
+		04A6BF2719DB24550000FA32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04A6BF2919DB24550000FA32 /* YVHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YVHViewController.h; sourceTree = "<group>"; };
+		04A6BF2A19DB24550000FA32 /* YVHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YVHViewController.m; sourceTree = "<group>"; };
+		04A6BF2C19DB24550000FA32 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		04A6BF3219DB24550000FA32 /* PicsBook iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PicsBook iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04A6BF3319DB24550000FA32 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		04A6BF3B19DB24550000FA32 /* PicsBook iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PicsBook iOSTests-Info.plist"; sourceTree = "<group>"; };
+		04A6BF3D19DB24550000FA32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		04A6BF3F19DB24550000FA32 /* PicsBook_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PicsBook_iOSTests.m; sourceTree = "<group>"; };
+		04A6BF4A19DB258F0000FA32 /* YVHCameraVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHCameraVC.h; sourceTree = "<group>"; };
+		04A6BF4B19DB258F0000FA32 /* YVHCameraVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHCameraVC.m; sourceTree = "<group>"; };
+		04A6BF4D19DB26A80000FA32 /* YVHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YVHAppDelegate.h; sourceTree = "<group>"; };
+		04A6BF5D19DB2B550000FA32 /* YVHGalleryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHGalleryVC.h; sourceTree = "<group>"; };
+		04A6BF5E19DB2B550000FA32 /* YVHGalleryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHGalleryVC.m; sourceTree = "<group>"; };
+		04A6BF6119DB2C600000FA32 /* YVHCustomButtonBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHCustomButtonBar.h; sourceTree = "<group>"; };
+		04A6BF6219DB2C600000FA32 /* YVHCustomButtonBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHCustomButtonBar.m; sourceTree = "<group>"; };
+		04A6BF6419DB2C8F0000FA32 /* Flickr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flickr.h; path = "../../../Picsbook3 SB/Picsbook3 SB/Flickr Interface/Flickr.h"; sourceTree = "<group>"; };
+		04A6BF6519DB2C8F0000FA32 /* Flickr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Flickr.m; path = "../../../Picsbook3 SB/Picsbook3 SB/Flickr Interface/Flickr.m"; sourceTree = "<group>"; };
+		04A6BF6619DB2C8F0000FA32 /* FlickrPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrPhoto.h; path = "../../../Picsbook3 SB/Picsbook3 SB/Flickr Interface/FlickrPhoto.h"; sourceTree = "<group>"; };
+		04A6BF6719DB2C8F0000FA32 /* FlickrPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrPhoto.m; path = "../../../Picsbook3 SB/Picsbook3 SB/Flickr Interface/FlickrPhoto.m"; sourceTree = "<group>"; };
+		04A6BF6B19DB2D620000FA32 /* CVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CVCell.h; path = "../../../Picsbook3 SB/Picsbook3 SB/CVCell.h"; sourceTree = "<group>"; };
+		04A6BF6C19DB2D620000FA32 /* CVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CVCell.m; path = "../../../Picsbook3 SB/Picsbook3 SB/CVCell.m"; sourceTree = "<group>"; };
+		04A6BF6D19DB2D620000FA32 /* CVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CVCell.xib; path = "../../../Picsbook3 SB/Picsbook3 SB/CVCell.xib"; sourceTree = "<group>"; };
+		04A6BF7019DB2DAD0000FA32 /* YVHPicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YVHPicVC.h; path = "../../../Picsbook3 SB/Picsbook3 SB/YVHPicVC.h"; sourceTree = "<group>"; };
+		04A6BF7119DB2DAD0000FA32 /* YVHPicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YVHPicVC.m; path = "../../../Picsbook3 SB/Picsbook3 SB/YVHPicVC.m"; sourceTree = "<group>"; };
+		04A6BF7319DB37AE0000FA32 /* YVHAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHAppDelegate.m; sourceTree = "<group>"; };
+		04A6BF7B19DB3F320000FA32 /* _Face.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Face.h; sourceTree = "<group>"; };
+		04A6BF7C19DB3F320000FA32 /* _Face.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Face.m; sourceTree = "<group>"; };
+		04A6BF7D19DB3F320000FA32 /* _Pic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Pic.h; sourceTree = "<group>"; };
+		04A6BF7E19DB3F320000FA32 /* _Pic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Pic.m; sourceTree = "<group>"; };
+		04A6BF7F19DB3F320000FA32 /* Face.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Face.h; sourceTree = "<group>"; };
+		04A6BF8019DB3F320000FA32 /* Face.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Face.m; sourceTree = "<group>"; };
+		04A6BF8119DB3F320000FA32 /* Pic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pic.h; sourceTree = "<group>"; };
+		04A6BF8219DB3F320000FA32 /* Pic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pic.m; sourceTree = "<group>"; };
+		04A6BF8719DB43D30000FA32 /* YVHCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHCoreDataStack.h; sourceTree = "<group>"; };
+		04A6BF8819DB43D30000FA32 /* YVHCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHCoreDataStack.m; sourceTree = "<group>"; };
+		04A6BF8B19DB4C6E0000FA32 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		04A6BF8E19DB6B0E0000FA32 /* TabBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBar.png; sourceTree = "<group>"; };
+		04A6BF8F19DB6B0E0000FA32 /* WorldOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WorldOn.png; sourceTree = "<group>"; };
+		04A6BF9019DB6B0E0000FA32 /* worldOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = worldOff.png; sourceTree = "<group>"; };
+		04A6BF9119DB6B0E0000FA32 /* Galery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Galery.png; sourceTree = "<group>"; };
+		04A6BF9219DB6B0E0000FA32 /* mapOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapOn.png; sourceTree = "<group>"; };
+		04A6BF9319DB6B0E0000FA32 /* mapOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapOff.png; sourceTree = "<group>"; };
+		04A6BF9419DB6B0E0000FA32 /* Galery_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Galery_s.png; sourceTree = "<group>"; };
+		04A6BF9519DB6B0E0000FA32 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		04A6BF9619DB6B0E0000FA32 /* bg_cork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_cork.png; sourceTree = "<group>"; };
+		04A6BF9719DB6B0E0000FA32 /* bg_cork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_cork@2x.png"; sourceTree = "<group>"; };
+		04A6BF9819DB6B0E0000FA32 /* cameraOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraOff.png; sourceTree = "<group>"; };
+		04A6BF9919DB6B0E0000FA32 /* pushpin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pushpin.png; sourceTree = "<group>"; };
+		04A6BF9A19DB6B0E0000FA32 /* pushpin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pushpin@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04A6BF0E19DB24550000FA32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04A6BF1719DB24550000FA32 /* CoreGraphics.framework in Frameworks */,
+				04A6BF1919DB24550000FA32 /* UIKit.framework in Frameworks */,
+				04A6BF1519DB24550000FA32 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04A6BF2F19DB24550000FA32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04A6BF3419DB24550000FA32 /* XCTest.framework in Frameworks */,
+				04A6BF3619DB24550000FA32 /* UIKit.framework in Frameworks */,
+				04A6BF3519DB24550000FA32 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04A6BF0819DB24550000FA32 = {
+			isa = PBXGroup;
+			children = (
+				04A6BF1A19DB24550000FA32 /* PicsBook iOS */,
+				04A6BF3919DB24550000FA32 /* PicsBook iOSTests */,
+				04A6BF1319DB24550000FA32 /* Frameworks */,
+				04A6BF1219DB24550000FA32 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		04A6BF1219DB24550000FA32 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04A6BF1119DB24550000FA32 /* PicsBook iOS.app */,
+				04A6BF3219DB24550000FA32 /* PicsBook iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04A6BF1319DB24550000FA32 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04A6BF1419DB24550000FA32 /* Foundation.framework */,
+				04A6BF1619DB24550000FA32 /* CoreGraphics.framework */,
+				04A6BF1819DB24550000FA32 /* UIKit.framework */,
+				04A6BF3319DB24550000FA32 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		04A6BF1A19DB24550000FA32 /* PicsBook iOS */ = {
+			isa = PBXGroup;
+			children = (
+				04A6BF8D19DB6AF10000FA32 /* Res */,
+				04A6BF6A19DB2D4D0000FA32 /* View */,
+				04A6BF6019DB2C430000FA32 /* Util */,
+				04A6BF4E19DB275F0000FA32 /* Model */,
+				04A6BF4919DB25410000FA32 /* Controllers */,
+				04A6BF4D19DB26A80000FA32 /* YVHAppDelegate.h */,
+				04A6BF7319DB37AE0000FA32 /* YVHAppDelegate.m */,
+				04A6BF2619DB24550000FA32 /* Main.storyboard */,
+				04A6BF2C19DB24550000FA32 /* Images.xcassets */,
+				04A6BF1B19DB24550000FA32 /* Supporting Files */,
+			);
+			path = "PicsBook iOS";
+			sourceTree = "<group>";
+		};
+		04A6BF1B19DB24550000FA32 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				04A6BF1C19DB24550000FA32 /* PicsBook iOS-Info.plist */,
+				04A6BF1D19DB24550000FA32 /* InfoPlist.strings */,
+				04A6BF2019DB24550000FA32 /* main.m */,
+				04A6BF2219DB24550000FA32 /* PicsBook iOS-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04A6BF3919DB24550000FA32 /* PicsBook iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				04A6BF3F19DB24550000FA32 /* PicsBook_iOSTests.m */,
+				04A6BF3A19DB24550000FA32 /* Supporting Files */,
+			);
+			path = "PicsBook iOSTests";
+			sourceTree = "<group>";
+		};
+		04A6BF3A19DB24550000FA32 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				04A6BF3B19DB24550000FA32 /* PicsBook iOSTests-Info.plist */,
+				04A6BF3C19DB24550000FA32 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04A6BF4919DB25410000FA32 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				04A6BF7019DB2DAD0000FA32 /* YVHPicVC.h */,
+				04A6BF7119DB2DAD0000FA32 /* YVHPicVC.m */,
+				04A6BF4A19DB258F0000FA32 /* YVHCameraVC.h */,
+				04A6BF4B19DB258F0000FA32 /* YVHCameraVC.m */,
+				04A6BF2919DB24550000FA32 /* YVHViewController.h */,
+				04A6BF2A19DB24550000FA32 /* YVHViewController.m */,
+				04A6BF5D19DB2B550000FA32 /* YVHGalleryVC.h */,
+				04A6BF5E19DB2B550000FA32 /* YVHGalleryVC.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		04A6BF4E19DB275F0000FA32 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04A6BF8A19DB4C6E0000FA32 /* Model.xcdatamodeld */,
+				04A6BF7B19DB3F320000FA32 /* _Face.h */,
+				04A6BF7C19DB3F320000FA32 /* _Face.m */,
+				04A6BF7D19DB3F320000FA32 /* _Pic.h */,
+				04A6BF7E19DB3F320000FA32 /* _Pic.m */,
+				04A6BF7F19DB3F320000FA32 /* Face.h */,
+				04A6BF8019DB3F320000FA32 /* Face.m */,
+				04A6BF8119DB3F320000FA32 /* Pic.h */,
+				04A6BF8219DB3F320000FA32 /* Pic.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		04A6BF6019DB2C430000FA32 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				04A6BF6119DB2C600000FA32 /* YVHCustomButtonBar.h */,
+				04A6BF6219DB2C600000FA32 /* YVHCustomButtonBar.m */,
+				04A6BF6419DB2C8F0000FA32 /* Flickr.h */,
+				04A6BF6519DB2C8F0000FA32 /* Flickr.m */,
+				04A6BF6619DB2C8F0000FA32 /* FlickrPhoto.h */,
+				04A6BF6719DB2C8F0000FA32 /* FlickrPhoto.m */,
+				04A6BF8719DB43D30000FA32 /* YVHCoreDataStack.h */,
+				04A6BF8819DB43D30000FA32 /* YVHCoreDataStack.m */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		04A6BF6A19DB2D4D0000FA32 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04A6BF6B19DB2D620000FA32 /* CVCell.h */,
+				04A6BF6C19DB2D620000FA32 /* CVCell.m */,
+				04A6BF6D19DB2D620000FA32 /* CVCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		04A6BF8D19DB6AF10000FA32 /* Res */ = {
+			isa = PBXGroup;
+			children = (
+				04A6BF8E19DB6B0E0000FA32 /* TabBar.png */,
+				04A6BF8F19DB6B0E0000FA32 /* WorldOn.png */,
+				04A6BF9019DB6B0E0000FA32 /* worldOff.png */,
+				04A6BF9119DB6B0E0000FA32 /* Galery.png */,
+				04A6BF9219DB6B0E0000FA32 /* mapOn.png */,
+				04A6BF9319DB6B0E0000FA32 /* mapOff.png */,
+				04A6BF9419DB6B0E0000FA32 /* Galery_s.png */,
+				04A6BF9519DB6B0E0000FA32 /* menu.png */,
+				04A6BF9619DB6B0E0000FA32 /* bg_cork.png */,
+				04A6BF9719DB6B0E0000FA32 /* bg_cork@2x.png */,
+				04A6BF9819DB6B0E0000FA32 /* cameraOff.png */,
+				04A6BF9919DB6B0E0000FA32 /* pushpin.png */,
+				04A6BF9A19DB6B0E0000FA32 /* pushpin@2x.png */,
+			);
+			name = Res;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04A6BF1019DB24550000FA32 /* PicsBook iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04A6BF4319DB24550000FA32 /* Build configuration list for PBXNativeTarget "PicsBook iOS" */;
+			buildPhases = (
+				04A6BF0D19DB24550000FA32 /* Sources */,
+				04A6BF0E19DB24550000FA32 /* Frameworks */,
+				04A6BF0F19DB24550000FA32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PicsBook iOS";
+			productName = "PicsBook iOS";
+			productReference = 04A6BF1119DB24550000FA32 /* PicsBook iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		04A6BF3119DB24550000FA32 /* PicsBook iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04A6BF4619DB24550000FA32 /* Build configuration list for PBXNativeTarget "PicsBook iOSTests" */;
+			buildPhases = (
+				04A6BF2E19DB24550000FA32 /* Sources */,
+				04A6BF2F19DB24550000FA32 /* Frameworks */,
+				04A6BF3019DB24550000FA32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04A6BF3819DB24550000FA32 /* PBXTargetDependency */,
+			);
+			name = "PicsBook iOSTests";
+			productName = "PicsBook iOSTests";
+			productReference = 04A6BF3219DB24550000FA32 /* PicsBook iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04A6BF0919DB24550000FA32 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = YVH;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Yvon Valdepeñas";
+				TargetAttributes = {
+					04A6BF3119DB24550000FA32 = {
+						TestTargetID = 04A6BF1019DB24550000FA32;
+					};
+				};
+			};
+			buildConfigurationList = 04A6BF0C19DB24550000FA32 /* Build configuration list for PBXProject "PicsBook iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 04A6BF0819DB24550000FA32;
+			productRefGroup = 04A6BF1219DB24550000FA32 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				04A6BF1019DB24550000FA32 /* PicsBook iOS */,
+				04A6BF3119DB24550000FA32 /* PicsBook iOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04A6BF0F19DB24550000FA32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04A6BF9F19DB6B0E0000FA32 /* mapOn.png in Resources */,
+				04A6BF6F19DB2D620000FA32 /* CVCell.xib in Resources */,
+				04A6BFA519DB6B0E0000FA32 /* cameraOff.png in Resources */,
+				04A6BF9E19DB6B0E0000FA32 /* Galery.png in Resources */,
+				04A6BF2D19DB24550000FA32 /* Images.xcassets in Resources */,
+				04A6BFA619DB6B0E0000FA32 /* pushpin.png in Resources */,
+				04A6BFA419DB6B0E0000FA32 /* bg_cork@2x.png in Resources */,
+				04A6BF9D19DB6B0E0000FA32 /* worldOff.png in Resources */,
+				04A6BF1F19DB24550000FA32 /* InfoPlist.strings in Resources */,
+				04A6BFA019DB6B0E0000FA32 /* mapOff.png in Resources */,
+				04A6BF9C19DB6B0E0000FA32 /* WorldOn.png in Resources */,
+				04A6BFA219DB6B0E0000FA32 /* menu.png in Resources */,
+				04A6BFA319DB6B0E0000FA32 /* bg_cork.png in Resources */,
+				04A6BFA119DB6B0E0000FA32 /* Galery_s.png in Resources */,
+				04A6BF9B19DB6B0E0000FA32 /* TabBar.png in Resources */,
+				04A6BF2819DB24550000FA32 /* Main.storyboard in Resources */,
+				04A6BFA719DB6B0E0000FA32 /* pushpin@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04A6BF3019DB24550000FA32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04A6BF3E19DB24550000FA32 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04A6BF0D19DB24550000FA32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04A6BF8419DB3F320000FA32 /* _Pic.m in Sources */,
+				04A6BF8319DB3F320000FA32 /* _Face.m in Sources */,
+				04A6BF6E19DB2D620000FA32 /* CVCell.m in Sources */,
+				04A6BF5F19DB2B550000FA32 /* YVHGalleryVC.m in Sources */,
+				04A6BF4C19DB258F0000FA32 /* YVHCameraVC.m in Sources */,
+				04A6BF8619DB3F320000FA32 /* Pic.m in Sources */,
+				04A6BF7219DB2DAD0000FA32 /* YVHPicVC.m in Sources */,
+				04A6BF6319DB2C600000FA32 /* YVHCustomButtonBar.m in Sources */,
+				04A6BF6919DB2C8F0000FA32 /* FlickrPhoto.m in Sources */,
+				04A6BF2B19DB24550000FA32 /* YVHViewController.m in Sources */,
+				04A6BF6819DB2C8F0000FA32 /* Flickr.m in Sources */,
+				04A6BF8C19DB4C6E0000FA32 /* Model.xcdatamodeld in Sources */,
+				04A6BF7419DB37AE0000FA32 /* YVHAppDelegate.m in Sources */,
+				04A6BF8919DB43D30000FA32 /* YVHCoreDataStack.m in Sources */,
+				04A6BF8519DB3F320000FA32 /* Face.m in Sources */,
+				04A6BF2119DB24550000FA32 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04A6BF2E19DB24550000FA32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04A6BF4019DB24550000FA32 /* PicsBook_iOSTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04A6BF3819DB24550000FA32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04A6BF1019DB24550000FA32 /* PicsBook iOS */;
+			targetProxy = 04A6BF3719DB24550000FA32 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		04A6BF1D19DB24550000FA32 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04A6BF1E19DB24550000FA32 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		04A6BF2619DB24550000FA32 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04A6BF2719DB24550000FA32 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		04A6BF3C19DB24550000FA32 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04A6BF3D19DB24550000FA32 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		04A6BF4119DB24550000FA32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		04A6BF4219DB24550000FA32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		04A6BF4419DB24550000FA32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yvon Utad (HEG6WSF969)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PicsBook iOS/PicsBook iOS-Prefix.pch";
+				INFOPLIST_FILE = "PicsBook iOS/PicsBook iOS-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		04A6BF4519DB24550000FA32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yvon Utad (HEG6WSF969)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PicsBook iOS/PicsBook iOS-Prefix.pch";
+				INFOPLIST_FILE = "PicsBook iOS/PicsBook iOS-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		04A6BF4719DB24550000FA32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PicsBook iOS.app/PicsBook iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PicsBook iOS/PicsBook iOS-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PicsBook iOSTests/PicsBook iOSTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		04A6BF4819DB24550000FA32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PicsBook iOS.app/PicsBook iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PicsBook iOS/PicsBook iOS-Prefix.pch";
+				INFOPLIST_FILE = "PicsBook iOSTests/PicsBook iOSTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04A6BF0C19DB24550000FA32 /* Build configuration list for PBXProject "PicsBook iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04A6BF4119DB24550000FA32 /* Debug */,
+				04A6BF4219DB24550000FA32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04A6BF4319DB24550000FA32 /* Build configuration list for PBXNativeTarget "PicsBook iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04A6BF4419DB24550000FA32 /* Debug */,
+				04A6BF4519DB24550000FA32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		04A6BF4619DB24550000FA32 /* Build configuration list for PBXNativeTarget "PicsBook iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04A6BF4719DB24550000FA32 /* Debug */,
+				04A6BF4819DB24550000FA32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		04A6BF8A19DB4C6E0000FA32 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				04A6BF8B19DB4C6E0000FA32 /* Model.xcdatamodel */,
+			);
+			currentVersion = 04A6BF8B19DB4C6E0000FA32 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 04A6BF0919DB24550000FA32 /* Project object */;
+}

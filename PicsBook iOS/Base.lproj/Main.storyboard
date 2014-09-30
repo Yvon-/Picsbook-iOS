@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="TCB-8L-aeo">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="3SI-Yk-bXU">
+            <objects>
+                <viewController id="vhx-zp-hZQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NBu-cU-iV3">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.5688297269" green="0.80895248720000001" blue="0.67941155409999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZYA-eL-55U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-304" y="-3085"/>
+        </scene>
+        <!--GalleryVC-->
+        <scene sceneID="gvp-rw-gOd">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nqO-wo-r3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="YVHGalleryVC" id="sni-Vr-0Ex" userLabel="GalleryVC" customClass="YVHGalleryVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BOV-95-ix4">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="M4Q-pY-8CP">
+                                <rect key="frame" x="234" y="312" width="300" height="400"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="3rK-vs-sSW">
+                                <rect key="frame" x="24" y="262" width="720" height="500"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="1" green="0.57616857320000003" blue="0.43611125719999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wSs-MF-Diy">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="sni-Vr-0Ex" id="A7U-37-1f9"/>
+                                    <outlet property="delegate" destination="sni-Vr-0Ex" id="xbE-qo-CWo"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.85546132620000004" green="0.82208277249999995" blue="0.89590640939999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jEF-Jy-A7h"/>
+                    <connections>
+                        <outlet property="collectionView" destination="3rK-vs-sSW" id="jD4-Ld-d6p"/>
+                        <segue destination="87y-xj-VYz" kind="push" identifier="segue1" id="RgS-yH-j01"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-63" y="-1422"/>
+        </scene>
+        <!--PicVC-->
+        <scene sceneID="1dc-Jw-hf0">
+            <objects>
+                <viewController id="87y-xj-VYz" customClass="YVHPicVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PNe-8v-pmH">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pushpin.png" id="FKs-W6-m1d">
+                                <rect key="frame" x="5" y="133" width="620" height="800"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3kW-am-n44">
+                                <rect key="frame" x="228" y="88" width="174" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.67261692370000004" green="0.73980373590000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="SHARE"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="35W-AZ-imG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pBS-oZ-q8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1029" y="-1474"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="YVHViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-561" y="-64"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="g0v-Bo-NCl">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="TCB-8L-aeo" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Obe-t7-iuj">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="sni-Vr-0Ex" kind="relationship" relationship="rootViewController" id="Q3h-Kb-n20"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cGL-Dn-mEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1093" y="-1415"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pushpin.png" width="40" height="32"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

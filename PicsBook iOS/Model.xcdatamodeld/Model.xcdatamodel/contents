@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Face" representedClassName="Face" syncable="YES">
+        <attribute name="nsrectstring" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pic_face" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pic" inverseName="pic_face" inverseEntity="Pic" syncable="YES"/>
+        <fetchedProperty name="fetchedProperty" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Face"/>
+        </fetchedProperty>
+    </entity>
+    <entity name="Pic" representedClassName="Pic" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pic_face" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Face" inverseName="pic_face" inverseEntity="Face" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Pic" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Face" positionX="-54" positionY="18" width="128" height="101"/>
+    </elements>
+</model>
