@@ -69,7 +69,7 @@
     
 }
 -(void) viewWillDisappear:(BOOL)animated{
-    [self.appDelegate saveContext];//Guardamos en CD
+ //   [[YVHCoreDataStack getInstance] saveContext];//Guardamos en CD
 }
 - (void)didReceiveMemoryWarning
 {
@@ -166,6 +166,7 @@
         // To be ready to start again, clear the captured images array.
         [self.capturedImages removeAllObjects];
     }
+     [[YVHCoreDataStack getInstance] saveContext];//Guardamos en CD
     
 }
 

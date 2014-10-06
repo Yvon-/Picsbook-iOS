@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="TCB-8L-aeo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="TCB-8L-aeo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -8,6 +8,10 @@
         <scene sceneID="3SI-Yk-bXU">
             <objects>
                 <viewController id="vhx-zp-hZQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="H01-DQ-v0P"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tqt-ch-mvc"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NBu-cU-iV3">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -21,18 +25,17 @@
         <!--GalleryVC-->
         <scene sceneID="gvp-rw-gOd">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nqO-wo-r3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="YVHGalleryVC" id="sni-Vr-0Ex" userLabel="GalleryVC" customClass="YVHGalleryVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z5q-PO-8g1"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rg0-N9-n0y"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BOV-95-ix4">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="M4Q-pY-8CP">
-                                <rect key="frame" x="234" y="312" width="300" height="400"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="3rK-vs-sSW">
-                                <rect key="frame" x="24" y="262" width="720" height="500"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3rK-vs-sSW">
+                                <rect key="frame" x="0.0" y="80" width="768" height="875"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="1" green="0.57616857320000003" blue="0.43611125719999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -57,6 +60,7 @@
                         <segue destination="87y-xj-VYz" kind="push" identifier="segue1" id="RgS-yH-j01"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nqO-wo-r3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-63" y="-1422"/>
         </scene>
@@ -64,15 +68,19 @@
         <scene sceneID="1dc-Jw-hf0">
             <objects>
                 <viewController id="87y-xj-VYz" customClass="YVHPicVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zNm-ha-EFx"/>
+                        <viewControllerLayoutGuide type="bottom" id="5aM-v4-9TN"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PNe-8v-pmH">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pushpin.png" id="FKs-W6-m1d">
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pushpin.png" translatesAutoresizingMaskIntoConstraints="NO" id="FKs-W6-m1d">
                                 <rect key="frame" x="5" y="133" width="620" height="800"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3kW-am-n44">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kW-am-n44">
                                 <rect key="frame" x="228" y="88" width="174" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.67261692370000004" green="0.73980373590000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -92,6 +100,10 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="YVHViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g5h-vp-cOW"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZbK-L5-eeT"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,7 +117,7 @@
         <!--Navigation Controller-->
         <scene sceneID="g0v-Bo-NCl">
             <objects>
-                <navigationController definesPresentationContext="YES" id="TCB-8L-aeo" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavGalleryVC" definesPresentationContext="YES" id="TCB-8L-aeo" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Obe-t7-iuj">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -119,7 +131,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pushpin.png" width="40" height="32"/>
+        <image name="pushpin.png" width="22" height="31"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

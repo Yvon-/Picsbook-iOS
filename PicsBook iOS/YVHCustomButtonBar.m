@@ -8,14 +8,15 @@
 
 #import "YVHCustomButtonBar.h"
 #import "YVHGalleryVC.h"
-//#import "YVHMainVC.h"
+#import "YVHMapVC.h"
 #import "YVHCameraVC.h"
 
 @implementation YVHCustomButtonBar{
     YVHCameraVC *parent;
     UIView * v;
     YVHGalleryVC *gallery;
-//    YVHMainVC * main;
+    YVHMapVC * map;
+
     
 }
 
@@ -26,8 +27,8 @@
         // Initialization code
         v = vc.view;
         parent = vc;
-        gallery = [[YVHCameraVC alloc] init];
-//        main = [[YVHMainVC alloc] init];
+        gallery = [[YVHGalleryVC alloc] init];
+        map = [[YVHMapVC alloc] init];
         [self initializeBarInParent];
         [self addCustomElements];
         
@@ -95,6 +96,7 @@
 	[v addSubview:_btn2];
 	[v addSubview:_btn3];
 	[v addSubview:_btn4];
+    
 	
 }
 
@@ -110,7 +112,7 @@
 			[_btn3 setSelected:false];
 			[_btn4 setSelected:false];
 
-            [parent presentModalViewController:gallery animated:YES];
+            [parent presentViewController:gallery animated:YES completion:nil];
 			break;
 		case 2:
 			[_btn1 setSelected:false];
@@ -118,7 +120,7 @@
 			[_btn3 setSelected:false];
 			[_btn4 setSelected:false];
             
-//            [parent presentModalViewController:main animated:YES];
+            [parent presentViewController:map animated:YES completion:nil];
 			break;
 		case 3:
 			[_btn1 setSelected:false];

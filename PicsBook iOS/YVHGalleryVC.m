@@ -22,8 +22,6 @@
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *picsArray;
 
-@property (nonatomic, strong) YVHAppDelegate* appDelegate;
-
 @property (weak, nonatomic) IBOutlet UIImageView *visor;
 
 @property (nonatomic, strong) UIImage * pickedImg;
@@ -43,17 +41,13 @@
     
     self.picsArray = [self getPics:nil];
     
-    
+    UINib *cellNib = [UINib nibWithNibName:@"CVCell" bundle:nil];
+    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
     /* uncomment this block to use subclassed cells */
-    [self.collectionView registerClass:[CVCell class] forCellWithReuseIdentifier:@"cvCell"];
+    //[self.collectionView registerClass:[CVCell class] forCellWithReuseIdentifier:@"cvCell"];
     /* end of subclass-based cells block */
-    
-    // Configure layout
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setItemSize:CGSizeMake(200, 200)];
-    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    [self.collectionView setCollectionViewLayout:flowLayout];
-    
+
+
 
 }
 
@@ -62,7 +56,7 @@
     
     [super viewWillAppear:animated];
     
-    
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,19 +97,17 @@
 #pragma mark - UICollectionView Datasource
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 0;
+    return 1;
     
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     
-    //return 3;
-    int n =[self.picsArray count];
-    float f = n/3.0;
-    n = ceil(f);
+    int n = [self.picsArray count];
+
     
-    return 0;
+    return n;
     
 }
 
@@ -124,23 +116,19 @@
     // Setup cell identifier
     static NSString *cellIdentifier = @"cvCell";
     
-    
-    /* Uncomment this block to use subclass-based cells */
     CVCell *cell = (CVCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    //  NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
     
     
     NSInteger x = indexPath.row;
-    NSInteger y = indexPath.section;
-    NSInteger i = x + (y * 3);
-    if(i<[self.picsArray count]){
-        Pic * data = [self.picsArray objectAtIndex:i];
+
+    if(x<[self.picsArray count]){
+        Pic * data = [self.picsArray objectAtIndex:x];
         UIImage *photo = [self getPicFromDisk:data.path];
         
+        cell.backgroundColor = [UIColor whiteColor];
         cell.image.image = photo;
     }
-    
-    /* end of subclass-based cells block */
+
     
     // Return the cell
     return cell;
@@ -156,7 +144,7 @@
     NSInteger i = x + (y * 3);
     if(i<[self.picsArray count]){
         
-        Pic * data = [self.picsArray objectAtIndex:i];
+        Pic * data = [self.picsArray objectAtIndex:x];
         UIImage *photo = [self getPicFromDisk:data.path];
         self.pickedImg = photo;
         
@@ -181,6 +169,31 @@
 
 
 #pragma mark – UICollectionViewDelegateFlowLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    Pic *data = self.picsArray[indexPath.row];
+    UIImage *photo = [self getPicFromDisk:data.path];
+    // 2
+    CGSize retval = photo.size.width > 0 ? [self reducePic:photo.size] : CGSizeMake(100, 100);
+    //CGSize retval = CGSizeMake(100, 100);
+    retval.height += 35; retval.width += 35; return retval;
+}
+
+-(CGSize)reducePic:(CGSize)sz{
+    int w, h, ws, hs ;
+    w = sz.width;
+    h = sz.height;
+    if(w > h ){
+        ws = 200;
+        hs = h*ws/w;
+    }
+    else{
+        hs = 200;
+        ws = w*hs/h;
+    }
+    
+    return CGSizeMake(ws, hs);
+
+}
 - (UIEdgeInsets)collectionView:
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     //Es el espacio entre celdas
