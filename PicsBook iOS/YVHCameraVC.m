@@ -10,11 +10,8 @@
 #import "YVHAppDelegate.h"
 #import "Pic.h"
 #import "YVHCoreDataStack.h"
-#import "YVHCustomButtonBar.h"
 
-@interface YVHCameraVC (){
-    YVHCustomButtonBar *bb;
-}
+@interface YVHCameraVC ()
 
 @property (nonatomic, strong) NSUserDefaults *defaults;
 
@@ -56,31 +53,17 @@
     //Coredata Stack access
     self.managedObjectContext = [[YVHCoreDataStack getInstance] managedObjectContext];
     
-    if(!bb){
-        
-        bb = [[YVHCustomButtonBar alloc]initWithParent:self];
-
-        
-        [bb.btn1 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [bb.btn2 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [bb.btn3 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [bb.btn4 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    }
     
 }
 -(void) viewWillDisappear:(BOOL)animated{
- //   [[YVHCoreDataStack getInstance] saveContext];//Guardamos en CD
+    [[YVHCoreDataStack getInstance] saveContext];//Guardamos en CD
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)buttonClicked:(id)sender
-{
-	int tagNum = [sender tag];
-	[bb selectButton:tagNum];
-}
+
 - (void)toCamera{
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
