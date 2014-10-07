@@ -21,7 +21,6 @@
 		04A6BF4019DB24550000FA32 /* PicsBook_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF3F19DB24550000FA32 /* PicsBook_iOSTests.m */; };
 		04A6BF4C19DB258F0000FA32 /* YVHCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF4B19DB258F0000FA32 /* YVHCameraVC.m */; };
 		04A6BF5F19DB2B550000FA32 /* YVHGalleryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF5E19DB2B550000FA32 /* YVHGalleryVC.m */; };
-		04A6BF6319DB2C600000FA32 /* YVHCustomButtonBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF6219DB2C600000FA32 /* YVHCustomButtonBar.m */; };
 		04A6BF6819DB2C8F0000FA32 /* Flickr.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF6519DB2C8F0000FA32 /* Flickr.m */; };
 		04A6BF6919DB2C8F0000FA32 /* FlickrPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF6719DB2C8F0000FA32 /* FlickrPhoto.m */; };
 		04A6BF6E19DB2D620000FA32 /* CVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF6C19DB2D620000FA32 /* CVCell.m */; };
@@ -51,6 +50,7 @@
 		04A8753419E2B95300DC6923 /* YVH MapViewAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8753319E2B95300DC6923 /* YVH MapViewAnnotation.m */; };
 		04A8753619E2B99700DC6923 /* Locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04A8753519E2B99700DC6923 /* Locations.plist */; };
 		04A8D95919E4042B00347349 /* YVHMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8D95819E4042B00347349 /* YVHMainVC.m */; };
+		04A8D95C19E4494100347349 /* RXCustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8D95B19E4494100347349 /* RXCustomTabBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,8 +84,6 @@
 		04A6BF4D19DB26A80000FA32 /* YVHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YVHAppDelegate.h; sourceTree = "<group>"; };
 		04A6BF5D19DB2B550000FA32 /* YVHGalleryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHGalleryVC.h; sourceTree = "<group>"; };
 		04A6BF5E19DB2B550000FA32 /* YVHGalleryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHGalleryVC.m; sourceTree = "<group>"; };
-		04A6BF6119DB2C600000FA32 /* YVHCustomButtonBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHCustomButtonBar.h; sourceTree = "<group>"; };
-		04A6BF6219DB2C600000FA32 /* YVHCustomButtonBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHCustomButtonBar.m; sourceTree = "<group>"; };
 		04A6BF6419DB2C8F0000FA32 /* Flickr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flickr.h; path = "../../../Picsbook3 SB/Picsbook3 SB/Flickr Interface/Flickr.h"; sourceTree = "<group>"; };
 		04A6BF6519DB2C8F0000FA32 /* Flickr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Flickr.m; path = "../../../Picsbook3 SB/Picsbook3 SB/Flickr Interface/Flickr.m"; sourceTree = "<group>"; };
 		04A6BF6619DB2C8F0000FA32 /* FlickrPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrPhoto.h; path = "../../../Picsbook3 SB/Picsbook3 SB/Flickr Interface/FlickrPhoto.h"; sourceTree = "<group>"; };
@@ -127,6 +125,8 @@
 		04A8753519E2B99700DC6923 /* Locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Locations.plist; sourceTree = "<group>"; };
 		04A8D95719E4042B00347349 /* YVHMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHMainVC.h; sourceTree = "<group>"; };
 		04A8D95819E4042B00347349 /* YVHMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHMainVC.m; sourceTree = "<group>"; };
+		04A8D95A19E4494100347349 /* RXCustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXCustomTabBar.h; sourceTree = "<group>"; };
+		04A8D95B19E4494100347349 /* RXCustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXCustomTabBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,8 +266,8 @@
 		04A6BF6019DB2C430000FA32 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				04A6BF6119DB2C600000FA32 /* YVHCustomButtonBar.h */,
-				04A6BF6219DB2C600000FA32 /* YVHCustomButtonBar.m */,
+				04A8D95A19E4494100347349 /* RXCustomTabBar.h */,
+				04A8D95B19E4494100347349 /* RXCustomTabBar.m */,
 				04A6BF6419DB2C8F0000FA32 /* Flickr.h */,
 				04A6BF6519DB2C8F0000FA32 /* Flickr.m */,
 				04A6BF6619DB2C8F0000FA32 /* FlickrPhoto.h */,
@@ -428,10 +428,10 @@
 				04A6BF8319DB3F320000FA32 /* _Face.m in Sources */,
 				04A8D95919E4042B00347349 /* YVHMainVC.m in Sources */,
 				04A6BF6E19DB2D620000FA32 /* CVCell.m in Sources */,
+				04A8D95C19E4494100347349 /* RXCustomTabBar.m in Sources */,
 				04A6BF5F19DB2B550000FA32 /* YVHGalleryVC.m in Sources */,
 				04A6BF4C19DB258F0000FA32 /* YVHCameraVC.m in Sources */,
 				04A6BF7219DB2DAD0000FA32 /* YVHPicVC.m in Sources */,
-				04A6BF6319DB2C600000FA32 /* YVHCustomButtonBar.m in Sources */,
 				04A6BF6919DB2C8F0000FA32 /* FlickrPhoto.m in Sources */,
 				04A6BF6819DB2C8F0000FA32 /* Flickr.m in Sources */,
 				04A8753419E2B95300DC6923 /* YVH MapViewAnnotation.m in Sources */,

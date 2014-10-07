@@ -7,6 +7,7 @@
 //
 
 #import "YVHMainVC.h"
+#import "RXCustomTabBar.h"
 
 @interface YVHMainVC ()
 
@@ -25,7 +26,7 @@
     UIViewController *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"MapVC"];
     vc2.title = @"Map";
     
-    UITabBarController *tabBarController = [[UITabBarController alloc]init];
+    RXCustomTabBar *tabBarController = [[RXCustomTabBar alloc]init];
     
     [tabBarController setViewControllers:@[vc1, vc2]];
     
