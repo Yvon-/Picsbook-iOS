@@ -8,6 +8,7 @@
 
 #import "YVHCameraVC.h"
 #import "Pic.h"
+#import "RXCustomTabBar.h"
 #import "YVHCoreDataStack.h"
 
 @interface YVHCameraVC ()
@@ -43,13 +44,17 @@
     
     
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [self toCamera];
+}
 -(void) viewWillDisappear:(BOOL)animated{
-    [[YVHCoreDataStack getInstance] saveContext];//Guardamos en CD
+  //  [[YVHCoreDataStack getInstance] saveContext];//Guardamos en CD
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    NSLog(@"CameraVC memory warning");
 }
 
 - (void)toCamera{
@@ -82,12 +87,17 @@
     
     
     [self finishAndUpdate];
+    
+    [[RXCustomTabBar getInstance] toLastTab];
+    
 }
 
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
+    [[RXCustomTabBar getInstance] toLastTab];
+    
 }
 
 - (void)finishAndUpdate

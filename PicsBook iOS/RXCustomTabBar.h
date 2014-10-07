@@ -28,5 +28,7 @@
 
 -(void) hideNewTabBar;
 -(void) ShowNewTabBar;
+-(void) toLastTab;
++ (RXCustomTabBar*)getInstance;
 
 @end

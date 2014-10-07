@@ -7,6 +7,7 @@
 //
 
 #import "YVHMainVC.h"
+#import "YVHCameraVC.h"
 #import "RXCustomTabBar.h"
 
 @interface YVHMainVC ()
@@ -20,15 +21,16 @@
     [super viewDidLoad];
     
     UIViewController *vc1 =  [self.storyboard instantiateViewControllerWithIdentifier:@"YVHGalleryVC"];
-    vc1.title = @"Gallery";
-    
     
     UIViewController *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"MapVC"];
-    vc2.title = @"Map";
+    
+    UIViewController *vc3 = [[YVHCameraVC alloc]init];
+
+    
     
     RXCustomTabBar *tabBarController = [[RXCustomTabBar alloc]init];
     
-    [tabBarController setViewControllers:@[vc1, vc2]];
+    [tabBarController setViewControllers:@[vc1, vc2, vc3]];
     
     [self presentViewController:tabBarController animated:YES completion:nil];
 }

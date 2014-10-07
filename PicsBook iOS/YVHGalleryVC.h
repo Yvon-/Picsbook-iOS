@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "YVHCameraVC.h"
 
-@interface YVHGalleryVC : YVHCameraVC <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-
+@interface YVHGalleryVC : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @end

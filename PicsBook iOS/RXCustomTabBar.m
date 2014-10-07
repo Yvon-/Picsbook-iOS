@@ -8,15 +8,53 @@
 
 #import "RXCustomTabBar.h"
 
-@implementation RXCustomTabBar
 
+@implementation RXCustomTabBar
+static RXCustomTabBar* _shared = nil;
 @synthesize btn1, btn2, btn3, btn4;
 
+
+static int lastTab = 0;
+
++(RXCustomTabBar*)getInstance
+{
+    @synchronized([RXCustomTabBar class])
+    {
+        if (!_shared)
+        {
+            _shared = [[self alloc]init];
+        }
+        return _shared;
+    }
+    return nil;
+}
+
+
++(id)alloc
+{
+    @synchronized([self class])
+    {
+        NSAssert(_shared == nil, @"Attempted to allocate a second instance of a singleton.");
+        
+        _shared = [super alloc];
+        
+        return _shared;
+    }
+    
+    return nil;
+}
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    
+    [self hideTabBar];
+	[self addCustomElements];
+}
 - (void)viewDidAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	
-	[self hideTabBar];
-	[self addCustomElements];
+//	[self hideTabBar];
+//	[self addCustomElements];
 }
 
 - (void)hideTabBar
@@ -134,18 +172,21 @@
 			[btn2 setSelected:false];
 			[btn3 setSelected:false];
 			[btn4 setSelected:false];
+            lastTab = 0;
 			break;
 		case 1:
 			[btn1 setSelected:false];
 			[btn2 setSelected:true];
 			[btn3 setSelected:false];
 			[btn4 setSelected:false];
+            lastTab = 1;
 			break;
 		case 2:
 			[btn1 setSelected:false];
 			[btn2 setSelected:false];
 			[btn3 setSelected:true];
 			[btn4 setSelected:false];
+            
 			break;
 		case 3:
 			[btn1 setSelected:false];
@@ -160,6 +201,10 @@
 	
 }
 
+
+-(void) toLastTab{
+    [self selectTab:lastTab];
+}
 
 
 @end

@@ -12,8 +12,7 @@
 #import "Pic.h"
 #import "YVHPicVC.h"
 #import "CVCell.h"
-#import "YVHCustomButtonBar.h"
-
+#import "YVHCoreDataStack.h"
 
 
 @interface YVHGalleryVC ()
@@ -34,13 +33,15 @@
     //Change appeareance of uiviews
 	self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_cork.png"]];
     
-
+    //Coredata Stack access
+    self.managedObjectContext = [[YVHCoreDataStack getInstance] managedObjectContext];
     
     self.picsArray = [self getPics:nil];
     
     UINib *cellNib = [UINib nibWithNibName:@"CVCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
 
+    
 }
 
 
@@ -54,6 +55,7 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    NSLog(@"GalleryVC memory warning");
     // Dispose of any resources that can be recreated.
     self.collectionView = nil;
     self.picsArray = nil;

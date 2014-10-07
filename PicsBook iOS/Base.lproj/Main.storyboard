@@ -75,12 +75,12 @@
                     <navigationItem key="navigationItem" id="jEF-Jy-A7h"/>
                     <connections>
                         <outlet property="collectionView" destination="3rK-vs-sSW" id="jD4-Ld-d6p"/>
-                        <segue destination="87y-xj-VYz" kind="push" identifier="segue1" id="RgS-yH-j01"/>
+                        <segue destination="87y-xj-VYz" kind="modal" identifier="segue1" id="RgS-yH-j01"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqO-wo-r3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-63" y="-1422"/>
+            <point key="canvasLocation" x="-1071" y="-1566"/>
         </scene>
         <!--PicVC-->
         <scene sceneID="1dc-Jw-hf0">
@@ -112,22 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pBS-oZ-q8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029" y="-1474"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="g0v-Bo-NCl">
-            <objects>
-                <navigationController storyboardIdentifier="NavGalleryVC" definesPresentationContext="YES" id="TCB-8L-aeo" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Obe-t7-iuj">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="sni-Vr-0Ex" kind="relationship" relationship="rootViewController" id="Q3h-Kb-n20"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cGL-Dn-mEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1093" y="-1415"/>
+            <point key="canvasLocation" x="21" y="-1618"/>
         </scene>
         <!--MapVC-->
         <scene sceneID="q6y-8e-ibQ">
@@ -184,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CNt-lo-SYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-43" y="-170"/>
+            <point key="canvasLocation" x="-1059" y="-290"/>
         </scene>
     </scenes>
     <resources>
