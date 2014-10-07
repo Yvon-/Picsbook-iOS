@@ -10,6 +10,4 @@
 
 @interface YVHMainVC : UIViewController
 
-@property (strong, nonatomic) UITabBarController *tabBarController;
-
 @end

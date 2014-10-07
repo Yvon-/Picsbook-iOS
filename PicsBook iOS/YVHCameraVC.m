@@ -7,24 +7,12 @@
 //
 
 #import "YVHCameraVC.h"
-#import "YVHAppDelegate.h"
 #import "Pic.h"
 #import "YVHCoreDataStack.h"
 
 @interface YVHCameraVC ()
 
 @property (nonatomic, strong) NSUserDefaults *defaults;
-
-//@property (weak, nonatomic) IBOutlet UILabel *picname;
-//@property (weak, nonatomic) IBOutlet UILabel *piclong;
-//@property (weak, nonatomic) IBOutlet UILabel *piclat;
-//@property (weak, nonatomic) IBOutlet UILabel *picPath;
-//@property (weak, nonatomic) IBOutlet UITextView *piclist;
-
-@property (nonatomic, strong) YVHAppDelegate* appDelegate;
-
-
-
 
 //Gps
 @property (strong, nonatomic) CLLocationManager *locationManager;

@@ -21,9 +21,6 @@
 
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *picsArray;
-
-@property (weak, nonatomic) IBOutlet UIImageView *visor;
-
 @property (nonatomic, strong) UIImage * pickedImg;
 
 @end
@@ -43,11 +40,6 @@
     
     UINib *cellNib = [UINib nibWithNibName:@"CVCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
-    /* uncomment this block to use subclassed cells */
-    //[self.collectionView registerClass:[CVCell class] forCellWithReuseIdentifier:@"cvCell"];
-    /* end of subclass-based cells block */
-
-
 
 }
 

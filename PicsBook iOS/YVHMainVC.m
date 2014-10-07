@@ -14,34 +14,22 @@
 
 @implementation YVHMainVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidLoad];
     
-    UIViewController *vc1 =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"YVHGalleryVC"];
+    UIViewController *vc1 =  [self.storyboard instantiateViewControllerWithIdentifier:@"YVHGalleryVC"];
     vc1.title = @"Gallery";
     
     
     UIViewController *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"MapVC"];
     vc2.title = @"Map";
     
-//    UIViewController *vc2 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"VC2"];
-//    vc2.title = @"VC2";
+    UITabBarController *tabBarController = [[UITabBarController alloc]init];
     
-    self.tabBarController = [[UITabBarController alloc]init];
+    [tabBarController setViewControllers:@[vc1, vc2]];
     
-    [self.tabBarController setViewControllers:@[vc1, vc2]];
-    
-    [self presentViewController:self.tabBarController animated:YES completion:nil];
+    [self presentViewController:tabBarController animated:YES completion:nil];
 }
 
 
