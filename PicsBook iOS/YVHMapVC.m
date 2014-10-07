@@ -37,7 +37,8 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+     NSLog(@"MapVC memory warning");
+    self.view = nil;
 }
 
 

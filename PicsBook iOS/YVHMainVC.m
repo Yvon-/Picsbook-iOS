@@ -34,6 +34,10 @@
     
     [self presentViewController:tabBarController animated:YES completion:nil];
 }
-
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    NSLog(@"MainVC memory warning");
+}
 
 @end

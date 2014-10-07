@@ -21,6 +21,8 @@
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *picsArray;
 @property (nonatomic, strong) UIImage * pickedImg;
+@property (weak, nonatomic) IBOutlet UIView *PicView;
+@property (weak, nonatomic) IBOutlet UIImageView *PicViewImg;
 
 @end
 
@@ -57,8 +59,8 @@
     [super didReceiveMemoryWarning];
     NSLog(@"GalleryVC memory warning");
     // Dispose of any resources that can be recreated.
-    self.collectionView = nil;
-    self.picsArray = nil;
+ //   self.collectionView = nil;
+ //   self.picsArray = nil;
 }
 
 -(UIImage *) getPicFromDisk:(NSString*)path{
@@ -130,6 +132,8 @@
 }
 
 #pragma mark - UICollectionViewDelegate
+bool statusBarHidden = false;
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     // TODO: Select Item
@@ -139,22 +143,31 @@
     if(i<[self.picsArray count]){
         
         Pic * data = [self.picsArray objectAtIndex:x];
-        UIImage *photo = [self getPicFromDisk:data.path];
-        self.pickedImg = photo;
-        
-        [self performSegueWithIdentifier:@"segue1" sender:self];
-    }
-    
-    
-}
+        self.pickedImg = [self getPicFromDisk:data.path];
+        self.PicViewImg.image = self.pickedImg;
+        self.PicView.hidden = false;
+        self.collectionView.hidden = true;
+        statusBarHidden = true;
+        if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
+        {
+            [self setNeedsStatusBarAppearanceUpdate];
+        }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
-    if ([segue.identifier isEqualToString:@"segue1"]) {
-        YVHPicVC* picVC = [segue destinationViewController];
-        picVC.img = self.pickedImg ;
     }
+    
+    
 }
+- (BOOL)prefersStatusBarHidden
+{
+    return statusBarHidden;
+}
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+//    
+//    if ([segue.identifier isEqualToString:@"segue1"]) {
+//        YVHPicVC* picVC = [segue destinationViewController];
+//        picVC.img = self.pickedImg ;
+//    }
+//}
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     // TODO: Deselect item
@@ -194,5 +207,14 @@
     return UIEdgeInsetsMake(50, 20, 50, 20);
 }
 
+- (IBAction)backToAlbum:(id)sender {
+    self.PicView.hidden = true;
+    self.collectionView.hidden = false;
+    statusBarHidden = false;
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
+    {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
+}
 
 @end

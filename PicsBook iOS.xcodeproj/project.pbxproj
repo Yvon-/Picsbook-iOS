@@ -51,6 +51,8 @@
 		04A8753619E2B99700DC6923 /* Locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04A8753519E2B99700DC6923 /* Locations.plist */; };
 		04A8D95919E4042B00347349 /* YVHMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8D95819E4042B00347349 /* YVHMainVC.m */; };
 		04A8D95C19E4494100347349 /* RXCustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8D95B19E4494100347349 /* RXCustomTabBar.m */; };
+		04A8D95E19E4616400347349 /* HeaderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A8D95D19E4616400347349 /* HeaderBar.png */; };
+		04A8D96019E47D4F00347349 /* arrow_fwd.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A8D95F19E47D4F00347349 /* arrow_fwd.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,8 @@
 		04A8D95819E4042B00347349 /* YVHMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHMainVC.m; sourceTree = "<group>"; };
 		04A8D95A19E4494100347349 /* RXCustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXCustomTabBar.h; sourceTree = "<group>"; };
 		04A8D95B19E4494100347349 /* RXCustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXCustomTabBar.m; sourceTree = "<group>"; };
+		04A8D95D19E4616400347349 /* HeaderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeaderBar.png; sourceTree = "<group>"; };
+		04A8D95F19E47D4F00347349 /* arrow_fwd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_fwd.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +297,8 @@
 		04A6BF8D19DB6AF10000FA32 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				04A8D95F19E47D4F00347349 /* arrow_fwd.png */,
+				04A8D95D19E4616400347349 /* HeaderBar.png */,
 				04A6BF8E19DB6B0E0000FA32 /* TabBar.png */,
 				04A6BF8F19DB6B0E0000FA32 /* WorldOn.png */,
 				04A6BF9019DB6B0E0000FA32 /* worldOff.png */,
@@ -405,6 +411,8 @@
 				04A6BF9B19DB6B0E0000FA32 /* TabBar.png in Resources */,
 				04A6BF2819DB24550000FA32 /* Main.storyboard in Resources */,
 				04A6BFA719DB6B0E0000FA32 /* pushpin@2x.png in Resources */,
+				04A8D95E19E4616400347349 /* HeaderBar.png in Resources */,
+				04A8D96019E47D4F00347349 /* arrow_fwd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
