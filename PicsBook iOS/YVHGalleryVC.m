@@ -56,7 +56,7 @@
     
     [super viewWillAppear:animated];
     
-    [self.collectionView reloadData];
+    //[self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning

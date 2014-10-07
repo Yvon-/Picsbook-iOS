@@ -31,8 +31,11 @@
     vc1.title = @"Gallery";
     
     
-    UIViewController *vc2 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"VC2"];
-    vc2.title = @"VC2";
+    UIViewController *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"MapVC"];
+    vc2.title = @"Map";
+    
+//    UIViewController *vc2 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"VC2"];
+//    vc2.title = @"VC2";
     
     self.tabBarController = [[UITabBarController alloc]init];
     

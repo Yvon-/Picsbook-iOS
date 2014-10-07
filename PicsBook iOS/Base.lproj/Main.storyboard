@@ -129,6 +129,64 @@
             </objects>
             <point key="canvasLocation" x="-1093" y="-1415"/>
         </scene>
+        <!--MapVC-->
+        <scene sceneID="q6y-8e-ibQ">
+            <objects>
+                <viewController storyboardIdentifier="MapVC" id="vLd-m4-Q0d" userLabel="MapVC" customClass="YVHMapVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="62t-Ti-tOk"/>
+                        <viewControllerLayoutGuide type="bottom" id="MbS-sI-S7Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6gK-KI-NuK">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="33s-FO-pRt">
+                                <rect key="frame" x="0.0" y="66" width="768" height="914"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p5K-fi-mSe">
+                                <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Zoom" id="Iof-XW-WvM">
+                                        <connections>
+                                            <action selector="zoomIn:" destination="vLd-m4-Q0d" id="lbd-aH-ffE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Zoom" id="nUQ-hQ-SUW">
+                                        <connections>
+                                            <action selector="zoomOut:" destination="vLd-m4-Q0d" id="t2R-OX-oRO"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Type" id="EHW-YN-dZF">
+                                        <connections>
+                                            <action selector="changeMapType:" destination="vLd-m4-Q0d" id="O6K-Wi-j1Y"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.57616857320000003" blue="0.43611125719999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="33s-FO-pRt" firstAttribute="top" secondItem="62t-Ti-tOk" secondAttribute="bottom" constant="2" id="7BO-0Q-gKs"/>
+                            <constraint firstAttribute="bottom" secondItem="p5K-fi-mSe" secondAttribute="bottom" id="Aou-0C-1XJ"/>
+                            <constraint firstItem="33s-FO-pRt" firstAttribute="trailing" secondItem="p5K-fi-mSe" secondAttribute="trailing" id="I8r-Ng-ixY"/>
+                            <constraint firstItem="p5K-fi-mSe" firstAttribute="leading" secondItem="33s-FO-pRt" secondAttribute="leading" id="I91-uE-egX"/>
+                            <constraint firstAttribute="trailing" secondItem="p5K-fi-mSe" secondAttribute="trailing" id="YEu-uF-UNY"/>
+                            <constraint firstItem="33s-FO-pRt" firstAttribute="leading" secondItem="6gK-KI-NuK" secondAttribute="leading" id="bDt-nS-4nV"/>
+                            <constraint firstItem="p5K-fi-mSe" firstAttribute="top" secondItem="33s-FO-pRt" secondAttribute="bottom" id="gJX-wt-BWL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="syK-dY-Sz7"/>
+                    <connections>
+                        <outlet property="mapView" destination="33s-FO-pRt" id="AEo-4d-sjL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CNt-lo-SYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-43" y="-170"/>
+        </scene>
     </scenes>
     <resources>
         <image name="pushpin.png" width="22" height="31"/>
