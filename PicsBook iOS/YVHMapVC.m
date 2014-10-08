@@ -36,12 +36,12 @@
     //Coredata Stack access
     self.managedObjectContext = [YVHDAO getContext];
     
-    self.picsArray = [YVHDAO getPics:nil];
+    self.picsArray = [YVHDAO getSelectedPics];
     
-    
-    [self.mapView addAnnotations:[self getAnnotations]];
+  //  [self.mapView addAnnotations:[self getAnnotations]];
+    [self.mapView showAnnotations:[self getAnnotations] animated:YES];
     _mapView.showsUserLocation = YES;
-    [self zoomToLocation];
+    //[self zoomToLocation];
 }
 
 - (void)didReceiveMemoryWarning

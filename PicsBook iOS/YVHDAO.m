@@ -10,6 +10,7 @@
 
 
 @implementation YVHDAO
+static NSArray * selectedPics;
 
 +(NSManagedObjectContext *)getContext{
     return [[YVHCoreDataStack getInstance] managedObjectContext];
@@ -35,6 +36,14 @@
     
     return array;
     
+}
+
++(void)setSelectedPics:(NSArray*)pics{
+    selectedPics = pics;
+}
+
++(NSArray*)getSelectedPics{
+    return selectedPics;
 }
 
 @end

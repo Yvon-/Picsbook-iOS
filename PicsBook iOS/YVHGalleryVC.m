@@ -41,6 +41,7 @@
     self.managedObjectContext = [YVHDAO getContext];
     
     self.picsArray = [YVHDAO  getPics:nil];
+    [YVHDAO setSelectedPics:self.picsArray];
     
     UINib *cellNib = [UINib nibWithNibName:@"CVCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
@@ -169,6 +170,7 @@ bool statusBarHidden = false;
             [self setNeedsStatusBarAppearanceUpdate];
         }
 
+        [YVHDAO setSelectedPics:@[data]];
     }
     
     
@@ -231,6 +233,8 @@ bool statusBarHidden = false;
     {
         [self setNeedsStatusBarAppearanceUpdate];
     }
+    self.picsArray = [YVHDAO  getPics:nil];
+    [YVHDAO setSelectedPics:self.picsArray];
 }
 
 @end
