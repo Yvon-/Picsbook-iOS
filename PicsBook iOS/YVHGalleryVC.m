@@ -12,7 +12,7 @@
 #import "Pic.h"
 #import "YVHPicVC.h"
 #import "CVCell.h"
-#import "YVHCoreDataStack.h"
+#import "YVHDAO.h"
 
 
 @interface YVHGalleryVC ()
@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIView *PicView;
 @property (weak, nonatomic) IBOutlet UIImageView *PicViewImg;
 @property(nonatomic,assign) BOOL contextHasChange;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end
 
@@ -37,9 +38,9 @@
 	self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_cork.png"]];
     
     //Coredata Stack access
-    self.managedObjectContext = [[YVHCoreDataStack getInstance] managedObjectContext];
+    self.managedObjectContext = [YVHDAO getContext];
     
-    self.picsArray = [self getPics:nil];
+    self.picsArray = [YVHDAO  getPics:nil];
     
     UINib *cellNib = [UINib nibWithNibName:@"CVCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
@@ -59,7 +60,7 @@
     [super viewWillAppear:animated];
     
     if(self.contextHasChange){
-        self.picsArray = [self getPics:nil];
+        self.picsArray = [YVHDAO getPics:nil];
         [self.collectionView reloadData];
 
     }
@@ -104,26 +105,6 @@
     return  [path stringByAppendingString:@"_s"];
 }
 
--(NSArray*)getPics:(NSPredicate*)pred{
-    NSEntityDescription *entityDescription = [NSEntityDescription
-                                              entityForName:@"Pic" inManagedObjectContext:self.managedObjectContext];
-    
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    if(pred)request.predicate = pred;
-    
-    [request setEntity:entityDescription];
-    
-    NSError *error;
-    NSArray *array = [self.managedObjectContext executeFetchRequest:request error:&error];
-    if (array == nil)
-    {
-        NSLog(@"No hay datos");
-    }
-
-    
-    return array;
-    
-}
 
 #pragma mark - UICollectionView Datasource
 

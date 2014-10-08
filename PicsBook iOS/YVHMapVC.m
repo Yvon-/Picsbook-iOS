@@ -8,9 +8,12 @@
 
 #import "YVHMapVC.h"
 #import "YVH MapViewAnnotation.h"
+#import "YVHDAO.h"
+#import "Pic.h"
 
 @interface YVHMapVC ()
-
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSArray *picsArray;
 @end
 
 @implementation YVHMapVC
@@ -29,7 +32,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.mapView addAnnotations:[self createAnnotations]];
+    
+    //Coredata Stack access
+    self.managedObjectContext = [YVHDAO getContext];
+    
+    self.picsArray = [YVHDAO getPics:nil];
+    
+    
+    [self.mapView addAnnotations:[self getAnnotations]];
     _mapView.showsUserLocation = YES;
     [self zoomToLocation];
 }
@@ -85,6 +95,29 @@ float lat, lon;
         NSNumber *latitude = [row objectForKey:@"latitude"];
         NSNumber *longitude = [row objectForKey:@"longitude"];
         NSString *title = [row objectForKey:@"title"];
+        lat = [latitude floatValue];
+        lon = [longitude floatValue];
+        //Create coordinates from the latitude and longitude values
+        CLLocationCoordinate2D coord;
+        coord.latitude = latitude.doubleValue;
+        coord.longitude = longitude.doubleValue;
+        YVH_MapViewAnnotation *annotation = [[YVH_MapViewAnnotation alloc] initWithTitle:title AndCoordinate:coord];
+        [annotations addObject:annotation];
+    }
+    return annotations;
+}
+
+
+- (NSMutableArray *)getAnnotations
+{
+    NSMutableArray *annotations = [[NSMutableArray alloc] init];
+    
+    //Read locations details from plist
+    for (Pic *p in self.picsArray) {
+        NSNumber *latitude =  p.latitude ;
+        NSNumber *longitude = p.longitude;
+        NSString *title = p.name;
+        
         lat = [latitude floatValue];
         lon = [longitude floatValue];
         //Create coordinates from the latitude and longitude values

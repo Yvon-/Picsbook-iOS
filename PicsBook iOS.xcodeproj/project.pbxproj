@@ -53,6 +53,7 @@
 		04A8D95C19E4494100347349 /* RXCustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8D95B19E4494100347349 /* RXCustomTabBar.m */; };
 		04A8D95E19E4616400347349 /* HeaderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A8D95D19E4616400347349 /* HeaderBar.png */; };
 		04A8D96019E47D4F00347349 /* arrow_fwd.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A8D95F19E47D4F00347349 /* arrow_fwd.png */; };
+		04A8D96719E4CEAB00347349 /* YVHDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8D96619E4CEAB00347349 /* YVHDAO.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,8 @@
 		04A8D95B19E4494100347349 /* RXCustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXCustomTabBar.m; sourceTree = "<group>"; };
 		04A8D95D19E4616400347349 /* HeaderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeaderBar.png; sourceTree = "<group>"; };
 		04A8D95F19E47D4F00347349 /* arrow_fwd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_fwd.png; sourceTree = "<group>"; };
+		04A8D96519E4CEAB00347349 /* YVHDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHDAO.h; sourceTree = "<group>"; };
+		04A8D96619E4CEAB00347349 /* YVHDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHDAO.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +281,8 @@
 				04A6BF6719DB2C8F0000FA32 /* FlickrPhoto.m */,
 				04A6BF8719DB43D30000FA32 /* YVHCoreDataStack.h */,
 				04A6BF8819DB43D30000FA32 /* YVHCoreDataStack.m */,
+				04A8D96519E4CEAB00347349 /* YVHDAO.h */,
+				04A8D96619E4CEAB00347349 /* YVHDAO.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -431,6 +436,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A8D96719E4CEAB00347349 /* YVHDAO.m in Sources */,
 				04A6BFAD19DB74FA0000FA32 /* Face.m in Sources */,
 				04A6BF8419DB3F320000FA32 /* _Pic.m in Sources */,
 				04A6BF8319DB3F320000FA32 /* _Face.m in Sources */,
