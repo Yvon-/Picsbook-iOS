@@ -59,6 +59,10 @@ int zoomFactor = 20000;
         _mapView.mapType = MKMapTypeStandard;
     
 }
+-(void)viewDidDisappear:(BOOL)animated{
+    self.view = nil;
+    self.mapView = nil;
+}
 
 - (IBAction)zoomOut:(id)sender {
     MKUserLocation *userLocation = _mapView.userLocation;

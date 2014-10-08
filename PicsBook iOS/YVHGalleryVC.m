@@ -23,6 +23,7 @@
 @property (nonatomic, strong) UIImage * pickedImg;
 @property (weak, nonatomic) IBOutlet UIView *PicView;
 @property (weak, nonatomic) IBOutlet UIImageView *PicViewImg;
+@property(nonatomic,assign) BOOL contextHasChange;
 
 @end
 
@@ -43,7 +44,13 @@
     UINib *cellNib = [UINib nibWithNibName:@"CVCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
 
+    self.contextHasChange = NO;
     
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(handleDataModelChange:)
+     name:NSManagedObjectContextObjectsDidChangeNotification
+     object: self.managedObjectContext];
 }
 
 
@@ -51,7 +58,11 @@
     
     [super viewWillAppear:animated];
     
-    //[self.collectionView reloadData];
+    if(self.contextHasChange){
+        self.picsArray = [self getPics:nil];
+        [self.collectionView reloadData];
+
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,14 +74,35 @@
  //   self.picsArray = nil;
 }
 
+- (void)handleDataModelChange:(NSNotification *)note
+{
+//    NSSet *updatedObjects = [[note userInfo] objectForKey:NSUpdatedObjectsKey];
+//    NSSet *deletedObjects = [[note userInfo] objectForKey:NSDeletedObjectsKey];
+//    NSSet *insertedObjects = [[note userInfo] objectForKey:NSInsertedObjectsKey];
+    
+    self.contextHasChange = YES;
+}
+
 -(UIImage *) getPicFromDisk:(NSString*)path{
     NSData *imgData = [NSData dataWithContentsOfFile:path];
     //UIImage *thumbNail = [UIImage imageNamed:@"2014-08-28 19.00.58.jpg"];
+    UIImage *img = [[UIImage alloc] initWithData:imgData];
+    
+    return img;
+}
+
+-(UIImage *) getThumnailFromDisk:(NSString*)path{
+    NSString * thPath = [self convertToThPath:path];
+    NSData *imgData = [NSData dataWithContentsOfFile:thPath];
     UIImage *thumbNail = [[UIImage alloc] initWithData:imgData];
     
     return thumbNail;
 }
 
+-(NSString *)convertToThPath:(NSString*)path{
+    //int len = [path length];
+    return  [path stringByAppendingString:@"_s"];
+}
 
 -(NSArray*)getPics:(NSPredicate*)pred{
     NSEntityDescription *entityDescription = [NSEntityDescription
@@ -87,7 +119,10 @@
     {
         NSLog(@"No hay datos");
     }
+
+    
     return array;
+    
 }
 
 #pragma mark - UICollectionView Datasource
@@ -119,7 +154,7 @@
 
     if(x<[self.picsArray count]){
         Pic * data = [self.picsArray objectAtIndex:x];
-        UIImage *photo = [self getPicFromDisk:data.path];
+        UIImage *photo = [self getThumnailFromDisk:data.path];
         
         cell.backgroundColor = [UIColor whiteColor];
         cell.image.image = photo;

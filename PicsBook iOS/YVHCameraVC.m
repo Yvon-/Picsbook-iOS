@@ -19,7 +19,6 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *startLocation;
 
-@property (nonatomic, weak) IBOutlet UIImageView *imageView;
 @property (nonatomic) NSMutableArray *capturedImages;
 
 //Current Pic
@@ -81,15 +80,9 @@
 {
     
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    
-    
     [self.capturedImages addObject:image];
-    
-    
     [self finishAndUpdate];
-    
     [[RXCustomTabBar getInstance] toLastTab];
-    
 }
 
 
@@ -102,7 +95,7 @@
 
 - (void)finishAndUpdate
 {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
     if ([self.capturedImages count] > 0)
     {
@@ -110,13 +103,14 @@
         {
             _currentPic =  [Pic insertInManagedObjectContext:self.managedObjectContext];
             // Camera took a single picture.
-            [self.imageView setImage:[self.capturedImages objectAtIndex:0]];
-            
             UIImage *originalPhoto = [self.capturedImages objectAtIndex:0];
-
             
             //Guardamos foto en disco
-            [self saveImage:originalPhoto withName:nil];
+            [self saveImage:originalPhoto];
+            
+            //Creamos y guardamos una reducida
+            UIImage *small = [self getThumbnail:originalPhoto];
+            [self saveTumbnail:small];
             
             //Detectamos caras
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ // 1
@@ -129,10 +123,6 @@
                 
 //                [self showData]; //Muestra datos en el view
             });
-            
-            
-            self.imageView.image = originalPhoto;
-            
             
         }
         else
@@ -151,6 +141,34 @@
     
 }
 
+
+-(UIImage *)getThumbnail:(UIImage*)originalImage{
+   
+    CGSize destinationSize = [self reducePic:originalImage.size];
+    
+    UIGraphicsBeginImageContext(destinationSize);
+    [originalImage drawInRect:CGRectMake(0,0,destinationSize.width,destinationSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+-(CGSize)reducePic:(CGSize)sz{
+    int w, h, ws, hs ;
+    w = sz.width;
+    h = sz.height;
+    if(w > h ){
+        ws = 200;
+        hs = h*ws/w;
+    }
+    else{
+        hs = 200;
+        ws = w*hs/h;
+    }
+    
+    return CGSizeMake(ws, hs);
+    
+}
 //-(void)showData{
 //    _picname.text = _currentPic.name;
 //    _picPath.text = _currentPic.path;
@@ -158,7 +176,7 @@
 //    _piclat.text = [_currentPic.latitude stringValue];
 //}
 
--(void)saveImage:(UIImage*)image withName:(NSString *)name{
+-(void)saveImage:(UIImage*)image{
     
     NSNumber * nPics = [self.defaults objectForKey:@"totalPicsDone"];
     if(nPics) nPics = @(nPics.intValue+1);
@@ -181,6 +199,26 @@
         self.currentPic.name = tmpFileName;
         self.currentPic.path = tmpFilePath;
     }else self.currentPic.name = nil;
+    
+    
+}
+
+-(void)saveTumbnail:(UIImage*)image{
+    
+    NSNumber * nPics = [self.defaults objectForKey:@"totalPicsDone"];
+    if(nPics) nPics = @(nPics.intValue);
+    else nPics = @1;
+ 
+    //    NSString *tmpDir = NSTemporaryDirectory();
+    NSString *hDir = NSHomeDirectory();
+    NSString *tmpDir = [hDir stringByAppendingString:@"/Documents"];
+    NSString *tmpFileName = [[@"pic" stringByAppendingString:[nPics stringValue]]stringByAppendingString:@"_s"];
+    NSString *tmpFilePath= [tmpDir stringByAppendingPathComponent:tmpFileName];
+    
+   // NSLog(@"Created %@", tmpFilePath);
+    
+    
+   [UIImageJPEGRepresentation(image, 1) writeToFile:tmpFilePath atomically:YES];
     
     
 }
