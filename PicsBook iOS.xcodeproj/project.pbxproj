@@ -46,6 +46,10 @@
 		04A6BFA719DB6B0E0000FA32 /* pushpin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9A19DB6B0E0000FA32 /* pushpin@2x.png */; };
 		04A6BFAA19DB74F90000FA32 /* Pic.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BFA919DB74F90000FA32 /* Pic.m */; };
 		04A6BFAD19DB74FA0000FA32 /* Face.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BFAC19DB74FA0000FA32 /* Face.m */; };
+		04A7C53719E558D900DDF124 /* Foto2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A7C53319E558D900DDF124 /* Foto2.jpg */; };
+		04A7C53819E558D900DDF124 /* Foto1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A7C53419E558D900DDF124 /* Foto1.jpg */; };
+		04A7C53919E558D900DDF124 /* Foto3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A7C53519E558D900DDF124 /* Foto3.jpg */; };
+		04A7C53A19E558D900DDF124 /* Foto4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A7C53619E558D900DDF124 /* Foto4.jpg */; };
 		04A8753119E2B94400DC6923 /* YVHMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8753019E2B94400DC6923 /* YVHMapVC.m */; };
 		04A8753419E2B95300DC6923 /* YVH MapViewAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8753319E2B95300DC6923 /* YVH MapViewAnnotation.m */; };
 		04A8753619E2B99700DC6923 /* Locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04A8753519E2B99700DC6923 /* Locations.plist */; };
@@ -121,6 +125,10 @@
 		04A6BFA919DB74F90000FA32 /* Pic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pic.m; sourceTree = "<group>"; };
 		04A6BFAB19DB74FA0000FA32 /* Face.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Face.h; sourceTree = "<group>"; };
 		04A6BFAC19DB74FA0000FA32 /* Face.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Face.m; sourceTree = "<group>"; };
+		04A7C53319E558D900DDF124 /* Foto2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Foto2.jpg; sourceTree = "<group>"; };
+		04A7C53419E558D900DDF124 /* Foto1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Foto1.jpg; sourceTree = "<group>"; };
+		04A7C53519E558D900DDF124 /* Foto3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Foto3.jpg; sourceTree = "<group>"; };
+		04A7C53619E558D900DDF124 /* Foto4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Foto4.jpg; sourceTree = "<group>"; };
 		04A8752F19E2B94400DC6923 /* YVHMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHMapVC.h; sourceTree = "<group>"; };
 		04A8753019E2B94400DC6923 /* YVHMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHMapVC.m; sourceTree = "<group>"; };
 		04A8753219E2B95300DC6923 /* YVH MapViewAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YVH MapViewAnnotation.h"; sourceTree = "<group>"; };
@@ -194,9 +202,9 @@
 			isa = PBXGroup;
 			children = (
 				04A6BF8D19DB6AF10000FA32 /* Res */,
-				04A6BF6A19DB2D4D0000FA32 /* View */,
 				04A6BF6019DB2C430000FA32 /* Util */,
 				04A6BF4E19DB275F0000FA32 /* Model */,
+				04A6BF6A19DB2D4D0000FA32 /* View */,
 				04A6BF4919DB25410000FA32 /* Controllers */,
 				04A8753519E2B99700DC6923 /* Locations.plist */,
 				04A6BF4D19DB26A80000FA32 /* YVHAppDelegate.h */,
@@ -302,8 +310,34 @@
 		04A6BF8D19DB6AF10000FA32 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				04A7C53219E558C100DDF124 /* Initial Pics */,
+				04A7C53B19E55B2300DDF124 /* Tabbar icons */,
 				04A8D95F19E47D4F00347349 /* arrow_fwd.png */,
 				04A8D95D19E4616400347349 /* HeaderBar.png */,
+				04A6BF9619DB6B0E0000FA32 /* bg_cork.png */,
+				04A6BF9719DB6B0E0000FA32 /* bg_cork@2x.png */,
+				04A6BF9919DB6B0E0000FA32 /* pushpin.png */,
+				04A6BF9A19DB6B0E0000FA32 /* pushpin@2x.png */,
+			);
+			name = Res;
+			sourceTree = "<group>";
+		};
+		04A7C53219E558C100DDF124 /* Initial Pics */ = {
+			isa = PBXGroup;
+			children = (
+				04A7C53419E558D900DDF124 /* Foto1.jpg */,
+				04A7C53319E558D900DDF124 /* Foto2.jpg */,
+				04A7C53519E558D900DDF124 /* Foto3.jpg */,
+				04A7C53619E558D900DDF124 /* Foto4.jpg */,
+			);
+			name = "Initial Pics";
+			sourceTree = "<group>";
+		};
+		04A7C53B19E55B2300DDF124 /* Tabbar icons */ = {
+			isa = PBXGroup;
+			children = (
+				04A6BF9819DB6B0E0000FA32 /* cameraOff.png */,
+				04A6BF9519DB6B0E0000FA32 /* menu.png */,
 				04A6BF8E19DB6B0E0000FA32 /* TabBar.png */,
 				04A6BF8F19DB6B0E0000FA32 /* WorldOn.png */,
 				04A6BF9019DB6B0E0000FA32 /* worldOff.png */,
@@ -311,14 +345,8 @@
 				04A6BF9219DB6B0E0000FA32 /* mapOn.png */,
 				04A6BF9319DB6B0E0000FA32 /* mapOff.png */,
 				04A6BF9419DB6B0E0000FA32 /* Galery_s.png */,
-				04A6BF9519DB6B0E0000FA32 /* menu.png */,
-				04A6BF9619DB6B0E0000FA32 /* bg_cork.png */,
-				04A6BF9719DB6B0E0000FA32 /* bg_cork@2x.png */,
-				04A6BF9819DB6B0E0000FA32 /* cameraOff.png */,
-				04A6BF9919DB6B0E0000FA32 /* pushpin.png */,
-				04A6BF9A19DB6B0E0000FA32 /* pushpin@2x.png */,
 			);
-			name = Res;
+			name = "Tabbar icons";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,11 +430,14 @@
 				04A6BF6F19DB2D620000FA32 /* CVCell.xib in Resources */,
 				04A6BFA519DB6B0E0000FA32 /* cameraOff.png in Resources */,
 				04A6BF9E19DB6B0E0000FA32 /* Galery.png in Resources */,
+				04A7C53A19E558D900DDF124 /* Foto4.jpg in Resources */,
 				04A6BF2D19DB24550000FA32 /* Images.xcassets in Resources */,
+				04A7C53919E558D900DDF124 /* Foto3.jpg in Resources */,
 				04A6BFA619DB6B0E0000FA32 /* pushpin.png in Resources */,
 				04A6BFA419DB6B0E0000FA32 /* bg_cork@2x.png in Resources */,
 				04A6BF9D19DB6B0E0000FA32 /* worldOff.png in Resources */,
 				04A6BF1F19DB24550000FA32 /* InfoPlist.strings in Resources */,
+				04A7C53819E558D900DDF124 /* Foto1.jpg in Resources */,
 				04A8753619E2B99700DC6923 /* Locations.plist in Resources */,
 				04A6BFA019DB6B0E0000FA32 /* mapOff.png in Resources */,
 				04A6BF9C19DB6B0E0000FA32 /* WorldOn.png in Resources */,
@@ -414,6 +445,7 @@
 				04A6BFA319DB6B0E0000FA32 /* bg_cork.png in Resources */,
 				04A6BFA119DB6B0E0000FA32 /* Galery_s.png in Resources */,
 				04A6BF9B19DB6B0E0000FA32 /* TabBar.png in Resources */,
+				04A7C53719E558D900DDF124 /* Foto2.jpg in Resources */,
 				04A6BF2819DB24550000FA32 /* Main.storyboard in Resources */,
 				04A6BFA719DB6B0E0000FA32 /* pushpin@2x.png in Resources */,
 				04A8D95E19E4616400347349 /* HeaderBar.png in Resources */,

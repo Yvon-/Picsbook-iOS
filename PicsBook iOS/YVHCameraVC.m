@@ -34,6 +34,7 @@
     self.capturedImages = [[NSMutableArray alloc] init];
     self.defaults = [NSUserDefaults standardUserDefaults];
     
+    //Location manager settings
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     _locationManager.delegate = self;
@@ -56,12 +57,17 @@
     NSLog(@"CameraVC memory warning");
 }
 
+
 - (void)toCamera{
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
         [self showImagePickerForSourceType:UIImagePickerControllerSourceTypeCamera];
     }
 }
+
+
+#pragma mark -
+#pragma mark - ImagePicker
 
 - (void)showImagePickerForSourceType:(UIImagePickerControllerSourceType)sourceType
 {
@@ -93,6 +99,8 @@
     
 }
 
+#pragma mark -  Camera auxiliar methods
+
 - (void)finishAndUpdate
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -112,17 +120,19 @@
             UIImage *small = [self getThumbnail:originalPhoto];
             [self saveTumbnail:small];
             
+            //Localizamos
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ // 1
+                [self getGeoPos];
+                
+                //                [self showData]; //Muestra datos en el view
+            });
+            
             //Detectamos caras
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ // 1
                 [self faceDetectInImage:originalPhoto];
             });
             
-            //Localizamos
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ // 1
-                [self getGeoPos];
-                
-//                [self showData]; //Muestra datos en el view
-            });
+      
             
         }
         else
@@ -328,23 +338,11 @@
     for(Pic * p in pics) [self deletePic:p];
 }
 
--(void)getGeoPos{
-    
-    
-    [_locationManager startUpdatingLocation];
-    
-    //    CLLocationManager *gestorLocalizacion = [[CLLocationManager alloc] init];
-    //    [gestorLocalizacion setDistanceFilter:10];
-    //    [gestorLocalizacion setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
-    //    [gestorLocalizacion setDelegate:self];
-    //    [gestorLocalizacion startUpdatingLocation];
-    
-    
-}
+
 
 
 #pragma mark -
-#pragma mark CLLocationManagerDelegate
+#pragma mark - CLLocationManagerDelegate
 
 -(void)locationManager:(CLLocationManager *)manager
    didUpdateToLocation:(CLLocation *)newLocation
@@ -376,5 +374,18 @@
     NSLog(@"Location manager fails");
 }
 
+-(void)getGeoPos{
+    
+    
+    [_locationManager startUpdatingLocation];
+    
+    //    CLLocationManager *gestorLocalizacion = [[CLLocationManager alloc] init];
+    //    [gestorLocalizacion setDistanceFilter:10];
+    //    [gestorLocalizacion setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
+    //    [gestorLocalizacion setDelegate:self];
+    //    [gestorLocalizacion startUpdatingLocation];
+    
+    
+}
 
 @end

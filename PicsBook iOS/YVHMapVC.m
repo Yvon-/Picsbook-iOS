@@ -116,7 +116,9 @@ float lat, lon;
     for (Pic *p in self.picsArray) {
         NSNumber *latitude =  p.latitude ;
         NSNumber *longitude = p.longitude;
+        if([latitude isEqual:@0] && [longitude isEqual:@0]) continue;
         NSString *title = p.name;
+        
         
         lat = [latitude floatValue];
         lon = [longitude floatValue];
