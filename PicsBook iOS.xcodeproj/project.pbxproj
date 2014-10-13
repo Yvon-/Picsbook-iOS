@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04181B8219EBEF69000A546B /* options2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04181B7F19EBEF69000A546B /* options2.png */; };
+		04181B8319EBEF69000A546B /* options4.png in Resources */ = {isa = PBXBuildFile; fileRef = 04181B8019EBEF69000A546B /* options4.png */; };
+		04181B8419EBEF69000A546B /* options3.png in Resources */ = {isa = PBXBuildFile; fileRef = 04181B8119EBEF69000A546B /* options3.png */; };
 		04A6BF1519DB24550000FA32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A6BF1419DB24550000FA32 /* Foundation.framework */; };
 		04A6BF1719DB24550000FA32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A6BF1619DB24550000FA32 /* CoreGraphics.framework */; };
 		04A6BF1919DB24550000FA32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A6BF1819DB24550000FA32 /* UIKit.framework */; };
@@ -71,6 +74,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04181B7F19EBEF69000A546B /* options2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = options2.png; sourceTree = "<group>"; };
+		04181B8019EBEF69000A546B /* options4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = options4.png; sourceTree = "<group>"; };
+		04181B8119EBEF69000A546B /* options3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = options3.png; sourceTree = "<group>"; };
 		04A6BF1119DB24550000FA32 /* PicsBook iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PicsBook iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A6BF1419DB24550000FA32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04A6BF1619DB24550000FA32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -310,6 +316,9 @@
 		04A6BF8D19DB6AF10000FA32 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				04181B7F19EBEF69000A546B /* options2.png */,
+				04181B8019EBEF69000A546B /* options4.png */,
+				04181B8119EBEF69000A546B /* options3.png */,
 				04A7C53219E558C100DDF124 /* Initial Pics */,
 				04A7C53B19E55B2300DDF124 /* Tabbar icons */,
 				04A8D95F19E47D4F00347349 /* arrow_fwd.png */,
@@ -427,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04A6BF9F19DB6B0E0000FA32 /* mapOn.png in Resources */,
+				04181B8219EBEF69000A546B /* options2.png in Resources */,
 				04A6BF6F19DB2D620000FA32 /* CVCell.xib in Resources */,
 				04A6BFA519DB6B0E0000FA32 /* cameraOff.png in Resources */,
 				04A6BF9E19DB6B0E0000FA32 /* Galery.png in Resources */,
@@ -448,6 +458,8 @@
 				04A7C53719E558D900DDF124 /* Foto2.jpg in Resources */,
 				04A6BF2819DB24550000FA32 /* Main.storyboard in Resources */,
 				04A6BFA719DB6B0E0000FA32 /* pushpin@2x.png in Resources */,
+				04181B8419EBEF69000A546B /* options3.png in Resources */,
+				04181B8319EBEF69000A546B /* options4.png in Resources */,
 				04A8D95E19E4616400347349 /* HeaderBar.png in Resources */,
 				04A8D96019E47D4F00347349 /* arrow_fwd.png in Resources */,
 			);

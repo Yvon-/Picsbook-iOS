@@ -19,12 +19,16 @@
 
 
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) IBOutlet UIView * optionsView;
+@property (weak, nonatomic) IBOutlet UIImageView *optionsViewImg;
+
 @property (nonatomic, strong) NSArray *picsArray;
 @property (nonatomic, strong) UIImage * pickedImg;
 @property (weak, nonatomic) IBOutlet UIView *PicView;
 @property (weak, nonatomic) IBOutlet UIImageView *PicViewImg;
 @property(nonatomic,assign) BOOL contextHasChange;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 
 @end
 
@@ -65,6 +69,8 @@
         [self.collectionView reloadData];
 
     }
+    
+    [self addOptionsView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,6 +90,8 @@
     
     self.contextHasChange = YES;
 }
+
+#pragma mark -
 
 -(UIImage *) getPicFromDisk:(NSString*)path{
     NSData *imgData = [NSData dataWithContentsOfFile:path];
@@ -107,6 +115,105 @@
 }
 
 
+
+
+#pragma mark - UI
+
+- (IBAction)backToAlbum:(id)sender {
+    self.PicView.hidden = true;
+    self.collectionView.hidden = false;
+    statusBarHidden = false;
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
+    {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
+    self.picsArray = [YVHDAO  getPics:nil];
+    [YVHDAO setSelectedPics:self.picsArray];
+}
+
+-(void)addOptionsView
+{
+    int options = 3;
+    int optionHeight = 40;
+    int width = 120;
+    int height = optionHeight * options;
+    
+    
+    CGRect s1 = self.optionsView.frame;
+    //Bar image
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    self.optionsView.frame = CGRectMake(screenRect.size.width - width, screenRect.size.height , width, height);
+    self.optionsViewImg.image = [UIImage imageNamed:@"options3.png"];
+     s1 = self.optionsView.frame;
+    [self.view bringSubviewToFront:self.optionsView];
+
+
+    
+    [UIView animateWithDuration:0.4 animations:^{
+        self.optionsView.frame = CGRectMake(screenRect.size.width - 35 - width, screenRect.size.height - 137 - height, width, height);
+        self.optionsView.alpha = .5;
+    }];
+     s1 = self.optionsView.frame;
+    
+	// Initialise our two images
+	UIImage *btnImage = [UIImage imageNamed:@"Galery.png"];
+	UIImage *btnImageSelected = [UIImage imageNamed:@"Galery_s.png"];
+    
+//    self.btn1 = [UIButton buttonWithType:UIButtonTypeCustom]; //Setup the button
+//	self.btn1.frame = CGRectMake(screenRect.size.width/8 - 30, self.view.bounds.size.height+10 - 50, 40, 30); // Set the frame (size and position) of the button)
+//    
+//	[self.btn1 setBackgroundImage:btnImage forState:UIControlStateNormal]; // Set the image for the normal state of the button
+//	[self.btn1 setBackgroundImage:btnImageSelected forState:UIControlStateSelected]; // Set the image for the selected state of the button
+//	[self.btn1 setTag:0]; // Assign the button a "tag" so when our "click" event is called we know which button was pressed.
+//	[self.btn1 setSelected:true]; // Set this button as selected (we will select the others to false as we only want Tab 1 to be selected initially
+//    [self.btn1 setImageEdgeInsets:UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0)];
+//    [self.btn1.imageView setContentMode:UIViewContentModeScaleAspectFit];
+//	
+//    
+//	
+//	// Now we repeat the process for the other buttons
+//	btnImage = [UIImage imageNamed:@"mapOff.png"];
+//	btnImageSelected = [UIImage imageNamed:@"mapOn.png"];
+//	self.btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+//	self.btn2.frame = CGRectMake(3*screenRect.size.width/8 - 30, self.view.bounds.size.height +5 - 50, 40, 40);
+//	[self.btn2 setBackgroundImage:btnImage forState:UIControlStateNormal];
+//	[self.btn2 setBackgroundImage:btnImageSelected forState:UIControlStateSelected];
+//	[self.btn2 setTag:1];
+//	
+//	btnImage = [UIImage imageNamed:@"cameraOff.png"];
+//	btnImageSelected = [UIImage imageNamed:@"cameraOff.png"];
+//	self.btn3 = [UIButton buttonWithType:UIButtonTypeCustom];
+//	self.btn3.frame = CGRectMake(5*screenRect.size.width/8-20 , self.view.bounds.size.height+5 - 50, 50, 40);
+//	[self.btn3 setBackgroundImage:btnImage forState:UIControlStateNormal];
+//	[self.btn3 setBackgroundImage:btnImageSelected forState:UIControlStateSelected];
+//	[self.btn3 setTag:2];
+//	
+//	btnImage = [UIImage imageNamed:@"menu.png"];
+//	btnImageSelected = [UIImage imageNamed:@"menu.png"];
+//	self.btn4 = [UIButton buttonWithType:UIButtonTypeCustom];
+//	self.btn4.frame = CGRectMake(7*screenRect.size.width/8 -10, self.view.bounds.size.height+10 - 50, 35, 30);
+//	[self.btn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
+//	[self.btn4 setBackgroundImage:btnImageSelected forState:UIControlStateSelected];
+//	[self.btn4 setTag:3];
+//    
+//    
+//	// Add my new buttons to the view
+//	[self.view addSubview:btn1];
+//	[self.view addSubview:btn2];
+//	[self.view addSubview:btn3];
+//	[self.view addSubview:btn4];
+//	
+//	// Setup event handlers so that the buttonClicked method will respond to the touch up inside event.
+//	[btn1 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+//	[btn2 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+//	[btn3 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+//	[btn4 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+
+
+
+#pragma mark -
 #pragma mark - UICollectionView Datasource
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -153,7 +260,6 @@ bool statusBarHidden = false;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    // TODO: Select Item
     NSInteger x = indexPath.row;
     NSInteger y = indexPath.section;
     NSInteger i = x + (y * 3);
@@ -188,11 +294,11 @@ bool statusBarHidden = false;
 //}
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Deselect item
+    // Deselect item
 }
 
 
-
+#pragma mark -
 #pragma mark – UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     Pic *data = self.picsArray[indexPath.row];
@@ -225,16 +331,6 @@ bool statusBarHidden = false;
     return UIEdgeInsetsMake(50, 20, 50, 20);
 }
 
-- (IBAction)backToAlbum:(id)sender {
-    self.PicView.hidden = true;
-    self.collectionView.hidden = false;
-    statusBarHidden = false;
-    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
-    {
-        [self setNeedsStatusBarAppearanceUpdate];
-    }
-    self.picsArray = [YVHDAO  getPics:nil];
-    [YVHDAO setSelectedPics:self.picsArray];
-}
+
 
 @end

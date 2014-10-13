@@ -69,6 +69,17 @@
                                     <outlet property="delegate" destination="sni-Vr-0Ex" id="xbE-qo-CWo"/>
                                 </connections>
                             </collectionView>
+                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VVA-ts-OSP" userLabel="View - Options">
+                                <rect key="frame" x="308" y="1024" width="150" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nZy-O1-UIa">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XMc-OP-vCc">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -77,7 +88,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4k-81-moz">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4k-81-moz" userLabel="View - Header">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
@@ -128,6 +139,8 @@
                         <outlet property="PicView" destination="XMc-OP-vCc" id="amb-zK-XvF"/>
                         <outlet property="PicViewImg" destination="gP2-GK-LX8" id="FsX-mY-dO0"/>
                         <outlet property="collectionView" destination="3rK-vs-sSW" id="jD4-Ld-d6p"/>
+                        <outlet property="optionsView" destination="VVA-ts-OSP" id="gbZ-vj-xhz"/>
+                        <outlet property="optionsViewImg" destination="nZy-O1-UIa" id="F4G-c4-oGo"/>
                         <segue destination="87y-xj-VYz" kind="modal" identifier="segue1" id="RgS-yH-j01"/>
                     </connections>
                 </viewController>
