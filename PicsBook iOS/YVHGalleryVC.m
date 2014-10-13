@@ -57,6 +57,12 @@
      selector:@selector(handleDataModelChange:)
      name:NSManagedObjectContextObjectsDidChangeNotification
      object: self.managedObjectContext];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showOptions)
+                                                 name:@"GalleryOptions"
+                                               object:nil];
+    
 }
 
 
@@ -138,26 +144,34 @@
     int width = 120;
     int height = optionHeight * options;
     
-    
-    CGRect s1 = self.optionsView.frame;
     //Bar image
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    self.optionsView.frame = CGRectMake(screenRect.size.width - width, screenRect.size.height , width, height);
+    self.optionsView.frame = CGRectMake(screenRect.size.width - width - 200, screenRect.size.height - 200 , width, height);
     self.optionsViewImg.image = [UIImage imageNamed:@"options3.png"];
-     s1 = self.optionsView.frame;
     [self.view bringSubviewToFront:self.optionsView];
 
 
+}
+
+-(void)showOptions
+{
+    CGRect s1 = self.optionsView.frame;
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGRect viewRect = self.optionsView.frame;
+    [self.view bringSubviewToFront:self.optionsView];
     
     [UIView animateWithDuration:0.4 animations:^{
-        self.optionsView.frame = CGRectMake(screenRect.size.width - 35 - width, screenRect.size.height - 137 - height, width, height);
+        self.optionsView.frame = CGRectMake(viewRect.origin.x , viewRect.origin.y - 137, viewRect.size.width, viewRect.size.height);
         self.optionsView.alpha = .5;
+        CGRect s1 = self.optionsView.frame;
+        NSLog(@"string");
     }];
      s1 = self.optionsView.frame;
-    
+}
 	// Initialise our two images
-	UIImage *btnImage = [UIImage imageNamed:@"Galery.png"];
-	UIImage *btnImageSelected = [UIImage imageNamed:@"Galery_s.png"];
+//	UIImage *btnImage = [UIImage imageNamed:@"Galery.png"];
+//	UIImage *btnImageSelected = [UIImage imageNamed:@"Galery_s.png"];
     
 //    self.btn1 = [UIButton buttonWithType:UIButtonTypeCustom]; //Setup the button
 //	self.btn1.frame = CGRectMake(screenRect.size.width/8 - 30, self.view.bounds.size.height+10 - 50, 40, 30); // Set the frame (size and position) of the button)
@@ -208,7 +222,7 @@
 //	[btn2 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
 //	[btn3 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
 //	[btn4 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-}
+//}
 
 
 

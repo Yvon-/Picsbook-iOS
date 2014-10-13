@@ -8,10 +8,10 @@
 
 #import "RXCustomTabBar.h"
 
-
 @implementation RXCustomTabBar
 static RXCustomTabBar* _shared = nil;
 @synthesize btn1, btn2, btn3, btn4;
+
 
 
 static int lastTab = 0;
@@ -69,6 +69,7 @@ static int lastTab = 0;
 		}
 	}
 }
+
 
 -(void)initializeBar{
 
@@ -155,14 +156,31 @@ static int lastTab = 0;
 	[btn1 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
 	[btn2 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
 	[btn3 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-	[btn4 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+	[btn4 addTarget:self action:@selector(buttonOptions:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)buttonClicked:(id)sender
 {
 	int tagNum = [sender tag];
 	[self selectTab:tagNum];
+    lastTab = tagNum;
 }
+
+int lasttab = 0;
+- (void)buttonOptions:(id)sender
+{
+	switch (lastTab) {
+        case 0:
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"GalleryOptions"
+                                                                object:self];
+            break;
+        case 1:
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"MapOptions"
+                                                                object:self];
+            break;
+    }
+}
+
 
 - (void)selectTab:(int)tabID
 {
@@ -188,12 +206,6 @@ static int lastTab = 0;
 			[btn3 setSelected:true];
 			[btn4 setSelected:false];
             
-			break;
-		case 3:
-			[btn1 setSelected:false];
-			[btn2 setSelected:false];
-			[btn3 setSelected:false];
-			[btn4 setSelected:true];
 			break;
 	}	
 	
