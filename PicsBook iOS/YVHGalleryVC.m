@@ -29,7 +29,6 @@
 @property (assign, nonatomic) CGRect shownAlbumOptionsFrame;
 @property (assign, nonatomic) CGRect shownOnePicOptionsFrame;
 @property (strong, nonatomic) UIButton * AlbumOptionsBtn1;
-@property (strong, nonatomic) UIButton * AlbumOptionsBtn2;
 @property (strong, nonatomic) UIButton * OnePicOptionsBtn1;
 @property (strong, nonatomic) UIButton * OnePicOptionsBtn2;
 @property (strong, nonatomic) UIButton * OnePicOptionsBtn3;
@@ -169,29 +168,27 @@
 
 
 int optionHeight = 80;
-int width = 165;
+int optionWidth = 165;
 -(void)initAlbumOptionsView
 {
-    int options = 2;
+    int options = 1;
     int height = optionHeight * options;
     UIImage * btnImage;
     
     //Bar image
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    self.hiddenAlbumOptionsFrame = CGRectMake(screenRect.size.width - width - 5, screenRect.size.height, width, height);
-    self.shownAlbumOptionsFrame = CGRectMake(screenRect.size.width - width - 5, screenRect.size.height - 57 - height, width, height);
+    self.hiddenAlbumOptionsFrame = CGRectMake(screenRect.size.width - optionWidth - 5, screenRect.size.height, optionWidth, height);
+    self.shownAlbumOptionsFrame = CGRectMake(screenRect.size.width - optionWidth - 5, screenRect.size.height - 57 - height, optionWidth, height);
     self.optionsAlbumView.frame = self.hiddenAlbumOptionsFrame;
     
-    self.optionsAlbumImg.image = [UIImage imageNamed:@"options2.png"];
+    self.optionsAlbumImg.image = [UIImage imageNamed:@"options1.png"];
     [self.view bringSubviewToFront:self.optionsAlbumView];
     
-    btnImage = [UIImage imageNamed:@"mapOff.png"];
-//	self.btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
-//	self.btn2.frame = CGRectMake(3*screenRect.size.width/8 - 30, self.view.bounds.size.height +5 - 50, 40, 40);
-//	[self.btn2 setBackgroundImage:btnImage forState:UIControlStateNormal];
-//	[self.btn2 setBackgroundImage:btnImageSelected forState:UIControlStateSelected];
-//	[self.btn2 setTag:1];
-//    [self.view addSubview:btn2];
+    btnImage = [UIImage imageNamed:@"info.png"];
+	self.AlbumOptionsBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+	self.AlbumOptionsBtn1.frame = CGRectMake(optionWidth/2 - optionHeight/2, 0, optionHeight, optionHeight);
+	[self.AlbumOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    [self.optionsAlbumView addSubview:self.AlbumOptionsBtn1];
     
 }
 
@@ -199,15 +196,34 @@ int width = 165;
 {
     int options = 3;
     int height = optionHeight * options;
+    UIImage * btnImage;
     
     //Bar image
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    self.hiddenOnePicOptionsFrame = CGRectMake(screenRect.size.width - width - 5, screenRect.size.height, width, height);
-    self.shownOnePicOptionsFrame = CGRectMake(screenRect.size.width - width - 5, screenRect.size.height - 57 - height, width, height);
+    self.hiddenOnePicOptionsFrame = CGRectMake(screenRect.size.width - optionWidth - 5, screenRect.size.height, optionWidth, height);
+    self.shownOnePicOptionsFrame = CGRectMake(screenRect.size.width - optionWidth - 5, screenRect.size.height - 57 - height, optionWidth, height);
     self.optionsOnePicView.frame = self.hiddenOnePicOptionsFrame;
     
     self.optionsOnePicImg.image = [UIImage imageNamed:@"options3.png"];
     [self.view bringSubviewToFront:self.optionsOnePicView];
+    
+    btnImage = [UIImage imageNamed:@"info.png"];
+	self.OnePicOptionsBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+	self.OnePicOptionsBtn1.frame = CGRectMake(optionWidth/2 - optionHeight/2, 0, optionHeight, optionHeight);
+	[self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    [self.OnePicOptionsBtn1 addSubview:self.AlbumOptionsBtn1];
+    
+    btnImage = [UIImage imageNamed:@"share.png"];
+	self.OnePicOptionsBtn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+	self.OnePicOptionsBtn2.frame = CGRectMake(optionWidth/2 - optionHeight/2, optionHeight, optionHeight, optionHeight);
+	[self.OnePicOptionsBtn2 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    [self.OnePicOptionsBtn2 addSubview:self.OnePicOptionsBtn2];
+    
+    btnImage = [UIImage imageNamed:@"filter.png"];
+	self.OnePicOptionsBtn3 = [UIButton buttonWithType:UIButtonTypeCustom];
+	self.OnePicOptionsBtn3.frame = CGRectMake(optionWidth/2 - optionHeight/2, optionHeight*2, optionHeight, optionHeight);
+	[self.OnePicOptionsBtn3 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    [self.OnePicOptionsBtn3 addSubview:self.OnePicOptionsBtn3];
     
 }
 
