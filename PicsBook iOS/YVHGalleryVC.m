@@ -34,6 +34,15 @@
 @property (strong, nonatomic) UIButton * OnePicOptionsBtn3;
 @property (strong, nonatomic) UIButton * OnePicOptionsBtn4;
 
+@property (weak, nonatomic) IBOutlet UIView *infoAlbumView;
+@property (weak, nonatomic) IBOutlet UIImageView *infoAlbumImg;
+@property (assign, nonatomic) CGRect hiddenInfoAlbumFrame;
+@property (assign, nonatomic) CGRect shownInfoAlbumFrame;
+
+@property (weak, nonatomic) IBOutlet UIView *infoPicView;
+@property (weak, nonatomic) IBOutlet UIImageView *infoPicImg;
+@property (assign, nonatomic) CGRect hiddenInfoPicFrame;
+@property (assign, nonatomic) CGRect shownInfoPicFrame;
 
 @property (nonatomic, strong) NSArray *picsArray;
 @property (nonatomic, strong) UIImage * pickedImg;
@@ -77,6 +86,7 @@
                                                object:nil];
     [self initAlbumOptionsView];
     [self initOptionsOnePicView];
+    [self initAlbumInfoView];
 }
 
 
@@ -248,6 +258,36 @@ float iconAlpha = .8;
     
 }
 
+-(void)initAlbumInfoView{
+  //  int options = 1;
+  //  int height = optionHeight * options;
+    int infoViewWidth = 450;
+    int infoViewHeight = 400;
+    
+    //Bar image
+    self.hiddenInfoAlbumFrame = CGRectMake(0 - infoViewWidth, 500, infoViewWidth, infoViewHeight);
+    self.shownInfoAlbumFrame = CGRectMake(0 , 500, infoViewWidth, infoViewHeight);
+    self.infoAlbumView.frame = self.hiddenInfoAlbumFrame;
+    
+    self.infoAlbumImg.image = [UIImage imageNamed:@"infoBg.png"];
+    [self.view bringSubviewToFront:self.infoAlbumView];
+}
+
+-(void)initPicInfoView{
+    //  int options = 1;
+    //  int height = optionHeight * options;
+    int infoViewWidth = 450;
+    int infoViewHeight = 400;
+    
+    //Bar image
+    self.hiddenInfoAlbumFrame = CGRectMake(0 - infoViewWidth, 500, infoViewWidth, infoViewHeight);
+    self.shownInfoAlbumFrame = CGRectMake(0 , 500, infoViewWidth, infoViewHeight);
+    self.infoAlbumView.frame = self.hiddenInfoAlbumFrame;
+    
+    self.infoAlbumImg.image = [UIImage imageNamed:@"infoBg.png"];
+    [self.view bringSubviewToFront:self.infoAlbumView];
+}
+
 bool isShowingOptions = false;
 bool isOnePicView = false;
 -(void)switchOptions{
@@ -285,8 +325,24 @@ bool isOnePicView = false;
     }
 }
 
+-(void)hideAlbumInfo
+{
+    [UIView animateWithDuration:0.1 animations:^{ self.infoAlbumView.frame = self.hiddenInfoAlbumFrame;}];
+}
+
 -(void)showAlbumInfo{
-    
+    [UIView animateWithDuration:0.07 animations:^{ self.infoAlbumView.frame = self.shownInfoAlbumFrame;}];
+    [self switchAlbumOptions];
+}
+
+-(void)hidePicInfo
+{
+    [UIView animateWithDuration:0.1 animations:^{ self.infoPicView.frame = self.hiddenInfoPicFrame;}];
+}
+
+-(void)showPicInfo{
+    [UIView animateWithDuration:0.07 animations:^{ self.infoPicView.frame = self.shownInfoPicFrame;}];
+    [self switchAlbumOptions];
 }
 
 -(void)toFilters{
@@ -295,9 +351,7 @@ bool isOnePicView = false;
 -(void)toShare{
     
 }
--(void)showPicInfo{
-    
-}
+
 
 
 
