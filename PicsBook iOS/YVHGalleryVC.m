@@ -49,10 +49,25 @@
 @property (assign, nonatomic) CGRect hiddenInfoAlbumFrame;
 @property (assign, nonatomic) CGRect shownInfoAlbumFrame;
 
+
 @property (weak, nonatomic) IBOutlet UIView *infoPicView;
 @property (weak, nonatomic) IBOutlet UIImageView *infoPicImg;
 @property (assign, nonatomic) CGRect hiddenInfoPicFrame;
 @property (assign, nonatomic) CGRect shownInfoPicFrame;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *titleInfoLbl;
+
+@property (weak, nonatomic) IBOutlet UILabel *albumLbl;
+@property (weak, nonatomic) IBOutlet UILabel *addressTextLbl;
+@property (weak, nonatomic) IBOutlet UILabel *addressLbl;
+@property (weak, nonatomic) IBOutlet UILabel *longitudeTextLbl;
+@property (weak, nonatomic) IBOutlet UILabel *longitudeLbl;
+@property (weak, nonatomic) IBOutlet UILabel *latitudeTextLbl;
+@property (weak, nonatomic) IBOutlet UILabel *latitudeLbl;
+@property (weak, nonatomic) IBOutlet UILabel *facesTextLbl;
+@property (weak, nonatomic) IBOutlet UILabel *facesLbl;
+
 
 //OnePic View
 @property (weak, nonatomic) IBOutlet UIView *PicView;
@@ -61,6 +76,7 @@
 //Others
 @property (nonatomic, strong) NSArray *picsArray;
 @property (nonatomic, strong) UIImage * pickedImg;
+@property (nonatomic, strong) Pic * pickedPic;
 @property(nonatomic,assign) BOOL contextHasChange;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
@@ -302,8 +318,8 @@ float iconAlpha = .8;
     //  int options = 1;
     //  int height = optionHeight * options;
     int infoViewWidth = 500;
-    int infoViewHeight = 400;
-    int radius = 20;
+    int infoViewHeight = 300;
+    int radius = 25;
     
     //Bar image
     self.hiddenInfoPicFrame = CGRectMake(0 - infoViewWidth, 60, infoViewWidth, infoViewHeight);
@@ -413,6 +429,19 @@ bool isShownPicInfo = false;
 -(void)showPicInfo{
     UIImage * btnImage = [UIImage imageNamed:@"info_s.png"];
 	[self.OnePicOptionsBtn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    
+    self.titleInfoLbl.text = self.pickedPic.name;
+    self.albumLbl.text = NSLocalizedString(@"SINGLE_ALBUM_TITLE", nil);
+    self.addressTextLbl.text = NSLocalizedString(@"PIC_ADDRESS", nil);
+  //  self.addressLbl.text = self.pickedPic
+    self.longitudeTextLbl.text = NSLocalizedString(@"PIC_LONG", nil);
+    NSNumber *n = self.pickedPic.longitude;
+    self.longitudeLbl.text = [self.pickedPic.longitude stringValue];
+    self.latitudeTextLbl.text = NSLocalizedString(@"PIC_LAT", nil);
+    self.latitudeLbl.text = [self.pickedPic.latitude stringValue];
+    self.facesTextLbl.text = NSLocalizedString(@"PIC_FACES", nil);
+ //   self.facesLbl.text = self.pickedPic.faces;
+    
     [UIView animateWithDuration:0.07 animations:^{ self.infoPicView.frame = self.shownInfoPicFrame;}];
     isShownPicInfo = true;
     //[self switchOnePicOptions];
@@ -494,8 +523,8 @@ bool statusBarHidden = false;
     NSInteger i = x + (y * 3);
     if(i<[self.picsArray count]){
 
-        Pic * data = [self.picsArray objectAtIndex:x];
-        self.pickedImg = [self getPicFromDisk:data.path];
+        self.pickedPic = [self.picsArray objectAtIndex:x];
+        self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
         self.PicViewImg.image = self.pickedImg;
         self.PicView.hidden = false;
         self.collectionView.hidden = true;
@@ -506,8 +535,8 @@ bool statusBarHidden = false;
             [self setNeedsStatusBarAppearanceUpdate];
         }
 
-        [YVHDAO setSelectedPics:@[data]];
-        self.titleLbl.text = data.name;
+        [YVHDAO setSelectedPics:@[self.pickedPic]];
+        self.titleLbl.text = self.pickedPic.name;
     }
     
     self.infoPicView.hidden = false;
@@ -526,13 +555,7 @@ bool statusBarHidden = false;
 {
     return statusBarHidden;
 }
-//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-//    
-//    if ([segue.identifier isEqualToString:@"segue1"]) {
-//        YVHPicVC* picVC = [segue destinationViewController];
-//        picVC.img = self.pickedImg ;
-//    }
-//}
+
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     // Deselect item

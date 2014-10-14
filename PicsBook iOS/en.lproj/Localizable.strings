@@ -8,4 +8,9 @@
 
 
 "SINGLE_ALBUM_TITLE" = "Picsbook pictures";
-"ALBUM_NUM_PICS" = "pictures"; 
+"ALBUM_NUM_PICS" = "pictures";
+
+"PIC_ADDRESS" = "Address: ";
+"PIC_LONG" = "Longitude: ";
+"PIC_LAT" = "Latitude: ";
+"PIC_FACES" = "Localized faces: ";
