@@ -19,8 +19,17 @@
 
 
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong) IBOutlet UIView * optionsView;
-@property (weak, nonatomic) IBOutlet UIImageView *optionsViewImg;
+
+@property (weak, nonatomic) IBOutlet UIView *optionsAlbumView;
+@property (weak, nonatomic) IBOutlet UIImageView *optionsAlbumImg;
+@property (weak, nonatomic) IBOutlet UIView *optionsOnePicView;
+@property (weak, nonatomic) IBOutlet UIImageView *optionsOnePicImg;
+@property (assign, nonatomic) CGRect hiddenAlbumOptionsFrame;
+@property (assign, nonatomic) CGRect hiddenOnePicOptionsFrame;
+@property (assign, nonatomic) CGRect shownAlbumOptionsFrame;
+@property (assign, nonatomic) CGRect shownOnePicOptionsFrame;
+
+
 
 @property (nonatomic, strong) NSArray *picsArray;
 @property (nonatomic, strong) UIImage * pickedImg;
@@ -59,10 +68,11 @@
      object: self.managedObjectContext];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(showOptions)
+                                             selector:@selector(switchOptions)
                                                  name:@"GalleryOptions"
                                                object:nil];
-    [self addOptionsView];
+    [self initAlbumOptionsView];
+    [self initOptionsOnePicView];
 }
 
 
@@ -73,10 +83,7 @@
     if(self.contextHasChange){
         self.picsArray = [YVHDAO getPics:nil];
         [self.collectionView reloadData];
-
     }
-    
-    
 }
 -(void)viewWillDisappear:(BOOL)animated{
     isShowingOptions = false;
@@ -139,61 +146,89 @@
     self.picsArray = [YVHDAO  getPics:nil];
     [YVHDAO setSelectedPics:self.picsArray];
     
-    isShowingOptions = false;
+    if(isShowingOptions){
+        [self switchOnePicOptions];
+        isShowingOptions = false;
+    }
+    isOnePicView = false;
 }
 
 
-CGRect hideOptions, showOptions;
--(void)addOptionsView
+
+-(void)initAlbumOptionsView
 {
-    int options = 3;
-    int optionHeight = 40;
-    int width = 120;
+    int options = 2;
+    int optionHeight = 80;
+    int width = 165;
     int height = optionHeight * options;
     
     //Bar image
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    hideOptions = CGRectMake(screenRect.size.width - width - 35, screenRect.size.height, width, height);
-    showOptions = CGRectMake(screenRect.size.width - width - 35, screenRect.size.height - 137 - height, width, height);
-    self.optionsView.frame = hideOptions;
+    self.hiddenAlbumOptionsFrame = CGRectMake(screenRect.size.width - width - 5, screenRect.size.height, width, height);
+    self.shownAlbumOptionsFrame = CGRectMake(screenRect.size.width - width - 5, screenRect.size.height - 57 - height, width, height);
+    self.optionsAlbumView.frame = self.hiddenAlbumOptionsFrame;
     
-    self.optionsViewImg.image = [UIImage imageNamed:@"options2.png"];
-    [self.view bringSubviewToFront:self.optionsView];
+    self.optionsAlbumImg.image = [UIImage imageNamed:@"options2.png"];
+    [self.view bringSubviewToFront:self.optionsAlbumView];
     
 }
 
--(void)addOptionsOnePicView
+-(void)initOptionsOnePicView
 {
     int options = 3;
-    int optionHeight = 40;
-    int width = 120;
+    int optionHeight = 80;
+    int width = 165;
     int height = optionHeight * options;
     
     //Bar image
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    hideOptions = CGRectMake(screenRect.size.width - width - 35, screenRect.size.height, width, height);
-    showOptions = CGRectMake(screenRect.size.width - width - 35, screenRect.size.height - 137 - height, width, height);
-    self.optionsView.frame = hideOptions;
+    self.hiddenOnePicOptionsFrame = CGRectMake(screenRect.size.width - width - 5, screenRect.size.height, width, height);
+    self.shownOnePicOptionsFrame = CGRectMake(screenRect.size.width - width - 5, screenRect.size.height - 57 - height, width, height);
+    self.optionsOnePicView.frame = self.hiddenOnePicOptionsFrame;
     
-    self.optionsViewImg.image = [UIImage imageNamed:@"options3.png"];
-    [self.view bringSubviewToFront:self.optionsView];
+    self.optionsOnePicImg.image = [UIImage imageNamed:@"options3.png"];
+    [self.view bringSubviewToFront:self.optionsOnePicView];
     
 }
 
 bool isShowingOptions = false;
--(void)showOptions
+bool isOnePicView = false;
+-(void)switchOptions{
+    if(isOnePicView){
+        [self switchOnePicOptions];
+    }
+    else{
+        [self switchAlbumOptions];
+    }
+}
+
+-(void)switchAlbumOptions
 {
-    [self.view bringSubviewToFront:self.optionsView];
     if(isShowingOptions){
-        [UIView animateWithDuration:0.1 animations:^{ self.optionsView.frame = hideOptions;}];
+        [UIView animateWithDuration:0.1 animations:^{ self.optionsAlbumView.frame = self.hiddenAlbumOptionsFrame;}];
         isShowingOptions = false;
     }
     else{
-        self.optionsView.frame = hideOptions;
-        [UIView animateWithDuration:0.07 animations:^{ self.optionsView.frame = showOptions;}];
+        self.optionsAlbumView.frame = self.hiddenAlbumOptionsFrame;
+        [UIView animateWithDuration:0.07 animations:^{ self.optionsAlbumView.frame = self.shownAlbumOptionsFrame;}];
         isShowingOptions = true;
     }
 }
+
+-(void)switchOnePicOptions
+{
+    if(isShowingOptions){
+        [UIView animateWithDuration:0.1 animations:^{ self.optionsOnePicView.frame = self.hiddenOnePicOptionsFrame;}];
+        isShowingOptions = false;
+    }
+    else{
+        self.optionsOnePicView.frame = self.hiddenOnePicOptionsFrame;
+        [UIView animateWithDuration:0.07 animations:^{ self.optionsOnePicView.frame = self.shownOnePicOptionsFrame;}];
+        isShowingOptions = true;
+    }
+}
+
+
 	// Initialise our two images
 //	UIImage *btnImage = [UIImage imageNamed:@"Galery.png"];
 //	UIImage *btnImageSelected = [UIImage imageNamed:@"Galery_s.png"];
@@ -303,13 +338,13 @@ bool statusBarHidden = false;
     NSInteger y = indexPath.section;
     NSInteger i = x + (y * 3);
     if(i<[self.picsArray count]){
-        CGRect s = self.optionsView.frame;
+
         Pic * data = [self.picsArray objectAtIndex:x];
         self.pickedImg = [self getPicFromDisk:data.path];
         self.PicViewImg.image = self.pickedImg;
         self.PicView.hidden = false;
         self.collectionView.hidden = true;
-        s = self.optionsView.frame;
+
         statusBarHidden = true;
         if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
         {
@@ -318,8 +353,11 @@ bool statusBarHidden = false;
 
         [YVHDAO setSelectedPics:@[data]];
     }
-
-    isShowingOptions = false;
+    if(isShowingOptions){
+        [self switchAlbumOptions];
+        isShowingOptions = false;
+    }
+    isOnePicView = true;
     
 }
 - (BOOL)prefersStatusBarHidden

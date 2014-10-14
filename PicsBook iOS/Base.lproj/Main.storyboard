@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="cJh-j3-DFZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="cJh-j3-DFZ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -8,10 +8,6 @@
         <scene sceneID="3SI-Yk-bXU">
             <objects>
                 <viewController storyboardIdentifier="VC2" id="vhx-zp-hZQ" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="H01-DQ-v0P"/>
-                        <viewControllerLayoutGuide type="bottom" id="Tqt-ch-mvc"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NBu-cU-iV3">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -26,10 +22,6 @@
         <scene sceneID="Hsl-ai-Nip">
             <objects>
                 <viewController id="cJh-j3-DFZ" customClass="YVHMainVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="AdB-m0-xbJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="g2p-Gr-JXi"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0qI-Xa-5ed">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -44,15 +36,11 @@
         <scene sceneID="gvp-rw-gOd">
             <objects>
                 <viewController storyboardIdentifier="YVHGalleryVC" id="sni-Vr-0Ex" userLabel="GalleryVC" customClass="YVHGalleryVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="z5q-PO-8g1"/>
-                        <viewControllerLayoutGuide type="bottom" id="Rg0-N9-n0y"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BOV-95-ix4">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3rK-vs-sSW">
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="3rK-vs-sSW">
                                 <rect key="frame" x="0.0" y="80" width="768" height="875"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -69,38 +57,49 @@
                                     <outlet property="delegate" destination="sni-Vr-0Ex" id="xbE-qo-CWo"/>
                                 </connections>
                             </collectionView>
-                            <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VVA-ts-OSP" userLabel="View - Options">
+                            <view alpha="0.5" contentMode="scaleToFill" id="VVA-ts-OSP" userLabel="View - Album Options">
                                 <rect key="frame" x="308" y="1024" width="150" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nZy-O1-UIa">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="nZy-O1-UIa">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XMc-OP-vCc">
+                            <view alpha="0.5" contentMode="scaleToFill" id="Xae-Jf-5z2" userLabel="View - OnePic Options">
+                                <rect key="frame" x="309" y="1024" width="150" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qVh-Pj-otA">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" id="XMc-OP-vCc">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pushpin.png" translatesAutoresizingMaskIntoConstraints="NO" id="gP2-GK-LX8">
+                                    <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pushpin.png" id="gP2-GK-LX8">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4k-81-moz" userLabel="View - Header">
+                                    <view contentMode="scaleToFill" id="p4k-81-moz" userLabel="View - Header">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HeaderBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="KBv-kt-Jpd">
+                                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeaderBar.png" id="KBv-kt-Jpd">
                                                 <rect key="frame" x="0.0" y="0.0" width="768" height="52"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgB-GC-Q3x">
+                                            <view contentMode="scaleToFill" id="mgB-GC-Q3x">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="52"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVI-wZ-eU8">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NVI-wZ-eU8">
                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="52"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <state key="normal">
@@ -110,7 +109,7 @@
                                                             <action selector="backToAlbum:" destination="sni-Vr-0Ex" eventType="touchUpInside" id="VK4-En-qN2"/>
                                                         </connections>
                                                     </button>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow_fwd.png" translatesAutoresizingMaskIntoConstraints="NO" id="oPa-IZ-G4m">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_fwd.png" id="oPa-IZ-G4m">
                                                         <rect key="frame" x="20" y="8" width="20" height="35"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -121,7 +120,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvN-Iy-j1o">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hvN-Iy-j1o">
                                         <rect key="frame" x="228" y="88" width="174" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.67261692370000004" green="0.73980373590000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -139,8 +138,10 @@
                         <outlet property="PicView" destination="XMc-OP-vCc" id="amb-zK-XvF"/>
                         <outlet property="PicViewImg" destination="gP2-GK-LX8" id="FsX-mY-dO0"/>
                         <outlet property="collectionView" destination="3rK-vs-sSW" id="jD4-Ld-d6p"/>
-                        <outlet property="optionsView" destination="VVA-ts-OSP" id="gbZ-vj-xhz"/>
-                        <outlet property="optionsViewImg" destination="nZy-O1-UIa" id="F4G-c4-oGo"/>
+                        <outlet property="optionsAlbumImg" destination="nZy-O1-UIa" id="wY7-MO-0Ia"/>
+                        <outlet property="optionsAlbumView" destination="VVA-ts-OSP" id="XAA-Nh-EoS"/>
+                        <outlet property="optionsOnePicImg" destination="qVh-Pj-otA" id="d30-71-oCy"/>
+                        <outlet property="optionsOnePicView" destination="Xae-Jf-5z2" id="tpP-eU-h3Y"/>
                         <segue destination="87y-xj-VYz" kind="modal" identifier="segue1" id="RgS-yH-j01"/>
                     </connections>
                 </viewController>
@@ -152,19 +153,15 @@
         <scene sceneID="1dc-Jw-hf0">
             <objects>
                 <viewController id="87y-xj-VYz" customClass="YVHPicVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zNm-ha-EFx"/>
-                        <viewControllerLayoutGuide type="bottom" id="5aM-v4-9TN"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PNe-8v-pmH">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pushpin.png" translatesAutoresizingMaskIntoConstraints="NO" id="FKs-W6-m1d">
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pushpin.png" id="FKs-W6-m1d">
                                 <rect key="frame" x="5" y="133" width="620" height="800"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kW-am-n44">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3kW-am-n44">
                                 <rect key="frame" x="228" y="88" width="174" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.67261692370000004" green="0.73980373590000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -184,23 +181,16 @@
         <scene sceneID="q6y-8e-ibQ">
             <objects>
                 <viewController storyboardIdentifier="MapVC" id="vLd-m4-Q0d" userLabel="MapVC" customClass="YVHMapVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="62t-Ti-tOk"/>
-                        <viewControllerLayoutGuide type="bottom" id="MbS-sI-S7Q"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6gK-KI-NuK">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="33s-FO-pRt">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="33s-FO-pRt">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.57616857320000003" blue="0.43611125719999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="33s-FO-pRt" firstAttribute="leading" secondItem="6gK-KI-NuK" secondAttribute="leading" id="bDt-nS-4nV"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="syK-dY-Sz7"/>
                     <connections>
