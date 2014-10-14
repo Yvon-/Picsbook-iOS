@@ -62,7 +62,7 @@
                                              selector:@selector(showOptions)
                                                  name:@"GalleryOptions"
                                                object:nil];
-    
+    [self addOptionsView];
 }
 
 
@@ -76,7 +76,7 @@
 
     }
     
-    [self addOptionsView];
+    
 }
 -(void)viewWillDisappear:(BOOL)animated{
     isShowingOptions = false;
@@ -139,7 +139,6 @@
     self.picsArray = [YVHDAO  getPics:nil];
     [YVHDAO setSelectedPics:self.picsArray];
     
-    self.optionsView.frame = hideOptions;
     isShowingOptions = false;
 }
 
@@ -147,7 +146,7 @@
 CGRect hideOptions, showOptions;
 -(void)addOptionsView
 {
-    int options = 2;
+    int options = 3;
     int optionHeight = 40;
     int width = 120;
     int height = optionHeight * options;
@@ -190,6 +189,7 @@ bool isShowingOptions = false;
         isShowingOptions = false;
     }
     else{
+        self.optionsView.frame = hideOptions;
         [UIView animateWithDuration:0.07 animations:^{ self.optionsView.frame = showOptions;}];
         isShowingOptions = true;
     }
@@ -318,7 +318,7 @@ bool statusBarHidden = false;
 
         [YVHDAO setSelectedPics:@[data]];
     }
-    self.optionsView.frame = hideOptions;
+
     isShowingOptions = false;
     
 }
