@@ -20,6 +20,11 @@
 
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 
+//HeaderView
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet UIView *backButtonView;
+
+//OptionsViews
 @property (weak, nonatomic) IBOutlet UIView *optionsAlbumView;
 @property (weak, nonatomic) IBOutlet UIImageView *optionsAlbumImg;
 @property (weak, nonatomic) IBOutlet UIView *optionsOnePicView;
@@ -34,6 +39,7 @@
 @property (strong, nonatomic) UIButton * OnePicOptionsBtn3;
 @property (strong, nonatomic) UIButton * OnePicOptionsBtn4;
 
+//InfoViews
 @property (weak, nonatomic) IBOutlet UIView *infoAlbumView;
 @property (weak, nonatomic) IBOutlet UIImageView *infoAlbumImg;
 @property (assign, nonatomic) CGRect hiddenInfoAlbumFrame;
@@ -44,10 +50,13 @@
 @property (assign, nonatomic) CGRect hiddenInfoPicFrame;
 @property (assign, nonatomic) CGRect shownInfoPicFrame;
 
-@property (nonatomic, strong) NSArray *picsArray;
-@property (nonatomic, strong) UIImage * pickedImg;
+//OnePic View
 @property (weak, nonatomic) IBOutlet UIView *PicView;
 @property (weak, nonatomic) IBOutlet UIImageView *PicViewImg;
+
+//Others
+@property (nonatomic, strong) NSArray *picsArray;
+@property (nonatomic, strong) UIImage * pickedImg;
 @property(nonatomic,assign) BOOL contextHasChange;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
@@ -86,7 +95,8 @@
                                                object:nil];
     [self initAlbumOptionsView];
     [self initOptionsOnePicView];
-    [self initAlbumInfoView];
+    //[self initAlbumInfoView];
+    [self initPicInfoView];
 }
 
 
@@ -172,7 +182,10 @@
     if(isShowingOptions){
         [self switchOnePicOptions];
         isShowingOptions = false;
-    }
+    }    
+
+    self.backButtonView.hidden = true;
+    
     isOnePicView = false;
 }
 
@@ -204,7 +217,7 @@ float iconAlpha = .8;
     self.AlbumOptionsBtn1.alpha = iconAlpha;
 	[self.AlbumOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
     [self.optionsAlbumView addSubview:self.AlbumOptionsBtn1];
-    [self.AlbumOptionsBtn1 addTarget:self action:@selector(showAlbumInfo) forControlEvents:UIControlEventTouchUpInside];
+    [self.AlbumOptionsBtn1 addTarget:self action:@selector(switchAlbumInfoView) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -253,7 +266,7 @@ float iconAlpha = .8;
 	self.OnePicOptionsBtn4.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight*3 + optionHeight/2 - iconWidth/2, iconWidth, iconWidth);
     self.OnePicOptionsBtn4.alpha = iconAlpha;
 	[self.OnePicOptionsBtn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
-    [self.OnePicOptionsBtn4 addTarget:self action:@selector(showPicInfo) forControlEvents:UIControlEventTouchUpInside];
+    [self.OnePicOptionsBtn4 addTarget:self action:@selector(switchPicInfoView) forControlEvents:UIControlEventTouchUpInside];
     [self.optionsOnePicView addSubview:self.OnePicOptionsBtn4];
     
 }
@@ -280,12 +293,12 @@ float iconAlpha = .8;
     int infoViewHeight = 400;
     
     //Bar image
-    self.hiddenInfoAlbumFrame = CGRectMake(0 - infoViewWidth, 500, infoViewWidth, infoViewHeight);
-    self.shownInfoAlbumFrame = CGRectMake(0 , 500, infoViewWidth, infoViewHeight);
-    self.infoAlbumView.frame = self.hiddenInfoAlbumFrame;
+    self.hiddenInfoPicFrame = CGRectMake(0 - infoViewWidth, 500, infoViewWidth, infoViewHeight);
+    self.shownInfoPicFrame = CGRectMake(0 , 500, infoViewWidth, infoViewHeight);
+    self.infoPicView.frame = self.hiddenInfoPicFrame;
     
-    self.infoAlbumImg.image = [UIImage imageNamed:@"infoBg.png"];
-    [self.view bringSubviewToFront:self.infoAlbumView];
+    self.infoPicImg.image = [UIImage imageNamed:@"infoBg.png"];
+    [self.view bringSubviewToFront:self.infoPicView];
 }
 
 bool isShowingOptions = false;
@@ -325,25 +338,72 @@ bool isOnePicView = false;
     }
 }
 
--(void)hideAlbumInfo
+
+
+
+bool isShownAlbumInfo = false;
+
+-(void)switchAlbumInfoView
 {
-    [UIView animateWithDuration:0.1 animations:^{ self.infoAlbumView.frame = self.hiddenInfoAlbumFrame;}];
+    if(isShownAlbumInfo){
+        [self hideAlbumInfo];
+    }
+    else{
+        [self showAlbumInfo];
+    }
 }
 
 -(void)showAlbumInfo{
-    [UIView animateWithDuration:0.07 animations:^{ self.infoAlbumView.frame = self.shownInfoAlbumFrame;}];
+    //[UIView animateWithDuration:0.07 animations:^{ self.infoAlbumView.frame = self.shownInfoAlbumFrame;}];
+    self.headerView.hidden = false;
+    self.backButtonView.hidden = true;
+    isShownAlbumInfo = true;
     [self switchAlbumOptions];
+    UIImage * btnImage = [UIImage imageNamed:@"info_s.png"];
+	[self.AlbumOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    
+}
+
+-(void)hideAlbumInfo
+{
+    self.headerView.hidden = true;
+    isShownAlbumInfo = false;
+    [self switchAlbumOptions];
+    UIImage * btnImage = [UIImage imageNamed:@"info.png"];
+	[self.AlbumOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    //[UIView animateWithDuration:0.1 animations:^{ self.infoAlbumView.frame = self.hiddenInfoAlbumFrame;}];
+}
+
+
+bool isShownPicInfo = false;
+
+-(void)switchPicInfoView
+{
+    if(isShownPicInfo){
+        [self hidePicInfo];
+    }
+    else{
+        [self showPicInfo];
+    }
+}
+
+-(void)showPicInfo{
+    UIImage * btnImage = [UIImage imageNamed:@"info_s.png"];
+	[self.OnePicOptionsBtn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    [UIView animateWithDuration:0.07 animations:^{ self.infoPicView.frame = self.shownInfoPicFrame;}];
+    isShownPicInfo = true;
+    //[self switchOnePicOptions];
 }
 
 -(void)hidePicInfo
 {
+    UIImage * btnImage = [UIImage imageNamed:@"info.png"];
+	[self.OnePicOptionsBtn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
     [UIView animateWithDuration:0.1 animations:^{ self.infoPicView.frame = self.hiddenInfoPicFrame;}];
+    isShownPicInfo = false;
 }
 
--(void)showPicInfo{
-    [UIView animateWithDuration:0.07 animations:^{ self.infoPicView.frame = self.shownInfoPicFrame;}];
-    [self switchAlbumOptions];
-}
+
 
 -(void)toFilters{
     
@@ -425,6 +485,9 @@ bool statusBarHidden = false;
 
         [YVHDAO setSelectedPics:@[data]];
     }
+    self.headerView.hidden = false;
+    self.backButtonView.hidden = false;
+    
     if(isShowingOptions){
         [self switchAlbumOptions];
         isShowingOptions = false;
