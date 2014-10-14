@@ -162,7 +162,6 @@ static int lastTab = 0;
 {
 	int tagNum = [sender tag];
 	[self selectTab:tagNum];
-    lastTab = tagNum;
 }
 
 int lasttab = 0;
