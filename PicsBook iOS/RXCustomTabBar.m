@@ -107,16 +107,15 @@ static int lastTab = 0;
 	// Initialise our two images
 	UIImage *btnImage = [UIImage imageNamed:@"Galery.png"];
 	UIImage *btnImageSelected = [UIImage imageNamed:@"Galery_s.png"];
-    
     self.btn1 = [UIButton buttonWithType:UIButtonTypeCustom]; //Setup the button
 	self.btn1.frame = CGRectMake(screenRect.size.width/8 - 30, self.view.bounds.size.height+10 - 50, 40, 30); // Set the frame (size and position) of the button)
-    
 	[self.btn1 setBackgroundImage:btnImage forState:UIControlStateNormal]; // Set the image for the normal state of the button
 	[self.btn1 setBackgroundImage:btnImageSelected forState:UIControlStateSelected]; // Set the image for the selected state of the button
 	[self.btn1 setTag:0]; // Assign the button a "tag" so when our "click" event is called we know which button was pressed.
-	[self.btn1 setSelected:true]; // Set this button as selected (we will select the others to false as we only want Tab 1 to be selected initially
-    [self.btn1 setImageEdgeInsets:UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0)];
-    [self.btn1.imageView setContentMode:UIViewContentModeScaleAspectFit];
+	
+    [self.btn1 setSelected:true]; // Set this button as selected (we will select the others to false as we only want Tab 1 to be selected initially
+ //   [self.btn1 setImageEdgeInsets:UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0)];
+ //   [self.btn1.imageView setContentMode:UIViewContentModeScaleAspectFit];
 	
 
 	

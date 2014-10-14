@@ -28,6 +28,11 @@
 @property (assign, nonatomic) CGRect hiddenOnePicOptionsFrame;
 @property (assign, nonatomic) CGRect shownAlbumOptionsFrame;
 @property (assign, nonatomic) CGRect shownOnePicOptionsFrame;
+@property (strong, nonatomic) UIButton * AlbumOptionsBtn1;
+@property (strong, nonatomic) UIButton * AlbumOptionsBtn2;
+@property (strong, nonatomic) UIButton * OnePicOptionsBtn1;
+@property (strong, nonatomic) UIButton * OnePicOptionsBtn2;
+@property (strong, nonatomic) UIButton * OnePicOptionsBtn3;
 
 
 
@@ -85,8 +90,17 @@
         [self.collectionView reloadData];
     }
 }
+
 -(void)viewWillDisappear:(BOOL)animated{
-    isShowingOptions = false;
+    if (isShowingOptions) {
+        if (isOnePicView) {
+            [self switchOnePicOptions];
+        }
+        else{
+            [self switchAlbumOptions];
+        }
+        isShowingOptions = false;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -154,13 +168,13 @@
 }
 
 
-
+int optionHeight = 80;
+int width = 165;
 -(void)initAlbumOptionsView
 {
     int options = 2;
-    int optionHeight = 80;
-    int width = 165;
     int height = optionHeight * options;
+    UIImage * btnImage;
     
     //Bar image
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -171,13 +185,19 @@
     self.optionsAlbumImg.image = [UIImage imageNamed:@"options2.png"];
     [self.view bringSubviewToFront:self.optionsAlbumView];
     
+    btnImage = [UIImage imageNamed:@"mapOff.png"];
+//	self.btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+//	self.btn2.frame = CGRectMake(3*screenRect.size.width/8 - 30, self.view.bounds.size.height +5 - 50, 40, 40);
+//	[self.btn2 setBackgroundImage:btnImage forState:UIControlStateNormal];
+//	[self.btn2 setBackgroundImage:btnImageSelected forState:UIControlStateSelected];
+//	[self.btn2 setTag:1];
+//    [self.view addSubview:btn2];
+    
 }
 
 -(void)initOptionsOnePicView
 {
     int options = 3;
-    int optionHeight = 80;
-    int width = 165;
     int height = optionHeight * options;
     
     //Bar image
