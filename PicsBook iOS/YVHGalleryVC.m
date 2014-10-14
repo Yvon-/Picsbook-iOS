@@ -78,6 +78,9 @@
     
     [self addOptionsView];
 }
+-(void)viewWillDisappear:(BOOL)animated{
+    isShowingOptions = false;
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -135,9 +138,32 @@
     }
     self.picsArray = [YVHDAO  getPics:nil];
     [YVHDAO setSelectedPics:self.picsArray];
+    
+    self.optionsView.frame = hideOptions;
+    isShowingOptions = false;
 }
 
+
+CGRect hideOptions, showOptions;
 -(void)addOptionsView
+{
+    int options = 2;
+    int optionHeight = 40;
+    int width = 120;
+    int height = optionHeight * options;
+    
+    //Bar image
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    hideOptions = CGRectMake(screenRect.size.width - width - 35, screenRect.size.height, width, height);
+    showOptions = CGRectMake(screenRect.size.width - width - 35, screenRect.size.height - 137 - height, width, height);
+    self.optionsView.frame = hideOptions;
+    
+    self.optionsViewImg.image = [UIImage imageNamed:@"options2.png"];
+    [self.view bringSubviewToFront:self.optionsView];
+    
+}
+
+-(void)addOptionsOnePicView
 {
     int options = 3;
     int optionHeight = 40;
@@ -146,28 +172,27 @@
     
     //Bar image
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    self.optionsView.frame = CGRectMake(screenRect.size.width - width - 200, screenRect.size.height - 200 , width, height);
+    hideOptions = CGRectMake(screenRect.size.width - width - 35, screenRect.size.height, width, height);
+    showOptions = CGRectMake(screenRect.size.width - width - 35, screenRect.size.height - 137 - height, width, height);
+    self.optionsView.frame = hideOptions;
+    
     self.optionsViewImg.image = [UIImage imageNamed:@"options3.png"];
     [self.view bringSubviewToFront:self.optionsView];
-
-
+    
 }
 
+bool isShowingOptions = false;
 -(void)showOptions
 {
-    CGRect s1 = self.optionsView.frame;
-    
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGRect viewRect = self.optionsView.frame;
     [self.view bringSubviewToFront:self.optionsView];
-    
-    [UIView animateWithDuration:0.4 animations:^{
-        self.optionsView.frame = CGRectMake(viewRect.origin.x , viewRect.origin.y - 137, viewRect.size.width, viewRect.size.height);
-        self.optionsView.alpha = .5;
-        CGRect s1 = self.optionsView.frame;
-        NSLog(@"string");
-    }];
-     s1 = self.optionsView.frame;
+    if(isShowingOptions){
+        [UIView animateWithDuration:0.1 animations:^{ self.optionsView.frame = hideOptions;}];
+        isShowingOptions = false;
+    }
+    else{
+        [UIView animateWithDuration:0.07 animations:^{ self.optionsView.frame = showOptions;}];
+        isShowingOptions = true;
+    }
 }
 	// Initialise our two images
 //	UIImage *btnImage = [UIImage imageNamed:@"Galery.png"];
@@ -278,12 +303,13 @@ bool statusBarHidden = false;
     NSInteger y = indexPath.section;
     NSInteger i = x + (y * 3);
     if(i<[self.picsArray count]){
-        
+        CGRect s = self.optionsView.frame;
         Pic * data = [self.picsArray objectAtIndex:x];
         self.pickedImg = [self getPicFromDisk:data.path];
         self.PicViewImg.image = self.pickedImg;
         self.PicView.hidden = false;
         self.collectionView.hidden = true;
+        s = self.optionsView.frame;
         statusBarHidden = true;
         if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
         {
@@ -292,7 +318,8 @@ bool statusBarHidden = false;
 
         [YVHDAO setSelectedPics:@[data]];
     }
-    
+    self.optionsView.frame = hideOptions;
+    isShowingOptions = false;
     
 }
 - (BOOL)prefersStatusBarHidden
