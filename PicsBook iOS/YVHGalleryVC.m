@@ -23,6 +23,10 @@
 //HeaderView
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIView *backButtonView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLbl;
+@property (weak, nonatomic) IBOutlet UIView *numPicsView;
+@property (weak, nonatomic) IBOutlet UILabel *numPicsLbl;
+@property (weak, nonatomic) IBOutlet UILabel *numPicsTextLbl;
 
 //OptionsViews
 @property (weak, nonatomic) IBOutlet UIView *optionsAlbumView;
@@ -93,6 +97,7 @@
                                              selector:@selector(switchOptions)
                                                  name:@"GalleryOptions"
                                                object:nil];
+    
     [self initAlbumOptionsView];
     [self initOptionsOnePicView];
     //[self initAlbumInfoView];
@@ -184,8 +189,15 @@
         isShowingOptions = false;
     }    
 
-    self.backButtonView.hidden = true;
+    if(isShownAlbumInfo){
+        [self showAlbumInfo];
+    }
+    else{
+        [self hideAlbumInfo];
+    }
     
+    self.backButtonView.hidden = true;
+    self.infoPicView.hidden = true;
     isOnePicView = false;
 }
 
@@ -289,16 +301,21 @@ float iconAlpha = .8;
 -(void)initPicInfoView{
     //  int options = 1;
     //  int height = optionHeight * options;
-    int infoViewWidth = 450;
+    int infoViewWidth = 500;
     int infoViewHeight = 400;
+    int radius = 20;
     
     //Bar image
-    self.hiddenInfoPicFrame = CGRectMake(0 - infoViewWidth, 500, infoViewWidth, infoViewHeight);
-    self.shownInfoPicFrame = CGRectMake(0 , 500, infoViewWidth, infoViewHeight);
+    self.hiddenInfoPicFrame = CGRectMake(0 - infoViewWidth, 60, infoViewWidth, infoViewHeight);
+    self.shownInfoPicFrame = CGRectMake(0 -radius , 60, infoViewWidth, infoViewHeight);
     self.infoPicView.frame = self.hiddenInfoPicFrame;
     
-    self.infoPicImg.image = [UIImage imageNamed:@"infoBg.png"];
+    self.infoPicImg.image = [UIImage imageNamed:@"infoBg2.png"];
+    self.infoPicImg.layer.cornerRadius = radius;
+    self.infoPicImg.clipsToBounds = YES;
+
     [self.view bringSubviewToFront:self.infoPicView];
+    
 }
 
 bool isShowingOptions = false;
@@ -355,8 +372,14 @@ bool isShownAlbumInfo = false;
 
 -(void)showAlbumInfo{
     //[UIView animateWithDuration:0.07 animations:^{ self.infoAlbumView.frame = self.shownInfoAlbumFrame;}];
+    
+    self.titleLbl.text = NSLocalizedString(@"SINGLE_ALBUM_TITLE", nil);
+    self.numPicsTextLbl.text = NSLocalizedString(@"ALBUM_NUM_PICS", nil);
+    self.numPicsLbl.text = [NSString stringWithFormat: @"%d", self.picsArray.count];
+    self.numPicsView.hidden = false;
     self.headerView.hidden = false;
     self.backButtonView.hidden = true;
+    
     isShownAlbumInfo = true;
     [self switchAlbumOptions];
     UIImage * btnImage = [UIImage imageNamed:@"info_s.png"];
@@ -484,8 +507,12 @@ bool statusBarHidden = false;
         }
 
         [YVHDAO setSelectedPics:@[data]];
+        self.titleLbl.text = data.name;
     }
+    
+    self.infoPicView.hidden = false;
     self.headerView.hidden = false;
+    self.numPicsView.hidden = true;
     self.backButtonView.hidden = false;
     
     if(isShowingOptions){

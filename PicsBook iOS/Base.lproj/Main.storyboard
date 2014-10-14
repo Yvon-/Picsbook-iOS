@@ -56,7 +56,7 @@
                                 <rect key="frame" x="159" y="362" width="450" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lKv-wO-FhW">
+                                    <imageView userInteractionEnabled="NO" alpha="0.59999999999999987" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lKv-wO-FhW">
                                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
@@ -129,7 +129,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" id="mgB-GC-Q3x">
+                                    <view contentMode="scaleToFill" id="mgB-GC-Q3x" userLabel="View - Buton back">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
@@ -151,13 +151,43 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo de la foto o album" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9AX-Ky-pHI">
+                                        <rect key="frame" x="200" y="16" width="350" height="21"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" id="hRi-lG-LH3">
+                                        <rect key="frame" x="550" y="13" width="150" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo de la foto o album" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h4c-WI-dsh" userLabel="Label - Num fotos text">
+                                                <rect key="frame" x="0.0" y="3" width="100" height="21"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo de la foto o album" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vIm-Mt-rfj" userLabel="Label - Num fotos">
+                                                <rect key="frame" x="167" y="3" width="50" height="21"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.85546132620000004" green="0.82208277249999995" blue="0.89590640939999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="jEF-Jy-A7h"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="PicView" destination="XMc-OP-vCc" id="amb-zK-XvF"/>
                         <outlet property="PicViewImg" destination="gP2-GK-LX8" id="FsX-mY-dO0"/>
@@ -168,10 +198,14 @@
                         <outlet property="infoAlbumView" destination="r3Y-o0-6k0" id="Md2-bK-Ub1"/>
                         <outlet property="infoPicImg" destination="lKv-wO-FhW" id="sVq-6r-ajr"/>
                         <outlet property="infoPicView" destination="tn3-ZH-ddZ" id="t0E-Yh-oqS"/>
+                        <outlet property="numPicsLbl" destination="vIm-Mt-rfj" id="ESL-e8-9kX"/>
+                        <outlet property="numPicsTextLbl" destination="h4c-WI-dsh" id="qDd-G7-244"/>
+                        <outlet property="numPicsView" destination="hRi-lG-LH3" id="Rox-Fm-2Xg"/>
                         <outlet property="optionsAlbumImg" destination="nZy-O1-UIa" id="wY7-MO-0Ia"/>
                         <outlet property="optionsAlbumView" destination="VVA-ts-OSP" id="XAA-Nh-EoS"/>
                         <outlet property="optionsOnePicImg" destination="qVh-Pj-otA" id="d30-71-oCy"/>
                         <outlet property="optionsOnePicView" destination="Xae-Jf-5z2" id="tpP-eU-h3Y"/>
+                        <outlet property="titleLbl" destination="9AX-Ky-pHI" id="T3z-Eb-RSf"/>
                         <segue destination="87y-xj-VYz" kind="modal" identifier="segue1" id="RgS-yH-j01"/>
                     </connections>
                 </viewController>

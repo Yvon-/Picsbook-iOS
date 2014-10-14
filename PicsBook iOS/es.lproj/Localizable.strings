@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  PicsBook iOS
+
+  Created by Yvon Valdepeñas on 14/10/14.
+  Copyright (c) 2014 Yvon Valdepeñas. All rights reserved.
+*/
+
+"SINGLE_ALBUM_TITLE" = "Fotos de Picsbook";
+"ALBUM_NUM_PICS" = "fotos";
