@@ -32,7 +32,7 @@
 @property (strong, nonatomic) UIButton * OnePicOptionsBtn1;
 @property (strong, nonatomic) UIButton * OnePicOptionsBtn2;
 @property (strong, nonatomic) UIButton * OnePicOptionsBtn3;
-
+@property (strong, nonatomic) UIButton * OnePicOptionsBtn4;
 
 
 @property (nonatomic, strong) NSArray *picsArray;
@@ -170,6 +170,7 @@
 int optionHeight = 80;
 int optionWidth = 165;
 int iconWidth = 50;
+float iconAlpha = .8;
 
 -(void)initAlbumOptionsView
 {
@@ -186,17 +187,20 @@ int iconWidth = 50;
     self.optionsAlbumImg.image = [UIImage imageNamed:@"options1.png"];
     [self.view bringSubviewToFront:self.optionsAlbumView];
     
+    //Buttons
     btnImage = [UIImage imageNamed:@"info.png"];
 	self.AlbumOptionsBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
 	self.AlbumOptionsBtn1.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight/2 - iconWidth/2, iconWidth, iconWidth);
+    self.AlbumOptionsBtn1.alpha = iconAlpha;
 	[self.AlbumOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
     [self.optionsAlbumView addSubview:self.AlbumOptionsBtn1];
+    [self.AlbumOptionsBtn1 addTarget:self action:@selector(showAlbumInfo) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
 -(void)initOptionsOnePicView
 {
-    int options = 3;
+    int options = 4;
     int height = optionHeight * options;
     UIImage * btnImage;
     
@@ -206,26 +210,41 @@ int iconWidth = 50;
     self.shownOnePicOptionsFrame = CGRectMake(screenRect.size.width - optionWidth - 5, screenRect.size.height - 57 - height, optionWidth, height);
     self.optionsOnePicView.frame = self.hiddenOnePicOptionsFrame;
     
-    self.optionsOnePicImg.image = [UIImage imageNamed:@"options3.png"];
+    self.optionsOnePicImg.image = [UIImage imageNamed:@"options4.png"];
     [self.view bringSubviewToFront:self.optionsOnePicView];
     
-    btnImage = [UIImage imageNamed:@"info.png"];
+    //Buttons
+    btnImage = [UIImage imageNamed:@"face.png"];
 	self.OnePicOptionsBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
 	self.OnePicOptionsBtn1.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight/2 - iconWidth/2, iconWidth, iconWidth);
-	[self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+	self.OnePicOptionsBtn1.alpha = iconAlpha;
+    [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    [self.OnePicOptionsBtn1 addTarget:self action:@selector(showFaces) forControlEvents:UIControlEventTouchUpInside];
     [self.optionsOnePicView addSubview:self.OnePicOptionsBtn1];
     
-    btnImage = [UIImage imageNamed:@"share.png"];
+    btnImage = [UIImage imageNamed:@"filter.png"];
 	self.OnePicOptionsBtn2 = [UIButton buttonWithType:UIButtonTypeCustom];
 	self.OnePicOptionsBtn2.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight + optionHeight/2 - iconWidth/2, iconWidth, iconWidth);
-	[self.OnePicOptionsBtn2 setBackgroundImage:btnImage forState:UIControlStateNormal];
+	self.OnePicOptionsBtn2.alpha = iconAlpha;
+    [self.OnePicOptionsBtn2 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    [self.OnePicOptionsBtn2 addTarget:self action:@selector(toFilters) forControlEvents:UIControlEventTouchUpInside];
     [self.optionsOnePicView addSubview:self.OnePicOptionsBtn2];
     
-    btnImage = [UIImage imageNamed:@"filter.png"];
+    btnImage = [UIImage imageNamed:@"share.png"];
 	self.OnePicOptionsBtn3 = [UIButton buttonWithType:UIButtonTypeCustom];
 	self.OnePicOptionsBtn3.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight*2 + optionHeight/2 - iconWidth/2, iconWidth, iconWidth);
-	[self.OnePicOptionsBtn3 setBackgroundImage:btnImage forState:UIControlStateNormal];
+	self.OnePicOptionsBtn3.alpha = iconAlpha;
+    [self.OnePicOptionsBtn3 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    [self.OnePicOptionsBtn3 addTarget:self action:@selector(toShare) forControlEvents:UIControlEventTouchUpInside];
     [self.optionsOnePicView addSubview:self.OnePicOptionsBtn3];
+    
+    btnImage = [UIImage imageNamed:@"info.png"];
+	self.OnePicOptionsBtn4 = [UIButton buttonWithType:UIButtonTypeCustom];
+	self.OnePicOptionsBtn4.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight*3 + optionHeight/2 - iconWidth/2, iconWidth, iconWidth);
+    self.OnePicOptionsBtn4.alpha = iconAlpha;
+	[self.OnePicOptionsBtn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    [self.OnePicOptionsBtn4 addTarget:self action:@selector(showPicInfo) forControlEvents:UIControlEventTouchUpInside];
+    [self.optionsOnePicView addSubview:self.OnePicOptionsBtn4];
     
 }
 
@@ -266,61 +285,22 @@ bool isOnePicView = false;
     }
 }
 
-
-	// Initialise our two images
-//	UIImage *btnImage = [UIImage imageNamed:@"Galery.png"];
-//	UIImage *btnImageSelected = [UIImage imageNamed:@"Galery_s.png"];
+-(void)showAlbumInfo{
     
-//    self.btn1 = [UIButton buttonWithType:UIButtonTypeCustom]; //Setup the button
-//	self.btn1.frame = CGRectMake(screenRect.size.width/8 - 30, self.view.bounds.size.height+10 - 50, 40, 30); // Set the frame (size and position) of the button)
-//    
-//	[self.btn1 setBackgroundImage:btnImage forState:UIControlStateNormal]; // Set the image for the normal state of the button
-//	[self.btn1 setBackgroundImage:btnImageSelected forState:UIControlStateSelected]; // Set the image for the selected state of the button
-//	[self.btn1 setTag:0]; // Assign the button a "tag" so when our "click" event is called we know which button was pressed.
-//	[self.btn1 setSelected:true]; // Set this button as selected (we will select the others to false as we only want Tab 1 to be selected initially
-//    [self.btn1 setImageEdgeInsets:UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0)];
-//    [self.btn1.imageView setContentMode:UIViewContentModeScaleAspectFit];
-//	
-//    
-//	
-//	// Now we repeat the process for the other buttons
-//	btnImage = [UIImage imageNamed:@"mapOff.png"];
-//	btnImageSelected = [UIImage imageNamed:@"mapOn.png"];
-//	self.btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
-//	self.btn2.frame = CGRectMake(3*screenRect.size.width/8 - 30, self.view.bounds.size.height +5 - 50, 40, 40);
-//	[self.btn2 setBackgroundImage:btnImage forState:UIControlStateNormal];
-//	[self.btn2 setBackgroundImage:btnImageSelected forState:UIControlStateSelected];
-//	[self.btn2 setTag:1];
-//	
-//	btnImage = [UIImage imageNamed:@"cameraOff.png"];
-//	btnImageSelected = [UIImage imageNamed:@"cameraOff.png"];
-//	self.btn3 = [UIButton buttonWithType:UIButtonTypeCustom];
-//	self.btn3.frame = CGRectMake(5*screenRect.size.width/8-20 , self.view.bounds.size.height+5 - 50, 50, 40);
-//	[self.btn3 setBackgroundImage:btnImage forState:UIControlStateNormal];
-//	[self.btn3 setBackgroundImage:btnImageSelected forState:UIControlStateSelected];
-//	[self.btn3 setTag:2];
-//	
-//	btnImage = [UIImage imageNamed:@"menu.png"];
-//	btnImageSelected = [UIImage imageNamed:@"menu.png"];
-//	self.btn4 = [UIButton buttonWithType:UIButtonTypeCustom];
-//	self.btn4.frame = CGRectMake(7*screenRect.size.width/8 -10, self.view.bounds.size.height+10 - 50, 35, 30);
-//	[self.btn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
-//	[self.btn4 setBackgroundImage:btnImageSelected forState:UIControlStateSelected];
-//	[self.btn4 setTag:3];
-//    
-//    
-//	// Add my new buttons to the view
-//	[self.view addSubview:btn1];
-//	[self.view addSubview:btn2];
-//	[self.view addSubview:btn3];
-//	[self.view addSubview:btn4];
-//	
-//	// Setup event handlers so that the buttonClicked method will respond to the touch up inside event.
-//	[btn1 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-//	[btn2 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-//	[btn3 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-//	[btn4 addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-//}
+}
+
+-(void)toFilters{
+    
+}
+-(void)toShare{
+    
+}
+-(void)showPicInfo{
+    
+}
+
+
+
 
 
 
