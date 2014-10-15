@@ -80,6 +80,8 @@
 @property (strong, nonatomic) NSArray * filterList;
 @property (weak, nonatomic) IBOutlet UIView *filtersView;
 @property (weak, nonatomic) IBOutlet UICollectionView *filtersCollectionView;
+@property (assign, nonatomic) CGRect hiddenFiltersFrame;
+@property (assign, nonatomic) CGRect shownFiltersFrame;
 
 
 //Others
@@ -137,10 +139,13 @@
                                                  name:@"GalleryOptions"
                                                object:nil];
     
+    
+    
     [self initAlbumOptionsView];
     [self initOptionsOnePicView];
     //[self initAlbumInfoView];
     [self initPicInfoView];
+    [self initFilterListView];
     
     self.filterList = @[@"CISepiaTone",//0
                         @"CIPixelate" ,//1
@@ -287,6 +292,9 @@
     CIImage * ciimage = [CIImage imageWithCGImage:cgimg];
     
     CIFilter * filter = [CIFilter filterWithName:filterName];
+    [filter setValue:ciimage forKey:kCIInputImageKey];
+  //  [filter setValue:[NSNumber numberWithFloat:0.8f] forKey:@"InputIntensity"];
+    
     CIContext *context = [CIContext contextWithOptions:nil];        //1
     CIImage *result = [filter valueForKey:kCIOutputImageKey];           //4
     CGImageRef cgImage = [context createCGImage:result
@@ -466,6 +474,22 @@ float iconAlpha = .8;
     
 }
 
+-(void)initFilterListView{
+    int radius = 25;
+    
+    
+    CGRect v = self.filtersView.frame;
+    
+    self.hiddenFiltersFrame = CGRectMake(0 - v.size.width, v.origin.y, v.size.width, v.size.height);
+    self.shownFiltersFrame = CGRectMake(0 - radius, v.origin.y, v.size.width, v.size.height);
+    self.filtersView.frame = self.hiddenFiltersFrame;
+    
+    self.filtersView.layer.cornerRadius = radius;
+    self.filtersView.clipsToBounds = YES;
+    
+    [self.view bringSubviewToFront:self.filtersView];
+}
+
 bool isShowingOptions = false;
 bool isOnePicView = false;
 -(void)switchOptions{
@@ -515,6 +539,18 @@ bool isShownAlbumInfo = false;
     }
     else{
         [self showAlbumInfo];
+    }
+}
+
+bool isShownFilters = false;
+
+-(void)switchFiltersView
+{
+    if(isShownFilters){
+        [self hideFilters];
+    }
+    else{
+        [self showFilters];
     }
 }
 
@@ -591,14 +627,31 @@ bool isShownPicInfo = false;
 }
 
 
+-(void)showFilters
+{
+    [UIView animateWithDuration:0.1 animations:^{ self.filtersView.frame = self.shownFiltersFrame;}];
+    isShownFilters = true;
+}
+
+-(void)hideFilters
+{
+
+    [UIView animateWithDuration:0.1 animations:^{ self.filtersView.frame = self.hiddenFiltersFrame;}];
+    isShownFilters = false;
+    
+}
+
 
 -(void)toFilters{
     
+    [self switchFiltersView];
+    
    // [self showFilter:@1];
+    
     
 
     
-    self.PicViewImg.image = [self standarFilterToImage:self.PicViewImg.image filterName:@"CISepiaTone"];
+   // self.PicViewImg.image = [self standarFilterToImage:self.PicViewImg.image filterName:@"CISepiaTone"];
     
     /*
     CGImageRef img = self.pickedImg.CGImage;
@@ -645,13 +698,15 @@ bool isShownPicInfo = false;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    int n;
     
-    
-    int n = [self.picsArray count];
-
-    
+    if (collectionView == self.collectionView) {
+        n = [self.picsArray count];
+    }
+    else{
+        n = self.filterList.count;
+    }
     return n;
-    
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -755,15 +810,25 @@ bool statusBarHidden = false;
 #pragma mark -
 #pragma mark – UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    Pic *data = self.picsArray[indexPath.row];
-    UIImage *photo = [self getPicFromDisk:data.path];
-    // 2
-    CGSize retval = photo.size.width > 0 ? [self reducePic:photo.size] : CGSizeMake(100, 100);
-    //CGSize retval = CGSizeMake(100, 100);
-    retval.height += 35; retval.width += 35; return retval;
+    if (collectionView == self.collectionView) {
+        
+        Pic *data = self.picsArray[indexPath.row];
+        UIImage *photo = [self getPicFromDisk:data.path];
+        // 2
+        CGSize retval = photo.size.width > 0 ? [self reducePicCell:photo.size] : CGSizeMake(100, 100);
+        //CGSize retval = CGSizeMake(100, 100);
+        retval.height += 35; retval.width += 35;
+        return retval;
+    }
+    else{
+
+        CGSize retval =  CGSizeMake(200, 180);
+        //CGSize retval = CGSizeMake(100, 100);
+        return retval;
+    }
 }
 
--(CGSize)reducePic:(CGSize)sz{
+-(CGSize)reducePicCell:(CGSize)sz{
     int w, h, ws, hs ;
     w = sz.width;
     h = sz.height;
