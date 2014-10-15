@@ -208,7 +208,7 @@
                                 <rect key="frame" x="0.0" y="63" width="200" height="900"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="C6L-YC-9VU">
+                                    <imageView userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="infoBg2.png" id="C6L-YC-9VU">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="900"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
@@ -444,6 +444,7 @@
     <resources>
         <image name="HeaderBar.png" width="320" height="51"/>
         <image name="arrow_fwd.png" width="125" height="228"/>
+        <image name="infoBg2.png" width="1206" height="462"/>
         <image name="pushpin.png" width="22" height="31"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
