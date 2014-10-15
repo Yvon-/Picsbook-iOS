@@ -278,6 +278,26 @@
     isOnePicView = false;
 }
 
+-(void)refitAlbumHeader{
+    CGRect x0 = self.titleLbl.frame ;
+    CGRect x1 = self.numPicsView.frame ;
+    CGRect x2 = self.numPicsTextLbl.frame ;
+    CGRect x3 = self.numPicsLbl.frame ;
+    
+    [self.titleLbl sizeToFit];
+    self.titleLbl.center = CGPointMake(self.headerView.center.x,self.titleLbl.center.y);
+    
+    [self.numPicsTextLbl sizeToFit];
+    x2 = self.numPicsTextLbl.frame ;
+    
+    self.numPicsView.frame = CGRectMake(self.titleLbl.frame.origin.x +  self.titleLbl.frame.size.width + 30, self.numPicsView.frame.origin.y , self.numPicsView.frame.size.width, self.numPicsView.frame.size.height);
+    self.numPicsLbl.frame = CGRectMake(self.numPicsTextLbl.frame.origin.x +  self.numPicsTextLbl.frame.size.width + 5, self.numPicsLbl.frame.origin.y , self.numPicsLbl.frame.size.width, self.numPicsLbl.frame.size.height);
+    
+     x1 = self.numPicsView.frame ;
+    
+     x3 = self.numPicsLbl.frame ;
+}
+
 
 int optionHeight = 80;
 int optionWidth = 165;
@@ -456,6 +476,8 @@ bool isShownAlbumInfo = false;
     self.numPicsView.hidden = false;
     self.headerView.hidden = false;
     self.backButtonView.hidden = true;
+    
+    [self refitAlbumHeader];
     
     isShownAlbumInfo = true;
     [self switchAlbumOptions];
