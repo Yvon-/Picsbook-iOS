@@ -9,6 +9,7 @@
 "SINGLE_ALBUM_TITLE" = "Fotos de Picsbook";
 "ALBUM_NUM_PICS" = "fotos";
 
+"PIC_NAME" = "Nombre: ";
 "PIC_ADDRESS" = "Dirección: ";
 "PIC_LONG" = "Longitud: ";
 "PIC_LAT" = "Latitud: ";

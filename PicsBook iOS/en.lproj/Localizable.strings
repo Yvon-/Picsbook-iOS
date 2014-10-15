@@ -10,6 +10,7 @@
 "SINGLE_ALBUM_TITLE" = "Picsbook pictures";
 "ALBUM_NUM_PICS" = "pictures";
 
+"PIC_NAME" = "Name: ";
 "PIC_ADDRESS" = "Address: ";
 "PIC_LONG" = "Longitude: ";
 "PIC_LAT" = "Latitude: ";

@@ -55,12 +55,14 @@
 @property (assign, nonatomic) CGRect hiddenInfoPicFrame;
 @property (assign, nonatomic) CGRect shownInfoPicFrame;
 
-
-@property (weak, nonatomic) IBOutlet UILabel *titleInfoLbl;
+@property (weak, nonatomic) IBOutlet UILabel *nameTextLbl;
+@property (weak, nonatomic) IBOutlet UILabel *nameLbl;
 
 @property (weak, nonatomic) IBOutlet UILabel *albumLbl;
 @property (weak, nonatomic) IBOutlet UILabel *addressTextLbl;
 @property (weak, nonatomic) IBOutlet UILabel *addressLbl;
+@property (weak, nonatomic) IBOutlet UILabel *addressLbl2;
+@property (weak, nonatomic) IBOutlet UILabel *addressLbl3;
 @property (weak, nonatomic) IBOutlet UILabel *longitudeTextLbl;
 @property (weak, nonatomic) IBOutlet UILabel *longitudeLbl;
 @property (weak, nonatomic) IBOutlet UILabel *latitudeTextLbl;
@@ -80,14 +82,21 @@
 @property(nonatomic,assign) BOOL contextHasChange;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+@property (strong, nonatomic) NSString * address;
+@property (strong, nonatomic) NSString * city;
+@property (strong, nonatomic) NSString * area;
+@property (strong, nonatomic) NSString * country;
+@property (strong, nonatomic) NSString * zip;
 
 @end
 
-@implementation YVHGalleryVC 
+@implementation YVHGalleryVC
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.address addObserver:self forKeyPath:@"location" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:NULL];
     
     //Change appeareance of uiviews
 	self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_cork.png"]];
@@ -161,7 +170,59 @@
     self.contextHasChange = YES;
 }
 
-#pragma mark -
+
+
+#pragma mark - Utils
+
+- (void)getReverseGeocodeLocation:(CLLocation *)selectedLocation{
+
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    
+    [geocoder reverseGeocodeLocation:selectedLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+      
+        if(placemarks.count){
+            NSDictionary *dictionary = [[placemarks objectAtIndex:0] addressDictionary];
+            self.address = [dictionary valueForKey:@"Street"];
+            self.city = [dictionary valueForKey:@"City"];
+            self.area = [dictionary valueForKey:@"SubAdministrativeArea"];
+            self.country = [dictionary valueForKey:@"Country"];
+            self.zip = [dictionary valueForKey:@"ZIP"];
+            
+            [self setAddressLocation];
+        }
+        else{
+            self.address = nil;
+            self.city = nil;
+            self.area = nil;
+            self.zip = nil;
+            self.country = nil;
+        }
+    }];
+    
+}
+
+-(void)setAddressLocation{
+    self.addressTextLbl.text = NSLocalizedString(@"PIC_ADDRESS", nil);
+    self.addressLbl.text = self.address;
+    self.addressLbl2.text = [NSString stringWithFormat:@"%@ - %@ ", self.zip, self.city];
+    self.addressLbl3.text = [NSString stringWithFormat:@"%@ %@", [self.area isEqualToString:self.city]?@"":[self.area stringByAppendingString: @" - " ], self.country];
+}
+
+- (void)setReverseGeocodeLocation{
+    self.longitudeTextLbl.text = NSLocalizedString(@"PIC_LONG", nil);
+    self.longitudeLbl.text = [self.pickedPic.longitude stringValue];
+    self.latitudeTextLbl.text = NSLocalizedString(@"PIC_LAT", nil);
+    self.latitudeLbl.text = [self.pickedPic.latitude stringValue];
+    self.facesTextLbl.text = NSLocalizedString(@"PIC_FACES", nil);
+    self.facesLbl.text = @"0";
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    NSLog(@"string");
+    if (self.address ) {
+        
+    }
+}
 
 -(UIImage *) getPicFromDisk:(NSString*)path{
     NSData *imgData = [NSData dataWithContentsOfFile:path];
@@ -317,8 +378,8 @@ float iconAlpha = .8;
 -(void)initPicInfoView{
     //  int options = 1;
     //  int height = optionHeight * options;
-    int infoViewWidth = 500;
-    int infoViewHeight = 300;
+    int infoViewWidth = 550;
+    int infoViewHeight = 355;
     int radius = 25;
     
     //Bar image
@@ -430,19 +491,19 @@ bool isShownPicInfo = false;
     UIImage * btnImage = [UIImage imageNamed:@"info_s.png"];
 	[self.OnePicOptionsBtn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
     
-    self.titleInfoLbl.text = self.pickedPic.name;
-    self.albumLbl.text = NSLocalizedString(@"SINGLE_ALBUM_TITLE", nil);
-    self.addressTextLbl.text = NSLocalizedString(@"PIC_ADDRESS", nil);
-  //  self.addressLbl.text = self.pickedPic
-    self.longitudeTextLbl.text = NSLocalizedString(@"PIC_LONG", nil);
-    NSNumber *n = self.pickedPic.longitude;
-    self.longitudeLbl.text = [self.pickedPic.longitude stringValue];
-    self.latitudeTextLbl.text = NSLocalizedString(@"PIC_LAT", nil);
-    self.latitudeLbl.text = [self.pickedPic.latitude stringValue];
-    self.facesTextLbl.text = NSLocalizedString(@"PIC_FACES", nil);
- //   self.facesLbl.text = self.pickedPic.faces;
+    self.nameTextLbl.text = NSLocalizedString(@"PIC_NAME", nil);
+    self.nameLbl.text = self.pickedPic.name;
     
-    [UIView animateWithDuration:0.07 animations:^{ self.infoPicView.frame = self.shownInfoPicFrame;}];
+    self.albumLbl.text = NSLocalizedString(@"SINGLE_ALBUM_TITLE", nil);
+    
+    
+    CLLocation * selectedLocation = [[CLLocation alloc] initWithLatitude:(CLLocationDegrees)[self.pickedPic.latitude doubleValue]
+                                                             longitude:(CLLocationDegrees)[self.pickedPic.longitude doubleValue]];
+    
+    [self getReverseGeocodeLocation:selectedLocation];
+    [self setReverseGeocodeLocation ];
+    
+    [UIView animateWithDuration:0.07  animations:^{ self.infoPicView.frame = self.shownInfoPicFrame;}];
     isShownPicInfo = true;
     //[self switchOnePicOptions];
 }
@@ -463,9 +524,6 @@ bool isShownPicInfo = false;
 -(void)toShare{
     
 }
-
-
-
 
 
 
@@ -547,6 +605,9 @@ bool statusBarHidden = false;
     if(isShowingOptions){
         [self switchAlbumOptions];
         isShowingOptions = false;
+    }
+    if(isShownPicInfo){
+        [self showPicInfo];
     }
     isOnePicView = true;
     
