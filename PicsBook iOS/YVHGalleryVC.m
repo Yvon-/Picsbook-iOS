@@ -121,7 +121,7 @@
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
 
     UINib *filterCellNib = [UINib nibWithNibName:@"FilterCell" bundle:nil];
-    [self.filtersCollectionView registerNib:cellNib forCellWithReuseIdentifier:@"filterCell"];
+    [self.filtersCollectionView registerNib:filterCellNib forCellWithReuseIdentifier:@"filterCell"];
     
 
     self.contextHasChange = NO;
@@ -281,7 +281,7 @@
 }
 
 -(UIImage *)standarFilterToImage:(UIImage *)image
-                       filter:(NSString *)filterName{
+                       filterName:(NSString *)filterName{
     
     CGImageRef cgimg = image.CGImage;
     CIImage * ciimage = [CIImage imageWithCGImage:cgimg];
@@ -587,7 +587,7 @@ bool isShownPicInfo = false;
 	[self.OnePicOptionsBtn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
     [UIView animateWithDuration:0.1 animations:^{ self.infoPicView.frame = self.hiddenInfoPicFrame;}];
     isShownPicInfo = false;
-   
+
 }
 
 
@@ -599,6 +599,7 @@ bool isShownPicInfo = false;
 
     
     self.PicViewImg.image = [self standarFilterToImage:self.PicViewImg.image filterName:@"CISepiaTone"];
+    
     /*
     CGImageRef img = self.pickedImg.CGImage;
     CIImage * image = [CIImage imageWithCGImage:img];
@@ -679,6 +680,8 @@ bool isShownPicInfo = false;
     else{ // if (collectionView == self.filtersCollectionView){
         
         FilterCell *cell = (FilterCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"filterCell" forIndexPath:indexPath];
+        
+
         
         int x = indexPath.row;
         
