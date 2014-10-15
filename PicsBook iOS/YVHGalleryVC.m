@@ -137,6 +137,9 @@
     if(self.contextHasChange){
         self.picsArray = [YVHDAO getPics:nil];
         [self.collectionView reloadData];
+        if (isShownAlbumInfo){
+            [self showAlbumInfo];
+        }
     }
 }
 
