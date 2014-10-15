@@ -12,6 +12,7 @@
 #import "Pic.h"
 #import "YVHPicVC.h"
 #import "CVCell.h"
+#import "FilterCell.h"
 #import "YVHDAO.h"
 
 
@@ -75,6 +76,12 @@
 @property (weak, nonatomic) IBOutlet UIView *PicView;
 @property (weak, nonatomic) IBOutlet UIImageView *PicViewImg;
 
+//Filters
+@property (strong, nonatomic) NSArray * filterList;
+@property (weak, nonatomic) IBOutlet UIView *filtersView;
+@property (weak, nonatomic) IBOutlet UICollectionView *filtersCollectionView;
+
+
 //Others
 @property (nonatomic, strong) NSArray *picsArray;
 @property (nonatomic, strong) UIImage * pickedImg;
@@ -87,6 +94,8 @@
 @property (strong, nonatomic) NSString * area;
 @property (strong, nonatomic) NSString * country;
 @property (strong, nonatomic) NSString * zip;
+
+
 
 @end
 
@@ -111,6 +120,10 @@
     UINib *cellNib = [UINib nibWithNibName:@"CVCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
 
+    UINib *filterCellNib = [UINib nibWithNibName:@"FilterCell" bundle:nil];
+    [self.filtersCollectionView registerNib:cellNib forCellWithReuseIdentifier:@"filterCell"];
+    
+
     self.contextHasChange = NO;
     
     [[NSNotificationCenter defaultCenter]
@@ -128,6 +141,13 @@
     [self initOptionsOnePicView];
     //[self initAlbumInfoView];
     [self initPicInfoView];
+    
+    self.filterList = @[@"CISepiaTone",//0
+                        @"CIPixelate" ,//1
+                        @"CIBloom"    ,//2
+                        @"CICrop"     ,//3
+                        @"CIGloom"    ,//4
+                        ];
 }
 
 
@@ -260,6 +280,21 @@
     return cgImage;
 }
 
+-(UIImage *)standarFilterToImage:(UIImage *)image
+                       filter:(NSString *)filterName{
+    
+    CGImageRef cgimg = image.CGImage;
+    CIImage * ciimage = [CIImage imageWithCGImage:cgimg];
+    
+    CIFilter * filter = [CIFilter filterWithName:filterName];
+    CIContext *context = [CIContext contextWithOptions:nil];        //1
+    CIImage *result = [filter valueForKey:kCIOutputImageKey];           //4
+    CGImageRef cgImage = [context createCGImage:result
+                                       fromRect:[result extent]];
+    
+    return [UIImage imageWithCGImage:cgImage];
+
+}
 
 
 
@@ -422,9 +457,10 @@ float iconAlpha = .8;
     self.shownInfoPicFrame = CGRectMake(0 -radius , 60, infoViewWidth, infoViewHeight);
     self.infoPicView.frame = self.hiddenInfoPicFrame;
     
+    self.infoPicView.layer.cornerRadius = radius;
+    self.infoPicView.clipsToBounds = YES;
+    
     self.infoPicImg.image = [UIImage imageNamed:@"infoBg2.png"];
-    self.infoPicImg.layer.cornerRadius = radius;
-    self.infoPicImg.clipsToBounds = YES;
 
     [self.view bringSubviewToFront:self.infoPicView];
     
@@ -551,11 +587,19 @@ bool isShownPicInfo = false;
 	[self.OnePicOptionsBtn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
     [UIView animateWithDuration:0.1 animations:^{ self.infoPicView.frame = self.hiddenInfoPicFrame;}];
     isShownPicInfo = false;
+   
 }
 
 
 
 -(void)toFilters{
+    
+   // [self showFilter:@1];
+    
+
+    
+    self.PicViewImg.image = [self standarFilterToImage:self.PicViewImg.image filterName:@"CISepiaTone"];
+    /*
     CGImageRef img = self.pickedImg.CGImage;
     CIImage * image = [CIImage imageWithCGImage:img];
     
@@ -565,6 +609,20 @@ bool isShownPicInfo = false;
     
     CGImageRef fImg = [self processingImage:image filter:filter];
     self.PicViewImg.image = [UIImage imageWithCGImage:fImg];
+    */
+    
+}
+
+-(void)showFilter:(NSNumber *)filterId{
+    
+    switch ([filterId integerValue]) {
+        case 1:
+            
+            break;
+            
+        default:
+            break;
+    }
     
 }
 
@@ -580,6 +638,7 @@ bool isShownPicInfo = false;
 #pragma mark - UICollectionView Datasource
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    
     return 1;
     
 }
@@ -596,25 +655,45 @@ bool isShownPicInfo = false;
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    // Setup cell identifier
-    static NSString *cellIdentifier = @"cvCell";
-    
-    CVCell *cell = (CVCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    
-    
-    NSInteger x = indexPath.row;
-
-    if(x<[self.picsArray count]){
-        Pic * data = [self.picsArray objectAtIndex:x];
-        UIImage *photo = [self getThumnailFromDisk:data.path];
+    if (collectionView == self.collectionView) {
+        // Setup cell identifier
+        static NSString *cellIdentifier = @"cvCell";
         
-        cell.backgroundColor = [UIColor whiteColor];
-        cell.image.image = photo;
+        CVCell *cell = (CVCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+        
+        
+        NSInteger x = indexPath.row;
+        
+        if(x<[self.picsArray count]){
+            Pic * data = [self.picsArray objectAtIndex:x];
+            UIImage *photo = [self getThumnailFromDisk:data.path];
+            
+            cell.backgroundColor = [UIColor whiteColor];
+            cell.image.image = photo;
+        }
+        
+        
+        // Return the cell
+        return cell;
     }
+    else{ // if (collectionView == self.filtersCollectionView){
+        
+        FilterCell *cell = (FilterCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"filterCell" forIndexPath:indexPath];
+        
+        int x = indexPath.row;
+        
+        if(x<[self.filterList count]){
+            
+            NSString * filter = [self.filterList objectAtIndex:x];
 
+        }
+        
+        
+        // Return the cell
+        return cell;
+    }
     
-    // Return the cell
-    return cell;
+
     
 }
 

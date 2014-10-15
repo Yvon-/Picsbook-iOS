@@ -204,6 +204,33 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" id="ZKS-T3-wtF" userLabel="View - Filters">
+                                <rect key="frame" x="0.0" y="63" width="200" height="900"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="C6L-YC-9VU">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="900"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="g4j-0O-aps">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="900"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CxV-8c-1An">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="sni-Vr-0Ex" id="rmb-mv-vdg"/>
+                                            <outlet property="delegate" destination="sni-Vr-0Ex" id="ZHV-Vc-GCC"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="3rK-vs-sSW">
                                 <rect key="frame" x="0.0" y="80" width="768" height="875"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -333,6 +360,8 @@
                         <outlet property="collectionView" destination="3rK-vs-sSW" id="jD4-Ld-d6p"/>
                         <outlet property="facesLbl" destination="Y0F-zN-tN3" id="m3p-Rf-8KV"/>
                         <outlet property="facesTextLbl" destination="MKk-c1-F9u" id="pan-T4-gZ9"/>
+                        <outlet property="filtersCollectionView" destination="g4j-0O-aps" id="isw-td-XWx"/>
+                        <outlet property="filtersView" destination="ZKS-T3-wtF" id="dXa-Tp-4DZ"/>
                         <outlet property="headerView" destination="p4k-81-moz" id="3xg-YI-hLn"/>
                         <outlet property="infoAlbumImg" destination="gUh-5I-ogV" id="8Na-c1-BRg"/>
                         <outlet property="infoAlbumView" destination="r3Y-o0-6k0" id="Md2-bK-Ub1"/>
