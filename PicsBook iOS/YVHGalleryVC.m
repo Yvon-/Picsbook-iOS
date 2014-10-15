@@ -91,7 +91,8 @@
 @end
 
 @implementation YVHGalleryVC
-
+#pragma mark -
+#pragma mark - Life Cycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -246,6 +247,17 @@
 -(NSString *)convertToThPath:(NSString*)path{
     //int len = [path length];
     return  [path stringByAppendingString:@"_s"];
+}
+
+-(CGImageRef )processingImage:(CIImage *)image
+                       filter:(CIFilter *)filter{
+    
+    CIContext *context = [CIContext contextWithOptions:nil];        //1
+    //CIImage *image = [CIImage imageWithContentsOfURL:urlImage];     //2
+    CIImage *result = [filter valueForKey:kCIOutputImageKey];           //4
+    CGImageRef cgImage = [context createCGImage:result
+                                       fromRect:[result extent]];
+    return cgImage;
 }
 
 
@@ -544,12 +556,22 @@ bool isShownPicInfo = false;
 
 
 -(void)toFilters{
+    CGImageRef img = self.pickedImg.CGImage;
+    CIImage * image = [CIImage imageWithCGImage:img];
     
-}
--(void)toShare{
+    CIFilter * filter = [CIFilter filterWithName:@"CISepiaTone"];
+    [filter setValue:image forKey:kCIInputImageKey];
+    [filter setValue:[NSNumber numberWithFloat:0.8f] forKey:@"InputIntensity"];
+    
+    CGImageRef fImg = [self processingImage:image filter:filter];
+    self.PicViewImg.image = [UIImage imageWithCGImage:fImg];
     
 }
 
+-(void)toShare{
+    UIActivityViewController * controller = [[UIActivityViewController alloc]initWithActivityItems:@[self.pickedImg] applicationActivities:nil];
+    [self presentViewController:controller animated:YES completion:nil];
+}
 
 
 
