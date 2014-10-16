@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "YVHCameraVC.h"
 
-@interface YVHGalleryVC : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface YVHGalleryVC : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 
 @end

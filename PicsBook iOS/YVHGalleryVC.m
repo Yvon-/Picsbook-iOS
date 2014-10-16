@@ -76,6 +76,7 @@
 //OnePic View
 @property (weak, nonatomic) IBOutlet UIView *PicView;
 @property (weak, nonatomic) IBOutlet UIImageView *PicViewImg;
+@property (nonatomic, assign) CGRect picViewImgOriginalFrame;
 
 //Filters
 @property (strong, nonatomic) NSArray * filterList;
@@ -143,7 +144,8 @@ float hideViewDuration = 0.3;
     UINib *filterCellNib = [UINib nibWithNibName:@"FilterCell" bundle:nil];
     [self.filtersCollectionView registerNib:filterCellNib forCellWithReuseIdentifier:@"filterCell"];
     
-
+    self. picViewImgOriginalFrame = self.PicViewImg.frame;
+    
     self.contextHasChange = NO;
     
     [[NSNotificationCenter defaultCenter]
@@ -157,8 +159,27 @@ float hideViewDuration = 0.3;
                                                  name:@"GalleryOptions"
                                                object:nil];
     
+    //Gestures
     UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap)];
     [self.PicView addGestureRecognizer:singleFingerTap];
+    singleFingerTap.delegate = self;
+    
+    UITapGestureRecognizer *doubbleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap)];
+    doubbleTap.numberOfTapsRequired = 2;
+    doubbleTap.numberOfTouchesRequired = 1;
+    [self.PicView addGestureRecognizer:doubbleTap];
+    doubbleTap.delegate = self;
+    
+    UIPinchGestureRecognizer* pinchRecognizer =
+    [[UIPinchGestureRecognizer alloc] initWithTarget:self
+                                              action:@selector(handlePinch:)];
+    [self.PicView addGestureRecognizer:pinchRecognizer];
+    pinchRecognizer.delegate = self;
+    
+    UIPanGestureRecognizer *panGesture=[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePan:)];
+    [self.PicView addGestureRecognizer:panGesture];
+    panGesture.delegate = self;
+    
     
     [self initAlbumOptionsView];
     [self initOptionsOnePicView];
@@ -373,6 +394,9 @@ float hideViewDuration = 0.3;
     self.PicView.hidden = true;
     self.collectionView.hidden = false;
     isStatusBarHidden = false;
+    
+    self.PicViewImg.frame = self.picViewImgOriginalFrame;
+    
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
     {
         [self setNeedsStatusBarAppearanceUpdate];
@@ -401,6 +425,10 @@ float hideViewDuration = 0.3;
     isOnePicView = false;
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return  YES;
+}
+
 -(void)handleSingleTap{
     if(isShowingOptions){
         [self switchOptions];
@@ -413,6 +441,44 @@ float hideViewDuration = 0.3;
     if(isShownFilters){
         [self hideFilters];
     }
+}
+
+-(void)handleDoubleTap{
+//    self.PicViewImg.contentMode = UIViewContentModeCenter;
+//    if(self.PicViewImg.contentMode != UIViewContentModeScaleAspectFit){
+//        
+//        // if (self.PicViewImg.bounds.size.width > ((UIImage*)imagesArray[i]).size.width && imageView.bounds.size.height > ((UIImage*)imagesArray[i]).size.height) {
+//        self.PicViewImg.contentMode = UIViewContentModeScaleAspectFit;
+//        //}}
+//    }
+//    else{
+//        self.PicViewImg.contentMode = UIViewContentModeScaleAspectFill;
+//    }
+    
+}
+
+- (void) handlePinch:(UIPinchGestureRecognizer *) recognizer {
+    recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
+    recognizer.scale = 1;
+//    CGPoint anchor = [recognizer locationInView:self.PicViewImg];
+//    anchor = CGPointMake(anchor.x - self.PicViewImg.bounds.size.width/2, anchor.y - self.PicViewImg.bounds.size.height/2);
+//    
+//    CGAffineTransform affineMatrix = self.PicViewImg.transform;
+//    affineMatrix = CGAffineTransformTranslate(affineMatrix, anchor.x, anchor.y);
+//    affineMatrix = CGAffineTransformScale(affineMatrix, [recognizer scale], [recognizer scale]);
+//    affineMatrix = CGAffineTransformTranslate(affineMatrix, -anchor.x, -anchor.y);
+//    self.PicViewImg.transform = affineMatrix;
+//    
+//    [recognizer setScale:1];
+}
+
+- (void)handlePan:(UIPanGestureRecognizer *)sender {
+    CGPoint translation = [sender translationInView:self.PicViewImg];
+    sender.view.center = CGPointMake(sender.view.center.x + translation.x,
+                                     sender.view.center.y + translation.y);
+    [sender setTranslation:CGPointMake(0, 0) inView:self.PicViewImg];
+    
+    
 }
 
 -(void)refitAlbumHeader{
