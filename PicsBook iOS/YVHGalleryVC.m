@@ -391,6 +391,10 @@ float hideViewDuration = 0.3;
         [self hideAlbumInfo];
     }
     
+    if(isShownFilters){
+        [self hideFilters];
+    }
+    
     self.backButtonView.hidden = true;
     self.infoPicView.hidden = true;
     isOnePicView = false;
@@ -847,7 +851,6 @@ float iconAlpha = .8;
                 UIImage * fthumb = [self standarFilterToImage:thumb filterName:filter];
                 cell.image.image = fthumb;
             }
-            
 
         }
         
@@ -865,41 +868,56 @@ float iconAlpha = .8;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger x = indexPath.row;
-    NSInteger y = indexPath.section;
-    NSInteger i = x + (y * 3);
-    if(i<[self.picsArray count]){
-        
-        self.lastPickedImg = self.pickedImg;
-        self.pickedPic = [self.picsArray objectAtIndex:x];
-        self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
-        self.PicViewImg.image = self.pickedImg;
-        self.PicView.hidden = false;
-        self.collectionView.hidden = true;
-
-        isStatusBarHidden = true;
-        if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
-        {
-            [self setNeedsStatusBarAppearanceUpdate];
+    
+    if (collectionView == self.collectionView) {
+        NSInteger x = indexPath.row;
+        NSInteger y = indexPath.section;
+        NSInteger i = x + (y * 3);
+        if(i<[self.picsArray count]){
+            
+            self.lastPickedImg = self.pickedImg;
+            self.pickedPic = [self.picsArray objectAtIndex:x];
+            self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
+            self.PicViewImg.image = self.pickedImg;
+            self.PicView.hidden = false;
+            self.collectionView.hidden = true;
+            
+            isStatusBarHidden = true;
+            if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
+            {
+                [self setNeedsStatusBarAppearanceUpdate];
+            }
+            
+            [YVHDAO setSelectedPics:@[self.pickedPic]];
+            self.titleLbl.text = self.pickedPic.name;
         }
-
-        [YVHDAO setSelectedPics:@[self.pickedPic]];
-        self.titleLbl.text = self.pickedPic.name;
+        
+        self.infoPicView.hidden = false;
+        self.headerView.hidden = false;
+        self.numPicsView.hidden = true;
+        self.backButtonView.hidden = false;
+        
+        if(isShowingOptions){
+            [self switchAlbumOptions];
+            isShowingOptions = false;
+        }
+        if(isShownPicInfo){
+            [self showPicInfo];
+        }
+        isOnePicView = true;
     }
-    
-    self.infoPicView.hidden = false;
-    self.headerView.hidden = false;
-    self.numPicsView.hidden = true;
-    self.backButtonView.hidden = false;
-    
-    if(isShowingOptions){
-        [self switchAlbumOptions];
-        isShowingOptions = false;
+    else{
+        int x = indexPath.row;
+        
+        if(x<[self.filterList count]){
+            
+                NSString * filter = [self.filterList objectAtIndex:x];
+                UIImage * photo = self.pickedImg;
+                UIImage * fphoto = [self standarFilterToImage:photo filterName:filter];
+                self.PicViewImg.image = fphoto;
+            
+        }
     }
-    if(isShownPicInfo){
-        [self showPicInfo];
-    }
-    isOnePicView = true;
     
 }
 - (BOOL)prefersStatusBarHidden
