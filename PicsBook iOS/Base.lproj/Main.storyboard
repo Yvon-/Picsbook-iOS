@@ -16,7 +16,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZYA-eL-55U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1104" y="-2821"/>
+            <point key="canvasLocation" x="-1048" y="-4077"/>
         </scene>
         <!--MainVC-->
         <scene sceneID="Hsl-ai-Nip">
@@ -25,12 +25,12 @@
                     <view key="view" contentMode="scaleToFill" id="0qI-Xa-5ed">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="1" green="0.57616857320000003" blue="0.43611125719999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.72037665904754655" green="0.77737976416340138" blue="0.92014110331632648" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AXA-8y-54k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1119" y="-3992"/>
+            <point key="canvasLocation" x="-1071" y="-2824"/>
         </scene>
         <!--GalleryVC-->
         <scene sceneID="gvp-rw-gOd">
@@ -464,6 +464,19 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rTF-tx-QXg" userLabel="Button - Debug">
+                                <rect key="frame" x="500" y="800" width="200" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.57616857320000003" blue="0.43611125719999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="DEBUG">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="debug:" destination="sni-Vr-0Ex" eventType="touchUpInside" id="tN3-yG-ipA"/>
+                                    <segue destination="bRZ-it-FqF" kind="modal" id="MSl-tb-tXg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.85546132620000004" green="0.82208277249999995" blue="0.89590640939999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -480,6 +493,7 @@
                         <outlet property="albumLbl" destination="x8i-08-OJ9" id="wIB-bX-kI1"/>
                         <outlet property="backButtonView" destination="mgB-GC-Q3x" id="xos-33-3ks"/>
                         <outlet property="collectionView" destination="3rK-vs-sSW" id="jD4-Ld-d6p"/>
+                        <outlet property="debugButton" destination="rTF-tx-QXg" id="Pd3-cc-dh3"/>
                         <outlet property="facesLbl" destination="Y0F-zN-tN3" id="m3p-Rf-8KV"/>
                         <outlet property="facesTextLbl" destination="MKk-c1-F9u" id="pan-T4-gZ9"/>
                         <outlet property="filterDetailCancelBtn" destination="EYV-LT-Kjt" id="C4X-Fv-9yP"/>
@@ -509,7 +523,7 @@
                         <outlet property="optionsOnePicImg" destination="qVh-Pj-otA" id="d30-71-oCy"/>
                         <outlet property="optionsOnePicView" destination="Xae-Jf-5z2" id="tpP-eU-h3Y"/>
                         <outlet property="titleLbl" destination="9AX-Ky-pHI" id="Cwm-lk-6fT"/>
-                        <segue destination="87y-xj-VYz" kind="modal" identifier="segue1" id="RgS-yH-j01"/>
+                        <segue destination="87y-xj-VYz" kind="modal" identifier="segueDebug" id="RgS-yH-j01"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqO-wo-r3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -580,6 +594,100 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5KY-gg-1gX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Core DataVC-->
+        <scene sceneID="kyi-06-wTe">
+            <objects>
+                <viewController id="bRZ-it-FqF" customClass="YVHCoreDataVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X5r-26-9y5">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="r38-GA-YrR">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3FD-tQ-uJG" userLabel="Button - Views">
+                                        <rect key="frame" x="148" y="840" width="118" height="68"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.63924491729999999" green="0.89590640939999999" blue="0.69075680289999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Add item">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addPic:" destination="bRZ-it-FqF" eventType="touchUpInside" id="1Ph-ew-cQ9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QxD-qi-zqn" userLabel="Button - Views">
+                                        <rect key="frame" x="20" y="242" width="118" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.63924491729999999" green="0.89590640939999999" blue="0.69075680289999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Show items data">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showData:" destination="bRZ-it-FqF" eventType="touchUpInside" id="js9-Ep-YGc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3mc-Rc-5sc" userLabel="Button - Back">
+                                        <rect key="frame" x="28" y="29" width="118" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.63924491729999999" green="0.89590640939999999" blue="0.69075680289999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="BACK">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="T9G-wd-F4x">
+                                        <rect key="frame" x="158" y="217" width="400" height="600"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="name" borderStyle="roundedRect" minimumFontSize="17" id="2pe-Lk-udV">
+                                        <rect key="frame" x="274" y="858" width="166" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uKg-da-PXs" userLabel="Button - Views">
+                                        <rect key="frame" x="20" y="315" width="118" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.63924491729999999" green="0.89590640939999999" blue="0.69075680289999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Clear">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clear:" destination="bRZ-it-FqF" eventType="touchUpInside" id="96A-yo-3Zn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gXT-In-XSd" userLabel="Button - Views">
+                                        <rect key="frame" x="450" y="841" width="118" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.63924491729999999" green="0.89590640939999999" blue="0.69075680289999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Clear item">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clearPic:" destination="bRZ-it-FqF" eventType="touchUpInside" id="aEk-1E-kp9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.57616857320000003" blue="0.43611125719999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6Lf-3l-htS"/>
+                    <connections>
+                        <outlet property="picname" destination="2pe-Lk-udV" id="p25-LK-MUH"/>
+                        <outlet property="textbox" destination="T9G-wd-F4x" id="u48-IG-sbg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pd7-wB-bFF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="119" y="-2798"/>
         </scene>
     </scenes>
     <resources>

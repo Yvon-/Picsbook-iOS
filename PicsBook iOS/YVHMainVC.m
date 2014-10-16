@@ -11,6 +11,7 @@
 #import "RXCustomTabBar.h"
 #import "YVHDAO.h"
 #import "Pic.h"
+#import "YVHUtil.h"
 
 @interface YVHMainVC ()
 
@@ -59,80 +60,53 @@
     
     //Foto1
     img = [UIImage imageNamed:@"Foto1.jpg"];
-    pic1.name = @"Cabaña pasiega";
     pic1.latitude = [NSNumber numberWithDouble:43.15094166666667];
     pic1.longitude = [NSNumber numberWithDouble:-3.776036111111111];
-    pic1.path = [self saveImageToDisk:img]; //Copiar en /Documents
-    //Creamos y guardamos una reducida
-    [self saveTumbnail:[self getThumbnail:img]];
+    pic1.name = @"Cabaña pasiega";
+    pic1 = [self saveImage:img currentPic:pic1];
+
     
     //Foto2
     img = [UIImage imageNamed:@"Foto2.jpg"];
-    pic2.name = @"Cuerda larga";
     pic2.latitude = [NSNumber numberWithDouble:40.81551388888889];
     pic2.longitude = [NSNumber numberWithDouble:-3.8320388888888886];
-    pic2.path = [self saveImageToDisk:img]; //Copiar en /Documents
-    //Creamos y guardamos una reducida
-    [self saveTumbnail:[self getThumbnail:img]];
+    pic2.name = @"Cuerda larga";
+    pic2 = [self saveImage:img currentPic:pic2];
     
     //Foto3
     img = [UIImage imageNamed:@"Foto3.jpg"];
-    pic3.name = @"Castillar";
     pic3.latitude = [NSNumber numberWithDouble:36.31910277777778];
     pic3.longitude = [NSNumber numberWithDouble:-5.453113888888889];
-    pic3.path = [self saveImageToDisk:img]; //Copiar en /Documents
-    //Creamos y guardamos una reducida
-    [self saveTumbnail:[self getThumbnail:img]];
+    pic3.name = @"Castillo de Castellar";
+    pic3 = [self saveImage:img currentPic:pic3];
     
     //Foto4
     img = [UIImage imageNamed:@"Foto4.jpg"];
     pic4.name = @"Parque de la Paloma";
     pic4.latitude = [NSNumber numberWithDouble:40.379080555555554];
     pic4.longitude = [NSNumber numberWithDouble:-3.714055555555556];
-    pic4.path = [self saveImageToDisk:img]; //Copiar en /Documents
+    pic4 = [self saveImage:img currentPic:pic4];
+    
+}
+
+-(Pic*)saveImage:(UIImage*)image currentPic:(Pic*)currentPic{
+    
+    NSString *hDir = NSHomeDirectory();
+    NSString *tmpDir = [hDir stringByAppendingString:@"/Documents"];
+    NSString *fileName = currentPic.name;
+    NSString *filePath = [tmpDir stringByAppendingPathComponent:fileName];
+    
+    NSLog(@"Created %@", filePath);
+    
+    if([UIImageJPEGRepresentation(image, 1) writeToFile:filePath atomically:YES]){
+        //Insertamos en CoreData
+        currentPic.path = filePath;
+    }else currentPic.name = nil;
+    
     //Creamos y guardamos una reducida
-    [self saveTumbnail:[self getThumbnail:img]];
-}
-
--(NSString*)saveImageToDisk:(UIImage*)image{
-    
-    NSNumber * nPics = [[NSUserDefaults standardUserDefaults] objectForKey:@"totalPicsDone"];
-    if(nPics) nPics = @(nPics.intValue+1);
-    else nPics = @1;
-    
-    //    NSString *tmpDir = NSTemporaryDirectory();
-    NSString *hDir = NSHomeDirectory();
-    NSString *tmpDir = [hDir stringByAppendingString:@"/Documents"];
-    NSString *tmpFileName = [@"pic" stringByAppendingString:[nPics stringValue]];
-    NSString *tmpFilePath= [tmpDir stringByAppendingPathComponent:tmpFileName];
-    
-    NSLog(@"Created %@", tmpFilePath);
-    
-    [[NSUserDefaults standardUserDefaults]setObject:nPics forKey:@"totalPicsDone"];
-    //self.picname.text = tmpFileName;
-    
-    [UIImageJPEGRepresentation(image, 1) writeToFile:tmpFilePath atomically:YES];
-    return tmpFilePath;
-}
-
--(void)saveTumbnail:(UIImage*)image{
-    
-    NSNumber * nPics = [[NSUserDefaults standardUserDefaults] objectForKey:@"totalPicsDone"];
-    if(nPics) nPics = @(nPics.intValue);
-    else nPics = @1;
-    
-    //    NSString *tmpDir = NSTemporaryDirectory();
-    NSString *hDir = NSHomeDirectory();
-    NSString *tmpDir = [hDir stringByAppendingString:@"/Documents"];
-    NSString *tmpFileName = [[@"pic" stringByAppendingString:[nPics stringValue]]stringByAppendingString:@"_s"];
-    NSString *tmpFilePath= [tmpDir stringByAppendingPathComponent:tmpFileName];
-    
-    // NSLog(@"Created %@", tmpFilePath);
-    
-    
-    [UIImageJPEGRepresentation(image, 1) writeToFile:tmpFilePath atomically:YES];
-    
-    
+    UIImage *small = [self getThumbnail:image];
+    [[YVHUtil getInstance ] saveTumbnail:small fileName:fileName];
+    return currentPic;
 }
 
 -(UIImage *)getThumbnail:(UIImage*)originalImage{

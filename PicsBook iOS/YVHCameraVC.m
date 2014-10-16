@@ -10,10 +10,12 @@
 #import "Pic.h"
 #import "RXCustomTabBar.h"
 #import "YVHCoreDataStack.h"
+#import "YVHUtil.h"
 
 @interface YVHCameraVC ()
 
 @property (nonatomic, strong) NSUserDefaults *defaults;
+@property (nonatomic, strong) YVHUtil * utils;
 
 //Gps
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -109,16 +111,12 @@
     {
         if ([self.capturedImages count] == 1)
         {
-            _currentPic =  [Pic insertInManagedObjectContext:self.managedObjectContext];
+            self.currentPic =  [Pic insertInManagedObjectContext:self.managedObjectContext];
             // Camera took a single picture.
             UIImage *originalPhoto = [self.capturedImages objectAtIndex:0];
             
-            //Guardamos foto en disco
-            [self saveImage:originalPhoto];
-            
-            //Creamos y guardamos una reducida
-            UIImage *small = [self getThumbnail:originalPhoto];
-            [self saveTumbnail:small];
+            //Guardamos foto en disco. Crea y guarda un thumbnail
+            self.currentPic = [self.utils saveImage:originalPhoto currentPic:self.currentPic isNewImage:YES];
             
             //Localizamos
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ // 1
@@ -152,86 +150,13 @@
 }
 
 
--(UIImage *)getThumbnail:(UIImage*)originalImage{
-   
-    CGSize destinationSize = [self reducePic:originalImage.size];
-    
-    UIGraphicsBeginImageContext(destinationSize);
-    [originalImage drawInRect:CGRectMake(0,0,destinationSize.width,destinationSize.height)];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return newImage;
-}
 
--(CGSize)reducePic:(CGSize)sz{
-    int w, h, ws, hs ;
-    w = sz.width;
-    h = sz.height;
-    if(w > h ){
-        ws = 200;
-        hs = h*ws/w;
-    }
-    else{
-        hs = 200;
-        ws = w*hs/h;
-    }
-    
-    return CGSizeMake(ws, hs);
-    
-}
 //-(void)showData{
 //    _picname.text = _currentPic.name;
 //    _picPath.text = _currentPic.path;
 //    _piclong.text = [_currentPic.longitude stringValue];
 //    _piclat.text = [_currentPic.latitude stringValue];
 //}
-
--(void)saveImage:(UIImage*)image{
-    
-    NSNumber * nPics = [self.defaults objectForKey:@"totalPicsDone"];
-    if(nPics) nPics = @(nPics.intValue+1);
-    else nPics = @1;
-    
-    //    NSString *tmpDir = NSTemporaryDirectory();
-    NSString *hDir = NSHomeDirectory();
-    NSString *tmpDir = [hDir stringByAppendingString:@"/Documents"];
-    NSString *tmpFileName = [@"pic" stringByAppendingString:[nPics stringValue]];
-    NSString *tmpFilePath= [tmpDir stringByAppendingPathComponent:tmpFileName];
-    
-    NSLog(@"Created %@", tmpFilePath);
-    
-    [self.defaults setObject:nPics forKey:@"totalPicsDone"];
-    //self.picname.text = tmpFileName;
-    
-
-    if([UIImageJPEGRepresentation(image, 1) writeToFile:tmpFilePath atomically:YES]){
-        //Insertamos en CoreData
-        self.currentPic.name = tmpFileName;
-        self.currentPic.path = tmpFilePath;
-    }else self.currentPic.name = nil;
-    
-    
-}
-
--(void)saveTumbnail:(UIImage*)image{
-    
-    NSNumber * nPics = [self.defaults objectForKey:@"totalPicsDone"];
-    if(nPics) nPics = @(nPics.intValue);
-    else nPics = @1;
- 
-    //    NSString *tmpDir = NSTemporaryDirectory();
-    NSString *hDir = NSHomeDirectory();
-    NSString *tmpDir = [hDir stringByAppendingString:@"/Documents"];
-    NSString *tmpFileName = [[@"pic" stringByAppendingString:[nPics stringValue]]stringByAppendingString:@"_s"];
-    NSString *tmpFilePath= [tmpDir stringByAppendingPathComponent:tmpFileName];
-    
-   // NSLog(@"Created %@", tmpFilePath);
-    
-    
-   [UIImageJPEGRepresentation(image, 1) writeToFile:tmpFilePath atomically:YES];
-    
-    
-}
 
 -(void)faceDetectInImage:(UIImage*)image{
     

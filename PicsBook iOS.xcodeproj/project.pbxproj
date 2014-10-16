@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		04181B8219EBEF69000A546B /* options2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04181B7F19EBEF69000A546B /* options2.png */; };
 		04A2EB2919EFF83100CCCFA6 /* arrow_fwd2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A2EB2819EFF83100CCCFA6 /* arrow_fwd2.png */; };
+		04A2EB2C19F02C3000CCCFA6 /* YVHUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2EB2B19F02C3000CCCFA6 /* YVHUtil.m */; };
+		04A2EB2F19F042D500CCCFA6 /* YVHCoreDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2EB2E19F042D500CCCFA6 /* YVHCoreDataVC.m */; };
 		04A59CA519EEE46C00BA1896 /* FilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A59CA419EEE46C00BA1896 /* FilterCell.m */; };
 		04A59CA919EEECB200BA1896 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A59CA819EEECB200BA1896 /* FilterCell.xib */; };
 		04A6BF1519DB24550000FA32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A6BF1419DB24550000FA32 /* Foundation.framework */; };
@@ -90,6 +92,10 @@
 /* Begin PBXFileReference section */
 		04181B7F19EBEF69000A546B /* options2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = options2.png; sourceTree = "<group>"; };
 		04A2EB2819EFF83100CCCFA6 /* arrow_fwd2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_fwd2.png; sourceTree = "<group>"; };
+		04A2EB2A19F02C3000CCCFA6 /* YVHUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHUtil.h; sourceTree = "<group>"; };
+		04A2EB2B19F02C3000CCCFA6 /* YVHUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHUtil.m; sourceTree = "<group>"; };
+		04A2EB2D19F042D500CCCFA6 /* YVHCoreDataVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHCoreDataVC.h; sourceTree = "<group>"; };
+		04A2EB2E19F042D500CCCFA6 /* YVHCoreDataVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHCoreDataVC.m; sourceTree = "<group>"; };
 		04A59CA319EEE46C00BA1896 /* FilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCell.h; sourceTree = "<group>"; };
 		04A59CA419EEE46C00BA1896 /* FilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCell.m; sourceTree = "<group>"; };
 		04A59CA819EEECB200BA1896 /* FilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
@@ -329,8 +335,12 @@
 				04A6BF6719DB2C8F0000FA32 /* FlickrPhoto.m */,
 				04A6BF8719DB43D30000FA32 /* YVHCoreDataStack.h */,
 				04A6BF8819DB43D30000FA32 /* YVHCoreDataStack.m */,
+				04A2EB2D19F042D500CCCFA6 /* YVHCoreDataVC.h */,
+				04A2EB2E19F042D500CCCFA6 /* YVHCoreDataVC.m */,
 				04A8D96519E4CEAB00347349 /* YVHDAO.h */,
 				04A8D96619E4CEAB00347349 /* YVHDAO.m */,
+				04A2EB2A19F02C3000CCCFA6 /* YVHUtil.h */,
+				04A2EB2B19F02C3000CCCFA6 /* YVHUtil.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -559,6 +569,7 @@
 				04A6BF6E19DB2D620000FA32 /* CVCell.m in Sources */,
 				04A8D95C19E4494100347349 /* RXCustomTabBar.m in Sources */,
 				04A6BF5F19DB2B550000FA32 /* YVHGalleryVC.m in Sources */,
+				04A2EB2F19F042D500CCCFA6 /* YVHCoreDataVC.m in Sources */,
 				04A6BF4C19DB258F0000FA32 /* YVHCameraVC.m in Sources */,
 				04A6BF7219DB2DAD0000FA32 /* YVHPicVC.m in Sources */,
 				04A6BF6919DB2C8F0000FA32 /* FlickrPhoto.m in Sources */,
@@ -567,6 +578,7 @@
 				04A6BF8C19DB4C6E0000FA32 /* Model.xcdatamodeld in Sources */,
 				04A8753119E2B94400DC6923 /* YVHMapVC.m in Sources */,
 				04A6BF7419DB37AE0000FA32 /* YVHAppDelegate.m in Sources */,
+				04A2EB2C19F02C3000CCCFA6 /* YVHUtil.m in Sources */,
 				04A6BFAA19DB74F90000FA32 /* Pic.m in Sources */,
 				04A6BF8919DB43D30000FA32 /* YVHCoreDataStack.m in Sources */,
 				04A6BF2119DB24550000FA32 /* main.m in Sources */,
@@ -653,7 +665,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
+					"DEBUG=0",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;

@@ -15,12 +15,14 @@
 #import "FilterCell.h"
 #import "YVHDAO.h"
 #import <UIKit/UIKit.h>
+#import "YVHUtil.h"
 
 
 @interface YVHGalleryVC ()
 
 
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
+
 
 //HeaderView
 @property (weak, nonatomic) IBOutlet UIView *headerView;
@@ -99,6 +101,8 @@
 
 
 //Others
+@property (weak, nonatomic) IBOutlet UIButton *debugButton;
+
 @property (nonatomic, strong) NSArray *picsArray;
 @property (nonatomic, strong) UIImage * pickedImg;
 @property (nonatomic, strong) Pic * pickedPic;
@@ -123,7 +127,8 @@
 
 //Vars
 
-bool isShowingOptions = false;
+bool isShowingPicOptions = false;
+bool isShowingAlbumOptions = false;
 bool isOnePicView = false;
 bool isShownAlbumInfo = false;
 bool isShownFilters = false;
@@ -140,6 +145,7 @@ int radius = 25;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     
     [self.address addObserver:self forKeyPath:@"location" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:NULL];
     
@@ -182,23 +188,28 @@ int radius = 25;
     [self initPicInfoView];
     [self initFilterDetailView];
     
+    
+#if DEBUG
+    [self initDebugControls];
+#endif
+    
     self.filterList = @[@"CISepiaTone",//0
                         @"CIFalseColor"  ,//1
                         @"CIColorCube"    ,//2
-                        @"CICrop"     ,//3
+                        //@"CICrop"     ,//3
                         @"CIColorInvert"    ,//4
                         @"CICircularScreen"    ,//5
-                       // @"CICMYKHalftone"    ,//6
-                        @"CIColorClamp"    ,//7
-                        @"CIColorControls"    ,//8
-                        @"CIColorCrossPolynomial"    ,//9
+                        //@"CICMYKHalftone"    ,//6
+                        //@"CIColorClamp"    ,//7
+                        //@"CIColorControls"    ,//8
+                        //@"CIColorCrossPolynomial"    ,//9
                         @"CIColorPosterize"     ,//10
                         //@"CICrystallize"     ,//11
                         // @"CIEdges"     ,//12
                         // @"CIEdgeWork"     ,//13
                         //@"CIGlassDistortion"     ,//14
                         //@"CIGlassLozenge"     ,//15
-                        @"CIHighlightShadowAdjust"     ,//16
+                        //@"CIHighlightShadowAdjust"     ,//16
                         //@"CIHistogramDisplayFilter"     ,//17
                         //@"CIDroste"     ,//18
                         //@"CIConvolution7X7"     ,//19
@@ -210,9 +221,9 @@ int radius = 25;
                         @"CIPhotoEffectMono"     ,//25
                         @"CIPhotoEffectNoir"     ,//26
                         @"CIPixellate"     ,//27
-                       //  @"CIQRCodeGenerator"     ,//28
-                       // @"CIColorMap"     ,//29
-                        @"CIStraightenFilter"     ,//30
+                        //@"CIQRCodeGenerator"     ,//28
+                        //@"CIColorMap"     ,//29
+                        //@"CIStraightenFilter"     ,//30
                         
                         ];
 }
@@ -232,14 +243,12 @@ int radius = 25;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-    if (isShowingOptions) {
-        if (isOnePicView) {
-            [self switchOnePicOptions];
-        }
-        else{
-            [self switchAlbumOptions];
-        }
-        isShowingOptions = false;
+    if (isShowingPicOptions){
+        [self switchOnePicOptions];
+        isShowingPicOptions = false;
+    }
+    if (isShowingAlbumOptions){
+        [self hideAlbumOptions];
     }
 }
 
@@ -393,12 +402,16 @@ int radius = 25;
     {
         [self setNeedsStatusBarAppearanceUpdate];
     }
-    self.picsArray = [YVHDAO  getPics:nil];
+    
+    if(self.contextHasChange){
+        self.picsArray = [YVHDAO getPics:nil];
+        [self.collectionView reloadData];
+    }
     [YVHDAO setSelectedPics:self.picsArray];
     
-    if(isShowingOptions){
+    if(isShowingPicOptions){
         [self switchOnePicOptions];
-        isShowingOptions = false;
+        isShowingPicOptions = false;
     }    
 
     if(isShownAlbumInfo){
@@ -423,42 +436,24 @@ int radius = 25;
 }
 
 -(void)handleSingleTap{
-    if(isShowingOptions){
-        [self switchOptions];
-    }
-    
-    if(isShownPicInfo){
-        [self hidePicInfo];
-    }
-    
-    if(isShownFilters){
-        [self hideFilters];
-    }
-    
+    [self voidScreen];
     if (isShownFilterDetail) {
-        [self hideFilterDetail];
         self.PicViewImg.image = self.pickedImg;
     }
 }
 
 -(void)refitAlbumHeader{
-    CGRect x0 = self.titleLbl.frame ;
-    CGRect x1 = self.numPicsView.frame ;
-    CGRect x2 = self.numPicsTextLbl.frame ;
-    CGRect x3 = self.numPicsLbl.frame ;
     
     [self.titleLbl sizeToFit];
     self.titleLbl.center = CGPointMake(self.headerView.center.x,self.titleLbl.center.y);
     
     [self.numPicsTextLbl sizeToFit];
-    x2 = self.numPicsTextLbl.frame ;
+
     
     self.numPicsView.frame = CGRectMake(self.titleLbl.frame.origin.x +  self.titleLbl.frame.size.width + 30, self.numPicsView.frame.origin.y , self.numPicsView.frame.size.width, self.numPicsView.frame.size.height);
     self.numPicsLbl.frame = CGRectMake(self.numPicsTextLbl.frame.origin.x +  self.numPicsTextLbl.frame.size.width + 5, self.numPicsLbl.frame.origin.y , self.numPicsLbl.frame.size.width, self.numPicsLbl.frame.size.height);
     
-     x1 = self.numPicsView.frame ;
-    
-     x3 = self.numPicsLbl.frame ;
+
 }
 
 
@@ -624,6 +619,12 @@ float iconAlpha = .8;
 }
 
 
+-(void)initDebugControls{
+    
+    self.debugButton.hidden = false;
+  
+}
+
 -(void)switchOptions{
     if(isOnePicView){
         [self switchOnePicOptions];
@@ -635,27 +636,26 @@ float iconAlpha = .8;
 
 -(void)switchAlbumOptions
 {
-    if(isShowingOptions){
-        [UIView animateWithDuration:0.1 animations:^{ self.optionsAlbumView.frame = self.hiddenAlbumOptionsFrame;}];
-        isShowingOptions = false;
+    if(isShowingAlbumOptions){
+        [self hideAlbumOptions];
     }
     else{
-        self.optionsAlbumView.frame = self.hiddenAlbumOptionsFrame;
-        [UIView animateWithDuration:0.07 animations:^{ self.optionsAlbumView.frame = self.shownAlbumOptionsFrame;}];
-        isShowingOptions = true;
+        [self showAlbumOptions];
     }
 }
 
+
+
 -(void)switchOnePicOptions
 {
-    if(isShowingOptions){
+    if(isShowingPicOptions){
         [UIView animateWithDuration:hideViewDuration animations:^{ self.optionsOnePicView.frame = self.hiddenOnePicOptionsFrame;}];
-        isShowingOptions = false;
+        isShowingPicOptions = false;
     }
     else{
         self.optionsOnePicView.frame = self.hiddenOnePicOptionsFrame;
         [UIView animateWithDuration:showViewDuration animations:^{ self.optionsOnePicView.frame = self.shownOnePicOptionsFrame;}];
-        isShowingOptions = true;
+        isShowingPicOptions = true;
     }
 }
 
@@ -685,6 +685,20 @@ float iconAlpha = .8;
     }
 }
 
+-(void)showAlbumOptions
+{
+    self.optionsAlbumView.frame = self.hiddenAlbumOptionsFrame;
+    [UIView animateWithDuration:0.07 animations:^{ self.optionsAlbumView.frame = self.shownAlbumOptionsFrame;}];
+    isShowingAlbumOptions = true;
+    
+}
+
+-(void)hideAlbumOptions
+{
+    [UIView animateWithDuration:0.1 animations:^{ self.optionsAlbumView.frame = self.hiddenAlbumOptionsFrame;}];
+    isShowingAlbumOptions = false;
+}
+
 
 -(void)showAlbumInfo{
     //[UIView animateWithDuration:0.07 animations:^{ self.infoAlbumView.frame = self.shownInfoAlbumFrame;}];
@@ -699,7 +713,7 @@ float iconAlpha = .8;
     [self refitAlbumHeader];
     
     isShownAlbumInfo = true;
-    [self switchAlbumOptions];
+    [self hideAlbumOptions];
     UIImage * btnImage = [UIImage imageNamed:@"info_s.png"];
 	[self.AlbumOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
     
@@ -709,7 +723,7 @@ float iconAlpha = .8;
 {
     self.headerView.hidden = true;
     isShownAlbumInfo = false;
-    [self switchAlbumOptions];
+    [self hideAlbumOptions];
     UIImage * btnImage = [UIImage imageNamed:@"info.png"];
 	[self.AlbumOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
     //[UIView animateWithDuration:0.1 animations:^{ self.infoAlbumView.frame = self.hiddenInfoAlbumFrame;}];
@@ -802,25 +816,6 @@ float iconAlpha = .8;
     
     [self switchFiltersView];
     
-   // [self showFilter:@1];
-    
-    
-
-    
-   // self.PicViewImg.image = [self standarFilterToImage:self.PicViewImg.image filterName:@"CISepiaTone"];
-    
-    /*
-    CGImageRef img = self.pickedImg.CGImage;
-    CIImage * image = [CIImage imageWithCGImage:img];
-    
-    CIFilter * filter = [CIFilter filterWithName:@"CISepiaTone"];
-    [filter setValue:image forKey:kCIInputImageKey];
-    [filter setValue:[NSNumber numberWithFloat:0.8f] forKey:@"InputIntensity"];
-    
-    CGImageRef fImg = [self processingImage:image filter:filter];
-    self.PicViewImg.image = [UIImage imageWithCGImage:fImg];
-    */
-    
 }
 
 -(void)showFilter:(NSNumber *)filterId{
@@ -870,6 +865,10 @@ float iconAlpha = .8;
 
 
 - (IBAction)saveFilterImg:(id)sender {
+    [[YVHUtil getInstance] saveImage:self.PicViewImg.image currentPic:self.pickedPic isNewImage:NO];
+    [[YVHCoreDataStack getInstance] saveContext];
+    self.pickedImg = self.PicViewImg.image;
+    [self voidScreen];
 }
 
 - (IBAction)saveFilterNewImg:(id)sender {
@@ -910,6 +909,24 @@ float iconAlpha = .8;
     [self showFilterDetail:filter];
 }
 
+-(void)voidScreen{
+    if(isShowingPicOptions){
+        [self switchOnePicOptions];
+    }
+    
+    if(isShownPicInfo){
+        [self hidePicInfo];
+    }
+    
+    if(isShownFilters){
+        [self hideFilters];
+    }
+    
+    if (isShownFilterDetail) {
+        [self hideFilterDetail];
+    }
+
+}
 
 
 #pragma mark -
@@ -1000,6 +1017,7 @@ float iconAlpha = .8;
             
             self.lastPickedImg = self.pickedImg;
             self.pickedPic = [self.picsArray objectAtIndex:x];
+            
             self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
             self.PicViewImg.image = self.pickedImg;
             self.PicView.hidden = false;
@@ -1020,9 +1038,8 @@ float iconAlpha = .8;
         self.numPicsView.hidden = true;
         self.backButtonView.hidden = false;
         
-        if(isShowingOptions){
-            [self switchAlbumOptions];
-            isShowingOptions = false;
+        if(isShowingAlbumOptions){
+            [self hideAlbumOptions];
         }
         if(isShownPicInfo){
             [self showPicInfo];
