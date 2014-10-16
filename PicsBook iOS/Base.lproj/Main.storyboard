@@ -205,7 +205,7 @@
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="ZKS-T3-wtF" userLabel="View - Filters">
-                                <rect key="frame" x="0.0" y="63" width="200" height="900"/>
+                                <rect key="frame" x="0.0" y="61" width="200" height="900"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="infoBg2.png" id="C6L-YC-9VU">

@@ -14,6 +14,7 @@
 #import "CVCell.h"
 #import "FilterCell.h"
 #import "YVHDAO.h"
+#import <UIKit/UIKit.h>
 
 
 @interface YVHGalleryVC ()
@@ -97,11 +98,25 @@
 @property (strong, nonatomic) NSString * country;
 @property (strong, nonatomic) NSString * zip;
 
+@property (strong, nonatomic) UIImage* lastPickedImg;
+
+
+
 
 
 @end
 
 @implementation YVHGalleryVC
+
+//Vars
+
+bool isShowingOptions = false;
+bool isOnePicView = false;
+bool isShownAlbumInfo = false;
+bool isShownFilters = false;
+bool isShownPicInfo = false;
+bool isStatusBarHidden = false;
+
 #pragma mark -
 #pragma mark - Life Cycle
 - (void)viewDidLoad
@@ -269,6 +284,18 @@
     return thumbNail;
 }
 
+-(UIImage *) getThumnailFromUImage:(UIImage*)originalImage{
+
+    CGSize destinationSize = CGSizeMake(135, 170);
+    
+    UIGraphicsBeginImageContext(destinationSize);
+    [originalImage drawInRect:CGRectMake(0,0,destinationSize.width,destinationSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 -(NSString *)convertToThPath:(NSString*)path{
     //int len = [path length];
     return  [path stringByAppendingString:@"_s"];
@@ -311,7 +338,7 @@
 - (IBAction)backToAlbum:(id)sender {
     self.PicView.hidden = true;
     self.collectionView.hidden = false;
-    statusBarHidden = false;
+    isStatusBarHidden = false;
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
     {
         [self setNeedsStatusBarAppearanceUpdate];
@@ -490,8 +517,7 @@ float iconAlpha = .8;
     [self.view bringSubviewToFront:self.filtersView];
 }
 
-bool isShowingOptions = false;
-bool isOnePicView = false;
+
 -(void)switchOptions{
     if(isOnePicView){
         [self switchOnePicOptions];
@@ -530,7 +556,6 @@ bool isOnePicView = false;
 
 
 
-bool isShownAlbumInfo = false;
 
 -(void)switchAlbumInfoView
 {
@@ -542,7 +567,7 @@ bool isShownAlbumInfo = false;
     }
 }
 
-bool isShownFilters = false;
+
 
 -(void)switchFiltersView
 {
@@ -584,7 +609,7 @@ bool isShownFilters = false;
 }
 
 
-bool isShownPicInfo = false;
+
 
 -(void)switchPicInfoView
 {
@@ -631,6 +656,11 @@ bool isShownPicInfo = false;
 {
     [UIView animateWithDuration:0.1 animations:^{ self.filtersView.frame = self.shownFiltersFrame;}];
     isShownFilters = true;
+    
+    if(self.lastPickedImg != self.pickedImg){
+        [self.filtersCollectionView reloadData];
+        self.lastPickedImg = self.pickedImg;
+    }
 }
 
 -(void)hideFilters
@@ -638,6 +668,7 @@ bool isShownPicInfo = false;
 
     [UIView animateWithDuration:0.1 animations:^{ self.filtersView.frame = self.hiddenFiltersFrame;}];
     isShownFilters = false;
+    
     
 }
 
@@ -743,6 +774,12 @@ bool isShownPicInfo = false;
         if(x<[self.filterList count]){
             
             NSString * filter = [self.filterList objectAtIndex:x];
+            if(isOnePicView){
+                UIImage * photo = self.pickedImg;
+                UIImage * thumb = [self getThumnailFromUImage:photo];
+                cell.image.image = thumb;
+            }
+            
 
         }
         
@@ -756,7 +793,7 @@ bool isShownPicInfo = false;
 }
 
 #pragma mark - UICollectionViewDelegate
-bool statusBarHidden = false;
+
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -764,14 +801,15 @@ bool statusBarHidden = false;
     NSInteger y = indexPath.section;
     NSInteger i = x + (y * 3);
     if(i<[self.picsArray count]){
-
+        
+        self.lastPickedImg = self.pickedImg;
         self.pickedPic = [self.picsArray objectAtIndex:x];
         self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
         self.PicViewImg.image = self.pickedImg;
         self.PicView.hidden = false;
         self.collectionView.hidden = true;
 
-        statusBarHidden = true;
+        isStatusBarHidden = true;
         if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
         {
             [self setNeedsStatusBarAppearanceUpdate];
@@ -798,7 +836,7 @@ bool statusBarHidden = false;
 }
 - (BOOL)prefersStatusBarHidden
 {
-    return statusBarHidden;
+    return isStatusBarHidden;
 }
 
 
@@ -846,8 +884,8 @@ bool statusBarHidden = false;
 }
 - (UIEdgeInsets)collectionView:
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    //Es el espacio entre celdas
-    return UIEdgeInsetsMake(50, 20, 50, 20);
+    //Es el espacio entre las celdas y collection container
+    return UIEdgeInsetsMake(20, 20, 20, 20);
 }
 
 
