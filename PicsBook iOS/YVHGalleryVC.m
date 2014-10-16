@@ -157,7 +157,8 @@ float hideViewDuration = 0.3;
                                                  name:@"GalleryOptions"
                                                object:nil];
     
-    
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap)];
+    [self.PicView addGestureRecognizer:singleFingerTap];
     
     [self initAlbumOptionsView];
     [self initOptionsOnePicView];
@@ -398,6 +399,20 @@ float hideViewDuration = 0.3;
     self.backButtonView.hidden = true;
     self.infoPicView.hidden = true;
     isOnePicView = false;
+}
+
+-(void)handleSingleTap{
+    if(isShowingOptions){
+        [self switchOptions];
+    }
+    
+    if(isShownPicInfo){
+        [self hidePicInfo];
+    }
+    
+    if(isShownFilters){
+        [self hideFilters];
+    }
 }
 
 -(void)refitAlbumHeader{
