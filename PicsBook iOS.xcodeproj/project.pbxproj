@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04181B8219EBEF69000A546B /* options2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04181B7F19EBEF69000A546B /* options2.png */; };
+		04A2EB2919EFF83100CCCFA6 /* arrow_fwd2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A2EB2819EFF83100CCCFA6 /* arrow_fwd2.png */; };
 		04A59CA519EEE46C00BA1896 /* FilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A59CA419EEE46C00BA1896 /* FilterCell.m */; };
 		04A59CA919EEECB200BA1896 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A59CA819EEECB200BA1896 /* FilterCell.xib */; };
 		04A6BF1519DB24550000FA32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A6BF1419DB24550000FA32 /* Foundation.framework */; };
@@ -88,6 +89,7 @@
 
 /* Begin PBXFileReference section */
 		04181B7F19EBEF69000A546B /* options2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = options2.png; sourceTree = "<group>"; };
+		04A2EB2819EFF83100CCCFA6 /* arrow_fwd2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_fwd2.png; sourceTree = "<group>"; };
 		04A59CA319EEE46C00BA1896 /* FilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCell.h; sourceTree = "<group>"; };
 		04A59CA419EEE46C00BA1896 /* FilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCell.m; sourceTree = "<group>"; };
 		04A59CA819EEECB200BA1896 /* FilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				04A7C53219E558C100DDF124 /* Initial Pics */,
 				04A7C53B19E55B2300DDF124 /* Tabbar */,
 				04A8D95F19E47D4F00347349 /* arrow_fwd.png */,
+				04A2EB2819EFF83100CCCFA6 /* arrow_fwd2.png */,
 				04A8D95D19E4616400347349 /* HeaderBar.png */,
 				04A6BF9619DB6B0E0000FA32 /* bg_cork.png */,
 				04A6BF9719DB6B0E0000FA32 /* bg_cork@2x.png */,
@@ -495,6 +498,7 @@
 				04A6BF6F19DB2D620000FA32 /* CVCell.xib in Resources */,
 				04D4620819ED8613000D7FB7 /* infoBg.png in Resources */,
 				04A6BFA519DB6B0E0000FA32 /* cameraOff.png in Resources */,
+				04A2EB2919EFF83100CCCFA6 /* arrow_fwd2.png in Resources */,
 				04A6BF9E19DB6B0E0000FA32 /* Galery.png in Resources */,
 				04A7C53A19E558D900DDF124 /* Foto4.jpg in Resources */,
 				04A6BF2D19DB24550000FA32 /* Images.xcassets in Resources */,

@@ -81,8 +81,21 @@
 @property (strong, nonatomic) NSArray * filterList;
 @property (weak, nonatomic) IBOutlet UIView *filtersView;
 @property (weak, nonatomic) IBOutlet UICollectionView *filtersCollectionView;
+
+@property (weak, nonatomic) IBOutlet UIView *filterDetailView;
+@property (weak, nonatomic) IBOutlet UIView *filterDetailTitleTextLbl;
+@property (weak, nonatomic) IBOutlet UILabel *filterDetailTitleLbl;
+@property (weak, nonatomic) IBOutlet UIButton *filterDetailSaveBtn;
+@property (weak, nonatomic) IBOutlet UIButton *filterDetailCopyBtn;
+@property (weak, nonatomic) IBOutlet UIButton *filterDetailCancelBtn;
+
+@property (assign, nonatomic) NSInteger pickedFilter;
+
 @property (assign, nonatomic) CGRect hiddenFiltersFrame;
 @property (assign, nonatomic) CGRect shownFiltersFrame;
+
+@property (assign, nonatomic) CGRect hiddenFilterDetailFrame;
+@property (assign, nonatomic) CGRect shownFilterDetailFrame;
 
 
 //Others
@@ -114,11 +127,13 @@ bool isShowingOptions = false;
 bool isOnePicView = false;
 bool isShownAlbumInfo = false;
 bool isShownFilters = false;
+bool isShownFilterDetail = false;
 bool isShownPicInfo = false;
 bool isShownFaces = false;
 bool isStatusBarHidden = false;
 float showViewDuration = 0.1;
 float hideViewDuration = 0.3;
+int radius = 25;
 
 #pragma mark -
 #pragma mark - Life Cycle
@@ -165,6 +180,7 @@ float hideViewDuration = 0.3;
     //[self initAlbumInfoView];
     [self initFilterListView];
     [self initPicInfoView];
+    [self initFilterDetailView];
     
     self.filterList = @[@"CISepiaTone",//0
                         @"CIFalseColor"  ,//1
@@ -396,6 +412,11 @@ float hideViewDuration = 0.3;
         [self hideFilters];
     }
     
+    if (isShownFilterDetail) {
+        [self hideFilterDetail];
+        self.PicViewImg.image = self.pickedImg;
+    }
+    
     self.backButtonView.hidden = true;
     self.infoPicView.hidden = true;
     isOnePicView = false;
@@ -412,6 +433,11 @@ float hideViewDuration = 0.3;
     
     if(isShownFilters){
         [self hideFilters];
+    }
+    
+    if (isShownFilterDetail) {
+        [self hideFilterDetail];
+        self.PicViewImg.image = self.pickedImg;
     }
 }
 
@@ -537,7 +563,6 @@ float iconAlpha = .8;
     //  int height = optionHeight * options;
     int infoViewWidth = 550;
     int infoViewHeight = 355;
-    int radius = 25;
     
     //Bar image
     self.hiddenInfoPicFrame = CGRectMake(0 - infoViewWidth, 60, infoViewWidth, infoViewHeight);
@@ -554,7 +579,6 @@ float iconAlpha = .8;
 }
 
 -(void)initFilterListView{
-    int radius = 25;
     
     
     CGRect v = self.filtersView.frame;
@@ -567,6 +591,36 @@ float iconAlpha = .8;
     self.filtersView.clipsToBounds = YES;
     
     [self.view bringSubviewToFront:self.filtersView];
+}
+
+-(void)initFilterDetailView{
+    int buttonRadius = 5;
+    
+    CGRect v = self.filterDetailView.frame;
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    
+    self.hiddenFilterDetailFrame = CGRectMake(v.origin.x, screenRect.size.height, v.size.width, v.size.height);
+    self.shownFilterDetailFrame = CGRectMake(v.origin.x, screenRect.size.height - 57 - v.size.height, v.size.width, v.size.height);
+    self.filterDetailView.frame = self.hiddenFilterDetailFrame;
+    
+    self.filterDetailView.layer.cornerRadius = radius;
+    self.filterDetailView.clipsToBounds = YES;
+    
+    self.filterDetailTitleTextLbl = NSLocalizedString(@"FILTER", nil);
+    
+    [self.filterDetailSaveBtn setTitle: NSLocalizedString(@"SAVE_CHANGES", nil) forState: UIControlStateNormal];
+    [self.filterDetailCopyBtn setTitle: NSLocalizedString(@"SAVE_COPY", nil) forState: UIControlStateNormal];
+    [self.filterDetailCancelBtn setTitle: NSLocalizedString(@"CANCEL", nil) forState: UIControlStateNormal];
+    
+    self.filterDetailSaveBtn.layer.cornerRadius = buttonRadius;
+    self.filterDetailCopyBtn.layer.cornerRadius = buttonRadius;
+    self.filterDetailCancelBtn.layer.cornerRadius = buttonRadius;
+    self.filterDetailSaveBtn.clipsToBounds = YES;
+    self.filterDetailCopyBtn.clipsToBounds = YES;
+    self.filterDetailCancelBtn.clipsToBounds = YES;
+    
+    
+    [self.view bringSubviewToFront:self.filterDetailView];
 }
 
 
@@ -630,6 +684,7 @@ float iconAlpha = .8;
         [self showFilters];
     }
 }
+
 
 -(void)showAlbumInfo{
     //[UIView animateWithDuration:0.07 animations:^{ self.infoAlbumView.frame = self.shownInfoAlbumFrame;}];
@@ -717,6 +772,18 @@ float iconAlpha = .8;
     }
 }
 
+-(void)showFilterDetail:(NSString *)filterName
+{
+    self.filterDetailTitleLbl.text = filterName;
+    [UIView animateWithDuration:showViewDuration animations:^{ self.filterDetailView.frame = self.shownFilterDetailFrame;}];
+    isShownFilterDetail = true;
+}
+
+-(void)hideFilterDetail
+{
+    [UIView animateWithDuration:showViewDuration animations:^{ self.filterDetailView.frame = self.hiddenFilterDetailFrame;}];
+    isShownFilterDetail = false;
+}
 
 
 -(void)hideFilters
@@ -801,6 +868,47 @@ float iconAlpha = .8;
     [self presentViewController:controller animated:YES completion:nil];
 }
 
+
+- (IBAction)saveFilterImg:(id)sender {
+}
+
+- (IBAction)saveFilterNewImg:(id)sender {
+}
+
+- (IBAction)cancelFilter:(id)sender {
+    [self hideFilterDetail];
+    self.PicViewImg.image = self.pickedImg;
+}
+
+- (IBAction)prevFilter:(id)sender {
+    if (self.pickedFilter == 0) {
+        self.pickedFilter = self.filterList.count -1;
+    }else{
+        self.pickedFilter -= 1;
+    }
+    
+    NSString * filter = [self.filterList objectAtIndex:self.pickedFilter];
+    UIImage * photo = self.pickedImg;
+    UIImage * fphoto = [self standarFilterToImage:photo filterName:filter];
+    self.PicViewImg.image = fphoto;
+    
+    [self showFilterDetail:filter];
+    
+}
+- (IBAction)postFilter:(id)sender {
+    if (self.pickedFilter == self.filterList.count -1) {
+        self.pickedFilter = 0;
+    }else{
+        self.pickedFilter += 1;
+    }
+    
+    NSString * filter = [self.filterList objectAtIndex:self.pickedFilter];
+    UIImage * photo = self.pickedImg;
+    UIImage * fphoto = [self standarFilterToImage:photo filterName:filter];
+    self.PicViewImg.image = fphoto;
+    
+    [self showFilterDetail:filter];
+}
 
 
 
@@ -921,15 +1029,19 @@ float iconAlpha = .8;
         }
         isOnePicView = true;
     }
-    else{
+    else{// Filters collection
+        
         int x = indexPath.row;
         
         if(x<[self.filterList count]){
             
-                NSString * filter = [self.filterList objectAtIndex:x];
-                UIImage * photo = self.pickedImg;
-                UIImage * fphoto = [self standarFilterToImage:photo filterName:filter];
-                self.PicViewImg.image = fphoto;
+            NSString * filter = [self.filterList objectAtIndex:x];
+            UIImage * photo = self.pickedImg;
+            UIImage * fphoto = [self standarFilterToImage:photo filterName:filter];
+            self.PicViewImg.image = fphoto;
+            
+            [self showFilterDetail:filter];
+            self.pickedFilter = (NSInteger)x;
             
         }
     }

@@ -15,3 +15,9 @@
 "PIC_LONG" = "Longitude: ";
 "PIC_LAT" = "Latitude: ";
 "PIC_FACES" = "Localized faces: ";
+
+"SAVE_CHANGES" = "Save";
+"SAVE_COPY" = "Save Copy";
+"CANCEL" = "Cancel";
+
+"FILTER" = "Filter";

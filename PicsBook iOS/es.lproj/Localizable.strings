@@ -14,3 +14,9 @@
 "PIC_LONG" = "Longitud: ";
 "PIC_LAT" = "Latitud: ";
 "PIC_FACES" = "Caras detectadas: ";
+
+"SAVE_CHANGES" = "Guardar";
+"SAVE_COPY" = "Guardar copia";
+"CANCEL" = "Cancelar";
+
+"FILTER" = "Filtro";
