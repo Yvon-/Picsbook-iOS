@@ -115,7 +115,10 @@ bool isOnePicView = false;
 bool isShownAlbumInfo = false;
 bool isShownFilters = false;
 bool isShownPicInfo = false;
+bool isShownFaces = false;
 bool isStatusBarHidden = false;
+float showViewDuration = 0.1;
+float hideViewDuration = 0.3;
 
 #pragma mark -
 #pragma mark - Life Cycle
@@ -159,14 +162,41 @@ bool isStatusBarHidden = false;
     [self initAlbumOptionsView];
     [self initOptionsOnePicView];
     //[self initAlbumInfoView];
-    [self initPicInfoView];
     [self initFilterListView];
+    [self initPicInfoView];
     
     self.filterList = @[@"CISepiaTone",//0
-                        @"CIPixelate" ,//1
-                        @"CIBloom"    ,//2
+                        @"CIFalseColor"  ,//1
+                        @"CIColorCube"    ,//2
                         @"CICrop"     ,//3
-                        @"CIGloom"    ,//4
+                        @"CIColorInvert"    ,//4
+                        @"CICircularScreen"    ,//5
+                       // @"CICMYKHalftone"    ,//6
+                        @"CIColorClamp"    ,//7
+                        @"CIColorControls"    ,//8
+                        @"CIColorCrossPolynomial"    ,//9
+                        @"CIColorPosterize"     ,//10
+                        //@"CICrystallize"     ,//11
+                        // @"CIEdges"     ,//12
+                        // @"CIEdgeWork"     ,//13
+                        //@"CIGlassDistortion"     ,//14
+                        //@"CIGlassLozenge"     ,//15
+                        @"CIHighlightShadowAdjust"     ,//16
+                        //@"CIHistogramDisplayFilter"     ,//17
+                        //@"CIDroste"     ,//18
+                        //@"CIConvolution7X7"     ,//19
+                        //@"CIKaleidoscope"     ,//20
+                        //@"CILineOverlay"     ,//21
+                        //@"CIPerspectiveTile"     ,//22
+                        @"CIPerspectiveTransform"     ,//23
+                        @"CIPhotoEffectChrome"     ,//24
+                        @"CIPhotoEffectMono"     ,//25
+                        @"CIPhotoEffectNoir"     ,//26
+                        @"CIPixellate"     ,//27
+                       //  @"CIQRCodeGenerator"     ,//28
+                       // @"CIColorMap"     ,//29
+                        @"CIStraightenFilter"     ,//30
+                        
                         ];
 }
 
@@ -320,8 +350,11 @@ bool isStatusBarHidden = false;
     
     CIFilter * filter = [CIFilter filterWithName:filterName];
     [filter setValue:ciimage forKey:kCIInputImageKey];
-  //  [filter setValue:[NSNumber numberWithFloat:0.8f] forKey:@"InputIntensity"];
-    
+//    if ([filterName isEqualToString:@"CIColorMap"]) {
+//        [filter setValue:[NSNumber numberWithFloat:0.8f] forKey:@"inputGradientImage"];
+//    }
+         //  [filter setValue:[NSNumber numberWithFloat:0.8f] forKey:@"InputIntensity"];
+         
     CIContext *context = [CIContext contextWithOptions:nil];        //1
     CIImage *result = [filter valueForKey:kCIOutputImageKey];           //4
     CGImageRef cgImage = [context createCGImage:result
@@ -436,7 +469,7 @@ float iconAlpha = .8;
 	self.OnePicOptionsBtn1.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight/2 - iconWidth/2, iconWidth, iconWidth);
 	self.OnePicOptionsBtn1.alpha = iconAlpha;
     [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
-    [self.OnePicOptionsBtn1 addTarget:self action:@selector(showFaces) forControlEvents:UIControlEventTouchUpInside];
+    [self.OnePicOptionsBtn1 addTarget:self action:@selector(switchFaces) forControlEvents:UIControlEventTouchUpInside];
     [self.optionsOnePicView addSubview:self.OnePicOptionsBtn1];
     
     btnImage = [UIImage imageNamed:@"filter.png"];
@@ -543,12 +576,12 @@ float iconAlpha = .8;
 -(void)switchOnePicOptions
 {
     if(isShowingOptions){
-        [UIView animateWithDuration:0.1 animations:^{ self.optionsOnePicView.frame = self.hiddenOnePicOptionsFrame;}];
+        [UIView animateWithDuration:hideViewDuration animations:^{ self.optionsOnePicView.frame = self.hiddenOnePicOptionsFrame;}];
         isShowingOptions = false;
     }
     else{
         self.optionsOnePicView.frame = self.hiddenOnePicOptionsFrame;
-        [UIView animateWithDuration:0.07 animations:^{ self.optionsOnePicView.frame = self.shownOnePicOptionsFrame;}];
+        [UIView animateWithDuration:showViewDuration animations:^{ self.optionsOnePicView.frame = self.shownOnePicOptionsFrame;}];
         isShowingOptions = true;
     }
 }
@@ -637,7 +670,7 @@ float iconAlpha = .8;
     [self getReverseGeocodeLocation:selectedLocation];
     [self setReverseGeocodeLocation ];
     
-    [UIView animateWithDuration:0.07  animations:^{ self.infoPicView.frame = self.shownInfoPicFrame;}];
+    [UIView animateWithDuration:showViewDuration  animations:^{ self.infoPicView.frame = self.shownInfoPicFrame;}];
     isShownPicInfo = true;
     //[self switchOnePicOptions];
 }
@@ -646,7 +679,7 @@ float iconAlpha = .8;
 {
     UIImage * btnImage = [UIImage imageNamed:@"info.png"];
 	[self.OnePicOptionsBtn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
-    [UIView animateWithDuration:0.1 animations:^{ self.infoPicView.frame = self.hiddenInfoPicFrame;}];
+    [UIView animateWithDuration:hideViewDuration animations:^{ self.infoPicView.frame = self.hiddenInfoPicFrame;}];
     isShownPicInfo = false;
 
 }
@@ -654,20 +687,26 @@ float iconAlpha = .8;
 
 -(void)showFilters
 {
-    [UIView animateWithDuration:0.1 animations:^{ self.filtersView.frame = self.shownFiltersFrame;}];
+    [UIView animateWithDuration:showViewDuration animations:^{ self.filtersView.frame = self.shownFiltersFrame;}];
     isShownFilters = true;
     
+    UIImage * btnImage = [UIImage imageNamed:@"filter_s.png"];
+    [self.OnePicOptionsBtn2 setBackgroundImage:btnImage forState:UIControlStateNormal];
     if(self.lastPickedImg != self.pickedImg){
         [self.filtersCollectionView reloadData];
         self.lastPickedImg = self.pickedImg;
     }
 }
 
+
+
 -(void)hideFilters
 {
 
-    [UIView animateWithDuration:0.1 animations:^{ self.filtersView.frame = self.hiddenFiltersFrame;}];
+    [UIView animateWithDuration:hideViewDuration animations:^{ self.filtersView.frame = self.hiddenFiltersFrame;}];
     isShownFilters = false;
+    UIImage * btnImage = [UIImage imageNamed:@"filter.png"];
+    [self.OnePicOptionsBtn2 setBackgroundImage:btnImage forState:UIControlStateNormal];
     
     
 }
@@ -708,6 +747,33 @@ float iconAlpha = .8;
         default:
             break;
     }
+    
+}
+
+-(void)switchFaces
+{
+    if(isShownFaces){
+        [self hideFaces];
+    }
+    else{
+        [self showFaces];
+    }
+}
+
+-(void)showFaces{
+    isShownFaces = true;
+    UIImage * btnImage = [UIImage imageNamed:@"face_s.png"];
+    [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+}
+
+-(void)hideFaces
+{
+    
+    //[UIView animateWithDuration:hideViewDuration animations:^{ self.filtersView.frame = self.hiddenFiltersFrame;}];
+    isShownFaces = false;
+    UIImage * btnImage = [UIImage imageNamed:@"face.png"];
+    [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    
     
 }
 
@@ -773,11 +839,13 @@ float iconAlpha = .8;
         
         if(x<[self.filterList count]){
             
-            NSString * filter = [self.filterList objectAtIndex:x];
+            
             if(isOnePicView){
+                NSString * filter = [self.filterList objectAtIndex:x];
                 UIImage * photo = self.pickedImg;
                 UIImage * thumb = [self getThumnailFromUImage:photo];
-                cell.image.image = thumb;
+                UIImage * fthumb = [self standarFilterToImage:thumb filterName:filter];
+                cell.image.image = fthumb;
             }
             
 
