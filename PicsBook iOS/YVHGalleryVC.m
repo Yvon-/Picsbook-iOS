@@ -889,7 +889,7 @@ float iconAlpha = .8;
         next = 0;
     }
     else{
-        next += 1;
+        next = index + 1;
     }
     
     self.pickedPic = [self.picsArray objectAtIndex:next];
