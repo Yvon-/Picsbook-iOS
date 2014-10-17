@@ -48,6 +48,7 @@
 @property (strong, nonatomic) UIButton * OnePicOptionsBtn2;
 @property (strong, nonatomic) UIButton * OnePicOptionsBtn3;
 @property (strong, nonatomic) UIButton * OnePicOptionsBtn4;
+@property (strong, nonatomic) UIButton * OnePicOptionsBtn5;
 
 //InfoViews
 @property (weak, nonatomic) IBOutlet UIView *infoAlbumView;
@@ -494,7 +495,7 @@ float iconAlpha = .8;
 
 -(void)initOptionsOnePicView
 {
-    int options = 4;
+    int options = 5;
     int height = optionHeight * options;
     UIImage * btnImage;
     
@@ -504,7 +505,7 @@ float iconAlpha = .8;
     self.shownOnePicOptionsFrame = CGRectMake(screenRect.size.width - optionWidth - 5, screenRect.size.height - 57 - height, optionWidth, height);
     self.optionsOnePicView.frame = self.hiddenOnePicOptionsFrame;
     
-    self.optionsOnePicImg.image = [UIImage imageNamed:@"options4.png"];
+    self.optionsOnePicImg.image = [UIImage imageNamed:@"options5.png"];
     [self.view bringSubviewToFront:self.optionsOnePicView];
     
     //Buttons
@@ -532,12 +533,20 @@ float iconAlpha = .8;
     [self.OnePicOptionsBtn3 addTarget:self action:@selector(toShare) forControlEvents:UIControlEventTouchUpInside];
     [self.optionsOnePicView addSubview:self.OnePicOptionsBtn3];
     
-    btnImage = [UIImage imageNamed:@"info.png"];
+    btnImage = [UIImage imageNamed:@"delete-256.png"];
 	self.OnePicOptionsBtn4 = [UIButton buttonWithType:UIButtonTypeCustom];
 	self.OnePicOptionsBtn4.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight*3 + optionHeight/2 - iconWidth/2, iconWidth, iconWidth);
     self.OnePicOptionsBtn4.alpha = iconAlpha;
 	[self.OnePicOptionsBtn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
-    [self.OnePicOptionsBtn4 addTarget:self action:@selector(switchPicInfoView) forControlEvents:UIControlEventTouchUpInside];
+    [self.OnePicOptionsBtn4 addTarget:self action:@selector(deletePic) forControlEvents:UIControlEventTouchUpInside];
+    [self.optionsOnePicView addSubview:self.OnePicOptionsBtn4];
+    
+    btnImage = [UIImage imageNamed:@"info.png"];
+	self.OnePicOptionsBtn5 = [UIButton buttonWithType:UIButtonTypeCustom];
+	self.OnePicOptionsBtn5.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight*3 + optionHeight/2 - iconWidth/2, iconWidth, iconWidth);
+    self.OnePicOptionsBtn5.alpha = iconAlpha;
+	[self.OnePicOptionsBtn5 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    [self.OnePicOptionsBtn5 addTarget:self action:@selector(switchPicInfoView) forControlEvents:UIControlEventTouchUpInside];
     [self.optionsOnePicView addSubview:self.OnePicOptionsBtn4];
     
 }
@@ -875,7 +884,10 @@ float iconAlpha = .8;
     UIActivityViewController * controller = [[UIActivityViewController alloc]initWithActivityItems:@[self.pickedImg] applicationActivities:nil];
     [self presentViewController:controller animated:YES completion:nil];
 }
-//
+
+-(void)deletePic{
+    
+}
 
 - (IBAction)saveFilterImg:(id)sender {
     [[YVHUtil getInstance] saveImage:self.PicViewImg.image currentPic:self.pickedPic isNewImage:NO withName:nil];
