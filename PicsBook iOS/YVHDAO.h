@@ -17,6 +17,7 @@
 +(NSArray*)getPics:(NSPredicate*)pred;
 +(void)setSelectedPics:(NSArray*)pics;
 +(NSArray*)getSelectedPics;
++(void)saveContext;
 
 
 @end

@@ -102,6 +102,13 @@
 @property (assign, nonatomic) CGRect hiddenFilterDetailFrame;
 @property (assign, nonatomic) CGRect shownFilterDetailFrame;
 
+//Confirmation
+@property (weak, nonatomic) IBOutlet UIView *confirmationView;
+@property (weak, nonatomic) IBOutlet UILabel *confirmationLbl;
+@property (weak, nonatomic) IBOutlet UIView *confirmationButtonsView;
+@property (weak, nonatomic) IBOutlet UIButton *confirmationOkButton;
+@property (weak, nonatomic) IBOutlet UIButton *confirmationCancelButton;
+
 
 //Others
 @property (weak, nonatomic) IBOutlet UIButton *debugButton;
@@ -140,6 +147,8 @@ bool isShownPicInfo = false;
 bool isShownFaces = false;
 bool isStatusBarHidden = false;
 float showViewDuration = 0.1;
+float showConfirmationMsgDuration = 1;
+
 float hideViewDuration = 0.3;
 int radius = 25;
 
@@ -189,7 +198,8 @@ int radius = 25;
     //[self initAlbumInfoView];
     [self initFilterListView];
     [self initPicInfoView];
-    [self initFilterDetailView];
+    [self initFilterDetailView];    
+    [self initConfirmView];
     
     
 #if DEBUG
@@ -538,7 +548,7 @@ float iconAlpha = .8;
 	self.OnePicOptionsBtn4.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight*3 + optionHeight/2 - iconWidth/2, iconWidth, iconWidth);
     self.OnePicOptionsBtn4.alpha = iconAlpha;
 	[self.OnePicOptionsBtn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
-    [self.OnePicOptionsBtn4 addTarget:self action:@selector(deletePic) forControlEvents:UIControlEventTouchUpInside];
+    [self.OnePicOptionsBtn4 addTarget:self action:@selector(deletePicConfirm) forControlEvents:UIControlEventTouchUpInside];
     [self.optionsOnePicView addSubview:self.OnePicOptionsBtn4];
     
     btnImage = [UIImage imageNamed:@"info.png"];
@@ -638,12 +648,43 @@ float iconAlpha = .8;
   
 }
 
+
+-(void)initConfirmView{
+    int buttonRadius = 5;
+    
+    [self.confirmationOkButton setTitle: NSLocalizedString(@"CONFIRM", nil) forState: UIControlStateNormal];
+    [self.confirmationCancelButton setTitle: NSLocalizedString(@"CANCEL", nil) forState: UIControlStateNormal];
+    
+    self.confirmationOkButton.layer.cornerRadius = buttonRadius;
+    self.confirmationCancelButton.layer.cornerRadius = buttonRadius;
+    self.confirmationView.layer.cornerRadius = radius;
+    self.confirmationOkButton.clipsToBounds = YES;
+    self.confirmationCancelButton.clipsToBounds = YES;
+    self.confirmationView.clipsToBounds = YES;
+    
+    [self hideConfirmView];
+    [self.view bringSubviewToFront:self.confirmationView];
+}
+
+
+
 -(void)switchOptions{
     if(isOnePicView){
         [self switchOnePicOptions];
     }
     else{
         [self switchAlbumOptions];
+    }
+}
+
+
+-(void)switchPicInfoView
+{
+    if(isShownPicInfo){
+        [self hidePicInfo];
+    }
+    else{
+        [self showPicInfo];
     }
 }
 
@@ -698,6 +739,18 @@ float iconAlpha = .8;
     }
 }
 
+
+-(void)switchFaces
+{
+    if(isShownFaces){
+        [self hideFaces];
+    }
+    else{
+        [self showFaces];
+    }
+}
+
+
 -(void)showAlbumOptions
 {
     self.optionsAlbumView.frame = self.hiddenAlbumOptionsFrame;
@@ -706,11 +759,12 @@ float iconAlpha = .8;
     
 }
 
--(void)hideAlbumOptions
-{
-    [UIView animateWithDuration:0.1 animations:^{ self.optionsAlbumView.frame = self.hiddenAlbumOptionsFrame;}];
-    isShowingAlbumOptions = false;
+
+
+-(void)showConfirmView{
+    self.confirmationView.hidden = false;
 }
+
 
 
 -(void)showAlbumInfo{
@@ -733,28 +787,8 @@ float iconAlpha = .8;
     
 }
 
--(void)hideAlbumInfo
-{
-    self.headerView.hidden = true;
-    isShownAlbumInfo = false;
-    [self hideAlbumOptions];
-    UIImage * btnImage = [UIImage imageNamed:@"info.png"];
-	[self.AlbumOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
-    //[UIView animateWithDuration:0.1 animations:^{ self.infoAlbumView.frame = self.hiddenInfoAlbumFrame;}];
-}
 
 
-
-
--(void)switchPicInfoView
-{
-    if(isShownPicInfo){
-        [self hidePicInfo];
-    }
-    else{
-        [self showPicInfo];
-    }
-}
 
 -(void)showPicInfo{
     UIImage * btnImage = [UIImage imageNamed:@"info_s.png"];
@@ -775,15 +809,6 @@ float iconAlpha = .8;
     [UIView animateWithDuration:showViewDuration  animations:^{ self.infoPicView.frame = self.shownInfoPicFrame;}];
     isShownPicInfo = true;
     //[self switchOnePicOptions];
-}
-
--(void)hidePicInfo
-{
-    UIImage * btnImage = [UIImage imageNamed:@"info.png"];
-	[self.OnePicOptionsBtn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
-    [UIView animateWithDuration:hideViewDuration animations:^{ self.infoPicView.frame = self.hiddenInfoPicFrame;}];
-    isShownPicInfo = false;
-
 }
 
 
@@ -808,12 +833,60 @@ float iconAlpha = .8;
 
 }
 
+-(void)showFilter:(NSNumber *)filterId{
+    
+    switch ([filterId integerValue]) {
+        case 1:
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
 -(void)showFilterDetail:(NSString *)filterName
 {
     self.filterDetailTitleLbl.text = filterName;
     [UIView animateWithDuration:showViewDuration animations:^{ self.filterDetailView.frame = self.shownFilterDetailFrame;}];
     isShownFilterDetail = true;
 }
+
+-(void)showFaces{
+    isShownFaces = true;
+    UIImage * btnImage = [UIImage imageNamed:@"face_s.png"];
+    [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+}
+
+
+-(void)hideAlbumInfo
+{
+    self.headerView.hidden = true;
+    isShownAlbumInfo = false;
+    [self hideAlbumOptions];
+    UIImage * btnImage = [UIImage imageNamed:@"info.png"];
+	[self.AlbumOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    //[UIView animateWithDuration:0.1 animations:^{ self.infoAlbumView.frame = self.hiddenInfoAlbumFrame;}];
+}
+
+
+-(void)hideAlbumOptions
+{
+    [UIView animateWithDuration:0.1 animations:^{ self.optionsAlbumView.frame = self.hiddenAlbumOptionsFrame;}];
+    isShowingAlbumOptions = false;
+}
+
+
+-(void)hidePicInfo
+{
+    UIImage * btnImage = [UIImage imageNamed:@"info.png"];
+	[self.OnePicOptionsBtn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    [UIView animateWithDuration:hideViewDuration animations:^{ self.infoPicView.frame = self.hiddenInfoPicFrame;}];
+    isShownPicInfo = false;
+    
+}
+
 
 -(void)hideFilterDetail
 {
@@ -833,42 +906,6 @@ float iconAlpha = .8;
     
 }
 
-
--(void)toFilters{
-    
-    [self switchFiltersView];
-    
-}
-
--(void)showFilter:(NSNumber *)filterId{
-    
-    switch ([filterId integerValue]) {
-        case 1:
-            
-            break;
-            
-        default:
-            break;
-    }
-    
-}
-
--(void)switchFaces
-{
-    if(isShownFaces){
-        [self hideFaces];
-    }
-    else{
-        [self showFaces];
-    }
-}
-
--(void)showFaces{
-    isShownFaces = true;
-    UIImage * btnImage = [UIImage imageNamed:@"face_s.png"];
-    [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
-}
-
 -(void)hideFaces
 {
     
@@ -880,18 +917,73 @@ float iconAlpha = .8;
     
 }
 
+-(void)hideConfirmView{
+    self.confirmationView.hidden = true;
+}
+
+-(void)toFilters{
+    
+    [self switchFiltersView];
+    
+}
+
+
+
+
+
+
 -(void)toShare{
     UIActivityViewController * controller = [[UIActivityViewController alloc]initWithActivityItems:@[self.pickedImg] applicationActivities:nil];
     [self presentViewController:controller animated:YES completion:nil];
 }
 
+-(void)deletePicConfirm{
+    self.confirmationLbl.frame = CGRectMake(self.confirmationLbl.frame.origin.x,
+                                            20,
+                                            self.confirmationLbl.frame.size.width,
+                                            self.confirmationLbl.frame.size.height);
+    self.confirmationLbl.text = NSLocalizedString(@"DELETE_CONFIRM", nil);
+    self.confirmationButtonsView.hidden = false;
+    [self showConfirmView];
+}
+
 -(void)deletePic{
+
+    NSString * s1 = [NSString stringWithFormat:@"name == '%@'",self.pickedPic.name];
+    // NSPredicate* p= [NSPredicate predicateWithFormat:@"name &lt; %@", self.picname.text];
+    NSPredicate* p = [NSPredicate predicateWithFormat:s1, self.pickedPic.name];
     
+    for(Pic *a in self.picsArray){
+        [self.managedObjectContext deleteObject:a];
+    }
+    
+    //Borramos en disco
+    [self removeImage:self.pickedPic.name];
+    [self removeImage:[self.pickedPic.name stringByAppendingString:@"_s"]]; //Borramos el thumbnail
+    
+    
+}
+
+- (void)removeImage:(NSString *)fileName
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:fileName];
+    NSError *error;
+    BOOL success = [fileManager removeItemAtPath:filePath error:&error];
+    if (success) {
+        NSLog(@"delete file ");
+    }
+    else
+    {
+        NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
+    }
 }
 
 - (IBAction)saveFilterImg:(id)sender {
     [[YVHUtil getInstance] saveImage:self.PicViewImg.image currentPic:self.pickedPic isNewImage:NO withName:nil];
-    [[YVHCoreDataStack getInstance] saveContext];
+    [YVHDAO saveContext];
     self.pickedImg = self.PicViewImg.image;
     [self voidScreen];
 }
@@ -905,7 +997,7 @@ float iconAlpha = .8;
     newPic.longitude = self.pickedPic.longitude;
                           
     newPic = [[YVHUtil getInstance] saveImage:self.PicViewImg.image currentPic:newPic isNewImage:YES withName:newName];
-    [[YVHCoreDataStack getInstance] saveContext];
+    [YVHDAO saveContext];
 }
 
 - (IBAction)cancelFilter:(id)sender {
@@ -942,6 +1034,41 @@ float iconAlpha = .8;
     
     [self showFilterDetail:filter];
 }
+
+- (IBAction)confirmAction:(id)sender {
+    [self deletePic];
+    [self hideConfirmView];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1
+                                     target:self
+                                   selector:@selector(showConfirmDeleteMsg)
+                                   userInfo:nil
+                                    repeats:NO];
+
+    
+}
+
+-(void)showConfirmDeleteMsg
+{
+    [self showConfirmMsg:NSLocalizedString(@"DELETE_CONFIRMED", nil)];
+}
+
+- (IBAction)cancelAction:(id)sender {
+    [self hideConfirmView];
+}
+
+-(void)showConfirmMsg:(NSString*)msg{
+    self.confirmationLbl.text = msg;
+    self.confirmationLbl.frame = CGRectMake(self.confirmationLbl.frame.origin.x,
+                                            50,
+                                            self.confirmationLbl.frame.size.width,
+                                            self.confirmationLbl.frame.size.height);
+    [self showConfirmView];
+    
+    [UIView animateWithDuration:showConfirmationMsgDuration delay:1 options:0 animations:^{ [self hideConfirmView];} completion:nil];
+    
+}
+
 
 -(void)voidScreen{
     if(isShowingPicOptions){

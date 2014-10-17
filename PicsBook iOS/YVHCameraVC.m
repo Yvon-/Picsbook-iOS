@@ -9,7 +9,7 @@
 #import "YVHCameraVC.h"
 #import "Pic.h"
 #import "RXCustomTabBar.h"
-#import "YVHCoreDataStack.h"
+#import "YVHDAO.h"
 #import "YVHUtil.h"
 
 @interface YVHCameraVC ()
@@ -42,7 +42,7 @@
     _locationManager.delegate = self;
     
     //Coredata Stack access
-    self.managedObjectContext = [[YVHCoreDataStack getInstance] managedObjectContext];
+    self.managedObjectContext = [YVHDAO getContext];
     
     
 }
@@ -145,7 +145,7 @@
         // To be ready to start again, clear the captured images array.
         [self.capturedImages removeAllObjects];
     }
-     [[YVHCoreDataStack getInstance] saveContext];//Guardamos en CD
+     [YVHDAO saveContext];//Guardamos en CD
     
 }
 

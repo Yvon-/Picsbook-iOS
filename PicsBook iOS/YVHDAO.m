@@ -46,4 +46,8 @@ static NSArray * selectedPics;
     return selectedPics;
 }
 
++(void)saveContext{
+    [[YVHCoreDataStack getInstance] saveContext];
+}
+
 @end

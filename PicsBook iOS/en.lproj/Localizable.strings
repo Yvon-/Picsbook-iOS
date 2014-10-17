@@ -21,3 +21,7 @@
 "CANCEL" = "Cancel";
 
 "FILTER" = "Filter";
+
+"DELETE_CONFIRM" = "¿Are you sure to remove?";
+"DELETE_CONFIRMED" = "Picture removed";
+"CONFIRM" = "Yes";

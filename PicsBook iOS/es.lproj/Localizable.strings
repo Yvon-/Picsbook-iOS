@@ -20,3 +20,7 @@
 "CANCEL" = "Cancelar";
 
 "FILTER" = "Filtro";
+
+"DELETE_CONFIRM" = "¿Borramos esta foto?";
+"CONFIRM" = "Sí";
+"DELETE_CONFIRMED" = "Foto borrada";

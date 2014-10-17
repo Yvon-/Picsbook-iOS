@@ -325,6 +325,57 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" id="gby-6d-Bt3" userLabel="View - Confirmation actions">
+                                <rect key="frame" x="233" y="650" width="300" height="120"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="infoBg2.png" id="3fq-em-Wxa">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filtro" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cLk-ib-aK0" userLabel="Label - TitleText">
+                                        <rect key="frame" x="20" y="20" width="260" height="21"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" id="POY-1g-qTe" userLabel="Confirm buttons">
+                                        <rect key="frame" x="20" y="70" width="260" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fcM-g9-tBb" userLabel="Button - Save changes">
+                                                <rect key="frame" x="150" y="0.0" width="110" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.54983050180000004" green="0.75" blue="0.2099879996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="confirmAction:" destination="sni-Vr-0Ex" eventType="touchUpInside" id="uCo-uW-43g"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="abQ-mE-gSx" userLabel="Button - Save cancel">
+                                                <rect key="frame" x="0.0" y="0.0" width="110" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.75" green="0.4467675867" blue="0.37015411720000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelAction:" destination="sni-Vr-0Ex" eventType="touchUpInside" id="Olo-hL-nO4"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" id="ZKS-T3-wtF" userLabel="View - Filters list">
                                 <rect key="frame" x="0.0" y="57" width="200" height="910"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -499,6 +550,11 @@
                         <outlet property="albumLbl" destination="x8i-08-OJ9" id="wIB-bX-kI1"/>
                         <outlet property="backButtonView" destination="mgB-GC-Q3x" id="xos-33-3ks"/>
                         <outlet property="collectionView" destination="3rK-vs-sSW" id="jD4-Ld-d6p"/>
+                        <outlet property="confirmationButtonsView" destination="POY-1g-qTe" id="vF1-p2-Tx3"/>
+                        <outlet property="confirmationCancelButton" destination="abQ-mE-gSx" id="u5h-sx-PQs"/>
+                        <outlet property="confirmationLbl" destination="cLk-ib-aK0" id="bGA-U5-uWB"/>
+                        <outlet property="confirmationOkButton" destination="fcM-g9-tBb" id="uwq-1j-ubj"/>
+                        <outlet property="confirmationView" destination="gby-6d-Bt3" id="w8m-m5-fz0"/>
                         <outlet property="debugButton" destination="rTF-tx-QXg" id="Pd3-cc-dh3"/>
                         <outlet property="facesLbl" destination="Y0F-zN-tN3" id="m3p-Rf-8KV"/>
                         <outlet property="facesTextLbl" destination="MKk-c1-F9u" id="pan-T4-gZ9"/>

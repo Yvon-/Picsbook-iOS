@@ -9,7 +9,7 @@
 #import "YVHCoreDataVC.h"
 #import "Pic.h"
 #import "YVHAppDelegate.h"
-#import "YVHCoreDataStack.h"
+#import "YVHDAO.h"
 
 @interface YVHCoreDataVC ()
 
@@ -27,13 +27,13 @@
 {
     [super viewDidLoad];
 
-    self.managedObjectContext = [[YVHCoreDataStack getInstance] managedObjectContext];
+    self.managedObjectContext = [YVHDAO getContext];
     
     [self showData:nil];
     
 }
 -(void)viewDidDisappear:(BOOL)animated{
-    [[YVHCoreDataStack getInstance] saveContext];
+    [YVHDAO saveContext];
 }
 - (void)didReceiveMemoryWarning
 {
