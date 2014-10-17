@@ -987,18 +987,28 @@ float iconAlpha = .8;
 }
 
 -(void)deletePic{
-
-    NSString * s1 = [NSString stringWithFormat:@"name == '%@'",self.pickedPic.name];
+    NSString * name = self.pickedPic.name;
+    
+    //Lo eliminamos del array
+    NSMutableArray * mut = [NSMutableArray arrayWithArray:self.picsArray];
+    [mut removeObject:self.pickedPic];
+    self.picsArray = [NSArray arrayWithArray:mut];
+    
+    //Borramos en CoreData
+    NSString * s1 = [NSString stringWithFormat:@"name == '%@'", name];
     // NSPredicate* p= [NSPredicate predicateWithFormat:@"name &lt; %@", self.picname.text];
     NSPredicate* p = [NSPredicate predicateWithFormat:s1, self.pickedPic.name];
     NSArray* res = [YVHDAO getPics:p];
     for(Pic *a in res){
         [self.managedObjectContext deleteObject:a];
     }
+    [YVHDAO saveContext];
     
     //Borramos en disco
-    [self removeImage:self.pickedPic.name];
-    [self removeImage:[self.pickedPic.name stringByAppendingString:@"_s"]]; //Borramos el thumbnail
+    [self removeImage:name];
+    [self removeImage:[name stringByAppendingString:@"_s"]]; //Borramos el thumbnail
+    
+    
     
     
 }
