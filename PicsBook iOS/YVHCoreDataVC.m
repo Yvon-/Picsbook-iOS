@@ -28,6 +28,9 @@
     [super viewDidLoad];
 
     self.managedObjectContext = [[YVHCoreDataStack getInstance] managedObjectContext];
+    
+    [self showData:nil];
+    
 }
 -(void)viewDidDisappear:(BOOL)animated{
     [[YVHCoreDataStack getInstance] saveContext];

@@ -543,11 +543,11 @@ float iconAlpha = .8;
     
     btnImage = [UIImage imageNamed:@"info.png"];
 	self.OnePicOptionsBtn5 = [UIButton buttonWithType:UIButtonTypeCustom];
-	self.OnePicOptionsBtn5.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight*3 + optionHeight/2 - iconWidth/2, iconWidth, iconWidth);
+	self.OnePicOptionsBtn5.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight*4 + optionHeight/2 - iconWidth/2, iconWidth, iconWidth);
     self.OnePicOptionsBtn5.alpha = iconAlpha;
 	[self.OnePicOptionsBtn5 setBackgroundImage:btnImage forState:UIControlStateNormal];
     [self.OnePicOptionsBtn5 addTarget:self action:@selector(switchPicInfoView) forControlEvents:UIControlEventTouchUpInside];
-    [self.optionsOnePicView addSubview:self.OnePicOptionsBtn4];
+    [self.optionsOnePicView addSubview:self.OnePicOptionsBtn5];
     
 }
 
