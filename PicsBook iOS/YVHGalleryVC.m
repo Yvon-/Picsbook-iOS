@@ -788,7 +788,7 @@ float iconAlpha = .8;
 
 -(void)showPicInfo{
     UIImage * btnImage = [UIImage imageNamed:@"info_s.png"];
-	[self.OnePicOptionsBtn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
+	[self.OnePicOptionsBtn5 setBackgroundImage:btnImage forState:UIControlStateNormal];
     
     self.nameTextLbl.text = NSLocalizedString(@"PIC_NAME", nil);
     self.nameLbl.text = self.pickedPic.name;
@@ -919,7 +919,7 @@ float iconAlpha = .8;
 -(void)hidePicInfo
 {
     UIImage * btnImage = [UIImage imageNamed:@"info.png"];
-	[self.OnePicOptionsBtn4 setBackgroundImage:btnImage forState:UIControlStateNormal];
+	[self.OnePicOptionsBtn5 setBackgroundImage:btnImage forState:UIControlStateNormal];
     [UIView animateWithDuration:hideViewDuration animations:^{ self.infoPicView.frame = self.hiddenInfoPicFrame;}];
     isShownPicInfo = false;
     
