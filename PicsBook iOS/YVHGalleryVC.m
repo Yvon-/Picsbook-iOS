@@ -780,8 +780,9 @@ float iconAlpha = .8;
 
 -(void)showFilters
 {
-    [UIView animateWithDuration:showViewDuration animations:^{ self.filtersView.frame = self.shownFiltersFrame;}];
-    isShownFilters = true;
+    if (isShownPicInfo) {
+        [self hidePicInfo];
+    }
     
     UIImage * btnImage = [UIImage imageNamed:@"filter_s.png"];
     [self.OnePicOptionsBtn2 setBackgroundImage:btnImage forState:UIControlStateNormal];
@@ -789,6 +790,13 @@ float iconAlpha = .8;
         [self.filtersCollectionView reloadData];
         self.lastPickedImg = self.pickedImg;
     }
+    
+
+    
+    [UIView animateWithDuration:showViewDuration animations:^{ self.filtersView.frame = self.shownFiltersFrame;}];
+    isShownFilters = true;
+    
+
 }
 
 -(void)showFilterDetail:(NSString *)filterName
