@@ -877,14 +877,14 @@ float iconAlpha = .8;
 }
 
 - (IBAction)saveFilterNewImg:(id)sender {
-    Pic * newPic =  [Pic insertInManagedObjectContext:[[YVHCoreDataStack getInstance] managedObjectContext]];
+    Pic * newPic =  [Pic insertInManagedObjectContext:[YVHDAO getContext]];
     
     NSString * newName = [NSString stringWithFormat:@"%@  %@",self.pickedPic.name, [self.filterList objectAtIndex:self.pickedFilter]];
     newPic.name = newName;
     newPic.latitude = self.pickedPic.latitude;
     newPic.longitude = self.pickedPic.longitude;
                           
-    [[YVHUtil getInstance] saveImage:self.PicViewImg.image currentPic:self.pickedPic isNewImage:YES withName:newName];
+    newPic = [[YVHUtil getInstance] saveImage:self.PicViewImg.image currentPic:newPic isNewImage:YES withName:newName];
     [[YVHCoreDataStack getInstance] saveContext];
 }
 

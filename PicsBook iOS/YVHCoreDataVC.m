@@ -65,7 +65,7 @@
         NSString *text=@"";
         for(Pic *a in array){
             Pic* p = a;
-            NSString * s1 = [NSString stringWithFormat:@"- %@  \n",p.name];
+            NSString * s1 = [NSString stringWithFormat:@"*** %@ *** \n %@\n\n",p.name, p.path];
             text = [text stringByAppendingString:s1];
         }
         self.textbox.text = text;
