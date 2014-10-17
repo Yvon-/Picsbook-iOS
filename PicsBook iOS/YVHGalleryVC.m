@@ -873,9 +873,28 @@ float iconAlpha = .8;
     
     [NSTimer scheduledTimerWithTimeInterval:1
                                      target:self
-                                   selector:@selector(hideConfirmView)
+                                   selector:@selector(deleteCompletion)
                                    userInfo:nil
                                     repeats:NO];
+    
+}
+
+
+
+-(void)showNextPic{
+    int index = [self.picsArray indexOfObject:self.pickedPic];
+    int next;
+    
+    if(index == self.picsArray.count-1){
+        next = 0;
+    }
+    else{
+        next += 1;
+    }
+    
+    self.pickedPic = [self.picsArray objectAtIndex:next];
+    self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
+    self.PicViewImg.image = self.pickedImg;
     
 }
 
@@ -999,6 +1018,17 @@ float iconAlpha = .8;
     {
         NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
     }
+}
+
+-(void)deleteCompletion{
+    [self hideConfirmView];
+    if(self.picsArray.count > 0){
+        [self showNextPic];
+    }
+    else{
+        [self backToAlbum:nil];
+    }
+    
 }
 
 - (IBAction)saveFilterImg:(id)sender {
@@ -1190,6 +1220,8 @@ float iconAlpha = .8;
             
             self.lastPickedImg = self.pickedImg;
             self.pickedPic = [self.picsArray objectAtIndex:x];
+            
+            int x2 = [self.picsArray indexOfObject:self.pickedPic];
             
             self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
             self.PicViewImg.image = self.pickedImg;
