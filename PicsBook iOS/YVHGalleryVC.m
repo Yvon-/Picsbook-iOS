@@ -867,7 +867,7 @@ float iconAlpha = .8;
     UIActivityViewController * controller = [[UIActivityViewController alloc]initWithActivityItems:@[self.pickedImg] applicationActivities:nil];
     [self presentViewController:controller animated:YES completion:nil];
 }
-
+//
 
 - (IBAction)saveFilterImg:(id)sender {
     [[YVHUtil getInstance] saveImage:self.PicViewImg.image currentPic:self.pickedPic isNewImage:NO withName:nil];
