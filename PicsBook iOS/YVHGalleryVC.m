@@ -145,6 +145,7 @@ bool isShownFilters = false;
 bool isShownFilterDetail = false;
 bool isShownPicInfo = false;
 bool isShownFaces = false;
+bool isShownConfirmView = false;
 bool isStatusBarHidden = false;
 float showViewDuration = 0.1;
 float showConfirmationMsgDuration = 1;
@@ -421,11 +422,7 @@ int radius = 25;
         [self.collectionView reloadData];
     }
     [YVHDAO setSelectedPics:self.picsArray];
-    
-    if(isShowingPicOptions){
-        [self switchOnePicOptions];
-        isShowingPicOptions = false;
-    }    
+
 
     if(isShownAlbumInfo){
         [self showAlbumInfo];
@@ -434,14 +431,12 @@ int radius = 25;
         [self hideAlbumInfo];
     }
     
-    if(isShownFilters){
-        [self hideFilters];
-    }
     
     if (isShownFilterDetail) {
-        [self hideFilterDetail];
         self.PicViewImg.image = self.pickedImg;
     }
+    
+    [self voidScreen];
     
     self.titlePicLbl.hidden = true;
     self.titleLbl.hidden = false;
@@ -763,6 +758,7 @@ float iconAlpha = .8;
 
 -(void)showConfirmView{
     self.confirmationView.hidden = false;
+    isShownConfirmView = true;
 }
 
 
@@ -860,6 +856,24 @@ float iconAlpha = .8;
 }
 
 
+-(void)showConfirmDeleteMsg
+{
+    [self showConfirmMsg:NSLocalizedString(@"DELETE_CONFIRMED", nil)];
+}
+
+-(void)showConfirmMsg:(NSString*)msg{
+    self.confirmationLbl.text = msg;
+    self.confirmationLbl.frame = CGRectMake(self.confirmationLbl.frame.origin.x,
+                                            50,
+                                            self.confirmationLbl.frame.size.width,
+                                            self.confirmationLbl.frame.size.height);
+    self.confirmationButtonsView.hidden = true;
+    [self showConfirmView];
+    
+   // [UIView animateWithDuration:showConfirmationMsgDuration delay:1 options:0 animations:^{ [self hideConfirmView];} completion:nil];
+    
+}
+
 -(void)hideAlbumInfo
 {
     self.headerView.hidden = true;
@@ -919,6 +933,7 @@ float iconAlpha = .8;
 
 -(void)hideConfirmView{
     self.confirmationView.hidden = true;
+    isShownConfirmView = false;
 }
 
 -(void)toFilters{
@@ -986,6 +1001,7 @@ float iconAlpha = .8;
     [YVHDAO saveContext];
     self.pickedImg = self.PicViewImg.image;
     [self voidScreen];
+    [self showConfirmMsg:NSLocalizedString(@"SAVE_CONFIRMED", nil)];
 }
 
 - (IBAction)saveFilterNewImg:(id)sender {
@@ -998,6 +1014,7 @@ float iconAlpha = .8;
                           
     newPic = [[YVHUtil getInstance] saveImage:self.PicViewImg.image currentPic:newPic isNewImage:YES withName:newName];
     [YVHDAO saveContext];
+    [self showConfirmMsg:NSLocalizedString(@"SAVECOPY_CONFIRMED", nil)];
 }
 
 - (IBAction)cancelFilter:(id)sender {
@@ -1039,7 +1056,7 @@ float iconAlpha = .8;
     [self deletePic];
     [self hideConfirmView];
     
-    [NSTimer scheduledTimerWithTimeInterval:1
+    [NSTimer scheduledTimerWithTimeInterval:.5
                                      target:self
                                    selector:@selector(showConfirmDeleteMsg)
                                    userInfo:nil
@@ -1048,26 +1065,13 @@ float iconAlpha = .8;
     
 }
 
--(void)showConfirmDeleteMsg
-{
-    [self showConfirmMsg:NSLocalizedString(@"DELETE_CONFIRMED", nil)];
-}
+
 
 - (IBAction)cancelAction:(id)sender {
     [self hideConfirmView];
 }
 
--(void)showConfirmMsg:(NSString*)msg{
-    self.confirmationLbl.text = msg;
-    self.confirmationLbl.frame = CGRectMake(self.confirmationLbl.frame.origin.x,
-                                            50,
-                                            self.confirmationLbl.frame.size.width,
-                                            self.confirmationLbl.frame.size.height);
-    [self showConfirmView];
-    
-    [UIView animateWithDuration:showConfirmationMsgDuration delay:1 options:0 animations:^{ [self hideConfirmView];} completion:nil];
-    
-}
+
 
 
 -(void)voidScreen{
@@ -1085,6 +1089,10 @@ float iconAlpha = .8;
     
     if (isShownFilterDetail) {
         [self hideFilterDetail];
+    }
+    
+    if (isShownConfirmView) {
+        [self hideConfirmView];
     }
 
 }

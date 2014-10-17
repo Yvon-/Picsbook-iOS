@@ -24,3 +24,5 @@
 "DELETE_CONFIRM" = "¿Borramos esta foto?";
 "CONFIRM" = "Sí";
 "DELETE_CONFIRMED" = "Foto borrada";
+"SAVE_CONFIRMED" = "Cambio guardado en imagen";
+"SAVECOPY_CONFIRMED" = "Nueva imagen guardada";

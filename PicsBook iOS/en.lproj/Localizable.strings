@@ -25,3 +25,5 @@
 "DELETE_CONFIRM" = "¿Are you sure to remove?";
 "DELETE_CONFIRMED" = "Picture removed";
 "CONFIRM" = "Yes";
+"SAVE_CONFIRMED" = "Changes saved";
+"SAVECOPY_CONFIRMED" = "Copy saved";
