@@ -28,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIView *backButtonView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLbl;
+@property (weak, nonatomic) IBOutlet UILabel *titlePicLbl;
+
 @property (weak, nonatomic) IBOutlet UIView *numPicsView;
 @property (weak, nonatomic) IBOutlet UILabel *numPicsLbl;
 @property (weak, nonatomic) IBOutlet UILabel *numPicsTextLbl;
@@ -430,6 +432,8 @@ int radius = 25;
         self.PicViewImg.image = self.pickedImg;
     }
     
+    self.titlePicLbl.hidden = true;
+    self.titleLbl.hidden = false;
     self.backButtonView.hidden = true;
     self.infoPicView.hidden = true;
     isOnePicView = false;
@@ -709,6 +713,7 @@ float iconAlpha = .8;
     self.numPicsView.hidden = false;
     self.headerView.hidden = false;
     self.backButtonView.hidden = true;
+    self.titleLbl.hidden = false;
     
     [self refitAlbumHeader];
     
@@ -865,13 +870,22 @@ float iconAlpha = .8;
 
 
 - (IBAction)saveFilterImg:(id)sender {
-    [[YVHUtil getInstance] saveImage:self.PicViewImg.image currentPic:self.pickedPic isNewImage:NO];
+    [[YVHUtil getInstance] saveImage:self.PicViewImg.image currentPic:self.pickedPic isNewImage:NO withName:nil];
     [[YVHCoreDataStack getInstance] saveContext];
     self.pickedImg = self.PicViewImg.image;
     [self voidScreen];
 }
 
 - (IBAction)saveFilterNewImg:(id)sender {
+    Pic * newPic =  [Pic insertInManagedObjectContext:[[YVHCoreDataStack getInstance] managedObjectContext]];
+    
+    NSString * newName = [NSString stringWithFormat:@"%@  %@",self.pickedPic.name, [self.filterList objectAtIndex:self.pickedFilter]];
+    newPic.name = newName;
+    newPic.latitude = self.pickedPic.latitude;
+    newPic.longitude = self.pickedPic.longitude;
+                          
+    [[YVHUtil getInstance] saveImage:self.PicViewImg.image currentPic:self.pickedPic isNewImage:YES withName:newName];
+    [[YVHCoreDataStack getInstance] saveContext];
 }
 
 - (IBAction)cancelFilter:(id)sender {
@@ -1030,13 +1044,15 @@ float iconAlpha = .8;
             }
             
             [YVHDAO setSelectedPics:@[self.pickedPic]];
-            self.titleLbl.text = self.pickedPic.name;
+            self.titlePicLbl.text = self.pickedPic.name;
         }
         
         self.infoPicView.hidden = false;
         self.headerView.hidden = false;
         self.numPicsView.hidden = true;
         self.backButtonView.hidden = false;
+        self.titleLbl.hidden = true;
+        self.titlePicLbl.hidden = false;
         
         if(isShowingAlbumOptions){
             [self hideAlbumOptions];

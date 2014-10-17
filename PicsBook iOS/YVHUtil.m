@@ -8,6 +8,7 @@
 
 #import "YVHUtil.h"
 #import "Pic.h"
+#import "YVHCoreDataStack.h"
 
 @interface YVHUtil ()
 
@@ -52,7 +53,7 @@ static YVHUtil* _shared = nil;
 }
 
 
--(Pic *)saveImage:(UIImage*)image currentPic:(Pic*)currentPic isNewImage:(BOOL)isNewImage{
+-(Pic *)saveImage:(UIImage*)image currentPic:(Pic*)currentPic isNewImage:(BOOL)isNewImage withName:(NSString*)name{
     
     NSString *fileName;
     NSString *filePath;
@@ -60,18 +61,24 @@ static YVHUtil* _shared = nil;
     self.defaults = [NSUserDefaults standardUserDefaults];
     
     if (isNewImage) {
-        NSNumber * nPics = [self.defaults objectForKey:@"totalPicsDone"];
-        if(nPics) nPics = @(nPics.intValue+1);
-        else nPics = @1;
-
+        
         NSString *hDir = NSHomeDirectory();
         NSString *tmpDir = [hDir stringByAppendingString:@"/Documents"];
-        fileName = [@"pic" stringByAppendingString:[nPics stringValue]];
+        if (name) {
+            fileName = name;
+        }
+        else{
+            NSNumber * nPics = [self.defaults objectForKey:@"totalPicsDone"];
+            if(nPics) nPics = @(nPics.intValue+1);
+            else nPics = @1;
+            fileName = [@"pic" stringByAppendingString:[nPics stringValue]];
+            [self.defaults setObject:nPics forKey:@"totalPicsDone"];
+        }
         filePath = [tmpDir stringByAppendingPathComponent:fileName];
         
         NSLog(@"Created %@", filePath);
         
-        [self.defaults setObject:nPics forKey:@"totalPicsDone"];
+        
     }
     else{
         fileName = currentPic.name;

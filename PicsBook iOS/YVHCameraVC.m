@@ -116,7 +116,7 @@
             UIImage *originalPhoto = [self.capturedImages objectAtIndex:0];
             
             //Guardamos foto en disco. Crea y guarda un thumbnail
-            self.currentPic = [self.utils saveImage:originalPhoto currentPic:self.currentPic isNewImage:YES];
+            self.currentPic = [self.utils saveImage:originalPhoto currentPic:self.currentPic isNewImage:YES withName:nil];
             
             //Localizamos
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ // 1

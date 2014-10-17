@@ -12,7 +12,7 @@
 @interface YVHUtil : NSObject
 
 + (YVHUtil*)getInstance;
--(Pic *)saveImage:(UIImage*)image currentPic:(Pic*)currentPic isNewImage:(BOOL)isNewImage;
+-(Pic *)saveImage:(UIImage*)image currentPic:(Pic*)currentPic isNewImage:(BOOL)isNewImage withName:(NSString*)name;
 -(void)saveTumbnail:(UIImage*)image fileName:(NSString*)fileName;
 -(UIImage *)getThumbnail:(UIImage*)originalImage;
 -(CGSize)reducePic:(CGSize)sz;
