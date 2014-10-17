@@ -952,8 +952,8 @@ float iconAlpha = .8;
     NSString * s1 = [NSString stringWithFormat:@"name == '%@'",self.pickedPic.name];
     // NSPredicate* p= [NSPredicate predicateWithFormat:@"name &lt; %@", self.picname.text];
     NSPredicate* p = [NSPredicate predicateWithFormat:s1, self.pickedPic.name];
-    
-    for(Pic *a in self.picsArray){
+    NSArray* res = [YVHDAO getPics:p];
+    for(Pic *a in res){
         [self.managedObjectContext deleteObject:a];
     }
     
@@ -989,7 +989,7 @@ float iconAlpha = .8;
 }
 
 - (IBAction)saveFilterNewImg:(id)sender {
-    Pic * newPic =  [Pic insertInManagedObjectContext:[YVHDAO getContext]];
+    Pic * newPic =  [Pic insertInManagedObjectContext:self.managedObjectContext];
     
     NSString * newName = [NSString stringWithFormat:@"%@  %@",self.pickedPic.name, [self.filterList objectAtIndex:self.pickedFilter]];
     newPic.name = newName;
