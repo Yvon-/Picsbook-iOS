@@ -208,6 +208,8 @@
     NSArray *features = [face featuresInImage:myImage
                                       options:@{ CIDetectorImageOrientation: [NSNumber numberWithInt:exifOrientation]}];
 
+    NSMutableArray * faces = [@[] mutableCopy];
+   
     for (CIFaceFeature *f in features)
     {
         if (f.hasLeftEyePosition)
@@ -215,6 +217,12 @@
                   f.leftEyePosition.y  );
         if (f.hasRightEyePosition) NSLog(@"Tiene ojo derecho");
         if (f.hasMouthPosition) NSLog(@"Tiene boca");
+        
+        [faces addObject:NSStringFromCGRect(f.bounds)];
+    }
+    
+    for (NSString *s in faces){
+        CGRect c = CGRectFromString(s);
     }
 }
 
