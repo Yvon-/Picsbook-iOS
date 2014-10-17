@@ -864,13 +864,18 @@ float iconAlpha = .8;
 -(void)showConfirmMsg:(NSString*)msg{
     self.confirmationLbl.text = msg;
     self.confirmationLbl.frame = CGRectMake(self.confirmationLbl.frame.origin.x,
-                                            50,
+                                            45,
                                             self.confirmationLbl.frame.size.width,
                                             self.confirmationLbl.frame.size.height);
     self.confirmationButtonsView.hidden = true;
     [self showConfirmView];
     
-   // [UIView animateWithDuration:showConfirmationMsgDuration delay:1 options:0 animations:^{ [self hideConfirmView];} completion:nil];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1
+                                     target:self
+                                   selector:@selector(hideConfirmView)
+                                   userInfo:nil
+                                    repeats:NO];
     
 }
 
@@ -1061,7 +1066,6 @@ float iconAlpha = .8;
                                    selector:@selector(showConfirmDeleteMsg)
                                    userInfo:nil
                                     repeats:NO];
-
     
 }
 
