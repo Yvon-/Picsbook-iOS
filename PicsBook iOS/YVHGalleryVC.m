@@ -965,18 +965,28 @@ float iconAlpha = .8;
     int index = self.pickedPicIndex;
     int next;
     
-    if(index >= self.picsArray.count){
-        next = 0;
+    if(afterDelete){
+        if(index >= self.picsArray.count){
+            next = 0;
+        }
+        else if(index == self.picsArray.count-1){
+            next = index;
+            
+        }
+        else{
+            next = index + 1 ;
+        }
     }
     else{
-        next = index+1 ;
+        if(index >= self.picsArray.count-1){
+            next = 0;
+        }
+        else{
+            next = index+1 ;
+        }
     }
-    if(afterDelete){
-        next -=1;
-    }
-   
 
-    
+   
 
     self.pickedPic = [self.picsArray objectAtIndex:next];
     self.pickedPicIndex = next;
@@ -989,6 +999,10 @@ float iconAlpha = .8;
                     animations:^{
                         self.PicViewImg.image = self.pickedImg;;
                     } completion:nil];
+    
+    if (isShownPicInfo) {
+        [self showPicInfo];
+    }
     
 }
 
@@ -1015,6 +1029,9 @@ float iconAlpha = .8;
                         self.PicViewImg.image = self.pickedImg;;
                     } completion:nil];
     
+    if (isShownPicInfo) {
+        [self showPicInfo];
+    }
 }
 
 -(void)hideAlbumInfo
