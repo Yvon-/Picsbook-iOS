@@ -1000,8 +1000,15 @@ float iconAlpha = .8;
                         self.PicViewImg.image = self.pickedImg;;
                     } completion:nil];
     
+    self.titlePicLbl.text = self.pickedPic.name;
+    
     if (isShownPicInfo) {
         [self showPicInfo];
+    }
+    
+    if (isShownFaces) {
+        [self hideFaces];
+        [self showFaces];
     }
     
 }
@@ -1029,8 +1036,15 @@ float iconAlpha = .8;
                         self.PicViewImg.image = self.pickedImg;;
                     } completion:nil];
     
+    self.titlePicLbl.text = self.pickedPic.name;
+    
     if (isShownPicInfo) {
         [self showPicInfo];
+    }
+    
+    if (isShownFaces) {
+        [self hideFaces];
+        [self showFaces];
     }
 }
 
