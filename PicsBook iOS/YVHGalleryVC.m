@@ -385,6 +385,9 @@ int radius = 25;
 -(UIImage *)standarFilterToImage:(UIImage *)image
                        filterName:(NSString *)filterName{
     
+    UIImageOrientation originalOrientation = image.imageOrientation;
+    CGFloat originalScale = image.scale;
+    
     CGImageRef cgimg = image.CGImage;
     CIImage * ciimage = [CIImage imageWithCGImage:cgimg];
     
@@ -400,7 +403,9 @@ int radius = 25;
     CGImageRef cgImage = [context createCGImage:result
                                        fromRect:[result extent]];
     
-    return [UIImage imageWithCGImage:cgImage];
+    UIImage *newPtImage = [UIImage imageWithCGImage:cgImage scale:originalScale orientation:originalOrientation];
+    
+    return newPtImage;
 
 }
 
@@ -861,7 +866,20 @@ float iconAlpha = .8;
 
 -(void)showConfirmDeleteMsg
 {
-    [self showConfirmMsg:NSLocalizedString(@"DELETE_CONFIRMED", nil)];
+    self.confirmationLbl.text = NSLocalizedString(@"DELETE_CONFIRMED", nil);
+    self.confirmationLbl.frame = CGRectMake(self.confirmationLbl.frame.origin.x,
+                                            45,
+                                            self.confirmationLbl.frame.size.width,
+                                            self.confirmationLbl.frame.size.height);
+    self.confirmationButtonsView.hidden = true;
+    [self showConfirmView];
+    
+    
+    [NSTimer scheduledTimerWithTimeInterval:1
+                                     target:self
+                                   selector:@selector(deleteCompletion)
+                                   userInfo:nil
+                                    repeats:NO];
 }
 
 -(void)showConfirmMsg:(NSString*)msg{
@@ -876,7 +894,7 @@ float iconAlpha = .8;
     
     [NSTimer scheduledTimerWithTimeInterval:1
                                      target:self
-                                   selector:@selector(deleteCompletion)
+                                   selector:@selector(hideConfirmView)
                                    userInfo:nil
                                     repeats:NO];
     

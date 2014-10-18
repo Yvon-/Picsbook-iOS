@@ -115,6 +115,8 @@
             // Camera took a single picture.
             UIImage *originalPhoto = [self.capturedImages objectAtIndex:0];
             
+
+            
             //Guardamos foto en disco. Crea y guarda un thumbnail
             self.currentPic = [[YVHUtil getInstance] saveImage:originalPhoto currentPic:self.currentPic isNewImage:YES withName:nil];
             
