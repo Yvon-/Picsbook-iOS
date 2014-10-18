@@ -139,4 +139,78 @@ static YVHUtil* _shared = nil;
     
 }
 
+-(NSArray*)faceDetectInImage:(UIImage*)image{
+    
+    //    UIImage *careto = [UIImage imageNamed:@"2014-08-28 19.00.58.jpg"];
+    int exifOrientation = 0;
+    
+    
+    switch (image.imageOrientation) {
+        case UIImageOrientationUp:
+            exifOrientation = 1;
+            break;
+        case UIImageOrientationDown:
+            exifOrientation = 3;
+            break;
+        case UIImageOrientationLeft:
+            exifOrientation = 8;
+            break;
+        case UIImageOrientationRight:
+            exifOrientation = 6;
+            break;
+        case UIImageOrientationUpMirrored:
+            exifOrientation = 2;
+            break;
+        case UIImageOrientationDownMirrored:
+            exifOrientation = 4;
+            break;
+        case UIImageOrientationLeftMirrored:
+            exifOrientation = 5;
+            break;
+        case UIImageOrientationRightMirrored:
+            exifOrientation = 7;
+            break;
+        default:
+            break;
+    }
+    
+    
+    //    if (!context) {
+    CIContext *  context = [CIContext contextWithOptions:nil];
+    //    }
+    
+    NSDictionary *opts = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh forKey:CIDetectorAccuracy];
+    
+    
+    CIDetector *face = [CIDetector detectorOfType:CIDetectorTypeFace
+                                          context:context
+                                          options:opts];
+    CIImage * myImage = [[CIImage alloc] initWithImage:image];
+    
+    NSArray *features = [face featuresInImage:myImage
+                                      options:@{ CIDetectorImageOrientation: [NSNumber numberWithInt:exifOrientation]}];
+    
+    
+    
+    NSMutableArray * faces = [@[] mutableCopy];
+    
+    for (CIFaceFeature *f in features)
+    {
+        if (f.hasLeftEyePosition)
+            NSLog(@" ojos en %f, %f", f.leftEyePosition.x,
+                  f.leftEyePosition.y  );
+        if (f.hasRightEyePosition) NSLog(@"Tiene ojo derecho");
+        if (f.hasMouthPosition) NSLog(@"Tiene boca");
+        
+        
+        [faces addObject:NSStringFromCGRect(f.bounds)];
+        
+    }
+    
+    //  CGRect c = CGRectFromString(s);
+    
+    return faces;
+}
+
+
 @end

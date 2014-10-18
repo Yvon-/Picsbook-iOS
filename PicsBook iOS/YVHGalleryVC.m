@@ -10,6 +10,7 @@
 #import "YVHAppDelegate.h"
 #import "Flickr.h"
 #import "Pic.h"
+#import "Face.h"
 #import "YVHPicVC.h"
 #import "CVCell.h"
 #import "FilterCell.h"
@@ -1061,7 +1062,17 @@ float iconAlpha = .8;
     newPic.name = newName;
     newPic.latitude = self.pickedPic.latitude;
     newPic.longitude = self.pickedPic.longitude;
-                          
+    
+    //Search for faces in new filtered image
+    NSArray * facesRect = [[YVHUtil getInstance] faceDetectInImage:self.PicViewImg.image];
+    
+    //Añadimos a Core data
+    for(NSString * s in facesRect){
+        Face * faceRect = [Face  insertInManagedObjectContext:self.managedObjectContext];
+        faceRect.nsrectstring = s;
+        [newPic addPic_faceObject:faceRect];
+    }
+    
     newPic = [[YVHUtil getInstance] saveImage:self.PicViewImg.image currentPic:newPic isNewImage:YES withName:newName];
     [YVHDAO saveContext];
     [self showConfirmMsg:NSLocalizedString(@"SAVECOPY_CONFIRMED", nil)];

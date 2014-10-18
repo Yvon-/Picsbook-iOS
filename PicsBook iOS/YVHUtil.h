@@ -16,6 +16,7 @@
 -(void)saveTumbnail:(UIImage*)image fileName:(NSString*)fileName;
 -(UIImage *)getThumbnail:(UIImage*)originalImage;
 -(CGSize)reducePic:(CGSize)sz;
+-(NSArray*)faceDetectInImage:(UIImage*)image;
 
 
 @end
