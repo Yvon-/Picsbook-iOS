@@ -198,6 +198,21 @@ int radius = 25;
     UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap)];
     [self.PicView addGestureRecognizer:singleFingerTap];
     
+
+    
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    
+    // Setting the swipe direction.
+    [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    
+    // Adding the swipe gesture on image view
+    [self.PicView addGestureRecognizer:swipeLeft];
+    [self.PicView addGestureRecognizer:swipeRight];
+    
+    
     [self initAlbumOptionsView];
     [self initOptionsOnePicView];
     //[self initAlbumInfoView];
@@ -457,6 +472,18 @@ int radius = 25;
     if (isShownFilterDetail) {
         self.PicViewImg.image = self.pickedImg;
     }
+}
+
+- (void)handleSwipe:(UISwipeGestureRecognizer *)swipe {
+    
+    if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
+        [self showNextPicAfterDelete:false];
+    }
+    
+    if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+        [self showPrevPic];
+    }
+    
 }
 
 -(void)refitAlbumHeader{
@@ -929,7 +956,7 @@ float iconAlpha = .8;
 
 
 
--(void)showNextPic{
+-(void)showNextPicAfterDelete:(bool)afterDelete{
     int index = self.pickedPicIndex;
     int next;
     
@@ -937,14 +964,49 @@ float iconAlpha = .8;
         next = 0;
     }
     else{
-        next = index ;
+        next = index+1 ;
     }
+    if(afterDelete){
+        next -=1;
+    }
+   
     
+
     self.pickedPic = [self.picsArray objectAtIndex:next];
     self.pickedPicIndex = next;
     self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
-    self.PicViewImg.image = self.pickedImg;
+ //   self.PicViewImg.image = self.pickedImg;
     
+    [UIView transitionWithView:self.PicViewImg
+                      duration:.7
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        self.PicViewImg.image = self.pickedImg;;
+                    } completion:nil];
+    
+}
+
+-(void)showPrevPic{
+    int index = self.pickedPicIndex;
+    int prev;
+    
+    if(index == 0){
+        prev = self.picsArray.count-1;
+    }
+    else{
+        prev = index-1 ;
+    }
+    
+    self.pickedPic = [self.picsArray objectAtIndex:prev];
+    self.pickedPicIndex = prev;
+    self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
+ 
+    [UIView transitionWithView:self.PicViewImg
+                      duration:.7
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        self.PicViewImg.image = self.pickedImg;;
+                    } completion:nil];
     
 }
 
@@ -1088,7 +1150,7 @@ float iconAlpha = .8;
 -(void)deleteCompletion{
     [self hideConfirmView];
     if(self.picsArray.count > 0){
-        [self showNextPic];
+        [self showNextPicAfterDelete:true];
     }
     else{
         [self backToAlbum:nil];
