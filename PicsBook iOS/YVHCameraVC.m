@@ -8,6 +8,7 @@
 
 #import "YVHCameraVC.h"
 #import "Pic.h"
+#import "Face.h"
 #import "RXCustomTabBar.h"
 #import "YVHDAO.h"
 #import "YVHUtil.h"
@@ -208,7 +209,6 @@
     NSArray *features = [face featuresInImage:myImage
                                       options:@{ CIDetectorImageOrientation: [NSNumber numberWithInt:exifOrientation]}];
 
-    NSMutableArray * faces = [@[] mutableCopy];
    
     for (CIFaceFeature *f in features)
     {
@@ -218,12 +218,15 @@
         if (f.hasRightEyePosition) NSLog(@"Tiene ojo derecho");
         if (f.hasMouthPosition) NSLog(@"Tiene boca");
         
-        [faces addObject:NSStringFromCGRect(f.bounds)];
+        //Añadimos a Core data
+        NSString * s = NSStringFromCGRect(f.bounds);
+        Face * faceRect = [Face  insertInManagedObjectContext:self.managedObjectContext];
+        faceRect.nsrectstring = s;
+        [self.currentPic addPic_faceObject:faceRect];
     }
-    
-    for (NSString *s in faces){
-        CGRect c = CGRectFromString(s);
-    }
+
+      //  CGRect c = CGRectFromString(s);
+
 }
 
 

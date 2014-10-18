@@ -15,7 +15,7 @@
         <relationship name="pic_face" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Face" inverseName="pic_face" inverseEntity="Face" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Face" positionX="261" positionY="18" width="128" height="101"/>
         <element name="Pic" positionX="-63" positionY="-18" width="128" height="118"/>
-        <element name="Face" positionX="-54" positionY="18" width="128" height="101"/>
     </elements>
 </model>

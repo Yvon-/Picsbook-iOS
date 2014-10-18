@@ -116,6 +116,7 @@
 @property (nonatomic, strong) NSArray *picsArray;
 @property (nonatomic, strong) UIImage * pickedImg;
 @property (nonatomic, strong) Pic * pickedPic;
+@property (nonatomic, assign) int pickedPicIndex;
 @property(nonatomic,assign) BOOL contextHasChange;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
@@ -327,8 +328,6 @@ int radius = 25;
     self.longitudeLbl.text = [self.pickedPic.longitude stringValue];
     self.latitudeTextLbl.text = NSLocalizedString(@"PIC_LAT", nil);
     self.latitudeLbl.text = [self.pickedPic.latitude stringValue];
-    self.facesTextLbl.text = NSLocalizedString(@"PIC_FACES", nil);
-    self.facesLbl.text = @"0";
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -795,6 +794,9 @@ float iconAlpha = .8;
     
     self.albumLbl.text = NSLocalizedString(@"SINGLE_ALBUM_TITLE", nil);
     
+    self.facesTextLbl.text = NSLocalizedString(@"PIC_FACES", nil);
+    self.facesLbl.text = [NSString stringWithFormat: @"%d", self.pickedPic.pic_face.count];
+    
     
     CLLocation * selectedLocation = [[CLLocation alloc] initWithLatitude:(CLLocationDegrees)[self.pickedPic.latitude doubleValue]
                                                              longitude:(CLLocationDegrees)[self.pickedPic.longitude doubleValue]];
@@ -882,10 +884,10 @@ float iconAlpha = .8;
 
 
 -(void)showNextPic{
-    int index = [self.picsArray indexOfObject:self.pickedPic];
+    int index = self.pickedPicIndex;
     int next;
     
-    if(index == self.picsArray.count-1){
+    if(index == self.picsArray.count){
         next = 0;
     }
     else{
@@ -893,8 +895,10 @@ float iconAlpha = .8;
     }
     
     self.pickedPic = [self.picsArray objectAtIndex:next];
+    self.pickedPicIndex = next;
     self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
     self.PicViewImg.image = self.pickedImg;
+    
     
 }
 
@@ -922,6 +926,7 @@ float iconAlpha = .8;
 	[self.OnePicOptionsBtn5 setBackgroundImage:btnImage forState:UIControlStateNormal];
     [UIView animateWithDuration:hideViewDuration animations:^{ self.infoPicView.frame = self.hiddenInfoPicFrame;}];
     isShownPicInfo = false;
+    
     
 }
 
@@ -1230,8 +1235,7 @@ float iconAlpha = .8;
             
             self.lastPickedImg = self.pickedImg;
             self.pickedPic = [self.picsArray objectAtIndex:x];
-            
-            int x2 = [self.picsArray indexOfObject:self.pickedPic];
+            self.pickedPicIndex = x;
             
             self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
             self.PicViewImg.image = self.pickedImg;
