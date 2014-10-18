@@ -17,6 +17,7 @@
 -(UIImage *)getThumbnail:(UIImage*)originalImage;
 -(CGSize)reducePic:(CGSize)sz;
 -(NSArray*)faceDetectInImage:(UIImage*)image;
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 
 
 @end

@@ -139,11 +139,28 @@ static YVHUtil* _shared = nil;
     
 }
 
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 -(NSArray*)faceDetectInImage:(UIImage*)image{
     
     //    UIImage *careto = [UIImage imageNamed:@"2014-08-28 19.00.58.jpg"];
     int exifOrientation = 0;
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
     
+    CGSize c= image.size;
+    
+    image = [self imageWithImage:image scaledToSize:screenRect.size];
+    
+    c = image.size;
     
     switch (image.imageOrientation) {
         case UIImageOrientationUp:

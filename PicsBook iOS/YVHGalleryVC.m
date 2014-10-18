@@ -118,6 +118,8 @@
 @property (nonatomic, strong) UIImage * pickedImg;
 @property (nonatomic, strong) Pic * pickedPic;
 @property (nonatomic, assign) int pickedPicIndex;
+@property (nonatomic, strong) NSMutableArray *facesFramesArray;
+
 @property(nonatomic,assign) BOOL contextHasChange;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
@@ -857,12 +859,36 @@ float iconAlpha = .8;
     isShownFilterDetail = true;
 }
 
+
 -(void)showFaces{
     isShownFaces = true;
     UIImage * btnImage = [UIImage imageNamed:@"face_s.png"];
     [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    
+    self.facesFramesArray = [@[] mutableCopy];
+    
+    for(Face * f in  self.pickedPic.pic_face ){
+        CGRect c = CGRectFromString(f.nsrectstring);
+        UIImageView * v = [[UIImageView alloc]init];
+        v.image = [UIImage imageNamed:@"faceFrame.png"];
+        v.frame = [self refitFrame:c];
+        CGRect c2 = v.frame;
+        [self.facesFramesArray addObject:v];
+    }
+    
+    for(UIImageView * v in self.facesFramesArray){
+        v.alpha = .5;
+        [self.view addSubview:v];
+         CGRect c2 = v.frame;
+    }
+    
+    
 }
 
+-(CGRect)refitFrame:(CGRect)c{
+    
+    return CGRectMake(768-c.origin.y, 1024-c.origin.x, c.size.width, c.size.height);
+}
 
 -(void)showConfirmDeleteMsg
 {
@@ -875,7 +901,7 @@ float iconAlpha = .8;
     [self showConfirmView];
     
     
-    [NSTimer scheduledTimerWithTimeInterval:1
+    [NSTimer scheduledTimerWithTimeInterval:.7
                                      target:self
                                    selector:@selector(deleteCompletion)
                                    userInfo:nil
@@ -892,7 +918,7 @@ float iconAlpha = .8;
     [self showConfirmView];
     
     
-    [NSTimer scheduledTimerWithTimeInterval:1
+    [NSTimer scheduledTimerWithTimeInterval:.7
                                      target:self
                                    selector:@selector(hideConfirmView)
                                    userInfo:nil
@@ -906,11 +932,11 @@ float iconAlpha = .8;
     int index = self.pickedPicIndex;
     int next;
     
-    if(index == self.picsArray.count){
+    if(index >= self.picsArray.count){
         next = 0;
     }
     else{
-        next = index + 1;
+        next = index ;
     }
     
     self.pickedPic = [self.picsArray objectAtIndex:next];
@@ -975,6 +1001,10 @@ float iconAlpha = .8;
     isShownFaces = false;
     UIImage * btnImage = [UIImage imageNamed:@"face.png"];
     [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    
+    for(UIImageView * v in self.facesFramesArray){
+        [v removeFromSuperview];
+    }
     
     
 }
@@ -1135,7 +1165,7 @@ float iconAlpha = .8;
     [self deletePic];
     [self hideConfirmView];
     
-    [NSTimer scheduledTimerWithTimeInterval:.5
+    [NSTimer scheduledTimerWithTimeInterval:.2
                                      target:self
                                    selector:@selector(showConfirmDeleteMsg)
                                    userInfo:nil
