@@ -887,7 +887,8 @@ float iconAlpha = .8;
 
 -(CGRect)refitFrame:(CGRect)c{
     
-    return CGRectMake(768-c.origin.y, 1024-c.origin.x, c.size.width, c.size.height);
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    return CGRectMake(c.origin.x, screenRect.size.height-c.origin.y-c.size.height, c.size.width, c.size.height);
 }
 
 -(void)showConfirmDeleteMsg
@@ -1203,6 +1204,9 @@ float iconAlpha = .8;
         [self hideConfirmView];
     }
 
+    if (isShownFaces) {
+        [self hideFaces];
+    }
 }
 
 
