@@ -970,12 +970,13 @@ float iconAlpha = .8;
         next -=1;
     }
    
+
     
 
     self.pickedPic = [self.picsArray objectAtIndex:next];
     self.pickedPicIndex = next;
     self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
- //   self.PicViewImg.image = self.pickedImg;
+    [YVHDAO setSelectedPics:@[self.pickedPic]];
     
     [UIView transitionWithView:self.PicViewImg
                       duration:.7
@@ -1000,6 +1001,7 @@ float iconAlpha = .8;
     self.pickedPic = [self.picsArray objectAtIndex:prev];
     self.pickedPicIndex = prev;
     self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
+    [YVHDAO setSelectedPics:@[self.pickedPic]];
  
     [UIView transitionWithView:self.PicViewImg
                       duration:.7
