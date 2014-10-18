@@ -195,23 +195,25 @@ int radius = 25;
                                                  name:@"GalleryOptions"
                                                object:nil];
     
+    //Gestures
+    
     UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap)];
-    [self.PicView addGestureRecognizer:singleFingerTap];
-    
-
-    
+    [self.PicView addGestureRecognizer:singleFingerTap];    
     
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     
     // Setting the swipe direction.
     [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
     [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    [swipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
+        
     
     // Adding the swipe gesture on image view
     [self.PicView addGestureRecognizer:swipeLeft];
     [self.PicView addGestureRecognizer:swipeRight];
-    
+    [self.PicView addGestureRecognizer:swipeUp];
     
     [self initAlbumOptionsView];
     [self initOptionsOnePicView];
@@ -480,10 +482,13 @@ int radius = 25;
         [self showNextPicAfterDelete:false];
     }
     
-    if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+    else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
         [self showPrevPic];
     }
     
+    else if (swipe.direction == UISwipeGestureRecognizerDirectionUp) {
+        [self deletePicConfirm];
+    }
 }
 
 -(void)refitAlbumHeader{
