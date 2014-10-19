@@ -27,3 +27,5 @@
 "CONFIRM" = "Yes";
 "SAVE_CONFIRMED" = "Changes saved";
 "SAVECOPY_CONFIRMED" = "Copy saved";
+
+"NO_LOCALIZED" = "No location";

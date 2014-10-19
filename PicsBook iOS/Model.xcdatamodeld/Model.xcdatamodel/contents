@@ -8,14 +8,19 @@
         </fetchedProperty>
     </entity>
     <entity name="Pic" representedClassName="Pic" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="area" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="pic_face" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Face" inverseName="pic_face" inverseEntity="Face" syncable="YES"/>
     </entity>
     <elements>
         <element name="Face" positionX="261" positionY="18" width="128" height="101"/>
-        <element name="Pic" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Pic" positionX="-63" positionY="-18" width="128" height="195"/>
     </elements>
 </model>

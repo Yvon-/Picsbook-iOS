@@ -4,10 +4,15 @@
 #import "_Pic.h"
 
 const struct PicAttributes PicAttributes = {
+	.address = @"address",
+	.area = @"area",
+	.city = @"city",
+	.country = @"country",
 	.latitude = @"latitude",
 	.longitude = @"longitude",
 	.name = @"name",
 	.path = @"path",
+	.zip = @"zip",
 };
 
 const struct PicRelationships PicRelationships = {
@@ -56,6 +61,34 @@ const struct PicFetchedProperties PicFetchedProperties = {
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic address;
+
+
+
+
+
+
+@dynamic area;
+
+
+
+
+
+
+@dynamic city;
+
+
+
+
+
+
+@dynamic country;
+
+
 
 
 
@@ -120,6 +153,13 @@ const struct PicFetchedProperties PicFetchedProperties = {
 
 
 @dynamic path;
+
+
+
+
+
+
+@dynamic zip;
 
 
 

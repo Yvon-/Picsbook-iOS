@@ -5,10 +5,15 @@
 
 
 extern const struct PicAttributes {
+	__unsafe_unretained NSString *address;
+	__unsafe_unretained NSString *area;
+	__unsafe_unretained NSString *city;
+	__unsafe_unretained NSString *country;
 	__unsafe_unretained NSString *latitude;
 	__unsafe_unretained NSString *longitude;
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *path;
+	__unsafe_unretained NSString *zip;
 } PicAttributes;
 
 extern const struct PicRelationships {
@@ -25,6 +30,11 @@ extern const struct PicFetchedProperties {
 
 
 
+
+
+
+
+
 @interface PicID : NSManagedObjectID {}
 @end
 
@@ -33,6 +43,46 @@ extern const struct PicFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (PicID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSString* address;
+
+
+
+//- (BOOL)validateAddress:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* area;
+
+
+
+//- (BOOL)validateArea:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* city;
+
+
+
+//- (BOOL)validateCity:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* country;
+
+
+
+//- (BOOL)validateCountry:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -86,6 +136,16 @@ extern const struct PicFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSString* zip;
+
+
+
+//- (BOOL)validateZip:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) NSSet *pic_face;
 
 - (NSMutableSet*)pic_faceSet;
@@ -106,6 +166,30 @@ extern const struct PicFetchedProperties {
 @end
 
 @interface _Pic (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSString*)primitiveAddress;
+- (void)setPrimitiveAddress:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveArea;
+- (void)setPrimitiveArea:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveCity;
+- (void)setPrimitiveCity:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveCountry;
+- (void)setPrimitiveCountry:(NSString*)value;
+
+
 
 
 - (NSNumber*)primitiveLatitude;
@@ -134,6 +218,12 @@ extern const struct PicFetchedProperties {
 
 - (NSString*)primitivePath;
 - (void)setPrimitivePath:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveZip;
+- (void)setPrimitiveZip:(NSString*)value;
 
 
 

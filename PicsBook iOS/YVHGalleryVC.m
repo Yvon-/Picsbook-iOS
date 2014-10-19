@@ -132,12 +132,6 @@
 @property(nonatomic,assign) BOOL contextHasChange;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-@property (strong, nonatomic) NSString * address;
-@property (strong, nonatomic) NSString * city;
-@property (strong, nonatomic) NSString * area;
-@property (strong, nonatomic) NSString * country;
-@property (strong, nonatomic) NSString * zip;
-
 @property (strong, nonatomic) UIImage* lastPickedImg;
 
 
@@ -173,7 +167,7 @@ int radius = 25;
     [super viewDidLoad];
     
     
-    [self.address addObserver:self forKeyPath:@"location" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:NULL];
+   // [self.address addObserver:self forKeyPath:@"location" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:NULL];
     
     //Change appeareance of uiviews
 	self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_cork.png"]];
@@ -317,54 +311,6 @@ int radius = 25;
 
 
 #pragma mark - Utils
-
-- (void)getReverseGeocodeLocation:(CLLocation *)selectedLocation{
-
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    
-    [geocoder reverseGeocodeLocation:selectedLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-      
-        if(placemarks.count){
-            NSDictionary *dictionary = [[placemarks objectAtIndex:0] addressDictionary];
-            self.address = [dictionary valueForKey:@"Street"];
-            self.city = [dictionary valueForKey:@"City"];
-            self.area = [dictionary valueForKey:@"SubAdministrativeArea"];
-            self.country = [dictionary valueForKey:@"Country"];
-            self.zip = [dictionary valueForKey:@"ZIP"];
-            
-            [self setAddressLocation];
-        }
-        else{
-            self.address = nil;
-            self.city = nil;
-            self.area = nil;
-            self.zip = nil;
-            self.country = nil;
-        }
-    }];
-    
-}
-
--(void)setAddressLocation{
-    self.addressTextLbl.text = NSLocalizedString(@"PIC_ADDRESS", nil);
-    self.addressLbl.text = self.address;
-    self.addressLbl2.text = [NSString stringWithFormat:@"%@ - %@ ", self.zip, self.city];
-    self.addressLbl3.text = [NSString stringWithFormat:@"%@ %@", [self.area isEqualToString:self.city]?@"":[self.area stringByAppendingString: @" - " ], self.country];
-}
-
-- (void)setReverseGeocodeLocation{
-    self.longitudeTextLbl.text = NSLocalizedString(@"PIC_LONG", nil);
-    self.longitudeLbl.text = [self.pickedPic.longitude stringValue];
-    self.latitudeTextLbl.text = NSLocalizedString(@"PIC_LAT", nil);
-    self.latitudeLbl.text = [self.pickedPic.latitude stringValue];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    NSLog(@"string");
-    if (self.address ) {
-        
-    }
-}
 
 -(UIImage *) getPicFromDisk:(NSString*)path{
     NSData *imgData = [NSData dataWithContentsOfFile:path];
@@ -928,12 +874,23 @@ float iconAlpha = .8;
     self.facesTextLbl.text = NSLocalizedString(@"PIC_FACES", nil);
     self.facesLbl.text = [NSString stringWithFormat: @"%d", self.pickedPic.pic_face.count];
     
+
+    self.longitudeTextLbl.text = NSLocalizedString(@"PIC_LONG", nil);
+    self.longitudeLbl.text = [self.pickedPic.longitude stringValue];
+    self.latitudeTextLbl.text = NSLocalizedString(@"PIC_LAT", nil);
+    self.latitudeLbl.text = [self.pickedPic.latitude stringValue];
     
-    CLLocation * selectedLocation = [[CLLocation alloc] initWithLatitude:(CLLocationDegrees)[self.pickedPic.latitude doubleValue]
-                                                             longitude:(CLLocationDegrees)[self.pickedPic.longitude doubleValue]];
-    
-    [self getReverseGeocodeLocation:selectedLocation];
-    [self setReverseGeocodeLocation ];
+    self.addressTextLbl.text = NSLocalizedString(@"PIC_ADDRESS", nil);
+    if(self.pickedPic.address){
+        self.addressLbl.text = self.pickedPic.address;
+        self.addressLbl2.text = [NSString stringWithFormat:@"%@ - %@ ", self.pickedPic.zip, self.pickedPic.city];
+        self.addressLbl3.text = [NSString stringWithFormat:@"%@ %@", [self.pickedPic.area isEqualToString:self.pickedPic.city]?@"":[self.pickedPic.area stringByAppendingString: @" - " ], self.pickedPic.country];
+    }
+    else{
+        self.addressLbl.text = NSLocalizedString(@"NO_LOCALIZED", nil);
+        self.addressLbl2.text = @"";
+        self.addressLbl3.text = @"";
+    }
     
     [UIView animateWithDuration:showViewDuration  animations:^{ self.infoPicView.frame = self.shownInfoPicFrame;}];
     isShownPicInfo = true;
@@ -1562,7 +1519,7 @@ float iconAlpha = .8;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
     return 1;
 }
@@ -1589,7 +1546,18 @@ float iconAlpha = .8;
      
      cell.image.image = photo;
      cell.title.text = p.name;
-     //cell.address.text =
+     
+     
+     if(p.address){
+         cell.address.text = //[NSString stringWithFormat:@"%@ - %@ ", p.city, p.area];
+         [NSString stringWithFormat:@"%@", [p.area isEqualToString:p.city]? p.area
+                                                                          : [p.area stringByAppendingString: [NSString stringWithFormat: @" - %@" , p.city]]];
+     }
+     else{
+         cell.address.text = NSLocalizedString(@"NO_LOCALIZED", nil);
+     }
+     
+     
      cell.facesText.text = NSLocalizedString(@"PIC_FACES", nil);
      cell.faces.text = [NSString stringWithFormat:@"%d", p.pic_face.count];
      

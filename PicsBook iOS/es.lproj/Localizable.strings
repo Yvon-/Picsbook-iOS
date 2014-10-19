@@ -26,3 +26,5 @@
 "DELETE_CONFIRMED" = "Foto borrada";
 "SAVE_CONFIRMED" = "Cambio en imagen guardado";
 "SAVECOPY_CONFIRMED" = "Nueva imagen guardada";
+
+"NO_LOCALIZED" = "Sin localizar";

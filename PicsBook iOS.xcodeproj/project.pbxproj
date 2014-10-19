@@ -35,8 +35,6 @@
 		04A6BF6F19DB2D620000FA32 /* CVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF6D19DB2D620000FA32 /* CVCell.xib */; };
 		04A6BF7219DB2DAD0000FA32 /* YVHPicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF7119DB2DAD0000FA32 /* YVHPicVC.m */; };
 		04A6BF7419DB37AE0000FA32 /* YVHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF7319DB37AE0000FA32 /* YVHAppDelegate.m */; };
-		04A6BF8319DB3F320000FA32 /* _Face.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF7C19DB3F320000FA32 /* _Face.m */; };
-		04A6BF8419DB3F320000FA32 /* _Pic.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF7E19DB3F320000FA32 /* _Pic.m */; };
 		04A6BF8919DB43D30000FA32 /* YVHCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF8819DB43D30000FA32 /* YVHCoreDataStack.m */; };
 		04A6BF8C19DB4C6E0000FA32 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF8A19DB4C6E0000FA32 /* Model.xcdatamodeld */; };
 		04A6BF9B19DB6B0E0000FA32 /* TabBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF8E19DB6B0E0000FA32 /* TabBar.png */; };
@@ -52,8 +50,6 @@
 		04A6BFA519DB6B0E0000FA32 /* cameraOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9819DB6B0E0000FA32 /* cameraOff.png */; };
 		04A6BFA619DB6B0E0000FA32 /* pushpin.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9919DB6B0E0000FA32 /* pushpin.png */; };
 		04A6BFA719DB6B0E0000FA32 /* pushpin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9A19DB6B0E0000FA32 /* pushpin@2x.png */; };
-		04A6BFAA19DB74F90000FA32 /* Pic.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BFA919DB74F90000FA32 /* Pic.m */; };
-		04A6BFAD19DB74FA0000FA32 /* Face.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BFAC19DB74FA0000FA32 /* Face.m */; };
 		04A72CEB19ED720D009C2775 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A72CEA19ED720D009C2775 /* info.png */; };
 		04A7C53719E558D900DDF124 /* Foto2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A7C53319E558D900DDF124 /* Foto2.jpg */; };
 		04A7C53819E558D900DDF124 /* Foto1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A7C53419E558D900DDF124 /* Foto1.jpg */; };
@@ -77,6 +73,10 @@
 		04B3B3EC19F3449400AD2FA2 /* listicon_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B3B3EA19F3449400AD2FA2 /* listicon_s.png */; };
 		04B3B3F319F3511900AD2FA2 /* PicListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B3B3F119F3511900AD2FA2 /* PicListCell.m */; };
 		04B3B3F419F3511900AD2FA2 /* PicListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B3B3F219F3511900AD2FA2 /* PicListCell.xib */; };
+		04B3B41519F36DF000AD2FA2 /* _Face.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B3B40E19F36DF000AD2FA2 /* _Face.m */; };
+		04B3B41619F36DF000AD2FA2 /* _Pic.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B3B41019F36DF000AD2FA2 /* _Pic.m */; };
+		04B3B41719F36DF000AD2FA2 /* Face.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B3B41219F36DF000AD2FA2 /* Face.m */; };
+		04B3B41819F36DF000AD2FA2 /* Pic.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B3B41419F36DF000AD2FA2 /* Pic.m */; };
 		04CC98A519ED40F4002C4365 /* options1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CC98A419ED40F4002C4365 /* options1.png */; };
 		04CC98AC19ED4643002C4365 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CC98AB19ED4643002C4365 /* share.png */; };
 		04CC98AE19ED4A33002C4365 /* filter.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CC98AD19ED4A33002C4365 /* filter.png */; };
@@ -141,10 +141,6 @@
 		04A6BF7019DB2DAD0000FA32 /* YVHPicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YVHPicVC.h; path = "../../../Picsbook3 SB/Picsbook3 SB/YVHPicVC.h"; sourceTree = "<group>"; };
 		04A6BF7119DB2DAD0000FA32 /* YVHPicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YVHPicVC.m; path = "../../../Picsbook3 SB/Picsbook3 SB/YVHPicVC.m"; sourceTree = "<group>"; };
 		04A6BF7319DB37AE0000FA32 /* YVHAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHAppDelegate.m; sourceTree = "<group>"; };
-		04A6BF7B19DB3F320000FA32 /* _Face.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Face.h; sourceTree = "<group>"; };
-		04A6BF7C19DB3F320000FA32 /* _Face.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Face.m; sourceTree = "<group>"; };
-		04A6BF7D19DB3F320000FA32 /* _Pic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Pic.h; sourceTree = "<group>"; };
-		04A6BF7E19DB3F320000FA32 /* _Pic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Pic.m; sourceTree = "<group>"; };
 		04A6BF8719DB43D30000FA32 /* YVHCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHCoreDataStack.h; sourceTree = "<group>"; };
 		04A6BF8819DB43D30000FA32 /* YVHCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHCoreDataStack.m; sourceTree = "<group>"; };
 		04A6BF8B19DB4C6E0000FA32 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -161,10 +157,6 @@
 		04A6BF9819DB6B0E0000FA32 /* cameraOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraOff.png; sourceTree = "<group>"; };
 		04A6BF9919DB6B0E0000FA32 /* pushpin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pushpin.png; sourceTree = "<group>"; };
 		04A6BF9A19DB6B0E0000FA32 /* pushpin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pushpin@2x.png"; sourceTree = "<group>"; };
-		04A6BFA819DB74F90000FA32 /* Pic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pic.h; sourceTree = "<group>"; };
-		04A6BFA919DB74F90000FA32 /* Pic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pic.m; sourceTree = "<group>"; };
-		04A6BFAB19DB74FA0000FA32 /* Face.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Face.h; sourceTree = "<group>"; };
-		04A6BFAC19DB74FA0000FA32 /* Face.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Face.m; sourceTree = "<group>"; };
 		04A72CEA19ED720D009C2775 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		04A7C53319E558D900DDF124 /* Foto2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Foto2.jpg; sourceTree = "<group>"; };
 		04A7C53419E558D900DDF124 /* Foto1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Foto1.jpg; sourceTree = "<group>"; };
@@ -194,6 +186,14 @@
 		04B3B3F019F3511900AD2FA2 /* PicListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicListCell.h; sourceTree = "<group>"; };
 		04B3B3F119F3511900AD2FA2 /* PicListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicListCell.m; sourceTree = "<group>"; };
 		04B3B3F219F3511900AD2FA2 /* PicListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PicListCell.xib; sourceTree = "<group>"; };
+		04B3B40D19F36DF000AD2FA2 /* _Face.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Face.h; sourceTree = "<group>"; };
+		04B3B40E19F36DF000AD2FA2 /* _Face.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Face.m; sourceTree = "<group>"; };
+		04B3B40F19F36DF000AD2FA2 /* _Pic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Pic.h; sourceTree = "<group>"; };
+		04B3B41019F36DF000AD2FA2 /* _Pic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Pic.m; sourceTree = "<group>"; };
+		04B3B41119F36DF000AD2FA2 /* Face.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Face.h; sourceTree = "<group>"; };
+		04B3B41219F36DF000AD2FA2 /* Face.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Face.m; sourceTree = "<group>"; };
+		04B3B41319F36DF000AD2FA2 /* Pic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pic.h; sourceTree = "<group>"; };
+		04B3B41419F36DF000AD2FA2 /* Pic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pic.m; sourceTree = "<group>"; };
 		04CC98A419ED40F4002C4365 /* options1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = options1.png; sourceTree = "<group>"; };
 		04CC98AB19ED4643002C4365 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		04CC98AD19ED4A33002C4365 /* filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter.png; sourceTree = "<group>"; };
@@ -333,14 +333,14 @@
 			isa = PBXGroup;
 			children = (
 				04A6BF8A19DB4C6E0000FA32 /* Model.xcdatamodeld */,
-				04A6BFAB19DB74FA0000FA32 /* Face.h */,
-				04A6BFAC19DB74FA0000FA32 /* Face.m */,
-				04A6BFA819DB74F90000FA32 /* Pic.h */,
-				04A6BFA919DB74F90000FA32 /* Pic.m */,
-				04A6BF7B19DB3F320000FA32 /* _Face.h */,
-				04A6BF7C19DB3F320000FA32 /* _Face.m */,
-				04A6BF7D19DB3F320000FA32 /* _Pic.h */,
-				04A6BF7E19DB3F320000FA32 /* _Pic.m */,
+				04B3B40D19F36DF000AD2FA2 /* _Face.h */,
+				04B3B40E19F36DF000AD2FA2 /* _Face.m */,
+				04B3B40F19F36DF000AD2FA2 /* _Pic.h */,
+				04B3B41019F36DF000AD2FA2 /* _Pic.m */,
+				04B3B41119F36DF000AD2FA2 /* Face.h */,
+				04B3B41219F36DF000AD2FA2 /* Face.m */,
+				04B3B41319F36DF000AD2FA2 /* Pic.h */,
+				04B3B41419F36DF000AD2FA2 /* Pic.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -604,9 +604,8 @@
 				04B3B3F319F3511900AD2FA2 /* PicListCell.m in Sources */,
 				04A8D96719E4CEAB00347349 /* YVHDAO.m in Sources */,
 				04A59CA519EEE46C00BA1896 /* FilterCell.m in Sources */,
-				04A6BFAD19DB74FA0000FA32 /* Face.m in Sources */,
-				04A6BF8419DB3F320000FA32 /* _Pic.m in Sources */,
-				04A6BF8319DB3F320000FA32 /* _Face.m in Sources */,
+				04B3B41619F36DF000AD2FA2 /* _Pic.m in Sources */,
+				04B3B41719F36DF000AD2FA2 /* Face.m in Sources */,
 				04A8D95919E4042B00347349 /* YVHMainVC.m in Sources */,
 				04A6BF6E19DB2D620000FA32 /* CVCell.m in Sources */,
 				04A8D95C19E4494100347349 /* RXCustomTabBar.m in Sources */,
@@ -620,9 +619,10 @@
 				04A6BF8C19DB4C6E0000FA32 /* Model.xcdatamodeld in Sources */,
 				04A8753119E2B94400DC6923 /* YVHMapVC.m in Sources */,
 				04A6BF7419DB37AE0000FA32 /* YVHAppDelegate.m in Sources */,
+				04B3B41519F36DF000AD2FA2 /* _Face.m in Sources */,
 				04A2EB2C19F02C3000CCCFA6 /* YVHUtil.m in Sources */,
-				04A6BFAA19DB74F90000FA32 /* Pic.m in Sources */,
 				04A6BF8919DB43D30000FA32 /* YVHCoreDataStack.m in Sources */,
+				04B3B41819F36DF000AD2FA2 /* Pic.m in Sources */,
 				04A6BF2119DB24550000FA32 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
