@@ -274,9 +274,7 @@ int radius = 25;
     if(self.contextHasChange){
         self.picsArray = [YVHDAO getPics:nil];
         [self.collectionView reloadData];
-        if (isShownAlbumInfo){
-            [self showAlbumInfo];
-        }
+        [self.picListTable reloadData];
     }
 }
 
@@ -881,6 +879,13 @@ float iconAlpha = .8;
     self.latitudeLbl.text = [self.pickedPic.latitude stringValue];
     
     self.addressTextLbl.text = NSLocalizedString(@"PIC_ADDRESS", nil);
+    
+    CLLocation * selectedLocation = [[CLLocation alloc] initWithLatitude:(CLLocationDegrees)[self.pickedPic.latitude doubleValue]
+                                                  longitude:(CLLocationDegrees)[self.pickedPic.longitude doubleValue]];
+    if(!self.pickedPic.address && self.pickedPic.latitude){
+        self.pickedPic = [[YVHUtil getInstance] getReverseGeocodeLocation:selectedLocation forPic:self.pickedPic];
+    }//Para que intente recalcular otra vez si le falta
+    
     if(self.pickedPic.address){
         self.addressLbl.text = self.pickedPic.address;
         self.addressLbl2.text = [NSString stringWithFormat:@"%@ - %@ ", self.pickedPic.zip, self.pickedPic.city];

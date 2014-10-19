@@ -28,7 +28,9 @@
     if(!initialPicsCharged){
         [self chargeInitialPics];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"initialPicsCharged"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    
     
     UIViewController *vc1 =  [self.storyboard instantiateViewControllerWithIdentifier:@"YVHGalleryVC"];
     
@@ -120,7 +122,7 @@
         faceRect.nsrectstring = s;
         [pic5 addPic_faceObject:faceRect];
     }
-    
+    [YVHDAO saveContext];
     
 }
 
