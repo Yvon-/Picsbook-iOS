@@ -1578,7 +1578,9 @@ float iconAlpha = .8;
      
      PicListCell *cell = (PicListCell*) [tableView dequeueReusableCellWithIdentifier:@"picListCell"];
      if (cell == nil) { // Si no había una celda para reutilizar, debo crearla
-         cell = [[PicListCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"picListCell"];
+         //cell = [[PicListCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"picListCell"];
+         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PicListCell" owner:self options:nil];
+         cell = [nib objectAtIndex:0];
      }
      
      Pic * p = [self.picsArray objectAtIndex:indexPath.row];
