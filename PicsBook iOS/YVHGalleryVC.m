@@ -912,11 +912,13 @@ float iconAlpha = .8;
     }//Para que intente recalcular otra vez si le falta
     
     if(self.pickedPic.address){
+        self.addressLbl.textColor = [UIColor whiteColor];
         self.addressLbl.text = self.pickedPic.address;
         self.addressLbl2.text = [NSString stringWithFormat:@"%@ - %@ ", self.pickedPic.zip, self.pickedPic.city];
         self.addressLbl3.text = [NSString stringWithFormat:@"%@ %@", [self.pickedPic.area isEqualToString:self.pickedPic.city]?@"":[self.pickedPic.area stringByAppendingString: @" - " ], self.pickedPic.country];
     }
     else{
+        self.addressLbl.textColor = [UIColor orangeColor];
         self.addressLbl.text = NSLocalizedString(@"NO_LOCALIZED", nil);
         self.addressLbl2.text = @"";
         self.addressLbl3.text = @"";
@@ -1002,11 +1004,7 @@ float iconAlpha = .8;
     
 }
 
--(CGRect)refitFrame:(CGRect)c{
-    
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    return CGRectMake(c.origin.x, screenRect.size.height-c.origin.y-c.size.height, c.size.width, c.size.height);
-}
+
 
 -(void)showConfirmDeleteMsg
 {
@@ -1409,7 +1407,11 @@ float iconAlpha = .8;
     [self hideConfirmView];
 }
 
-
+-(CGRect)refitFrame:(CGRect)c{
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    return CGRectMake(c.origin.x, screenRect.size.height-c.origin.y-c.size.height, c.size.width, c.size.height);
+}
 
 
 -(void)voidScreen{
@@ -1437,6 +1439,7 @@ float iconAlpha = .8;
         [self hideFaces];
     }
 }
+
 
 
 #pragma mark -
@@ -1630,11 +1633,13 @@ float iconAlpha = .8;
      
      
      if(p.address){
+         cell.address.textColor = [UIColor whiteColor];
          cell.address.text = //[NSString stringWithFormat:@"%@ - %@ ", p.city, p.area];
          [NSString stringWithFormat:@"%@", [p.city isEqualToString:p.area]? p.city
                                                                           : [p.city stringByAppendingString: [NSString stringWithFormat: @" - %@" , p.area]]];
      }
      else{
+         cell.address.textColor = [UIColor orangeColor];
          cell.address.text = NSLocalizedString(@"NO_LOCALIZED", nil);
      }
      

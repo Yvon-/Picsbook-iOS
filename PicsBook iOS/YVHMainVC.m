@@ -31,7 +31,7 @@
 
 
     //Delay for get initial picsInverse geocoding
-    [NSTimer scheduledTimerWithTimeInterval:.5
+    [NSTimer scheduledTimerWithTimeInterval:1
                                      target:self
                                    selector:@selector(presentVC)
                                    userInfo:nil

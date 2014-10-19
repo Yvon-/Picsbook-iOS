@@ -4,33 +4,26 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="3SI-Yk-bXU">
-            <objects>
-                <viewController storyboardIdentifier="VC2" id="vhx-zp-hZQ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NBu-cU-iV3">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.5688297269" green="0.80895248720000001" blue="0.67941155409999998" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZYA-eL-55U" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1048" y="-4077"/>
-        </scene>
         <!--MainVC-->
         <scene sceneID="Hsl-ai-Nip">
             <objects>
                 <viewController id="cJh-j3-DFZ" customClass="YVHMainVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0qI-Xa-5ed">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.72037665904754655" green="0.77737976416340138" blue="0.92014110331632648" alpha="1" colorSpace="calibratedRGB"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashscr.png" id="sIe-SE-lmX">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AXA-8y-54k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1071" y="-2824"/>
+            <point key="canvasLocation" x="-543" y="-2080"/>
         </scene>
         <!--GalleryVC-->
         <scene sceneID="gvp-rw-gOd">
@@ -614,40 +607,11 @@
                         <outlet property="picListView" destination="lGD-X7-i3d" id="ccF-LR-oFI"/>
                         <outlet property="titleLbl" destination="9AX-Ky-pHI" id="Cwm-lk-6fT"/>
                         <outlet property="titlePicLbl" destination="9p2-il-Jcg" id="5rg-vE-wh5"/>
-                        <segue destination="87y-xj-VYz" kind="modal" identifier="segueDebug" id="RgS-yH-j01"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqO-wo-r3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1071" y="-1566"/>
-        </scene>
-        <!--PicVC-->
-        <scene sceneID="1dc-Jw-hf0">
-            <objects>
-                <viewController id="87y-xj-VYz" customClass="YVHPicVC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="PNe-8v-pmH">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pushpin.png" id="FKs-W6-m1d">
-                                <rect key="frame" x="5" y="133" width="620" height="800"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3kW-am-n44">
-                                <rect key="frame" x="228" y="88" width="174" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.67261692370000004" green="0.73980373590000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="SHARE"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="35W-AZ-imG"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pBS-oZ-q8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="21" y="-1618"/>
+            <point key="canvasLocation" x="473" y="-2062"/>
         </scene>
         <!--MapVC-->
         <scene sceneID="q6y-8e-ibQ">
@@ -671,20 +635,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CNt-lo-SYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1059" y="-290"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="UOR-1q-o2L">
-            <objects>
-                <viewController id="KGo-G3-tFt" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aNe-xe-uva">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5KY-gg-1gX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="1621" y="-2062"/>
         </scene>
         <!--Core DataVC-->
         <scene sceneID="kyi-06-wTe">
@@ -778,7 +729,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pd7-wB-bFF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="119" y="-2798"/>
+            <point key="canvasLocation" x="1621" y="-838"/>
         </scene>
     </scenes>
     <resources>
@@ -788,6 +739,7 @@
         <image name="infoBg2.png" width="1206" height="462"/>
         <image name="listBg.png" width="320" height="400"/>
         <image name="pushpin.png" width="22" height="31"/>
+        <image name="splashscr.png" width="768" height="1024"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
