@@ -140,7 +140,7 @@
 @implementation YVHGalleryVC
 
 //Vars
-
+BOOL bFromUndoGrouping;
 bool isShowingPicOptions = false;
 bool isShowingAlbumOptions = false;
 bool isOnePicView = false;
@@ -163,32 +163,37 @@ int radius = 25;
 {
     [super viewDidLoad];
     
-    
     [self.address addObserver:self forKeyPath:@"location" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:NULL];
     
     //Change appeareance of uiviews
 	self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_cork.png"]];
     
+    
     //Coredata Stack access
     self.managedObjectContext = [YVHDAO getContext];
+    
+    [[self.managedObjectContext undoManager] beginUndoGrouping];
+    bFromUndoGrouping = YES;
     
     self.picsArray = [YVHDAO  getPics:nil];
     [YVHDAO setSelectedPics:self.picsArray];
     
+    [[NSNotificationCenter defaultCenter]
+        addObserver:self
+        selector:@selector(handleDataModelChange:)
+        name:NSManagedObjectContextObjectsDidChangeNotification
+        object: self.managedObjectContext];
+    
+    
+    self.contextHasChange = NO;
+    
+    //Collection Views
     UINib *cellNib = [UINib nibWithNibName:@"CVCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
 
     UINib *filterCellNib = [UINib nibWithNibName:@"FilterCell" bundle:nil];
     [self.filtersCollectionView registerNib:filterCellNib forCellWithReuseIdentifier:@"filterCell"];
     
-
-    self.contextHasChange = NO;
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(handleDataModelChange:)
-     name:NSManagedObjectContextObjectsDidChangeNotification
-     object: self.managedObjectContext];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(switchOptions)

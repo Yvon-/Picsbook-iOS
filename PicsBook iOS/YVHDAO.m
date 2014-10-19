@@ -13,7 +13,10 @@
 static NSArray * selectedPics;
 
 +(NSManagedObjectContext *)getContext{
-    return [[YVHCoreDataStack getInstance] managedObjectContext];
+    NSManagedObjectContext *mo = [[YVHCoreDataStack getInstance] managedObjectContext];
+    mo.undoManager = [[NSUndoManager alloc] init];
+    return mo;
+    
 }
 
 
