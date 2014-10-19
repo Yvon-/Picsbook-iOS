@@ -22,16 +22,27 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewDidAppear:YES];
     
     BOOL initialPicsCharged = [[NSUserDefaults standardUserDefaults] boolForKey:@"initialPicsCharged"];
     if(!initialPicsCharged){
         [self chargeInitialPics];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"initialPicsCharged"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+
+
+    //Delay for get initial picsInverse geocoding
+    [NSTimer scheduledTimerWithTimeInterval:.5
+                                     target:self
+                                   selector:@selector(presentVC)
+                                   userInfo:nil
+                                    repeats:NO];
     }
-    
-    
+    else{
+        [self presentVC];
+    }
+}
+-(void)presentVC{
     UIViewController *vc1 =  [self.storyboard instantiateViewControllerWithIdentifier:@"YVHGalleryVC"];
     
     UIViewController *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"MapVC"];
@@ -42,9 +53,9 @@
     RXCustomTabBar *tabBarController = [[RXCustomTabBar alloc]init];
     
     [tabBarController setViewControllers:@[vc1, vc2, vc3]];
-    
     [self presentViewController:tabBarController animated:YES completion:nil];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -74,8 +85,10 @@
     
     //Foto2
     img = [UIImage imageNamed:@"Foto2.jpg"];
-    pic2.latitude = [NSNumber numberWithDouble:40.81551388888889];
-    pic2.longitude = [NSNumber numberWithDouble:-3.8320388888888886];
+ //   pic2.latitude = [NSNumber numberWithDouble:40.81551388888889];
+ //   pic2.longitude = [NSNumber numberWithDouble:-3.8320388888888886];
+    pic2.latitude = [NSNumber numberWithDouble:40.828213];
+    pic2.longitude = [NSNumber numberWithDouble:-3.831705]; 
     pic2.name = @"Cuerda larga";
     pic2 = [self saveImage:img currentPic:pic2];
     selectedLocation = [[CLLocation alloc] initWithLatitude:(CLLocationDegrees)[pic2.latitude doubleValue]

@@ -471,6 +471,7 @@ float iconAlpha = .8;
     int height = optionHeight * options;
     UIImage * btnImage;
     
+    
     //Bar image
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     self.hiddenAlbumOptionsFrame = CGRectMake(screenRect.size.width - optionWidth - 5, screenRect.size.height, optionWidth, height);
@@ -483,7 +484,7 @@ float iconAlpha = .8;
     //Buttons
     btnImage = [UIImage imageNamed:@"gridicon_s.png"];
 	self.AlbumOptionsBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
-	self.AlbumOptionsBtn1.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight/2 - iconWidth/2, iconWidth, iconWidth);
+	self.AlbumOptionsBtn1.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight/2 - iconWidth/2, iconWidth , iconWidth);
     self.AlbumOptionsBtn1.alpha = iconAlpha;
 	[self.AlbumOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
     [self.optionsAlbumView addSubview:self.AlbumOptionsBtn1];
@@ -509,22 +510,7 @@ float iconAlpha = .8;
     
 }
 
--(void)showAlbumGridView{
-    [self.AlbumOptionsBtn1 setBackgroundImage:[UIImage imageNamed:@"gridicon_s.png"] forState:UIControlStateNormal];
-    [self.AlbumOptionsBtn2 setBackgroundImage:[UIImage imageNamed:@"listicon.png"] forState:UIControlStateNormal];
-    self.picListView.hidden = true;
-    self.collectionView.hidden = false;
-    
-    [self hideAlbumOptions];
-}
--(void)showAlbumListView{
-    [self.AlbumOptionsBtn1 setBackgroundImage:[UIImage imageNamed:@"gridicon.png"] forState:UIControlStateNormal];
-    [self.AlbumOptionsBtn2 setBackgroundImage:[UIImage imageNamed:@"listicon_s.png"] forState:UIControlStateNormal];
-    self.picListView.hidden = false;
-    self.collectionView.hidden = true;
-    
-    [self hideAlbumOptions];
-}
+
 
 -(void)initAlbumView{
     [self showAlbumGridView];
@@ -547,11 +533,11 @@ float iconAlpha = .8;
     [self.view bringSubviewToFront:self.optionsOnePicView];
     
     //Buttons
-    btnImage = [UIImage imageNamed:@"face.png"];
+    //btnImage = [UIImage imageNamed:@"face.png"];
 	self.OnePicOptionsBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
 	self.OnePicOptionsBtn1.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight/2 - iconWidth/2, iconWidth, iconWidth);
 	self.OnePicOptionsBtn1.alpha = iconAlpha;
-    [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+    //[self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
     [self.OnePicOptionsBtn1 addTarget:self action:@selector(switchFaces) forControlEvents:UIControlEventTouchUpInside];
     [self.optionsOnePicView addSubview:self.OnePicOptionsBtn1];
     
@@ -778,6 +764,24 @@ float iconAlpha = .8;
     }
 }
 
+-(void)showAlbumGridView{
+    [self.AlbumOptionsBtn1 setBackgroundImage:[UIImage imageNamed:@"gridicon_s.png"] forState:UIControlStateNormal];
+    [self.AlbumOptionsBtn2 setBackgroundImage:[UIImage imageNamed:@"listicon.png"] forState:UIControlStateNormal];
+    self.picListView.hidden = true;
+    self.collectionView.hidden = false;
+    
+    [self hideAlbumOptions];
+}
+-(void)showAlbumListView{
+    [self.AlbumOptionsBtn1 setBackgroundImage:[UIImage imageNamed:@"gridicon.png"] forState:UIControlStateNormal];
+    [self.AlbumOptionsBtn2 setBackgroundImage:[UIImage imageNamed:@"listicon_s.png"] forState:UIControlStateNormal];
+    self.picListView.hidden = false;
+    self.collectionView.hidden = true;
+    
+    [self hideAlbumOptions];
+}
+
+
 -(void)showOnePicViewAtIndex:(NSIndexPath*)indexPath{
     NSInteger x = indexPath.row;
     NSInteger y = indexPath.section;
@@ -801,6 +805,25 @@ float iconAlpha = .8;
         
         [YVHDAO setSelectedPics:@[self.pickedPic]];
         self.titlePicLbl.text = self.pickedPic.name;
+        
+        if(self.pickedPic.pic_face.count == 0){
+            UIImage * btnImage = [UIImage imageNamed:@"face_off.png"];
+            [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+            self.OnePicOptionsBtn1.userInteractionEnabled = false;
+        }
+        else
+        {
+            UIImage * btnImage;
+            if(isShownFaces){
+                btnImage = [UIImage imageNamed:@"face_s.png"];
+            }
+            else{
+               btnImage =  [UIImage imageNamed:@"face.png"];
+            }
+            
+            [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+            self.OnePicOptionsBtn1.userInteractionEnabled = true;
+        }
     }
     
     self.infoPicView.hidden = false;
@@ -809,6 +832,7 @@ float iconAlpha = .8;
     self.backButtonView.hidden = false;
     self.titleLbl.hidden = true;
     self.titlePicLbl.hidden = false;
+    
     
     if(isShowingAlbumOptions){
         [self hideAlbumOptions];
@@ -884,6 +908,7 @@ float iconAlpha = .8;
                                                   longitude:(CLLocationDegrees)[self.pickedPic.longitude doubleValue]];
     if(!self.pickedPic.address && self.pickedPic.latitude){
         self.pickedPic = [[YVHUtil getInstance] getReverseGeocodeLocation:selectedLocation forPic:self.pickedPic];
+        [YVHDAO saveContext];
     }//Para que intente recalcular otra vez si le falta
     
     if(self.pickedPic.address){
@@ -947,7 +972,14 @@ float iconAlpha = .8;
 
 -(void)showFaces{
     isShownFaces = true;
-    UIImage * btnImage = [UIImage imageNamed:@"face_s.png"];
+    
+    UIImage * btnImage;
+    if(self.pickedPic.pic_face.count == 0){
+        btnImage = [UIImage imageNamed:@"face_off.png"];
+    }
+    else{
+        btnImage = [UIImage imageNamed:@"face_s.png"];
+    }
     [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
     
     self.facesFramesArray = [@[] mutableCopy];
@@ -1064,6 +1096,25 @@ float iconAlpha = .8;
         [self showFaces];
     }
     
+    if(self.pickedPic.pic_face.count == 0){
+        UIImage * btnImage = [UIImage imageNamed:@"face_off.png"];
+        [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+        self.OnePicOptionsBtn1.userInteractionEnabled = false;
+    }
+    else
+    {
+        UIImage * btnImage;
+        if(isShownFaces){
+            btnImage = [UIImage imageNamed:@"face_s.png"];
+        }
+        else{
+            btnImage = [UIImage imageNamed:@"face.png"];
+        }
+        
+        [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+        self.OnePicOptionsBtn1.userInteractionEnabled = true;
+    }
+    
 }
 
 -(void)showPrevPic{
@@ -1098,6 +1149,25 @@ float iconAlpha = .8;
     if (isShownFaces) {
         [self hideFaces];
         [self showFaces];
+    }
+    
+    if(self.pickedPic.pic_face.count == 0){
+        UIImage * btnImage = [UIImage imageNamed:@"face_off.png"];
+        [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+        self.OnePicOptionsBtn1.userInteractionEnabled = false;
+    }
+    else
+    {
+        UIImage * btnImage;
+        if(isShownFaces){
+            btnImage = [UIImage imageNamed:@"face_s.png"];
+        }
+        else{
+            btnImage = [UIImage imageNamed:@"face.png"];
+        }
+        
+        [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
+        self.OnePicOptionsBtn1.userInteractionEnabled = true;
     }
 }
 
@@ -1153,7 +1223,13 @@ float iconAlpha = .8;
     
     //[UIView animateWithDuration:hideViewDuration animations:^{ self.filtersView.frame = self.hiddenFiltersFrame;}];
     isShownFaces = false;
-    UIImage * btnImage = [UIImage imageNamed:@"face.png"];
+    UIImage * btnImage;
+    if(self.pickedPic.pic_face.count == 0){
+        btnImage = [UIImage imageNamed:@"face_off.png"];
+    }
+    else{
+        btnImage = [UIImage imageNamed:@"face.png"];
+    }
     [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
     
     for(UIImageView * v in self.facesFramesArray){
