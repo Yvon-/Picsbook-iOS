@@ -1631,8 +1631,8 @@ float iconAlpha = .8;
      
      if(p.address){
          cell.address.text = //[NSString stringWithFormat:@"%@ - %@ ", p.city, p.area];
-         [NSString stringWithFormat:@"%@", [p.area isEqualToString:p.city]? p.area
-                                                                          : [p.area stringByAppendingString: [NSString stringWithFormat: @" - %@" , p.city]]];
+         [NSString stringWithFormat:@"%@", [p.city isEqualToString:p.city]? p.city
+                                                                          : [p.city stringByAppendingString: [NSString stringWithFormat: @" - %@" , p.area]]];
      }
      else{
          cell.address.text = NSLocalizedString(@"NO_LOCALIZED", nil);
