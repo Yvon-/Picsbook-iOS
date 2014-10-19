@@ -14,6 +14,7 @@
 		048EC43A19F3F7E3007732FF /* listicon_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 048EC43819F3F7E3007732FF /* listicon_s.png */; };
 		048EC43B19F3F7E3007732FF /* listicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 048EC43919F3F7E3007732FF /* listicon.png */; };
 		048EC43F19F400AE007732FF /* face_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 048EC43E19F400AE007732FF /* face_off.png */; };
+		048EC44119F4035B007732FF /* naomi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048EC44019F4035B007732FF /* naomi.jpg */; };
 		04A2EB2919EFF83100CCCFA6 /* arrow_fwd2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A2EB2819EFF83100CCCFA6 /* arrow_fwd2.png */; };
 		04A2EB2C19F02C3000CCCFA6 /* YVHUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2EB2B19F02C3000CCCFA6 /* YVHUtil.m */; };
 		04A2EB2F19F042D500CCCFA6 /* YVHCoreDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2EB2E19F042D500CCCFA6 /* YVHCoreDataVC.m */; };
@@ -44,8 +45,6 @@
 		04A6BF8919DB43D30000FA32 /* YVHCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF8819DB43D30000FA32 /* YVHCoreDataStack.m */; };
 		04A6BF8C19DB4C6E0000FA32 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF8A19DB4C6E0000FA32 /* Model.xcdatamodeld */; };
 		04A6BF9B19DB6B0E0000FA32 /* TabBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF8E19DB6B0E0000FA32 /* TabBar.png */; };
-		04A6BF9C19DB6B0E0000FA32 /* WorldOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF8F19DB6B0E0000FA32 /* WorldOn.png */; };
-		04A6BF9D19DB6B0E0000FA32 /* worldOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9019DB6B0E0000FA32 /* worldOff.png */; };
 		04A6BF9E19DB6B0E0000FA32 /* Galery.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9119DB6B0E0000FA32 /* Galery.png */; };
 		04A6BF9F19DB6B0E0000FA32 /* mapOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9219DB6B0E0000FA32 /* mapOn.png */; };
 		04A6BFA019DB6B0E0000FA32 /* mapOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF9319DB6B0E0000FA32 /* mapOff.png */; };
@@ -109,6 +108,7 @@
 		048EC43819F3F7E3007732FF /* listicon_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listicon_s.png; sourceTree = "<group>"; };
 		048EC43919F3F7E3007732FF /* listicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listicon.png; sourceTree = "<group>"; };
 		048EC43E19F400AE007732FF /* face_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = face_off.png; sourceTree = "<group>"; };
+		048EC44019F4035B007732FF /* naomi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = naomi.jpg; sourceTree = "<group>"; };
 		04A2EB2819EFF83100CCCFA6 /* arrow_fwd2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_fwd2.png; sourceTree = "<group>"; };
 		04A2EB2A19F02C3000CCCFA6 /* YVHUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHUtil.h; sourceTree = "<group>"; };
 		04A2EB2B19F02C3000CCCFA6 /* YVHUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHUtil.m; sourceTree = "<group>"; };
@@ -153,8 +153,6 @@
 		04A6BF8819DB43D30000FA32 /* YVHCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHCoreDataStack.m; sourceTree = "<group>"; };
 		04A6BF8B19DB4C6E0000FA32 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		04A6BF8E19DB6B0E0000FA32 /* TabBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBar.png; sourceTree = "<group>"; };
-		04A6BF8F19DB6B0E0000FA32 /* WorldOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WorldOn.png; sourceTree = "<group>"; };
-		04A6BF9019DB6B0E0000FA32 /* worldOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = worldOff.png; sourceTree = "<group>"; };
 		04A6BF9119DB6B0E0000FA32 /* Galery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Galery.png; sourceTree = "<group>"; };
 		04A6BF9219DB6B0E0000FA32 /* mapOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapOn.png; sourceTree = "<group>"; };
 		04A6BF9319DB6B0E0000FA32 /* mapOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapOff.png; sourceTree = "<group>"; };
@@ -417,6 +415,7 @@
 				04A7C53519E558D900DDF124 /* Foto3.jpg */,
 				04A7C53619E558D900DDF124 /* Foto4.jpg */,
 				0477B67F19F381B000BC50A5 /* Kardashians.jpg */,
+				048EC44019F4035B007732FF /* naomi.jpg */,
 			);
 			name = "Initial Pics";
 			sourceTree = "<group>";
@@ -427,8 +426,6 @@
 				04A6BF9819DB6B0E0000FA32 /* cameraOff.png */,
 				04A6BF9519DB6B0E0000FA32 /* menu.png */,
 				04A6BF8E19DB6B0E0000FA32 /* TabBar.png */,
-				04A6BF8F19DB6B0E0000FA32 /* WorldOn.png */,
-				04A6BF9019DB6B0E0000FA32 /* worldOff.png */,
 				04A6BF9119DB6B0E0000FA32 /* Galery.png */,
 				04A6BF9219DB6B0E0000FA32 /* mapOn.png */,
 				04A6BF9319DB6B0E0000FA32 /* mapOff.png */,
@@ -540,6 +537,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048EC44119F4035B007732FF /* naomi.jpg in Resources */,
 				04A6BF9F19DB6B0E0000FA32 /* mapOn.png in Resources */,
 				04181B8219EBEF69000A546B /* options2.png in Resources */,
 				04A59CA919EEECB200BA1896 /* FilterCell.xib in Resources */,
@@ -562,7 +560,6 @@
 				04D4620419ED7B82000D7FB7 /* face.png in Resources */,
 				04A6BFA619DB6B0E0000FA32 /* pushpin.png in Resources */,
 				04A6BFA419DB6B0E0000FA32 /* bg_cork@2x.png in Resources */,
-				04A6BF9D19DB6B0E0000FA32 /* worldOff.png in Resources */,
 				048EC43F19F400AE007732FF /* face_off.png in Resources */,
 				04A6BF1F19DB24550000FA32 /* InfoPlist.strings in Resources */,
 				04A7C53819E558D900DDF124 /* Foto1.jpg in Resources */,
@@ -572,7 +569,6 @@
 				04A8753619E2B99700DC6923 /* Locations.plist in Resources */,
 				04A6BFA019DB6B0E0000FA32 /* mapOff.png in Resources */,
 				04AE76D119EF50CE007976E5 /* face_s.png in Resources */,
-				04A6BF9C19DB6B0E0000FA32 /* WorldOn.png in Resources */,
 				04CC98B419ED4E8C002C4365 /* options3.png in Resources */,
 				04CC98A519ED40F4002C4365 /* options1.png in Resources */,
 				048EC43A19F3F7E3007732FF /* listicon_s.png in Resources */,
@@ -709,7 +705,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yvon Utad (HEG6WSF969)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yvon Utad (HEG6WSF969)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -748,7 +745,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yvon Utad (HEG6WSF969)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yvon Utad (HEG6WSF969)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

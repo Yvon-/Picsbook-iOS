@@ -63,7 +63,7 @@
 }
 
 -(void)chargeInitialPics{
-    Pic *pic1, *pic2, *pic3, *pic4, *pic5;
+    Pic *pic1, *pic2, *pic3, *pic4, *pic5, *pic6;
     UIImage * img;
     
     pic1 =  [Pic insertInManagedObjectContext:[YVHDAO getContext]];
@@ -71,7 +71,7 @@
     pic3 =  [Pic insertInManagedObjectContext:[YVHDAO getContext]];
     pic4 =  [Pic insertInManagedObjectContext:[YVHDAO getContext]];
     pic5 =  [Pic insertInManagedObjectContext:[YVHDAO getContext]];
-    
+    pic6 =  [Pic insertInManagedObjectContext:[YVHDAO getContext]];
     
     //Foto1
     img = [UIImage imageNamed:@"Foto1.jpg"];
@@ -134,6 +134,27 @@
         Face * faceRect = [Face  insertInManagedObjectContext:[YVHDAO getContext]];
         faceRect.nsrectstring = s;
         [pic5 addPic_faceObject:faceRect];
+    }
+    [YVHDAO saveContext];
+    
+    //Foto6
+    img = [UIImage imageNamed:@"naomi.jpg"];
+    pic6.name = @"naomi";
+    pic6.latitude = [NSNumber numberWithDouble:40.417935];
+    pic6.longitude = [NSNumber numberWithDouble:-3.713629];
+    pic6 = [self saveImage:img currentPic:pic6];
+    selectedLocation = [[CLLocation alloc] initWithLatitude:(CLLocationDegrees)[pic6.latitude doubleValue]
+                                                  longitude:(CLLocationDegrees)[pic6.longitude doubleValue]];
+    
+    pic6 = [[YVHUtil getInstance] getReverseGeocodeLocation:selectedLocation forPic:pic6];
+    //Search for faces in new filtered image
+    facesRect = [[YVHUtil getInstance] faceDetectInImage:img];
+    
+    //Añadimos a Core data
+    for(NSString * s in facesRect){
+        Face * faceRect = [Face  insertInManagedObjectContext:[YVHDAO getContext]];
+        faceRect.nsrectstring = s;
+        [pic6 addPic_faceObject:faceRect];
     }
     [YVHDAO saveContext];
     
