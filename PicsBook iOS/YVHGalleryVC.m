@@ -1094,6 +1094,10 @@ float iconAlpha = .8;
         [self showFaces];
     }
     
+    if(isShownFilters){
+        [self.filtersCollectionView reloadData];
+    }
+    
     if(self.pickedPic.pic_face.count == 0){
         UIImage * btnImage = [UIImage imageNamed:@"face_off.png"];
         [self.OnePicOptionsBtn1 setBackgroundImage:btnImage forState:UIControlStateNormal];
@@ -1142,6 +1146,10 @@ float iconAlpha = .8;
     
     if (isShownPicInfo) {
         [self showPicInfo];
+    }
+    
+    if(isShownFilters){
+        [self.filtersCollectionView reloadData];
     }
     
     if (isShownFaces) {
