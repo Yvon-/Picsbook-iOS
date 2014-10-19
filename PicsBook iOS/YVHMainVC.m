@@ -15,7 +15,6 @@
 #import "YVHUtil.h"
 
 @interface YVHMainVC ()
-
 @end
 
 @implementation YVHMainVC
@@ -42,7 +41,9 @@
         [self presentVC];
     }
 }
+
 -(void)presentVC{
+    
     UIViewController *vc1 =  [self.storyboard instantiateViewControllerWithIdentifier:@"YVHGalleryVC"];
     
     UIViewController *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"MapVC"];
@@ -156,8 +157,6 @@
         faceRect.nsrectstring = s;
         [pic6 addPic_faceObject:faceRect];
     }
-    [YVHDAO saveContext];
-    
 }
 
 -(Pic*)saveImage:(UIImage*)image currentPic:(Pic*)currentPic{

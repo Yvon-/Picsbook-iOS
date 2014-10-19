@@ -8,8 +8,7 @@
 
 #import "YVHUtil.h"
 #import "Pic.h"
-#import "YVHCoreDataStack.h"
-
+#import "YVHDAO.h"
 
 @interface YVHUtil ()
 
@@ -243,6 +242,7 @@ static YVHUtil* _shared = nil;
             p.area = [dictionary valueForKey:@"SubAdministrativeArea"];
             p.country = [dictionary valueForKey:@"Country"];
             p.zip = [dictionary valueForKey:@"ZIP"];
+            [YVHDAO saveContext];
         }
         else{
             p.address = nil;
