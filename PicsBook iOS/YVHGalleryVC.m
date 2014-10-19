@@ -522,7 +522,7 @@ float iconAlpha = .8;
 
 -(void)initAlbumOptionsView
 {
-    int options = 3;
+    int options = 2;
     int height = optionHeight * options;
     UIImage * btnImage;
     
@@ -532,7 +532,7 @@ float iconAlpha = .8;
     self.shownAlbumOptionsFrame = CGRectMake(screenRect.size.width - optionWidth - 5, screenRect.size.height - 57 - height, optionWidth, height);
     self.optionsAlbumView.frame = self.hiddenAlbumOptionsFrame;
     
-    self.optionsAlbumImg.image = [UIImage imageNamed:@"options3.png"];
+    self.optionsAlbumImg.image = [UIImage imageNamed:@"options2.png"];
     [self.view bringSubviewToFront:self.optionsAlbumView];
     
     //Buttons
@@ -553,13 +553,14 @@ float iconAlpha = .8;
     [self.optionsAlbumView addSubview:self.AlbumOptionsBtn2];
     [self.AlbumOptionsBtn2 addTarget:self action:@selector(showAlbumListView) forControlEvents:UIControlEventTouchUpInside];
     
+    /*
     btnImage = [UIImage imageNamed:@"info.png"];
 	self.AlbumOptionsBtn3 = [UIButton buttonWithType:UIButtonTypeCustom];
 	self.AlbumOptionsBtn3.frame = CGRectMake(optionWidth/2 - iconWidth/2, optionHeight*2 + optionHeight/2 - iconWidth/2, iconWidth, iconWidth);
     self.AlbumOptionsBtn3.alpha = iconAlpha;
 	[self.AlbumOptionsBtn3 setBackgroundImage:btnImage forState:UIControlStateNormal];
     [self.optionsAlbumView addSubview:self.AlbumOptionsBtn3];
-    [self.AlbumOptionsBtn3 addTarget:self action:@selector(switchAlbumInfoView) forControlEvents:UIControlEventTouchUpInside];
+    [self.AlbumOptionsBtn3 addTarget:self action:@selector(switchAlbumInfoView) forControlEvents:UIControlEventTouchUpInside];*/
     
 }
 
@@ -568,16 +569,21 @@ float iconAlpha = .8;
     [self.AlbumOptionsBtn2 setBackgroundImage:[UIImage imageNamed:@"listicon.png"] forState:UIControlStateNormal];
     self.picListView.hidden = true;
     self.collectionView.hidden = false;
+    
+    [self hideAlbumOptions];
 }
 -(void)showAlbumListView{
     [self.AlbumOptionsBtn1 setBackgroundImage:[UIImage imageNamed:@"gridicon.png"] forState:UIControlStateNormal];
     [self.AlbumOptionsBtn2 setBackgroundImage:[UIImage imageNamed:@"listicon_s.png"] forState:UIControlStateNormal];
     self.picListView.hidden = false;
     self.collectionView.hidden = true;
+    
+    [self hideAlbumOptions];
 }
 
 -(void)initAlbumView{
     [self showAlbumGridView];
+    [self showAlbumInfo];
 }
 
 -(void)initOptionsOnePicView
@@ -861,7 +867,7 @@ float iconAlpha = .8;
     isShownAlbumInfo = true;
     [self hideAlbumOptions];
     UIImage * btnImage = [UIImage imageNamed:@"info_s.png"];
-	[self.AlbumOptionsBtn3 setBackgroundImage:btnImage forState:UIControlStateNormal];
+	//[self.AlbumOptionsBtn3 setBackgroundImage:btnImage forState:UIControlStateNormal];
     
 }
 
