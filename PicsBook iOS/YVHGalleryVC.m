@@ -1592,6 +1592,8 @@ float iconAlpha = .8;
      cell.facesText.text = NSLocalizedString(@"PIC_FACES", nil);
      cell.faces.text = [NSString stringWithFormat:@"%d", p.pic_face.count];
      
+     cell.backgroundColor = [UIColor clearColor];
+     
      return cell;
  }
  
