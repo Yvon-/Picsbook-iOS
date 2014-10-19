@@ -443,7 +443,7 @@ int radius = 25;
 
 - (IBAction)backToAlbum:(id)sender {
     self.PicView.hidden = true;
-    self.collectionView.hidden = false;
+    //self.collectionView.hidden = false;
     isStatusBarHidden = false;
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
     {
@@ -453,6 +453,7 @@ int radius = 25;
     if(self.contextHasChange){
         self.picsArray = [YVHDAO getPics:nil];
         [self.collectionView reloadData];
+        [self.picListTable reloadData];
     }
     [YVHDAO setSelectedPics:self.picsArray];
 
@@ -846,7 +847,7 @@ float iconAlpha = .8;
         self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
         self.PicViewImg.image = self.pickedImg;
         self.PicView.hidden = false;
-        self.collectionView.hidden = true;
+       // self.collectionView.hidden = true;
         
         isStatusBarHidden = true;
         if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
