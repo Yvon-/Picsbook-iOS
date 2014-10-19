@@ -1631,7 +1631,7 @@ float iconAlpha = .8;
      
      if(p.address){
          cell.address.text = //[NSString stringWithFormat:@"%@ - %@ ", p.city, p.area];
-         [NSString stringWithFormat:@"%@", [p.city isEqualToString:p.city]? p.city
+         [NSString stringWithFormat:@"%@", [p.city isEqualToString:p.area]? p.city
                                                                           : [p.city stringByAppendingString: [NSString stringWithFormat: @" - %@" , p.area]]];
      }
      else{

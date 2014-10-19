@@ -135,7 +135,7 @@
         faceRect.nsrectstring = s;
         [pic5 addPic_faceObject:faceRect];
     }
-    [YVHDAO saveContext];
+    
     
     //Foto6
     img = [UIImage imageNamed:@"naomi.jpg"];
