@@ -10,6 +10,7 @@
 #import "Pic.h"
 #import "YVHCoreDataStack.h"
 
+
 @interface YVHUtil ()
 
 @property (nonatomic, strong) NSUserDefaults *defaults;
@@ -229,5 +230,31 @@ static YVHUtil* _shared = nil;
     return faces;
 }
 
+- (Pic*)getReverseGeocodeLocation:(CLLocation *)selectedLocation forPic:(Pic*)p{
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    
+    [geocoder reverseGeocodeLocation:selectedLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        if(placemarks.count){
+            NSDictionary *dictionary = [[placemarks objectAtIndex:0] addressDictionary];
+            p.address = [dictionary valueForKey:@"Street"];
+            p.city = [dictionary valueForKey:@"City"];
+            p.area = [dictionary valueForKey:@"SubAdministrativeArea"];
+            p.country = [dictionary valueForKey:@"Country"];
+            p.zip = [dictionary valueForKey:@"ZIP"];
+        }
+        else{
+            p.address = nil;
+            p.city = nil;
+            p.area = nil;
+            p.zip = nil;
+            p.country = nil;
+        }
+    }];
+    
+    return p;
+    
+}
 
 @end

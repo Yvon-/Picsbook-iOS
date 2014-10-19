@@ -11,6 +11,7 @@
 #import "RXCustomTabBar.h"
 #import "YVHDAO.h"
 #import "Pic.h"
+#import "Face.h"
 #import "YVHUtil.h"
 
 @interface YVHMainVC ()
@@ -49,13 +50,14 @@
 }
 
 -(void)chargeInitialPics{
-    Pic *pic1, *pic2, *pic3, *pic4;
+    Pic *pic1, *pic2, *pic3, *pic4, *pic5;
     UIImage * img;
     
     pic1 =  [Pic insertInManagedObjectContext:[YVHDAO getContext]];
     pic2 =  [Pic insertInManagedObjectContext:[YVHDAO getContext]];
     pic3 =  [Pic insertInManagedObjectContext:[YVHDAO getContext]];
     pic4 =  [Pic insertInManagedObjectContext:[YVHDAO getContext]];
+    pic5 =  [Pic insertInManagedObjectContext:[YVHDAO getContext]];
     
     
     //Foto1
@@ -64,7 +66,9 @@
     pic1.longitude = [NSNumber numberWithDouble:-3.776036111111111];
     pic1.name = @"Cabaña pasiega";
     pic1 = [self saveImage:img currentPic:pic1];
-
+    CLLocation * selectedLocation = [[CLLocation alloc] initWithLatitude:(CLLocationDegrees)[pic1.latitude doubleValue]
+                                                               longitude:(CLLocationDegrees)[pic1.longitude doubleValue]];
+    pic1 = [[YVHUtil getInstance] getReverseGeocodeLocation:selectedLocation forPic:pic1];
     
     //Foto2
     img = [UIImage imageNamed:@"Foto2.jpg"];
@@ -72,6 +76,9 @@
     pic2.longitude = [NSNumber numberWithDouble:-3.8320388888888886];
     pic2.name = @"Cuerda larga";
     pic2 = [self saveImage:img currentPic:pic2];
+    selectedLocation = [[CLLocation alloc] initWithLatitude:(CLLocationDegrees)[pic2.latitude doubleValue]
+                                                  longitude:(CLLocationDegrees)[pic2.longitude doubleValue]];
+    pic2 = [[YVHUtil getInstance] getReverseGeocodeLocation:selectedLocation forPic:pic2];
     
     //Foto3
     img = [UIImage imageNamed:@"Foto3.jpg"];
@@ -79,6 +86,9 @@
     pic3.longitude = [NSNumber numberWithDouble:-5.453113888888889];
     pic3.name = @"Castillo de Castellar";
     pic3 = [self saveImage:img currentPic:pic3];
+    selectedLocation = [[CLLocation alloc] initWithLatitude:(CLLocationDegrees)[pic3.latitude doubleValue]
+                                                  longitude:(CLLocationDegrees)[pic3.longitude doubleValue]];
+    pic3 = [[YVHUtil getInstance] getReverseGeocodeLocation:selectedLocation forPic:pic3];
     
     //Foto4
     img = [UIImage imageNamed:@"Foto4.jpg"];
@@ -86,6 +96,31 @@
     pic4.latitude = [NSNumber numberWithDouble:40.379080555555554];
     pic4.longitude = [NSNumber numberWithDouble:-3.714055555555556];
     pic4 = [self saveImage:img currentPic:pic4];
+    selectedLocation = [[CLLocation alloc] initWithLatitude:(CLLocationDegrees)[pic4.latitude doubleValue]
+                                                               longitude:(CLLocationDegrees)[pic4.longitude doubleValue]];
+    
+    pic4 = [[YVHUtil getInstance] getReverseGeocodeLocation:selectedLocation forPic:pic4];
+    
+    //Foto5
+    img = [UIImage imageNamed:@"Kardashians.jpg"];
+    pic5.name = @"Kardashians";
+    pic5.latitude = [NSNumber numberWithDouble:40.554064];
+    pic5.longitude = [NSNumber numberWithDouble:-3.899602];
+    pic5 = [self saveImage:img currentPic:pic5];
+    selectedLocation = [[CLLocation alloc] initWithLatitude:(CLLocationDegrees)[pic5.latitude doubleValue]
+                                                  longitude:(CLLocationDegrees)[pic5.longitude doubleValue]];
+    
+    pic5 = [[YVHUtil getInstance] getReverseGeocodeLocation:selectedLocation forPic:pic5];
+    //Search for faces in new filtered image
+    NSArray * facesRect = [[YVHUtil getInstance] faceDetectInImage:img];
+    
+    //Añadimos a Core data
+    for(NSString * s in facesRect){
+        Face * faceRect = [Face  insertInManagedObjectContext:[YVHDAO getContext]];
+        faceRect.nsrectstring = s;
+        [pic5 addPic_faceObject:faceRect];
+    }
+    
     
 }
 

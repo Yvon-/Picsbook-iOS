@@ -213,32 +213,7 @@
     for(Pic * p in pics) [self deletePic:p];
 }
 
-- (Pic*)getReverseGeocodeLocation:(CLLocation *)selectedLocation forPic:(Pic*)p{
-    
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    
-    [geocoder reverseGeocodeLocation:selectedLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        
-        if(placemarks.count){
-            NSDictionary *dictionary = [[placemarks objectAtIndex:0] addressDictionary];
-            p.address = [dictionary valueForKey:@"Street"];
-            p.city = [dictionary valueForKey:@"City"];
-            p.area = [dictionary valueForKey:@"SubAdministrativeArea"];
-            p.country = [dictionary valueForKey:@"Country"];
-            p.zip = [dictionary valueForKey:@"ZIP"];
-        }
-        else{
-            p.address = nil;
-            p.city = nil;
-            p.area = nil;
-            p.zip = nil;
-            p.country = nil;
-        }
-    }];
-    
-    return p;
-    
-}
+
 
 
 
@@ -264,7 +239,7 @@
     CLLocation * selectedLocation = [[CLLocation alloc] initWithLatitude:(CLLocationDegrees)[self.currentPic.latitude doubleValue]
                                                                longitude:(CLLocationDegrees)[self.currentPic.longitude doubleValue]];
     
-    self.currentPic = [self getReverseGeocodeLocation:selectedLocation forPic:self.currentPic];
+    self.currentPic = [[YVHUtil getInstance] getReverseGeocodeLocation:selectedLocation forPic:self.currentPic];
     
 //    self.piclong.text = currentLongitude;
 //    self.piclat.text = currentLatitude;
