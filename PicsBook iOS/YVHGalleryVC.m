@@ -14,6 +14,7 @@
 #import "YVHPicVC.h"
 #import "CVCell.h"
 #import "FilterCell.h"
+#import "PicListCell.h"
 #import "YVHDAO.h"
 #import <UIKit/UIKit.h>
 #import "YVHUtil.h"
@@ -189,7 +190,6 @@ int radius = 25;
     UINib *filterCellNib = [UINib nibWithNibName:@"FilterCell" bundle:nil];
     [self.filtersCollectionView registerNib:filterCellNib forCellWithReuseIdentifier:@"filterCell"];
     
-
     self.contextHasChange = NO;
     
     [[NSNotificationCenter defaultCenter]
@@ -833,6 +833,47 @@ float iconAlpha = .8;
     }
 }
 
+-(void)showOnePicViewAtIndex:(NSIndexPath*)indexPath{
+    NSInteger x = indexPath.row;
+    NSInteger y = indexPath.section;
+    NSInteger i = x + (y * 3);
+    if(i<[self.picsArray count]){
+        
+        self.lastPickedImg = self.pickedImg;
+        self.pickedPic = [self.picsArray objectAtIndex:x];
+        self.pickedPicIndex = x;
+        
+        self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
+        self.PicViewImg.image = self.pickedImg;
+        self.PicView.hidden = false;
+        self.collectionView.hidden = true;
+        
+        isStatusBarHidden = true;
+        if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
+        {
+            [self setNeedsStatusBarAppearanceUpdate];
+        }
+        
+        [YVHDAO setSelectedPics:@[self.pickedPic]];
+        self.titlePicLbl.text = self.pickedPic.name;
+    }
+    
+    self.infoPicView.hidden = false;
+    self.headerView.hidden = false;
+    self.numPicsView.hidden = true;
+    self.backButtonView.hidden = false;
+    self.titleLbl.hidden = true;
+    self.titlePicLbl.hidden = false;
+    
+    if(isShowingAlbumOptions){
+        [self hideAlbumOptions];
+    }
+    if(isShownPicInfo){
+        [self showPicInfo];
+    }
+    isOnePicView = true;
+}
+
 
 -(void)showAlbumOptions
 {
@@ -1440,44 +1481,7 @@ float iconAlpha = .8;
 {
     
     if (collectionView == self.collectionView) {
-        NSInteger x = indexPath.row;
-        NSInteger y = indexPath.section;
-        NSInteger i = x + (y * 3);
-        if(i<[self.picsArray count]){
-            
-            self.lastPickedImg = self.pickedImg;
-            self.pickedPic = [self.picsArray objectAtIndex:x];
-            self.pickedPicIndex = x;
-            
-            self.pickedImg = [self getPicFromDisk:self.pickedPic.path];
-            self.PicViewImg.image = self.pickedImg;
-            self.PicView.hidden = false;
-            self.collectionView.hidden = true;
-            
-            isStatusBarHidden = true;
-            if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
-            {
-                [self setNeedsStatusBarAppearanceUpdate];
-            }
-            
-            [YVHDAO setSelectedPics:@[self.pickedPic]];
-            self.titlePicLbl.text = self.pickedPic.name;
-        }
-        
-        self.infoPicView.hidden = false;
-        self.headerView.hidden = false;
-        self.numPicsView.hidden = true;
-        self.backButtonView.hidden = false;
-        self.titleLbl.hidden = true;
-        self.titlePicLbl.hidden = false;
-        
-        if(isShowingAlbumOptions){
-            [self hideAlbumOptions];
-        }
-        if(isShownPicInfo){
-            [self showPicInfo];
-        }
-        isOnePicView = true;
+        [self showOnePicViewAtIndex:indexPath];
     }
     else{// Filters collection
         
@@ -1549,6 +1553,50 @@ float iconAlpha = .8;
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     //Es el espacio entre las celdas y collection container
     return UIEdgeInsetsMake(20, 20, 20, 20);
+}
+
+
+#pragma mark -
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+#warning Potentially incomplete method implementation.
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return self.picsArray.count;
+}
+
+
+ - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+     
+     PicListCell *cell = (PicListCell*) [tableView dequeueReusableCellWithIdentifier:@"picListCell"];
+     if (cell == nil) { // Si no había una celda para reutilizar, debo crearla
+         cell = [[PicListCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"picListCell"];
+     }
+     
+     Pic * p = [self.picsArray objectAtIndex:indexPath.row];
+     UIImage *photo = [self getThumnailFromDisk:p.path];
+     
+     cell.image.image = photo;
+     cell.title.text = p.name;
+     //cell.address.text =
+     cell.facesText.text = NSLocalizedString(@"PIC_FACES", nil);
+     cell.faces.text = [NSString stringWithFormat:@"%d", p.pic_face.count];
+     
+     return cell;
+ }
+ 
+
+#pragma mark - UITableViewDelegate methods
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self showOnePicViewAtIndex:indexPath];
 }
 
 
