@@ -30,18 +30,8 @@
 		04A6BF2119DB24550000FA32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF2019DB24550000FA32 /* main.m */; };
 		04A6BF2819DB24550000FA32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF2619DB24550000FA32 /* Main.storyboard */; };
 		04A6BF2D19DB24550000FA32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF2C19DB24550000FA32 /* Images.xcassets */; };
-		04A6BF3419DB24550000FA32 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A6BF3319DB24550000FA32 /* XCTest.framework */; };
-		04A6BF3519DB24550000FA32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A6BF1419DB24550000FA32 /* Foundation.framework */; };
-		04A6BF3619DB24550000FA32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A6BF1819DB24550000FA32 /* UIKit.framework */; };
-		04A6BF3E19DB24550000FA32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF3C19DB24550000FA32 /* InfoPlist.strings */; };
-		04A6BF4019DB24550000FA32 /* PicsBook_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF3F19DB24550000FA32 /* PicsBook_iOSTests.m */; };
 		04A6BF4C19DB258F0000FA32 /* YVHCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF4B19DB258F0000FA32 /* YVHCameraVC.m */; };
 		04A6BF5F19DB2B550000FA32 /* YVHGalleryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF5E19DB2B550000FA32 /* YVHGalleryVC.m */; };
-		04A6BF6819DB2C8F0000FA32 /* Flickr.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF6519DB2C8F0000FA32 /* Flickr.m */; };
-		04A6BF6919DB2C8F0000FA32 /* FlickrPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF6719DB2C8F0000FA32 /* FlickrPhoto.m */; };
-		04A6BF6E19DB2D620000FA32 /* CVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF6C19DB2D620000FA32 /* CVCell.m */; };
-		04A6BF6F19DB2D620000FA32 /* CVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A6BF6D19DB2D620000FA32 /* CVCell.xib */; };
-		04A6BF7219DB2DAD0000FA32 /* YVHPicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF7119DB2DAD0000FA32 /* YVHPicVC.m */; };
 		04A6BF7419DB37AE0000FA32 /* YVHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF7319DB37AE0000FA32 /* YVHAppDelegate.m */; };
 		04A6BF8919DB43D30000FA32 /* YVHCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF8819DB43D30000FA32 /* YVHCoreDataStack.m */; };
 		04A6BF8C19DB4C6E0000FA32 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04A6BF8A19DB4C6E0000FA32 /* Model.xcdatamodeld */; };
@@ -69,6 +59,7 @@
 		04A8D95E19E4616400347349 /* HeaderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A8D95D19E4616400347349 /* HeaderBar.png */; };
 		04A8D96019E47D4F00347349 /* arrow_fwd.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A8D95F19E47D4F00347349 /* arrow_fwd.png */; };
 		04A8D96719E4CEAB00347349 /* YVHDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A8D96619E4CEAB00347349 /* YVHDAO.m */; };
+		04A921A21AC858EA00612FDA /* YVHPicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A921A11AC858EA00612FDA /* YVHPicVC.m */; };
 		04AE76D019EF50CE007976E5 /* filter_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE76CE19EF50CD007976E5 /* filter_s.png */; };
 		04AE76D119EF50CE007976E5 /* face_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE76CF19EF50CE007976E5 /* face_s.png */; };
 		04B2CA0D19F208AC00CF89D4 /* faceFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B2CA0C19F208AC00CF89D4 /* faceFrame.png */; };
@@ -79,6 +70,10 @@
 		04B3B41619F36DF000AD2FA2 /* _Pic.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B3B41019F36DF000AD2FA2 /* _Pic.m */; };
 		04B3B41719F36DF000AD2FA2 /* Face.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B3B41219F36DF000AD2FA2 /* Face.m */; };
 		04B3B41819F36DF000AD2FA2 /* Pic.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B3B41419F36DF000AD2FA2 /* Pic.m */; };
+		04B5997D1AC8394C00C8BCB7 /* CVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B5997B1AC8394C00C8BCB7 /* CVCell.m */; };
+		04B5997E1AC8394C00C8BCB7 /* CVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B5997C1AC8394C00C8BCB7 /* CVCell.xib */; };
+		04B599831AC8399C00C8BCB7 /* Flickr.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B599801AC8399C00C8BCB7 /* Flickr.m */; };
+		04B599841AC8399C00C8BCB7 /* FlickrPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B599821AC8399C00C8BCB7 /* FlickrPhoto.m */; };
 		04CC98A519ED40F4002C4365 /* options1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CC98A419ED40F4002C4365 /* options1.png */; };
 		04CC98AC19ED4643002C4365 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CC98AB19ED4643002C4365 /* share.png */; };
 		04CC98AE19ED4A33002C4365 /* filter.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CC98AD19ED4A33002C4365 /* filter.png */; };
@@ -90,16 +85,6 @@
 		04D4621119EDB204000D7FB7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04D4621319EDB204000D7FB7 /* Localizable.strings */; };
 		04D4622019EDC7E2000D7FB7 /* infoBg2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D4621F19EDC7E2000D7FB7 /* infoBg2.png */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		04A6BF3719DB24550000FA32 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 04A6BF0919DB24550000FA32 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 04A6BF1019DB24550000FA32;
-			remoteInfo = "PicsBook iOS";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		04181B7F19EBEF69000A546B /* options2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = options2.png; sourceTree = "<group>"; };
@@ -131,7 +116,6 @@
 		04A6BF2219DB24550000FA32 /* PicsBook iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PicsBook iOS-Prefix.pch"; sourceTree = "<group>"; };
 		04A6BF2719DB24550000FA32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04A6BF2C19DB24550000FA32 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		04A6BF3219DB24550000FA32 /* PicsBook iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PicsBook iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A6BF3319DB24550000FA32 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		04A6BF3B19DB24550000FA32 /* PicsBook iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PicsBook iOSTests-Info.plist"; sourceTree = "<group>"; };
 		04A6BF3D19DB24550000FA32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -141,15 +125,6 @@
 		04A6BF4D19DB26A80000FA32 /* YVHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YVHAppDelegate.h; sourceTree = "<group>"; };
 		04A6BF5D19DB2B550000FA32 /* YVHGalleryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHGalleryVC.h; sourceTree = "<group>"; };
 		04A6BF5E19DB2B550000FA32 /* YVHGalleryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHGalleryVC.m; sourceTree = "<group>"; };
-		04A6BF6419DB2C8F0000FA32 /* Flickr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flickr.h; path = "../../../Picsbook3 SB/Picsbook3 SB/Flickr Interface/Flickr.h"; sourceTree = "<group>"; };
-		04A6BF6519DB2C8F0000FA32 /* Flickr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Flickr.m; path = "../../../Picsbook3 SB/Picsbook3 SB/Flickr Interface/Flickr.m"; sourceTree = "<group>"; };
-		04A6BF6619DB2C8F0000FA32 /* FlickrPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrPhoto.h; path = "../../../Picsbook3 SB/Picsbook3 SB/Flickr Interface/FlickrPhoto.h"; sourceTree = "<group>"; };
-		04A6BF6719DB2C8F0000FA32 /* FlickrPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrPhoto.m; path = "../../../Picsbook3 SB/Picsbook3 SB/Flickr Interface/FlickrPhoto.m"; sourceTree = "<group>"; };
-		04A6BF6B19DB2D620000FA32 /* CVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CVCell.h; path = "../../../Picsbook3 SB/Picsbook3 SB/CVCell.h"; sourceTree = "<group>"; };
-		04A6BF6C19DB2D620000FA32 /* CVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CVCell.m; path = "../../../Picsbook3 SB/Picsbook3 SB/CVCell.m"; sourceTree = "<group>"; };
-		04A6BF6D19DB2D620000FA32 /* CVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CVCell.xib; path = "../../../Picsbook3 SB/Picsbook3 SB/CVCell.xib"; sourceTree = "<group>"; };
-		04A6BF7019DB2DAD0000FA32 /* YVHPicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YVHPicVC.h; path = "../../../Picsbook3 SB/Picsbook3 SB/YVHPicVC.h"; sourceTree = "<group>"; };
-		04A6BF7119DB2DAD0000FA32 /* YVHPicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YVHPicVC.m; path = "../../../Picsbook3 SB/Picsbook3 SB/YVHPicVC.m"; sourceTree = "<group>"; };
 		04A6BF7319DB37AE0000FA32 /* YVHAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHAppDelegate.m; sourceTree = "<group>"; };
 		04A6BF8719DB43D30000FA32 /* YVHCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHCoreDataStack.h; sourceTree = "<group>"; };
 		04A6BF8819DB43D30000FA32 /* YVHCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHCoreDataStack.m; sourceTree = "<group>"; };
@@ -183,6 +158,8 @@
 		04A8D95F19E47D4F00347349 /* arrow_fwd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_fwd.png; sourceTree = "<group>"; };
 		04A8D96519E4CEAB00347349 /* YVHDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHDAO.h; sourceTree = "<group>"; };
 		04A8D96619E4CEAB00347349 /* YVHDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHDAO.m; sourceTree = "<group>"; };
+		04A921A01AC858EA00612FDA /* YVHPicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YVHPicVC.h; sourceTree = "<group>"; };
+		04A921A11AC858EA00612FDA /* YVHPicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YVHPicVC.m; sourceTree = "<group>"; };
 		04AE76CE19EF50CD007976E5 /* filter_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter_s.png; sourceTree = "<group>"; };
 		04AE76CF19EF50CE007976E5 /* face_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = face_s.png; sourceTree = "<group>"; };
 		04B2CA0C19F208AC00CF89D4 /* faceFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faceFrame.png; sourceTree = "<group>"; };
@@ -198,6 +175,13 @@
 		04B3B41219F36DF000AD2FA2 /* Face.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Face.m; sourceTree = "<group>"; };
 		04B3B41319F36DF000AD2FA2 /* Pic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pic.h; sourceTree = "<group>"; };
 		04B3B41419F36DF000AD2FA2 /* Pic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pic.m; sourceTree = "<group>"; };
+		04B5997A1AC8394C00C8BCB7 /* CVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVCell.h; sourceTree = "<group>"; };
+		04B5997B1AC8394C00C8BCB7 /* CVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVCell.m; sourceTree = "<group>"; };
+		04B5997C1AC8394C00C8BCB7 /* CVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVCell.xib; sourceTree = "<group>"; };
+		04B5997F1AC8399C00C8BCB7 /* Flickr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flickr.h; path = "Flickr Interface/Flickr.h"; sourceTree = "<group>"; };
+		04B599801AC8399C00C8BCB7 /* Flickr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Flickr.m; path = "Flickr Interface/Flickr.m"; sourceTree = "<group>"; };
+		04B599811AC8399C00C8BCB7 /* FlickrPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrPhoto.h; path = "Flickr Interface/FlickrPhoto.h"; sourceTree = "<group>"; };
+		04B599821AC8399C00C8BCB7 /* FlickrPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrPhoto.m; path = "Flickr Interface/FlickrPhoto.m"; sourceTree = "<group>"; };
 		04CC98A419ED40F4002C4365 /* options1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = options1.png; sourceTree = "<group>"; };
 		04CC98AB19ED4643002C4365 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		04CC98AD19ED4A33002C4365 /* filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter.png; sourceTree = "<group>"; };
@@ -225,16 +209,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04A6BF2F19DB24550000FA32 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04A6BF3419DB24550000FA32 /* XCTest.framework in Frameworks */,
-				04A6BF3619DB24550000FA32 /* UIKit.framework in Frameworks */,
-				04A6BF3519DB24550000FA32 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -252,7 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				04A6BF1119DB24550000FA32 /* PicsBook iOS.app */,
-				04A6BF3219DB24550000FA32 /* PicsBook iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -319,8 +292,8 @@
 		04A6BF4919DB25410000FA32 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				04A6BF7019DB2DAD0000FA32 /* YVHPicVC.h */,
-				04A6BF7119DB2DAD0000FA32 /* YVHPicVC.m */,
+				04A921A01AC858EA00612FDA /* YVHPicVC.h */,
+				04A921A11AC858EA00612FDA /* YVHPicVC.m */,
 				04A8752F19E2B94400DC6923 /* YVHMapVC.h */,
 				04A8753019E2B94400DC6923 /* YVHMapVC.m */,
 				04A6BF4A19DB258F0000FA32 /* YVHCameraVC.h */,
@@ -354,10 +327,10 @@
 			children = (
 				04A8D95A19E4494100347349 /* RXCustomTabBar.h */,
 				04A8D95B19E4494100347349 /* RXCustomTabBar.m */,
-				04A6BF6419DB2C8F0000FA32 /* Flickr.h */,
-				04A6BF6519DB2C8F0000FA32 /* Flickr.m */,
-				04A6BF6619DB2C8F0000FA32 /* FlickrPhoto.h */,
-				04A6BF6719DB2C8F0000FA32 /* FlickrPhoto.m */,
+				04B5997F1AC8399C00C8BCB7 /* Flickr.h */,
+				04B599801AC8399C00C8BCB7 /* Flickr.m */,
+				04B599811AC8399C00C8BCB7 /* FlickrPhoto.h */,
+				04B599821AC8399C00C8BCB7 /* FlickrPhoto.m */,
 				04A6BF8719DB43D30000FA32 /* YVHCoreDataStack.h */,
 				04A6BF8819DB43D30000FA32 /* YVHCoreDataStack.m */,
 				04A2EB2D19F042D500CCCFA6 /* YVHCoreDataVC.h */,
@@ -373,9 +346,9 @@
 		04A6BF6A19DB2D4D0000FA32 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				04A6BF6B19DB2D620000FA32 /* CVCell.h */,
-				04A6BF6C19DB2D620000FA32 /* CVCell.m */,
-				04A6BF6D19DB2D620000FA32 /* CVCell.xib */,
+				04B5997A1AC8394C00C8BCB7 /* CVCell.h */,
+				04B5997B1AC8394C00C8BCB7 /* CVCell.m */,
+				04B5997C1AC8394C00C8BCB7 /* CVCell.xib */,
 				04A8753219E2B95300DC6923 /* YVH MapViewAnnotation.h */,
 				04A8753319E2B95300DC6923 /* YVH MapViewAnnotation.m */,
 				04A59CA319EEE46C00BA1896 /* FilterCell.h */,
@@ -482,24 +455,6 @@
 			productReference = 04A6BF1119DB24550000FA32 /* PicsBook iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		04A6BF3119DB24550000FA32 /* PicsBook iOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 04A6BF4619DB24550000FA32 /* Build configuration list for PBXNativeTarget "PicsBook iOSTests" */;
-			buildPhases = (
-				04A6BF2E19DB24550000FA32 /* Sources */,
-				04A6BF2F19DB24550000FA32 /* Frameworks */,
-				04A6BF3019DB24550000FA32 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				04A6BF3819DB24550000FA32 /* PBXTargetDependency */,
-			);
-			name = "PicsBook iOSTests";
-			productName = "PicsBook iOSTests";
-			productReference = 04A6BF3219DB24550000FA32 /* PicsBook iOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -510,8 +465,8 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Yvon Valdepeñas";
 				TargetAttributes = {
-					04A6BF3119DB24550000FA32 = {
-						TestTargetID = 04A6BF1019DB24550000FA32;
+					04A6BF1019DB24550000FA32 = {
+						DevelopmentTeam = 78Y23L8UZ9;
 					};
 				};
 			};
@@ -530,7 +485,6 @@
 			projectRoot = "";
 			targets = (
 				04A6BF1019DB24550000FA32 /* PicsBook iOS */,
-				04A6BF3119DB24550000FA32 /* PicsBook iOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -540,11 +494,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04B5997E1AC8394C00C8BCB7 /* CVCell.xib in Resources */,
 				048EC44119F4035B007732FF /* naomi.jpg in Resources */,
 				04A6BF9F19DB6B0E0000FA32 /* mapOn.png in Resources */,
 				04181B8219EBEF69000A546B /* options2.png in Resources */,
 				04A59CA919EEECB200BA1896 /* FilterCell.xib in Resources */,
-				04A6BF6F19DB2D620000FA32 /* CVCell.xib in Resources */,
 				04D4620819ED8613000D7FB7 /* infoBg.png in Resources */,
 				04A6BFA519DB6B0E0000FA32 /* cameraOff.png in Resources */,
 				04A2EB2919EFF83100CCCFA6 /* arrow_fwd2.png in Resources */,
@@ -594,14 +548,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04A6BF3019DB24550000FA32 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04A6BF3E19DB24550000FA32 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -615,43 +561,27 @@
 				04B3B41619F36DF000AD2FA2 /* _Pic.m in Sources */,
 				04B3B41719F36DF000AD2FA2 /* Face.m in Sources */,
 				04A8D95919E4042B00347349 /* YVHMainVC.m in Sources */,
-				04A6BF6E19DB2D620000FA32 /* CVCell.m in Sources */,
 				04A8D95C19E4494100347349 /* RXCustomTabBar.m in Sources */,
 				04A6BF5F19DB2B550000FA32 /* YVHGalleryVC.m in Sources */,
 				04A2EB2F19F042D500CCCFA6 /* YVHCoreDataVC.m in Sources */,
+				04A921A21AC858EA00612FDA /* YVHPicVC.m in Sources */,
 				04A6BF4C19DB258F0000FA32 /* YVHCameraVC.m in Sources */,
-				04A6BF7219DB2DAD0000FA32 /* YVHPicVC.m in Sources */,
-				04A6BF6919DB2C8F0000FA32 /* FlickrPhoto.m in Sources */,
-				04A6BF6819DB2C8F0000FA32 /* Flickr.m in Sources */,
+				04B599841AC8399C00C8BCB7 /* FlickrPhoto.m in Sources */,
 				04A8753419E2B95300DC6923 /* YVH MapViewAnnotation.m in Sources */,
 				04A6BF8C19DB4C6E0000FA32 /* Model.xcdatamodeld in Sources */,
 				04A8753119E2B94400DC6923 /* YVHMapVC.m in Sources */,
 				04A6BF7419DB37AE0000FA32 /* YVHAppDelegate.m in Sources */,
 				04B3B41519F36DF000AD2FA2 /* _Face.m in Sources */,
 				04A2EB2C19F02C3000CCCFA6 /* YVHUtil.m in Sources */,
+				04B5997D1AC8394C00C8BCB7 /* CVCell.m in Sources */,
 				04A6BF8919DB43D30000FA32 /* YVHCoreDataStack.m in Sources */,
 				04B3B41819F36DF000AD2FA2 /* Pic.m in Sources */,
+				04B599831AC8399C00C8BCB7 /* Flickr.m in Sources */,
 				04A6BF2119DB24550000FA32 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04A6BF2E19DB24550000FA32 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04A6BF4019DB24550000FA32 /* PicsBook_iOSTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		04A6BF3819DB24550000FA32 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 04A6BF1019DB24550000FA32 /* PicsBook iOS */;
-			targetProxy = 04A6BF3719DB24550000FA32 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		04A6BF1D19DB24550000FA32 /* InfoPlist.strings */ = {
@@ -772,11 +702,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yvon Utad (HEG6WSF969)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PicsBook iOS/PicsBook iOS-Prefix.pch";
 				INFOPLIST_FILE = "PicsBook iOS/PicsBook iOS-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -786,52 +719,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yvon Utad (HEG6WSF969)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PicsBook iOS/PicsBook iOS-Prefix.pch";
 				INFOPLIST_FILE = "PicsBook iOS/PicsBook iOS-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		04A6BF4719DB24550000FA32 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PicsBook iOS.app/PicsBook iOS";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PicsBook iOS/PicsBook iOS-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "PicsBook iOSTests/PicsBook iOSTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		04A6BF4819DB24550000FA32 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PicsBook iOS.app/PicsBook iOS";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PicsBook iOS/PicsBook iOS-Prefix.pch";
-				INFOPLIST_FILE = "PicsBook iOSTests/PicsBook iOSTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -852,15 +748,6 @@
 			buildConfigurations = (
 				04A6BF4419DB24550000FA32 /* Debug */,
 				04A6BF4519DB24550000FA32 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		04A6BF4619DB24550000FA32 /* Build configuration list for PBXNativeTarget "PicsBook iOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				04A6BF4719DB24550000FA32 /* Debug */,
-				04A6BF4819DB24550000FA32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

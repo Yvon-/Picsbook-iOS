@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cvCell" id="3" customClass="CVCell">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oVx-4I-JKe" userLabel="Image View1">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pushpin.png" translatesAutoresizingMaskIntoConstraints="NO" id="H5K-jG-uyL" userLabel="Image View2 - pushpin.png">
+                        <rect key="frame" x="75" y="-59" width="150" height="150"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="150" id="Moy-IC-oQi"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="H5K-jG-uyL" secondAttribute="centerX" id="56A-9q-yuC"/>
+                <constraint firstAttribute="centerX" secondItem="oVx-4I-JKe" secondAttribute="centerX" id="DVM-8u-3uJ"/>
+                <constraint firstAttribute="bottom" secondItem="oVx-4I-JKe" secondAttribute="bottom" id="Gpg-vI-RNX"/>
+                <constraint firstAttribute="centerY" secondItem="oVx-4I-JKe" secondAttribute="centerY" id="MMK-kg-vDz"/>
+                <constraint firstItem="H5K-jG-uyL" firstAttribute="top" secondItem="3" secondAttribute="top" constant="-59" id="cA9-jv-sgi"/>
+                <constraint firstItem="oVx-4I-JKe" firstAttribute="top" secondItem="3" secondAttribute="top" id="d3b-98-ccu"/>
+                <constraint firstItem="H5K-jG-uyL" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="75" id="e0Z-FV-IpX"/>
+                <constraint firstAttribute="trailing" secondItem="oVx-4I-JKe" secondAttribute="trailing" id="kT3-3r-IKh"/>
+                <constraint firstItem="oVx-4I-JKe" firstAttribute="leading" secondItem="3" secondAttribute="leading" id="tph-kt-4fz"/>
+            </constraints>
+            <connections>
+                <outlet property="image" destination="oVx-4I-JKe" id="HNk-fg-2v9"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="pushpin.png" width="22" height="31"/>
+    </resources>
+</document>
