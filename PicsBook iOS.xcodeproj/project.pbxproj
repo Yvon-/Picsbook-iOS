@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0401C5581C8F317A0007D085 /* picsbook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0401C5571C8F317A0007D085 /* picsbook_icon.png */; };
 		04181B8219EBEF69000A546B /* options2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04181B7F19EBEF69000A546B /* options2.png */; };
 		0477B68019F381B000BC50A5 /* Kardashians.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0477B67F19F381B000BC50A5 /* Kardashians.jpg */; };
 		048B986B19F4138D004BDF46 /* splashscr.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B986A19F4138D004BDF46 /* splashscr.png */; };
@@ -87,6 +88,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0401C5571C8F317A0007D085 /* picsbook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picsbook_icon.png; sourceTree = "<group>"; };
 		04181B7F19EBEF69000A546B /* options2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = options2.png; sourceTree = "<group>"; };
 		0477B67F19F381B000BC50A5 /* Kardashians.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Kardashians.jpg; sourceTree = "<group>"; };
 		048B986A19F4138D004BDF46 /* splashscr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashscr.png; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 		04A6BF8D19DB6AF10000FA32 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				0401C5571C8F317A0007D085 /* picsbook_icon.png */,
 				04D4620719ED8613000D7FB7 /* infoBg.png */,
 				04D4621F19EDC7E2000D7FB7 /* infoBg2.png */,
 				04B3B3E319F33C6D00AD2FA2 /* listBg.png */,
@@ -496,6 +499,7 @@
 			files = (
 				04B5997E1AC8394C00C8BCB7 /* CVCell.xib in Resources */,
 				048EC44119F4035B007732FF /* naomi.jpg in Resources */,
+				0401C5581C8F317A0007D085 /* picsbook_icon.png in Resources */,
 				04A6BF9F19DB6B0E0000FA32 /* mapOn.png in Resources */,
 				04181B8219EBEF69000A546B /* options2.png in Resources */,
 				04A59CA919EEECB200BA1896 /* FilterCell.xib in Resources */,
@@ -700,13 +704,13 @@
 		04A6BF4419DB24550000FA32 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PicsBook iOS/PicsBook iOS-Prefix.pch";
 				INFOPLIST_FILE = "PicsBook iOS/PicsBook iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -717,13 +721,13 @@
 		04A6BF4519DB24550000FA32 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PicsBook iOS/PicsBook iOS-Prefix.pch";
 				INFOPLIST_FILE = "PicsBook iOS/PicsBook iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
